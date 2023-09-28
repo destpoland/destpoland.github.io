@@ -1,2 +1,2 @@
 # grindCraft
-idk a port to play at school
+idk a port to play and other stuff
