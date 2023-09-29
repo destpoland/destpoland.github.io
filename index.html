@@ -9,6 +9,7 @@
     display: grid;
     grid-template-columns: 15% 15% 15% 15% 15% 15%;
     padding:100px;
+	padding-top: 240px;
 }
 
 * {
@@ -164,6 +165,33 @@ p {
         }
 .content {padding:20px;}
 
+.navbar {
+  height: 56px;
+  box-shadow: 0 5px 200px var(--theme);
+  position: sticky;
+  top: 0;
+  z-index: 9999;
+  animation: breathing 5s ease-out infinite normal;
+  
+}
+
+.navlogo {
+  height: 150px;
+  border-radius: 15px;
+  position: absolute;
+  left: 5px;
+  user-select: none;
+  padding:20px;
+}
+
+.navitems {
+  display: flex;
+  justify-content: center;
+  height: 250%;
+  align-items: center;
+  gap: 10px;
+  background: var(--background);
+}
 
 </style>
 </head>
@@ -177,17 +205,23 @@ p {
 
   
   <div class="banner-text">
-    <h1>destpl</h1>
-    <p>stuff<p>
+    <div class="navbar">
+        <img alt="Home" onclick="location.href='../index.html'" src="./homeimgs/favicon.png" class="navlogo" draggable="false">
+		<div class="navitems">
+			<h1>destpl</h1>
+			
+		</div>
+		<p>stuff</p>
+      </div>
 		<div class="container">
     
-      <img alt="GrindCraft" onclick="location.href='./GrindCraft/index.html'" src="./homeimgs/grindcraft.png" class="navlogo" draggable="false">
+      <img alt="GrindCraft" onclick="location.href='./GrindCraft/index.html'" src="./homeimgs/grindcraft.png"  draggable="false">
       
-      <img alt="GrindCraftRemaster" onclick="location.href='./GrindCraftRemastered/index.html'" src="./homeimgs/GrindCraftRemaster.png" class="navlogo" draggable="false">
+      <img alt="GrindCraftRemaster" onclick="location.href='./GrindCraftRemastered/index.html'" src="./homeimgs/GrindCraftRemaster.png"  draggable="false">
       
-      <img alt="EaglerCraft1.5" onclick="location.href='./eagler-15/index.html'" src="./homeimgs/grassEagler15.png" class="navlogo" draggable="false">
+      <img alt="EaglerCraft1.5" onclick="location.href='./minecrafts/index.html'" src="./homeimgs/MCHome.png	"  draggable="false">
       
-      <img alt="EaglerCraft1.5" onclick="location.href='./geometrylite/index.html'" src="./homeimgs/geodash.png" class="navlogo" draggable="false">
+      <img alt="GeometryDashScratch" onclick="location.href='./geometrylite/index.html'" src="./homeimgs/geodash.png"  draggable="false">
       </div>
   </div>
 
