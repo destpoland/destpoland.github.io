@@ -1,9 +1,8 @@
-@media only screen and (max-width: 1124px) {
-
+@media (pointer:none), (pointer:coarse) {
     .animation-area {
         background: linear-gradient(to left, #2251d4, #0f8aa8);
         width: 200%;
-        height: 1540px;
+        height: 1440px;
     }
 
     .box-area {
@@ -22,7 +21,7 @@
     }
 
     .container {
-        grid-template-columns: repeat(auto-fill, 300px);
+        grid-template-columns: repeat(auto-fill, 400px);
         grid-gap: 1rem;
         margin: 1rem;
     }

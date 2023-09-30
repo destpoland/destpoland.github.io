@@ -193,7 +193,7 @@ p {
 .topbar {
   display: flex;
   justify-content: center;
-  height: 250%;
+  height: 100%;
   align-items: center;
   gap: 10px;
   background: var(--background);
