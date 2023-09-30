@@ -1,0 +1,29 @@
+@media only screen and (max-width: 1124px) {
+
+    .animation-area {
+        background: linear-gradient(to left, #2251d4, #0f8aa8);
+        width: 200%;
+        height: 1540px;
+    }
+
+    .box-area {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 200%;
+        height: 1540px;
+        overflow: hidden;
+    }
+
+    .banner-text {
+        width: 200%;
+        position: absolute;
+        z-index: 1;
+    }
+
+    .container {
+        grid-template-columns: repeat(auto-fill, 300px);
+        grid-gap: 1rem;
+        margin: 1rem;
+    }
+}
