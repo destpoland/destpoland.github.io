@@ -5,12 +5,30 @@
         height: 1440px;
     }
 
+    .bar {
+        height: 56px;
+        position: static;
+        top: 0;
+        z-index: 9999;
+        animation: breathing 5s ease-out infinite normal;
+      }	
+
+      .chatlogo {
+        height: 150px;
+        border-radius: 15px;
+        position: absolute;
+        left: 83%;
+        user-select: none;
+        padding:20px;
+        cursor: pointer;
+      }
+
     .box-area {
         position: absolute;
         top: 0;
         left: 0;
         width: 100%;
-        height: 1540px;
+        height: 100%;
         overflow: hidden;
     }
 

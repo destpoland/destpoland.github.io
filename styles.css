@@ -161,13 +161,6 @@ p {
         }
 .content {padding:20px;}
 
-.bar {
-  height: 56px;
-  position: static;
-  top: 0;
-  z-index: 9999;
-  animation: breathing 5s ease-out infinite normal;
-}	
 
 .logo {
   height: 150px;
@@ -316,5 +309,5 @@ p {
 }
 
 .src { 
-	padding-top: 125px;
+	padding-top: 65px;
 }
