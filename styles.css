@@ -17,7 +17,7 @@ body {
 }
 .banner-text {
 	width: 100%;
-	position: absolute;
+	position: fixed;
 	z-index: 1;
 }
 .banner-text ul {
@@ -163,8 +163,7 @@ p {
 
 .bar {
   height: 56px;
-  box-shadow: 0 5px 200px var(--theme);
-  position: sticky;
+  position: static;
   top: 0;
   z-index: 9999;
   animation: breathing 5s ease-out infinite normal;
