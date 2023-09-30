@@ -1,0 +1,14 @@
+{
+    "name": "DestPL",
+    "description": "dests stuff",
+    "icons": [{
+      "src": "/homeimgs/favicon.png",
+        "sizes": "460x460",
+        "type": "image/png"
+      }],
+    "lang": "en-US",
+    "start_url": "/",
+    "display": "standalone",
+    "background_color": "black",
+    "theme_color": "black"
+  }
