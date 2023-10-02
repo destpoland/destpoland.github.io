@@ -62,6 +62,32 @@ body {
 	bottom: -150px;
 }
 
+.button {
+  background-color : #f708ff;
+  color: white;
+  padding: 20px 20px;
+  border-radius: 4px;
+  border-color: #f708ff;
+  cursor: pointer;
+}
+
+.buttonROM {
+  background-color : #7700ff;
+  color: white;
+  padding: 60px 20px;
+  border-radius: 4px;
+  border-color: #f708ff;
+  font-size: 20px;
+  cursor: pointer;
+}
+
+
+#mybutton {
+  position: fixed;
+  top: 4px;
+  right: 10px;
+}
+
 .box-area li:nth-child(1) {
 	left: 86%;
 	width: 80px;
