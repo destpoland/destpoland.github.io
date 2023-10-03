@@ -453,34 +453,33 @@ function adjustVKLayout() {
     var vkw = baseSize * 3
     var vkh = baseSize
 
-    keyState['l'][0].style = makeVKStyle(offTop + baseSize * 1.5, 0, vkw, vkh, fontSize)
-    keyState['r'][0].style = makeVKStyle(offTop + baseSize * 1.5, window.innerWidth - vkw, vkw, vkh, fontSize)
+    keyState['l'][0].style = makeVKStyle(offTop, 0, vkw, vkh, fontSize)
+    keyState['r'][0].style = makeVKStyle(offTop, window.innerWidth - vkw, vkw, vkh, fontSize)
 
     vkh = baseSize * 0.5
-    keyState['turbo'][0].style = makeVKStyle(offTop + baseSize * 0.5, 0, vkw, vkh, fontSize)
-    keyState['menu'][0].style = makeVKStyle(offTop + baseSize * 0.5, window.innerWidth - vkw, vkw, vkh, fontSize)
+    keyState['turbo'][0].style = makeVKStyle(offTop + (baseSize) * 6.5, 0, (vkw+10), (vkh+30), fontSize)   
 
-    vkh = baseSize
-    vkw = baseSize
+    vkh = baseSize + 25
+    vkw = baseSize + 25
     offTop += baseSize * 3
     /*
     offLeft = isLandscape ? (baseSize * 1) : 0
     if (baseSize * 6 > window.innerWidth) {
         offLeft = 0
     }*/
-    offLeft = 0
+    offLeft = 25
 
-    keyState['up'][0].style = makeVKStyle(offTop, offLeft + vkw, vkw, vkh, fontSize)
-    keyState['ul'][0].style = makeVKStyle(offTop, offLeft, vkw, vkh, fontSize)
-    keyState['ur'][0].style = makeVKStyle(offTop, offLeft + vkw * 2, vkw, vkh, fontSize)
-    keyState['down'][0].style = makeVKStyle(offTop + vkh * 2, offLeft + vkw, vkw, vkh, fontSize)
-    keyState['dl'][0].style = makeVKStyle(offTop + vkh * 2, offLeft, vkw, vkh, fontSize)
-    keyState['dr'][0].style = makeVKStyle(offTop + vkh * 2, offLeft + vkw * 2, vkw, vkh, fontSize)
-    keyState['left'][0].style = makeVKStyle(offTop + vkh, offLeft + 0, vkw, vkh, fontSize)
-    keyState['right'][0].style = makeVKStyle(offTop + vkh, offLeft + vkw * 2, vkw, vkh, fontSize)
-    abSize = vkw * 1.3
-    keyState['a'][0].style = makeVKStyle(offTop + vkh - baseSize * 0.5, window.innerWidth - abSize, abSize, abSize, fontSize)
-    keyState['b'][0].style = makeVKStyle(offTop + vkh, window.innerWidth - abSize * 2.4, abSize, abSize, fontSize)
+    keyState['up'][0].style = makeVKStyle((offTop+390), offLeft + vkw, vkw, vkh, fontSize)
+    keyState['ul'][0].style = makeVKStyle((offTop+390), offLeft, vkw, vkh, fontSize)
+    keyState['ur'][0].style = makeVKStyle((offTop+390), offLeft + vkw * 2, vkw, vkh, fontSize)
+    keyState['down'][0].style = makeVKStyle((offTop+390) + vkh * 2, offLeft + vkw, vkw, vkh, fontSize)
+    keyState['dl'][0].style = makeVKStyle((offTop+390) + vkh * 2, offLeft, vkw, vkh, fontSize)
+    keyState['dr'][0].style = makeVKStyle((offTop+390) + vkh * 2, offLeft + vkw * 2, vkw, vkh, fontSize)
+    keyState['left'][0].style = makeVKStyle((offTop+390) + vkh, offLeft + 0, vkw, vkh, fontSize)
+    keyState['right'][0].style = makeVKStyle((offTop+390) + vkh, offLeft + vkw * 2, vkw, vkh, fontSize)
+    abSize = vkw * 1.6
+    keyState['a'][0].style = makeVKStyle((offTop+320) + vkh - baseSize * 0.5, window.innerWidth - abSize, abSize, abSize, fontSize)
+    keyState['b'][0].style = makeVKStyle((offTop+320) + vkh, window.innerWidth - abSize * 2.4, abSize, abSize, fontSize)
 
     vkh = baseSize * 0.5
     vkw = baseSize * 3
@@ -491,8 +490,9 @@ function adjustVKLayout() {
         offTop = window.innerHeight - vkh
     }
 
-    keyState['select'][0].style = makeVKStyle(offTop, offLeft, vkw, vkh, fontSize)
-    keyState['start'][0].style = makeVKStyle(offTop, offLeft + vkw * 1.2, vkw, vkh, fontSize)
+    keyState['select'][0].style = makeVKStyle(offTop, (offLeft / 1.1), vkw, vkh, fontSize)
+    keyState['start'][0].style = makeVKStyle(offTop, offLeft + vkw * 1.3, vkw, vkh, fontSize)
+    keyState['menu'][0].style = makeVKStyle(offTop, (offLeft-offLeft+1), vkw, vkh, fontSize) 
 
 
 }
