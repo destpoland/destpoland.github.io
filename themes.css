@@ -1,0 +1,7 @@
+.animation-area[theme="default"] {
+    --background: linear-gradient(to left, #2251d4, #0f8aa8);
+}
+
+.animation-area[theme="dark"] {
+    --background: linear-gradient(to left, #323235, #111111);
+}
