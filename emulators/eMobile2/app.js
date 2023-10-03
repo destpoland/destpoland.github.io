@@ -469,17 +469,17 @@ function adjustVKLayout() {
     }*/
     offLeft = 25
 
-    keyState['up'][0].style = makeVKStyle((offTop+390), offLeft + vkw, vkw, vkh, fontSize)
-    keyState['ul'][0].style = makeVKStyle((offTop+390), offLeft, vkw, vkh, fontSize)
-    keyState['ur'][0].style = makeVKStyle((offTop+390), offLeft + vkw * 2, vkw, vkh, fontSize)
-    keyState['down'][0].style = makeVKStyle((offTop+390) + vkh * 2, offLeft + vkw, vkw, vkh, fontSize)
-    keyState['dl'][0].style = makeVKStyle((offTop+390) + vkh * 2, offLeft, vkw, vkh, fontSize)
-    keyState['dr'][0].style = makeVKStyle((offTop+390) + vkh * 2, offLeft + vkw * 2, vkw, vkh, fontSize)
-    keyState['left'][0].style = makeVKStyle((offTop+390) + vkh, offLeft + 0, vkw, vkh, fontSize)
-    keyState['right'][0].style = makeVKStyle((offTop+390) + vkh, offLeft + vkw * 2, vkw, vkh, fontSize)
+    keyState['up'][0].style = makeVKStyle((offTop+370), offLeft + vkw, vkw, vkh, fontSize)
+    keyState['ul'][0].style = makeVKStyle((offTop+370), offLeft, vkw, vkh, fontSize)
+    keyState['ur'][0].style = makeVKStyle((offTop+370), offLeft + vkw * 2, vkw, vkh, fontSize)
+    keyState['down'][0].style = makeVKStyle((offTop+370) + vkh * 2, offLeft + vkw, vkw, vkh, fontSize)
+    keyState['dl'][0].style = makeVKStyle((offTop+370) + vkh * 2, offLeft, vkw, vkh, fontSize)
+    keyState['dr'][0].style = makeVKStyle((offTop+370) + vkh * 2, offLeft + vkw * 2, vkw, vkh, fontSize)
+    keyState['left'][0].style = makeVKStyle((offTop+370) + vkh, offLeft + 0, vkw, vkh, fontSize)
+    keyState['right'][0].style = makeVKStyle((offTop+370) + vkh, offLeft + vkw * 2, vkw, vkh, fontSize)
     abSize = vkw * 1.6
-    keyState['a'][0].style = makeVKStyle((offTop+320) + vkh - baseSize * 0.5, window.innerWidth - abSize, abSize, abSize, fontSize)
-    keyState['b'][0].style = makeVKStyle((offTop+320) + vkh, window.innerWidth - abSize * 2.4, abSize, abSize, fontSize)
+    keyState['a'][0].style = makeVKStyle((offTop+290) + vkh - baseSize * 0.5, window.innerWidth - abSize, abSize, abSize, fontSize)
+    keyState['b'][0].style = makeVKStyle((offTop+290) + vkh, window.innerWidth - abSize * 2.4, abSize, abSize, fontSize)
 
     vkh = baseSize * 0.5
     vkw = baseSize * 3
