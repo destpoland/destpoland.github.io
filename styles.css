@@ -349,3 +349,7 @@ p {
 .src { 
 	padding-top: 65px;
 }
+.srcCenterGame { 
+	padding-top: 65px;
+  padding-left: 30%;
+}
