@@ -168,11 +168,11 @@
 }
 
 body {
-  background-color: teal;
+  background-color: #111111;
 }
 
 h1 {
-  color: black;
+  color: white;
   text-align: center;
   font-size: 100px;   
 }
