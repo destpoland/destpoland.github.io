@@ -33,8 +33,7 @@
         }
 
         body {
-
-            background-color: #000000;
+            background-color: #222;
             color: #FFFFFF;
             padding: 0;
             margin: 0;
@@ -43,8 +42,17 @@
             font-family: 'Myriad Set Pro', 'Helvetica Neue', Helvetica, Arial, sans-serif;
         }
 
-        hr {
-            color: white;
+        .button1 {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .hr1 {
+            color: transparent;
+            border-color: transparent;
+            background: transparent;
+            height: 8%;
         }
 
         button {
@@ -52,7 +60,39 @@
             background: transparent;
             color: white;
             padding: .5em;
+            cursor: pointer;
         }
+
+        .button1 {
+            color: #aaa;
+            height: 20em;
+            width: 30em;
+            max-width: 80%;
+            max-height: 80%;
+            background-color: #333;
+            border-radius: 0.4em;
+            border: 2px solid #555;
+            position: relative;
+            flex-direction: column;
+            transition-duration: 0.2s;
+            overflow: hidden
+            
+            
+            
+        }
+
+        .container {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }   
+        
+        .button1:hover {
+            border-color: rgb(183, 12, 199);
+            color: #ddd
+            
+        }
+
 
         .vk-round {
             text-align: middle;
@@ -82,7 +122,7 @@
         }
 
         .menu {
-            background: rgb(32, 43, 56);
+            background: #222;
             position: absolute;
             left: 0;
             top: 0;
@@ -145,6 +185,8 @@
         <label for="cfg-mute">Mute Sound</label><br>
         <input type="checkbox" id="cfg-turbo">
         <label for="cfg-turbo">Turbo mode</label><br>
+        <input type="checkbox" id="cfg-turbox4">
+        <label for="cfg-turbox4">Turbo mode x4</label><br>
         <div id="div-cht">
             Cheat Codes(backup your savegame before using it):<br>
             <textarea id="txt-code" style="width:100%" rows="10"></textarea><br>
@@ -156,23 +198,16 @@
         <button onclick="dpManualBtn(true)">↑ Upload</button>|<button
             onclick="dpManualBtn(false)">↓ Download</button><br>
     </div>
+
     <div id="welcome" class="menu">
-        <h1 id="title">44VBA</h1>
-        <hr>
+        <hr class="hr1">
         <div id="wasm-loading">
             Loading, please wait...
         </div>
-        <div id="select-rom" hidden>
+        <div id="select-rom"class="container" hidden>
             <input type="file" id="romFile" onchange="onFileSelected()" hidden /></p>
-            <button onclick="$id('romFile').click()" id="btn-choose">Choose File...</button>
+            <button onclick="$id('romFile').click()" id="btn-choose" class="button1">Upload .GBA File</button>
         </div>
-        <hr>
-        <p>
-            Your files are processed locally and won't be uploaded to any server.<br>
-            This software should not be used to play games you have not legally obtained.<br>
-            "GBA", "Game Boy Advance" are trademarks of Nintendo Co.,Ltd, This site is not associated with Nintendo in
-            any way.
-        </p>
         <div id="ios-hint" hidden>
             Due to iOS limitations, please open this site(https://gba.44670.org) in <b>Safari</b>, and add it to your
             <b>Home Screen</b> by <b>Share Menu</b> to continue.

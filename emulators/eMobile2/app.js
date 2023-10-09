@@ -96,6 +96,7 @@ var gameID
 var romFileName
 
 var turboMode = false
+var turboModex4 = false
 var turboInterval = -1
 var fastForwardMode = false
 
@@ -401,9 +402,17 @@ function emuRunFrame() {
             Module._emuRunFrame(getVKState());
             Module._emuRunFrame(getVKState());
             Module._emuRunFrame(getVKState());
+
         } else if (turboMode) {
             Module._emuRunFrame(getVKState());
         }
+         else if (turboModex4) {
+            Module._emuRunFrame(getVKState());
+            Module._emuRunFrame(getVKState());
+            Module._emuRunFrame(getVKState());
+            Module._emuRunFrame(getVKState());
+        }
+        
         if (config.scaleMode >= 2) {
             gpuDraw()
         } else {
@@ -478,8 +487,8 @@ function adjustVKLayout() {
     keyState['left'][0].style = makeVKStyle((offTop+320) + vkh, offLeft + 0, vkw, vkh, fontSize)
     keyState['right'][0].style = makeVKStyle((offTop+320) + vkh, offLeft + vkw * 2, vkw, vkh, fontSize)
     abSize = vkw * 1.6
-    keyState['a'][0].style = makeVKStyle((offTop+290) + vkh - baseSize * 0.5, window.innerWidth - abSize, abSize, abSize, fontSize)
-    keyState['b'][0].style = makeVKStyle((offTop+290) + vkh, window.innerWidth - abSize * 2.4, abSize, abSize, fontSize)
+    keyState['a'][0].style = makeVKStyle((offTop*2.9) + vkh - baseSize * 0.5, window.innerWidth - abSize, abSize, abSize, fontSize)
+    keyState['b'][0].style = makeVKStyle((offTop*2.9) + vkh, window.innerWidth - abSize * 2.4, abSize, abSize, fontSize)
 
     vkh = baseSize * 0.5
     vkw = baseSize * 3
@@ -830,6 +839,9 @@ window.addEventListener("gamepadconnected", function (e) {
 
 $id('cfg-turbo').onchange = function () {
     turboMode = !!this.checked
+}
+$id('cfg-turbox4').onchange = function () {
+    turboModex4 = !!this.checked
 }
 
 $id('cfg-mute').onchange = function () {

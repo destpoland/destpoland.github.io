@@ -80,6 +80,8 @@
     config.controlScheme = window.EJS_controlScheme;
     config.threads = window.EJS_threads;
     config.disableCue = window.EJS_disableCue;
+    config.startBtnName = window.EJS_startButtonName;
+    config.softLoad = window.EJS_softLoad;
     
     if (typeof window.EJS_language === "string" && window.EJS_language !== "en-US") {
         try {
