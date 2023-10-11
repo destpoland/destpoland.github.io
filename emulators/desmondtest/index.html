@@ -175,7 +175,7 @@ document.querySelector("input").onchange = function(){
 document.querySelector("desmond-player").loadURL(URL.createObjectURL(document.querySelector("input").files[0]), function(){
 })
 }
-window.onload = function() {
+document.addEventListener("deviceready", function() {
             setTimeout(function() {
                 document.querySelector("desmond-player").shadowRoot.querySelector("#top").style = "position: fixed;transform: translate(-50%, -50%);width: 45%;left: 50%;top: 26%;height: 45%;";
                 
