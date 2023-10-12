@@ -164,7 +164,7 @@ left: 50%;
     </div>
 </div>
   
-<desmond-player id="player" style="position: relative; transform: translate(-50%, -50%); left: 0%; top: 0%; border-color: black;"></desmond-player>
+<desmond-player id="player" style="position: relative; transform: translate(-50%, -50%); left: 0%; top: 0%; border-color: black; z-index: -4;"></desmond-player>
 <script src="dist/desmond.min.js"></script>
 <script src="pako.min.js"></script>
 
@@ -177,6 +177,7 @@ document.querySelector("desmond-player").loadURL(URL.createObjectURL(document.qu
 window.onload = function(){
 document.getElementById("player").loadURL("path-to-game.nds");
 }
+uiSwitchTo('player')
 </script>
 
 </body>
