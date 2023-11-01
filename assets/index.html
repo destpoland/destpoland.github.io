@@ -12,7 +12,7 @@
     </iframe>
 	<div class="bar">
         <img alt="Home" onclick="location.href='../'" src="../homeimgs/favicon.png" class="logo" draggable="false">
-
+        
 		<h1>destpl</h1>	
 	  	<p>games from 3kh0</p>
       </div>
@@ -20,7 +20,7 @@
 	<div class="container">
     
         <div class="game">
-            <img alt="drivemad" onclick="drivemad()" src="../homeimgs/drivemad.jpg" draggable="false">
+            <img alt="drivemad" onclick="location.href='./drive-mad/'" src="../homeimgs/drivemad.jpg" draggable="false">
             <span>Drive Mad</span>
         </div> 
 
@@ -30,13 +30,18 @@
         </div>
 
         <div class="game">
-            <img alt="cookieclicker" onclick="cookieclicker()" src="../homeimgs/cookie.png" draggable="false">
+            <img alt="cookieclicker" onclick="location.href='./cookie-clicker/'" src="../homeimgs/cookie.png" draggable="false">
             <span>Cookie Clicker</span>
         </div> 
 
         <div class="game">
             <img alt="paperio" onclick="paperio()" src="../homeimgs/paperio.png" draggable="false">
             <span>Paper.io 2</span>
+        </div> 
+
+        <div class="game">
+            <img alt="dogemine" onclick="location.href='./DogeMiner/'" src="../homeimgs/dogemine.png" draggable="false">
+            <span>DogeMiner</span>
         </div> 
 
       
@@ -61,23 +66,11 @@
 </body>
 
 <script> 
-    function drivemad() {
-        var SHeight = window.screen.availHeight
-        document.querySelector("#srcHid").style.display = "inline";
-        document.querySelector("#srcHid").style.height = SHeight + "px";
-        document.querySelector("#srcHid").src = "https://raw.githack.com/3kh0/3kh0-assets/main/drive-mad/index.html"
-    }
     function retrobowl() {
         var SHeight = window.screen.availHeight
         document.querySelector("#srcHid").style.display = "inline";
         document.querySelector("#srcHid").style.height = SHeight + "px";
         document.querySelector("#srcHid").src = "https://raw.githack.com/3kh0/3kh0-assets/main/retro-bowl/index.html"
-    }
-    function cookieclicker() {
-        var SHeight = window.screen.availHeight
-        document.querySelector("#srcHid").style.display = "inline";
-        document.querySelector("#srcHid").style.height = SHeight + "px";
-        document.querySelector("#srcHid").src = "https://raw.githack.com/3kh0/3kh0-assets/main/cookie-clicker/index.html"
     }
     function paperio() {
         var SHeight = window.screen.availHeight
@@ -85,6 +78,10 @@
         document.querySelector("#srcHid").style.height = SHeight + "px";
         document.querySelector("#srcHid").src = "https://raw.githack.com/3kh0/3kh0-assets/main/paperio2/index.html"
     }
+
+
+
+
 
 </script>
 
