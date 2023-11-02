@@ -1,0 +1,65 @@
+<data>
+<label id="grindLabel">Grind</label>
+<label id="craftLabel">Craft</label>
+<label id="invLabel">Inventário</label>
+<label id="achLabel">Conquistas</label>
+<!--<label id="sInfo">Versão 0.9.6.9</label>-->
+<label id="sInfo">Versão ddf1639</label>
+<label id="sSfx">Volume de Efeitos</label>
+<label id="sMusic">Volume da Música</label>
+<label id="particlesL">Partículas</label>
+<label id="layoutL1">Ocultar trituradores quando automatizados</label>
+<label id="layoutL2">Fusão de Inventário</label>
+<label id="sErrors">Mostrar erros.</label>
+
+<label id="map_lbl">Mapa</label>
+
+
+<alerts>
+    <label id="startL">GrindCraft</label>
+    <label id="pauseL">GrindCraft está pausado.</label>
+    <label id="game_win">Você venceu GrindCraft!{NL}{NL}O mapa está aberto.</label>
+    <label id="beat_msg">Você venceu {LBL} !</label>
+    <label id="check_map">Check the map !{NL}Você pode ir para{LBL}</label>
+    <label id="map_open">O mapa está aberto !</label>
+    <label id="tp_build">Você construiu o Posto de Troca.{NL}Troque esmeraldas por itens.</label>
+    <label id="goto">Vá para {LBL}?</label>
+    <label id="purchase">Faça login no Kongregate para comprar itens.</label>
+</alerts>
+
+<achieve></achieve>
+
+<buttons>
+    <button id="resume">Retomar</button>
+    <button id="ok">OK</button>
+    <button id="deleteGame">Excluir jogo !</button>
+    <button id="play">Jogar</button>
+    <button id="how">Como</button>
+    <button id="next">Próximo</button>
+    <button id="load">Carregar</button>
+    <button id="save">Salvar</button>
+    <button id="go">Ir</button>
+    <button id="no">Não</button>
+    <button id="settings">Configurações</button>
+    <button id="save_game">Salvar Jogo</button>
+    <button id="load_game">Carregar Jogo</button>
+</buttons>
+
+<messages>
+    <msg>Você venceu GrindCraft !{NL}{NL}O mapa está aberto.</msg>
+    <msg id="save_game_msg">Salvando o Jogo...</msg>
+    <msg id="save_game_ok">Salvando o Jogo...</msg>
+    <msg id="loaded_game_msg">Carregar dados do Jogo...</msg>
+    <msg id="loaded_game_ok">Jogo carregado com sucesso{NL}.</msg>
+</messages>
+
+<tutorial>
+    <item id="tut1">Clique aqui</item>
+    <item id="tut2">Você tem uma conquista!</item>
+    <item id="tut3">E um pedaço de madeira!{NL}Aqui está !</item>
+    <item id="tut4">Transforme essa madeira em tábuas.{NL}Clique aqui !</item>
+    <item id="tut5">Você fez tábuas!</item>
+    <item id="tut6">Aqui está tudo o que você pode fazer!</item>
+    <item id="tut7">GrindCraft !</item>
+</tutorial>
+</data>	
