@@ -24,6 +24,30 @@ fetch(origin + '/settings/themes.json')
     throw new Error('Failed to load themes');
   });
 
+  function uploadFile() {
+    const fileInput = document.getElementById("fileInput");
+    if (fileInput.files.length > 0) {
+        const selectedFile = fileInput.files[0];
+        alert("Selected file: " + selectedFile.name);
+        // You can perform client-side actions with the selected file here.
+
+        const reader = new FileReader();
+
+        reader.onload = function() {
+            // Save the custom background image URL in localStorage
+            localStorage.setItem("customBackground", reader.result);
+            // Set the background image once the file is loaded
+            document.querySelector(".animation-area").style.display = 'none';
+            document.querySelector("body").style.backgroundImage = `url(${reader.result})`;
+        };
+
+        reader.readAsDataURL(selectedFile);
+    } else {
+        alert("No file selected. Please choose a file to upload.");
+    }
+}
+
+
 
 function setTheme(theme) {
     localStorage.setItem("theme", theme);
@@ -33,13 +57,17 @@ function setTheme(theme) {
   
     if (theme == 'default') {
       document.querySelector(".animation-area").style.background = 'linear-gradient(to left, #2251d4, #0f8aa8)'
+      document.querySelector(".animation-area").style.display = 'flex';
+    }
+    else if (theme == 'custom') {
+      console.log("Clicked!")
     }
     else if (theme == 'dark') { 
       document.querySelector(".animation-area").style.background = 'linear-gradient(to left, #323235, #111111)'
+      document.querySelector(".animation-area").style.display = 'flex';
     }
 
 
-    // Find the theme color from the themes array and set the color
     themes.forEach((palette) => {
       if (palette.theme == theme) {
         document.querySelector(".animation-area").value = palette.color;
@@ -49,7 +77,7 @@ function setTheme(theme) {
   }
 
 
-  function changeTheme(value) {
+function changeTheme(value) {
     document.querySelector('#colorPicker').style.backgroundColor = value;
     document.querySelector('.box-area').style.backgroundColor = value;
 }
@@ -57,11 +85,28 @@ function setTheme(theme) {
 window.onload = function () {
 	if (theme == 'default') {
       document.querySelector(".animation-area").style.background = 'linear-gradient(to left, #2251d4, #0f8aa8)'
+      document.querySelector(".animation-area").style.display = 'flex';
     }
     else if (theme == 'dark') { 
       document.querySelector(".animation-area").style.background = 'linear-gradient(to left, #323235, #111111)'
+      document.querySelector(".animation-area").style.display = 'flex';
+    }
+    else if (theme == 'custom') { 
+      const customBackground = localStorage.getItem("customBackground");
+        if (customBackground) {
+            document.querySelector(".animation-area").style.display = 'none';
+            document.querySelector("body").style.backgroundImage = `url(${customBackground})`;
+        } else {
+            document.querySelector(".animation-area").style.display = 'block';
+        }
     }
     else if (theme != 'NaN') { 
       document.querySelector(".animation-area").style.background = theme
+      document.querySelector(".animation-area").style.display = 'flex';
     }
+
+
+    
+
+
 }

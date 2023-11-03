@@ -20,19 +20,20 @@
 	
   
 <div class="banner-text">
-  <div class="bar">
-      <img alt="Home" onclick="location.href='../'" src="../homeimgs/favicon.png"  class="logo" draggable="false">
+	<div class="bar">
+    	<img alt="Home" onclick="location.href='../'" src="../homeimgs/favicon.png"  class="logo" draggable="false">
 
-	  <h1>destpl</h1>	
-	  <p>settings</p>
-      <script>
+		<h1>destpl</h1>	
+		<p>settings</p>
 
-
-      </script>
-      <input type="color" id="colorPicker" class="ColorPicker1" oninput=setTheme(this.value),changeTheme(this.value)>
-      <button class="button" onclick="setTheme('default')">Default</button>
-	  <button class="button" onclick="setTheme('dark')">Dark</button>
-  </div>
+    	<input type="color" id="colorPicker" class="ColorPicker1" oninput=setTheme(this.value),changeTheme(this.value)>
+	  
+    	<button class="button" onclick="setTheme('default')">Default</button>
+		<button class="button" onclick="setTheme('dark')">Dark</button>
+		<label for="fileInput" class="button">Custom Upload</label>
+		<input id="fileInput" type="file" onchange="uploadFile()" onclick="setTheme('custom')"/>
+	  
+	</div>
 
 </div>
   

@@ -41,6 +41,9 @@
 	color: #fff;
 	font-size: 20px;
 }
+input[type="file"] {
+  display: none;
+}
 
 .banner-text h2 {
 	text-align: center;
@@ -48,11 +51,13 @@
 	font-size: 50px;
 	margin-top: 20%;
 }
+
 .animation-area {
 	background: linear-gradient(to left, #111111, #1e1e20);
 	width: 100%;
 	height: 100vh;
   position: fixed;
+  display:flex;
 }
 .box-area {
 	position: absolute;
@@ -208,7 +213,12 @@
 
 body {
   background-color: #111111;
+  background-image: url();
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-attachment: fixed;
 }
+
 
 h1 {
   color: white;
@@ -226,6 +236,14 @@ p {
   color: white;
   text-align: center;
   font-size: 70px;
+}
+
+.patch {
+  padding-top: 10%;
+  font-family: 'Baloo 2';
+  color: rgb(255, 0, 0);
+  text-align: center;
+  font-size: 60px;
 }
 
 
