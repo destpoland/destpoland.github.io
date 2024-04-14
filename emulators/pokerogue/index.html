@@ -8,9 +8,11 @@
 	<meta property="og:title" content="PokéRogue" />
 	<meta property="og:type" content="website" />
 	<meta property="og:description" content="A Pokémon fangame heavily inspired by the roguelite genre. Battle endlessly while gathering stacking items, exploring many different biomes, and reaching Pokémon stats you never thought possible." />
-	<meta property="og:image" content="https://pokerogue.net/logo.png" />
+	<meta property="og:image" content="https://pokerogue.net/logo512.png" />
+	<link rel="apple-touch-icon" href="./logo512.png" />
+	<link rel="shortcut icon" type="image/png" href="./logo512.png" />
 	<meta charset="UTF-8" />
-	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
 	<style type="text/css">
 		@font-face {
 			font-family: 'emerald';
@@ -23,8 +25,28 @@
 		}
 	</style>
 	
-  <script type="module" crossorigin src="./assets/index-abb6929a.js"></script>
-  <link rel="stylesheet" href="./assets/index-f6f0e84c.css">
+	<link rel="manifest" href="./manifest.webmanifest">
+  <script>
+    if ("serviceWorker" in navigator) {
+      window.addEventListener("load", function () {
+        navigator.serviceWorker.register("/service-worker.js").then(
+          function (registration) {
+            console.log("ServiceWorker registration successful");
+          },
+          function (err) {
+            console.log("ServiceWorker registration failed: ", err);
+          },
+        );
+      });
+    }
+
+    window.addEventListener('beforeinstallprompt', e => {
+      // Prevent invasive install prompt (users are still able to install as an app)
+      e.preventDefault();
+    });
+  </script>
+  <script type="module" crossorigin src="./assets/index-0ddc79ef.js"></script>
+  <link rel="stylesheet" href="./assets/index-f071944f.css">
 </head>
 
 <body>
