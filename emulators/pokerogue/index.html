@@ -16,12 +16,12 @@
 	<style type="text/css">
 		@font-face {
 			font-family: 'emerald';
-			src: url('./fonts/pokemon-emerald-pro.ttf') format('truetype');
+			src: url('/fonts/pokemon-emerald-pro.ttf') format('truetype');
 		}
 
 		@font-face {
 			font-family: 'pkmnems';
-			src: url('./fonts/pkmnems.ttf') format('truetype');
+			src: url('/fonts/pkmnems.ttf') format('truetype');
 		}
 	</style>
 	
@@ -29,7 +29,7 @@
   <script>
     if ("serviceWorker" in navigator) {
       window.addEventListener("load", function () {
-        navigator.serviceWorker.register("/service-worker.js").then(
+        navigator.serviceWorker.register("./service-worker.js").then(
           function (registration) {
             console.log("ServiceWorker registration successful");
           },
@@ -45,11 +45,12 @@
       e.preventDefault();
     });
   </script>
-  <script type="module" crossorigin src="./assets/index-c9f228bb.js"></script>
+  <script type="module" crossorigin src="./assets/index-ff1a3b97.js"></script>
   <link rel="stylesheet" href="./assets/index-a54f3e01.css">
 </head>
 
 <body>
+
 	<div id="touchControls">
 		<div id="dpad" class="unselectable">
 			<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 72 72">
