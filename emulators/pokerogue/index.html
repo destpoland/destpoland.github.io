@@ -29,7 +29,7 @@
   <script>
     if ("serviceWorker" in navigator) {
       window.addEventListener("load", function () {
-        navigator.serviceWorker.register("./service-worker.js").then(
+        navigator.serviceWorker.register("/service-worker.js").then(
           function (registration) {
             console.log("ServiceWorker registration successful");
           },
@@ -45,12 +45,11 @@
       e.preventDefault();
     });
   </script>
-  <script type="module" crossorigin src="./assets/index-ff1a3b97.js"></script>
-  <link rel="stylesheet" href="./assets/index-a54f3e01.css">
+  <script type="module" crossorigin src="./assets/index-cf445a84.js"></script>
+  <link rel="stylesheet" href="./assets/index-1d9fbc75.css">
 </head>
 
 <body>
-
 	<div id="touchControls">
 		<div id="dpad" class="unselectable">
 			<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 72 72">
@@ -70,17 +69,17 @@
 				<text id="apadLabelCancel" class="apadLabel">B</text>
 			</div>
 			<div class="apadBtnContainer apadRectBtnContainer">
-				<div id="apadCycleNature" class="apadRectBtn apadBtn" data-key="CYCLE_NATURE">
-					<text class="apadLabel apadLabelSmall">N</text>
+				<div id="apadCycleShiny" class="apadSqBtn apadBtn" data-key="CYCLE_SHINY">
+					<text class="apadLabel apadLabelSmall">R</text>
+				</div>
+				<div id="apadCycleVariant" class="apadSqBtn apadBtn" data-key="CYCLE_VARIANT">
+					<text class="apadLabel apadLabelSmall">V</text>
 				</div>
 				<div id="apadMenu" class="apadRectBtn apadBtn" data-key="MENU">
 					<text class="apadLabel apadLabelSmall">Menu</text>
 				</div>
 			</div>
 			<div class="apadBtnContainer apadSqBtnContainer">
-				<div id="apadCycleShiny" class="apadSqBtn apadBtn" data-key="CYCLE_SHINY">
-					<text class="apadLabel apadLabelSmall">R</text>
-				</div>
 				<div id="apadCycleForm" class="apadSqBtn apadBtn" data-key="CYCLE_FORM">
 					<text class="apadLabel apadLabelSmall">F</text>
 				</div>
@@ -89,6 +88,9 @@
 				</div>
 				<div id="apadCycleAbility" class="apadSqBtn apadBtn" data-key="CYCLE_ABILITY">
 					<text class="apadLabel apadLabelSmall">E</text>
+				</div>
+				<div id="apadCycleNature" class="apadSqBtn apadBtn" data-key="CYCLE_NATURE">
+					<text class="apadLabel apadLabelSmall">N</text>
 				</div>
 			</div>
 		</div>
