@@ -3,7 +3,12 @@
       font-family: Arial, Helvetica, sans-serif;
       background: teal;
     }
-    
+
+    canvas {
+            position: absolute;
+            z-index: 1;
+    }
+
     #header {
     position: absolute;
     transform: translate(-50%, -50%);
@@ -45,7 +50,9 @@
                 display: inline-block;
             }
     
-    
+            
+
+            
             .vk {
                 color: #000;
                 background-color: #fff;
@@ -82,6 +89,7 @@
       <div id="vk-layer">
           <div class="vk-rect vk" data-k="menu" id="vk-menu">M</div>
           <div class="vk-rect vk" data-k="l">L</div>
+          <div class="vk-rect vk" data-k="turbo">F.F.</div>
           <div class="vk-rect vk" data-k="r">R</div>
           <div class="vk-round vk" data-k="a">A</div>
           <div class="vk-round vk" data-k="b">B</div>
@@ -98,14 +106,18 @@
       </div> 
     
       <div id="menu" hidden>
-        <button onclick="uiMenuBack()">❮ Back</button>
+        <button onclick="uiMenuBack()">❮ Sigma</button>
         <hr>
-        <div id="cfg-ea" hidden>
+        <div id="cfg-ea">
             <b>Early Access features</b><br>
             Please note that these features are experimental and may not be stable.<br>
     
             <input type="checkbox" id="cfg-turbo">
             <label for="cfg-turbo">Turbo mode</label><br>
+
+            <input type="checkbox" id="cfg-turbo2">
+            <label for="cfg-turbo2">Turbo modex2</label><br>
+            
             <br>
             <label for="cfg-scale-mode">Screen filter(restart required)</label>
             <select id="cfg-scale-mode" value="">
@@ -164,9 +176,6 @@
                 Download</button><br>
         </div>
     </div>
-<desmond-player id="desplayer" style="position: absolute;left: 30%;top: 30%;border-color: black;transform: scale(1);"></desmond-player>
-<script src="dist/desmond.min.js"></script>
-<script src="pako.min.js"></script>
 
 <script>
 document.querySelector("input").onchange = function(){
@@ -178,5 +187,9 @@ window.onload = function(){
     uiSwitchTo('player')
 }
 </script>
+
+<desmond-player id="desplayer" style="position: absolute;left: 26%;top: 30%;border-color: black;transform: scale(2);"></desmond-player>
+<script src="dist/desmond.min.js"></script>
+<script src="pako.min.js"></script>
 
 </body>

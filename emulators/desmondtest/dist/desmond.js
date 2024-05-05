@@ -2800,8 +2800,8 @@ module.exports = localforage_js;
       if (player) {
       var shadow = player.attachShadow({mode: "open"});
       shadow.innerHTML=`<div id="player">
-        <canvas id="top" width="256" height="192"></canvas>
-        <canvas id="bottom" width="256" height="192"></canvas>`;
+        <canvas id="top" width="512" height="384"></canvas>
+        <canvas id="bottom" width="256" height="192" style="top: 0px;"></canvas>`;
               var getFileBlob=function(e,t){var n=new XMLHttpRequest;n.open('GET',e),n.responseType='blob',n.addEventListener('load',function(){t(n.response)}),n.send()},blobToFile=function(e,t){return e.lastModifiedDate=new Date,e.name=t,e},getFileObject=function(e,t){getFileBlob(e,function(e){t(blobToFile(e,'test.jpg'))})};function loadURL(e, a){getFileObject(e,function(e){console.log(e),tryLoadROM(e),status();a()})}; 
        player.loadURL = function(u, cb) { 
          player.enableMicrophone = function() {
