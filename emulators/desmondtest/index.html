@@ -15,6 +15,23 @@
     left: 50%;
     }
     
+    #mydiv {
+        position: absolute;
+        z-index: 9;
+        background-color: #f1f1f1;
+        border: 1px solid #d3d3d3;
+        text-align: center;
+    }
+
+    #mydivheader {
+        padding: 10px;
+        cursor: move;
+        z-index: 10;
+        background-color: #2196F3;
+        color: #fff;
+    }
+
+
     #subheader {
     position: absolute;
     transform: translate(-50%, -50%);
@@ -28,6 +45,11 @@
     left: 50%;
     }
     
+    .draggable {
+        cursor: move;
+        position: absolute;
+    }
+
     #vk-layer {
                 position: absolute;
                 left: 0;
@@ -40,7 +62,11 @@
                 -webkit-touch-callout: none;
                 -webkit-user-select: none;
                 user-select: none;
+                
     }
+    .vk-rect { 
+                position: absolute;
+            }
     .vk-round {
                 text-align: center;
                 vertical-align: middle;
@@ -51,10 +77,9 @@
             .vk-round-rect {
                 border-radius: 0.5em;
                 display: inline-block;
+                
             }
     
-            
-
             
             .vk {
                 color: #000;
@@ -91,27 +116,30 @@
     
     
     </style>
+    
     <body>
     <div id="welcome">
       <div id="vk-layer">
-          <div class="vk-rect vk" data-k="menu" id="vk-menu">M</div>
-          <div class="vk-rect vk" data-k="l">L</div>
-          <div class="vk-rect vk" data-k="turbo">F.F.</div>
-          <div class="vk-rect vk" data-k="r">R</div>
-          <div class="vk-round vk" data-k="a">A</div>
-          <div class="vk-round vk" data-k="b">B</div>
-          <div class="vk-round vk" data-k="x">X</div>
-          <div class="vk-round vk" data-k="y">Y</div>
-          <div class="vk-rect vk" data-k="select">SE</div>
-          <div class="vk-rect vk" data-k="start">ST</div>
-          <div class="vk-round vk" data-k="stick" id="vk-stick"></div>
-          <div id="vk-dpad-1" class="vk vk-round-rect"></div>
-          <div id="vk-dpad-2" class="vk vk-round-rect"></div>
+          <div class="vk-rect vk" data-k="menu" id="vk-menu" onclick="uiSwitchTo('menu')">M</div>
+          <div class="vk-rect vk draggable" data-k="l">L</div>
+          <div class="vk-rect vk draggable" data-k="reset" id="resetButton">Reset</div>
+          <div class="vk-rect vk draggable" data-k="turbo">F.F.</div>
+          <div class="vk-rect vk draggable" data-k="r">R</div>
+          <div class="vk-round vk draggable" data-k="a">A</div>
+          <div class="vk-round vk draggable" data-k="b">B</div>
+          <div class="vk-round vk draggable" data-k="x">X</div>
+          <div class="vk-round vk draggable" data-k="y">Y</div>
+          <div class="vk-rect vk draggable" data-k="select">SE</div>
+          <div class="vk-rect vk draggable" data-k="start">ST</div>
+          <div class="vk-round vk draggable" data-k="stick" id="vk-stick"></div>
+          <div id="vk-dpad-1" class="vk vk-round-rect draggable"></div>
+          <div id="vk-dpad-2" class="vk vk-round-rect draggable"></div>
     
           <input type="file" style="position: relative; transform: translate(0%, 0%); left: 0%; top: 0%; opacity: 1;"></input>
         </div>
       </div> 
       <div style="z-index: 2;position: absolute;bottom: 20px;" id="fps"></div>
+
       <div id="menu" hidden>
         <button onclick="uiMenuBack()">❮ Sigma</button>
         <hr>
@@ -166,6 +194,8 @@
         <label for="cfg-swap-abxy">Gamepad: Swap A/B and X/Y</label><br>
         <input type="checkbox" id="lid-closed" onchange="window.lidClosed = this.checked">
         <label for="lid-closed">Close the lid</label><br>
+        <input type="checkbox" id="cfg-reset">
+        <label for="cfg-reset">Soft Reset Button</label><br>
         <hr>
         <div id="menu-savegame">
             <input type="file" id="restore-file" onchange="uiSaveRestore()" hidden>
@@ -173,16 +203,115 @@
                 onclick="$id('restore-file').click()">Restore</button><br>
     
         </div>
-        <hr>
-        <div id="menu-cloud-save" >
-            Cloud Save:<span id="span-cloud-id"></span><br>
-            <button onclick="dpOnConnectButtonClicked()" id="btn-dp-connect">Connect Dropbox</button><br>
-            <button onclick="dpManualBtn(true)">↑ Upload</button>|<button onclick="dpManualBtn(false)">↓
-                Download</button><br>
-                
-        </div>
-        <input id="vk-enabled">
+        
+        
+        <p>Current Date and Time: <span id="currentDateTime"></span></p>
+        
+
+        <div id="myModal" class="modal">
+            <div class="modal-content">
+              <span class="close">&times;</span>
+              <p>Select new date and time:</p>
+              <input type="datetime-local" id="newDateTimeInput">
+              <button onclick="changeDateTime()">Update</button>
+            </div>
+          </div>
+
+          <hr>  
+          <input type="checkbox" id="toggleDrag"> <label for="toggleDrag">Enable Dragging</label>
+
+          <input id="vk-enabled" hidden>
     </div>
+
+
+<script>
+const draggableElements = document.querySelectorAll('.draggable');
+const toggleDragCheckbox = document.getElementById('toggleDrag');
+
+toggleDragCheckbox.addEventListener('change', toggleDragging);
+
+function toggleDragging() {
+  if (toggleDragCheckbox.checked) {
+    draggableElements.forEach(element => {
+      element.addEventListener('mousedown', startDragging);
+      element.addEventListener('touchstart', startDragging);
+    });
+  } else {
+    draggableElements.forEach(element => {
+      element.removeEventListener('mousedown', startDragging);
+      element.removeEventListener('touchstart', startDragging);
+    });
+    stopDragging();
+  }
+}
+
+function startDragging(e) {
+  let offsetX, offsetY;
+  let isDragging = false;
+  const element = this;
+
+  if (e.type === 'mousedown') {
+    offsetX = e.clientX - element.getBoundingClientRect().left;
+    offsetY = e.clientY - element.getBoundingClientRect().top;
+  } else if (e.type === 'touchstart') {
+    offsetX = e.touches[0].clientX - element.getBoundingClientRect().left;
+    offsetY = e.touches[0].clientY - element.getBoundingClientRect().top;
+  }
+
+  isDragging = true;
+
+  if (e.type === 'mousedown') {
+    document.addEventListener('mousemove', drag);
+    document.addEventListener('mouseup', stopDragging);
+  } else if (e.type === 'touchstart') {
+    document.addEventListener('touchmove', drag);
+    document.addEventListener('touchend', stopDragging);
+  }
+
+  function drag(e) {
+    e.preventDefault();
+
+    const clientX = e.type === 'mousemove' ? e.clientX : e.touches[0].clientX;
+    const clientY = e.type === 'mousemove' ? e.clientY : e.touches[0].clientY;
+
+    if (isDragging) {
+      const x = clientX - offsetX;
+      const y = clientY - offsetY;
+
+      element.style.left = `${x}px`;
+      element.style.top = `${y}px`;
+
+      // Store the position in local storage
+      localStorage.setItem(`${element.id}-position`, JSON.stringify({ x, y }));
+    }
+  }
+
+  function stopDragging() {
+    isDragging = false;
+
+    if (e.type === 'mousedown') {
+      document.removeEventListener('mousemove', drag);
+      document.removeEventListener('mouseup', stopDragging);
+    } else if (e.type === 'touchstart') {
+      document.removeEventListener('touchmove', drag);
+      document.removeEventListener('touchend', stopDragging);
+    }
+  }
+}
+
+// Retrieve and apply stored positions on page load
+window.addEventListener('load', () => {
+  draggableElements.forEach(element => {
+    const storedPosition = localStorage.getItem(`${element.id}-position`);
+    if (storedPosition) {
+      const { x, y } = JSON.parse(storedPosition);
+      element.style.left = `${x}px`;
+      element.style.top = `${y}px`;
+    }
+  });
+});
+</script>
+
 
 <script>
 document.querySelector("input").onchange = function(){
@@ -192,8 +321,18 @@ document.querySelector("desmond-player").loadURL(URL.createObjectURL(document.qu
 }
 window.onload = function(){
     uiSwitchTo('player')
+    document.getElementById('resetButton').style.display = 'none';
+}
+var modal = document.getElementById("myModal");
+var closeBtn = document.getElementsByClassName("close")[0];
+
+// Show the modal
+function showModal() {
+    modal.style.display = "block";
 }
 </script>
+
+
 
 <desmond-player id="desplayer" style="position: absolute;left: 26%;top: 30%;border-color: black;transform: scale(2);"></desmond-player>
 <script src="dist/desmond.min.js"></script>
