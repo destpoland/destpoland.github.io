@@ -9,5 +9,21 @@
     "start_url": "/",
     "display": "standalone",
     "background_color": "black",
-    "theme_color": "black"
+    "theme_color": "black",
+    "screenshots": [    
+   {
+     "src": "homeimgs/favicon2.png",
+      "sizes": "500x500",
+      "type": "image/png",
+      "form_factor": "wide",
+      "label": "Application"
+    },
+    {
+      "src": "homeimgs/favicon2.png",
+      "sizes": "500x500",
+      "type": "image/png",
+      "form_factor": "narrow",
+      "label": "Application"
+    }
+ ]
   }
