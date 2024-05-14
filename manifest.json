@@ -1,13 +1,12 @@
-{
-    "name": "DestPL",
-    "description": "dests stuff",
+{ 
+    "short_name": "Dest",
+    "name": "DestPL", 
     "icons": [{
-      "src": "/homeimgs/favicon.png",
-        "sizes": "460x460",
+        "src": "homeimgs/favicon.png",
+        "sizes": "200x200",
         "type": "image/png"
       }],
-    "lang": "en-US",
-    "start_url": "https://destpl.netlify.app/",
+    "start_url": "/",
     "display": "standalone",
     "background_color": "black",
     "theme_color": "black"
