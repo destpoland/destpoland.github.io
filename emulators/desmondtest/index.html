@@ -177,9 +177,8 @@
         </select><br>
         <label for="cfg-ls-layout">Landscape Screen Layout</label>
         <select id="cfg-ls-layout" value="">
-            <option value="0">TB</option>
-            <option value="1">LR 1:1</option>
-            <option value="2">LR X:1</option>
+            <option value="0">Normal</option>
+            <option value="1">Flipped</option>
         </select><br>
         <label for="cfg-lang">Firmware Language</label>
         <select id="cfg-lang">
@@ -194,7 +193,7 @@
         <label for="cfg-swap-abxy">Gamepad: Swap A/B and X/Y</label><br>
         <input type="checkbox" id="lid-closed" onchange="window.lidClosed = this.checked">
         <label for="lid-closed">Close the lid</label><br>
-        <input type="checkbox" id="cfg-reset">
+        <input type="checkbox" id="cfg-reset" onclick="resetButtonFunc()">
         <label for="cfg-reset">Soft Reset Button</label><br>
         <hr>
         <div id="menu-savegame">
@@ -327,7 +326,7 @@ var modal = document.getElementById("myModal");
 var closeBtn = document.getElementsByClassName("close")[0];
 
 // Show the modal
-function showModal() {
+function showModal() {  
     modal.style.display = "block";
 }
 </script>
