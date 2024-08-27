@@ -26,26 +26,8 @@
 		}
 	</style>
 	
-	<link rel="manifest" href="./manifest.webmanifest">
-  <script>
-    if ("serviceWorker" in navigator) {
-      window.addEventListener("load", function () {
-        navigator.serviceWorker.register("./service-worker.js").then(
-          function (registration) {
-            console.log("ServiceWorker registration successful");
-          },
-          function (err) {
-            console.log("ServiceWorker registration failed: ", err);
-          },
-        );
-      });
-    }
 
-    window.addEventListener('beforeinstallprompt', e => {
-      // Prevent invasive install prompt (users are still able to install as an app)
-      e.preventDefault();
-    });
-  </script>
+
   <script type="module" crossorigin src="./assets/index-c59de8e1.js"></script>
   <link rel="stylesheet" href="./assets/index-671ad488.css">
 </head>
