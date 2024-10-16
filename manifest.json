@@ -1,29 +1,14 @@
-{ 
-    "short_name": "Dest",
-    "name": "DestPL", 
+{
+    "name": "DestPL",
+    "description": "dests stuff",
     "icons": [{
-        "src": "homeimgs/favicon.png",
-        "sizes": "200x200",
+      "src": "/homeimgs/favicon.png",
+        "sizes": "460x460",
         "type": "image/png"
       }],
+    "lang": "en-US",
     "start_url": "/",
     "display": "standalone",
     "background_color": "black",
-    "theme_color": "black",
-    "screenshots": [    
-   {
-     "src": "homeimgs/favicon2.png",
-      "sizes": "500x500",
-      "type": "image/png",
-      "form_factor": "wide",
-      "label": "Application"
-    },
-    {
-      "src": "homeimgs/favicon2.png",
-      "sizes": "500x500",
-      "type": "image/png",
-      "form_factor": "narrow",
-      "label": "Application"
-    }
- ]
+    "theme_color": "black"
   }

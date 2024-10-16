@@ -1,5 +1,4 @@
 <!DOCTYPE html>
-<link rel="manifest" href="manifest.json">
 <html>
 
 <div class="animation-area">
@@ -15,22 +14,11 @@
 	</ul>
 </div>
 
+
 <link rel="stylesheet" href="styles.css">
 <link rel="stylesheet" href="mobile.css">
-<link rel="manifest" href="manifest.json">
-
+<link rel="manifest" href="manifest.json" />
 <script src="settings.js"></script>
-<script>
-    if ('serviceWorker' in navigator) {
-    window.addEventListener('load', function() {
-      navigator.serviceWorker.register('/service-worker.js').then(function(registration) {
-        console.log('ServiceWorker registration successful with scope: ', registration.scope);
-      }, function(err) {
-        console.error('ServiceWorker registration failed: ', err);
-      });
-    });
-  }
-</script>
 <body>
 
 
