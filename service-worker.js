@@ -1,22 +1,43 @@
-self.addEventListener('install', function () {
-  console.log('Service worker installing...');
+const cacheName = 'cache-2024.05.26-01';
+
+self.addEventListener('install', function (event) {
+    console.log('Service worker installing...');
+    event.waitUntil(self.skipWaiting());
 });
 
-const cacheName='cache-2024.05.26-01';
+self.addEventListener('activate', (event) => {
+    event.waitUntil(
+        caches.keys().then(cacheNames => {
+            return Promise.all(
+                cacheNames.map(cache => {
+                    if (cache !== cacheName) {
+                        return caches.delete(cache);
+                    }
+                })
+            );
+        })
+    );
+});
 
 self.addEventListener('fetch', (event) => {
-  event.respondWith(async function() {
+    event.respondWith(handleFetch(event));
+});
 
+async function handleFetch(event) {
     const cache = await caches.open(cacheName);
     const cachedResponse = await cache.match(event.request);
     const networkResponsePromise = fetch(event.request);
 
-    event.waitUntil(async function() {
-      const networkResponse = await networkResponsePromise;
-      await cache.put(event.request, networkResponse.clone());
-    }());
+    // Update the cache with the network response
+    event.waitUntil((async () => {
+        try {
+            const networkResponse = await networkResponsePromise;
+            await cache.put(event.request, networkResponse.clone());
+        } catch (error) {
+            console.error('Fetching failed:', error);
+        }
+    })());
 
-    // Returned the cached response if we have one, otherwise return the network response.
+    // Return cached response if available, otherwise fetch from network
     return cachedResponse || networkResponsePromise;
-  }());
-});
+}
