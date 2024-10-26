@@ -1,0 +1,133 @@
+@font-face { font-family: 'Concert One'; src: url("ConcertOne-Regular.ttf"); font-weight: 400; font-style: normal; font-stretch: normal; unicode-range: U+0020-00FE; }
+
+body{
+  margin:0px;
+  padding:0px; 
+  height:100%;
+  width:100%;
+  font-family: "Concert One", Arial, sans-serif;
+}
+
+#links {
+  position: absolute; 
+  left: 0px; 
+  bottom: 0px;
+  padding: 8px;
+  list-style: none; background-color: #fff; 
+  border-top-right-radius: 5px;
+}
+
+#links ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+
+#links ul li {
+        display: inline;
+}
+
+#links ul li a {
+  color: #000;
+  display: inline-block; margin-right: 10px;
+  text-decoration: none;
+}
+#links ul li a.visited {
+  color: #000;
+}
+
+#links ul li a:hover {
+  opacity: 0.85;
+}
+
+
+#ads {
+  position: absolute; left: 0px; bottom: 0px;
+  padding: 8px; background-color: #fff; border-top-right-radius: 5px;  
+  display: none;
+}
+
+#shares {
+  position: absolute; left: 0px; top: 0px;
+  color: #FFFFFF;
+  font-size: 22px;
+  padding: 12px;
+}
+
+#shares p
+{
+  padding: 6px;
+}
+
+#shares a {
+  display: inline-block; margin-right: 10px;
+}
+
+#popup-about {
+  display: none;
+}
+
+
+#leaderboard
+{
+  position: absolute; 
+  top: 20px;
+  right: 0px;
+  width: 16%;
+  text-align: center;
+  background-color: #fff;
+  border-top-left-radius: 5px;  
+  border-bottom-left-radius: 5px;  
+}
+
+#banner {
+  position: absolute;
+  top: 430px;
+  right: 20px;
+}
+#banner img {
+  border-radius: 5px;
+}
+
+
+#killBoard {
+  color: #404040; width: 100%;font-size: 16px;
+}
+
+#scoreBoard {
+  color: #404040; width: 100%;font-size: 16px;
+}
+  
+#switchBoard {
+  width: 100%;
+  text-align: center; 
+  padding-top: 4px;
+  padding-bottom: 4px;
+}
+
+#switchBoard a {
+  color: #000000;
+  text-decoration: none;
+}
+#switchBoard a.visited {
+  color: #000000;
+}
+#switchBoard a:hover {
+  opacity: 0.85;
+}
+.leaderboardHeading {
+  color:#000000; background-color: #959595; border-top-left-radius: 5px;
+}
+
+#preroll {
+  position: absolute;
+  left: 0px;
+  top: 0px;
+  width: 100%;
+  height: 100%;
+  display: none;
+}
+
+#links a {
+  font-family: "Concert One", Arial, sans-serif;
+}

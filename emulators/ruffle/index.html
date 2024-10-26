@@ -1,0 +1,190 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <meta charset='utf-8'>
+    <link rel="stylesheet" href="../../styles.css">
+    <link rel="stylesheet" href="../../mobile.css">
+    <div class="animation-area">
+        <ul class="box-area">
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+        </ul>
+    </div>
+    <script src="../../settings.js"></script>
+    <style>
+        /* Center the emulator in the viewport */
+        html, body {
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            width: 100vw;
+        }
+
+        #ruffle {
+            width: 750px;
+            height: 750px;
+            z-index: 10;
+        }
+
+        /* Button styling - positioned to the left in a column */
+        .button-container {
+            position: absolute;
+            left: 10px;
+            top: 10px;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            z-index: 20;
+        }
+
+        button {
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            border: 1px solid #3498db;
+            background-color: #3498db;
+            color: white;
+            font-size: 16px;
+        }
+
+        button:hover {
+            background-color: #2980b9;
+        }
+
+        /* Upload history positioned in the top-right corner */
+        .upload-history {
+            max-width: 200px;
+            color: white;
+            display: flex;
+            flex-direction: column;
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            z-index: 10;
+        }
+
+        .upload-history-item {
+            background-color: #3498db;
+            padding: 10px;
+            margin: 5px 0;
+            border-radius: 5px;
+            cursor: pointer;
+            text-align: center;
+            z-index: 20;
+        }
+
+        .upload-history-item:hover {
+            background-color: #2980b9;
+        }
+
+        .hidden {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <!-- Button container positioned on the left -->
+    <div class="button-container">
+        <button id="swfUploadButton">Upload SWF File</button>
+        <button id="clearHistoryButton">Clear History</button>
+        <button id="toggleButton">Hide Elements</button>
+    </div>
+
+    <!-- Emulator centered on the page -->
+    
+    <div id='ruffle'></div>
+
+    
+    <input type="file" id="swfUpload" accept=".swf" style="display: none;">
+
+    <!-- Upload history container positioned in the top-right -->
+    <div class="upload-history" id="uploadHistory"></div>
+
+    <script src='https://unpkg.com/@ruffle-rs/ruffle'></script>
+    <script>
+        const swfobject = {};
+        const uploadHistory = document.getElementById('uploadHistory');
+        let currentPlayer = null;
+
+        // Function to render history from localStorage
+        function renderUploadHistory() {
+            uploadHistory.innerHTML = ''; // Clear existing items
+            const savedHistory = JSON.parse(localStorage.getItem('uploadHistory')) || [];
+            savedHistory.forEach(({ name, url }) => {
+                const historyItem = document.createElement('div');
+                historyItem.className = 'upload-history-item';
+                historyItem.textContent = name;
+                historyItem.style.zIndex = '20';
+                historyItem.addEventListener('click', () => {
+                    swfobject.embedSWF(url, 'ruffle', 735, 735);
+                });
+                uploadHistory.appendChild(historyItem);
+            });
+        }
+
+        // Initial render on page load
+        window.onload = function() {
+            renderUploadHistory();
+        };
+
+        swfobject.embedSWF = function(url, cont, width, height){
+            const ruffle = window.RufflePlayer.newest();
+            if (currentPlayer) currentPlayer.remove();
+            currentPlayer = document.getElementById(cont).appendChild(ruffle.createPlayer());
+            currentPlayer.width = width;
+            currentPlayer.height = height;
+            currentPlayer.style.width = width + 'px';
+            currentPlayer.style.height = height + 'px';
+            currentPlayer.load({ url }).catch(err => {
+                console.error('Error loading SWF:', err);
+                alert('Failed to load SWF file. Check the console for errors.');
+            });
+        };
+
+        document.getElementById('swfUploadButton').addEventListener('click', () => {
+            document.getElementById('swfUpload').click();
+        });
+
+        document.getElementById('swfUpload').addEventListener('change', function(event) {
+            const file = event.target.files[0];
+            if (file && file.type === 'application/x-shockwave-flash') {
+                const url = URL.createObjectURL(file);
+                swfobject.embedSWF(url, 'ruffle', 735, 735);
+                addUploadToHistory(file.name, url);
+            } else {
+                alert('Please upload a valid SWF file.');
+            }
+        });
+
+        function addUploadToHistory(name, url) {
+            const savedHistory = JSON.parse(localStorage.getItem('uploadHistory')) || [];
+            if (!savedHistory.some(item => item.url === url)) {
+                savedHistory.push({ name, url });
+                localStorage.setItem('uploadHistory', JSON.stringify(savedHistory));
+                renderUploadHistory();
+            }
+        }
+
+        document.getElementById('clearHistoryButton').addEventListener('click', () => {
+            localStorage.removeItem('uploadHistory');
+            renderUploadHistory();
+        });
+
+        document.getElementById('toggleButton').addEventListener('click', function() {
+            const toggleElements = [document.getElementById('swfUploadButton'), document.getElementById('clearHistoryButton'), uploadHistory];
+            const areHidden = toggleElements[0].classList.contains('hidden');
+            toggleElements.forEach(el => el.classList.toggle('hidden', !areHidden));
+            this.textContent = areHidden ? 'Hide Elements' : 'Show Elements';
+        });
+    </script>
+</body>
+</html>

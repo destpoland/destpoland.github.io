@@ -2,7 +2,6 @@
 <html lang="en">
 
 <head>
-	<meta charset="UTF-8" />
 	<title>PokéRogue</title>
 	<meta name="description" content="A Pokémon fangame heavily inspired by the roguelite genre. Battle endlessly while gathering stacking items, exploring many different biomes, and reaching Pokémon stats you never thought possible." />
 	<meta name="theme-color" content="#da3838" />
@@ -12,7 +11,7 @@
 	<meta property="og:image" content="https://pokerogue.net/logo512.png" />
 	<link rel="apple-touch-icon" href="./logo512.png" />
 	<link rel="shortcut icon" type="image/png" href="./logo512.png" />
-	<link rel="canonical" href="https://pokerogue.net" />
+	<meta charset="UTF-8" />
 	<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
 	<style type="text/css">
 		@font-face {
@@ -26,14 +25,31 @@
 		}
 	</style>
 	
+	<link rel="manifest" href="./manifest.webmanifest">
+  <script>
+    if ("serviceWorker" in navigator) {
+      window.addEventListener("load", function () {
+        navigator.serviceWorker.register("/service-worker.js").then(
+          function (registration) {
+            console.log("ServiceWorker registration successful");
+          },
+          function (err) {
+            console.log("ServiceWorker registration failed: ", err);
+          },
+        );
+      });
+    }
 
-
-  <script type="module" crossorigin src="./assets/index-c59de8e1.js"></script>
-  <link rel="stylesheet" href="./assets/index-671ad488.css">
+    window.addEventListener('beforeinstallprompt', e => {
+      // Prevent invasive install prompt (users are still able to install as an app)
+      e.preventDefault();
+    });
+  </script>
+  <script type="module" crossorigin src="./assets/index-a5dec343.js"></script>
+  <link rel="stylesheet" href="./assets/index-0f2cb97b.css">
 </head>
 
 <body>
-	<div id="app"></div>
 	<div id="touchControls">
 		<div id="dpad" class="unselectable">
 			<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 72 72">
@@ -58,9 +74,6 @@
 				</div>
 				<div id="apadCycleVariant" class="apadSqBtn apadBtn" data-key="CYCLE_VARIANT">
 					<text class="apadLabel apadLabelSmall">V</text>
-				</div>
-				<div id="apadStats" class="apadRectBtn apadBtn" data-key="STATS">
-					<text class="apadLabel apadLabelSmall">C</text>
 				</div>
 				<div id="apadMenu" class="apadRectBtn apadBtn" data-key="MENU">
 					<text class="apadLabel apadLabelSmall">Menu</text>

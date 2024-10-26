@@ -3,7 +3,7 @@
     "description": "dests stuff",
     "icons": [{
       "src": "/homeimgs/favicon.png",
-        "sizes": "460x460",
+        "sizes": "512x512",
         "type": "image/png"
       }],
     "lang": "en-US",
