@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html xmlns='http://www.w3.org/1999/xhtml' lang='' xml:lang=''>
+<head>
+	<meta charset='utf-8' />
+	<meta name='viewport' content='width=device-width, user-scalable=no' />
+	<title>Wild-Fishing</title>
+	<style type='text/css'>
+		body {
+			touch-action: none;
+			margin: 0;
+			border: 0 none;
+			padding: 0;
+			text-align: center;
+			background-color: black;
+		}
+
+		#canvas {
+			display: block;
+			margin: 0;
+			color: white;
+		}
+
+		.dpad, .space-button {
+			position: absolute;
+			display: flex;
+			flex-direction: column;
+			align-items: center;
+			gap: 10px;
+		}
+		.dpad {
+			bottom: 20px;
+			left: 20px;
+		}
+		.space-button {
+			bottom: 20px;
+			right: 20px;
+		}
+		.dpad button, .space-button button {
+			width: 60px;
+			height: 60px;
+			font-size: 18px;
+			color: #fff;
+			background-color: #404040;
+			border: none;
+			border-radius: 8px;
+			cursor: pointer;
+		}
+		.space-button button {
+			width: 100px; /* Adjust width of the space button */
+		}
+		.dpad button:active, .space-button button:active {
+			background-color: #606060;
+		}
+	</style>
+	<link id='-gd-engine-icon' rel='icon' type='image/png' href='index.icon.png' />
+	<link rel='apple-touch-icon' href='index.apple-touch-icon.png'/>
+</head>
+<body>
+	<canvas id='canvas'>
+		HTML5 canvas appears to be unsupported in the current browser.<br />
+		Please try updating or use a different browser.
+	</canvas>
+
+	<div class="dpad">
+		<button id="upButton">▲</button>
+		<div class="dpad-controls">
+			<button id="leftButton">◀</button>
+			<button id="downButton">▼</button>
+			<button id="rightButton">▶</button>
+		</div>
+	</div>
+
+	<div class="space-button">
+		<button id="spaceButton">Space Button</button>
+	</div>
+
+	<div id='status'>
+		<div id='status-progress' style='display: none;' oncontextmenu='event.preventDefault();'><div id='status-progress-inner'></div></div>
+		<div id='status-indeterminate' style='display: none;' oncontextmenu='event.preventDefault();'>
+			<div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div>
+		</div>
+		<div id='status-notice' class='godot' style='display: none;'></div>
+	</div>
+
+	<script type='text/javascript' src='index.js'></script>
+	<script>
+		const GODOT_CONFIG = {"args":[],"canvasResizePolicy":2,"executable":"index","experimentalVK":false,"fileSizes":{"index.pck":2378672,"index.wasm":13342674},"focusCanvas":true,"gdnativeLibs":[]};
+		var engine = new Engine(GODOT_CONFIG);
+
+		window.onload = function() {
+			if (!Engine.isWebGLAvailable()) {
+				console.error('WebGL not available');
+			} else {
+				engine.startGame();
+				console.log('Game started.');
+			}
+
+			// Button controls
+			const canvas = document.getElementById("canvas");
+			const spaceButton = document.getElementById("spaceButton");
+			const leftButton = document.getElementById("leftButton");
+			const rightButton = document.getElementById("rightButton");
+			const upButton = document.getElementById("upButton");
+			const downButton = document.getElementById("downButton");
+
+			function simulateKeyPress(keyCode, isKeyDown) {
+				const eventType = isKeyDown ? "keydown" : "keyup";
+				const event = new KeyboardEvent(eventType, { key: String.fromCharCode(keyCode), keyCode: keyCode, bubbles: true });
+				canvas.dispatchEvent(event); // Dispatch event directly on canvas
+			}
+
+			function addButtonListeners(button, keyCode) {
+				button.addEventListener("touchstart", (event) => {
+					event.preventDefault();
+					simulateKeyPress(keyCode, true);
+				});
+				button.addEventListener("touchend", () => simulateKeyPress(keyCode, false));
+			}
+
+			// Use 'A' (65) and 'D' (68) keys for left and right movement
+			addButtonListeners(spaceButton, 32); // Space key
+			addButtonListeners(leftButton, 65); // 'A' key
+			addButtonListeners(rightButton, 68); // 'D' key
+			addButtonListeners(upButton, 38); // Up arrow key (if needed)
+			addButtonListeners(downButton, 40); // Down arrow key (if needed)
+		};
+	</script>
+</body>
+</html>

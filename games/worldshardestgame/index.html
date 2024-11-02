@@ -1,30 +1,55 @@
 <!DOCTYPE html>
-<html>
-  <div class="animation-area">
-    <ul class="box-area">
-      <li></li>
-      <li></li>
-      <li></li>
-      <li></li>
-      <li></li>
-      <li></li>
-      <li></li>
-      <li></li>
-    </ul>
-  </div>
-<link rel="stylesheet" href="../../styles.css">
-<link rel="stylesheet" href="../../mobile.css">
-<script src="../../settings.js"></script>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../../styles.css">
+    <link rel="stylesheet" href="../../mobile.css">
+    <script src="../../settings.js"></script>
+    <style>
+        body {
+            overflow: hidden; /* Disable scrolling */
+            touch-action: none; /* Prevent touch interactions like scrolling or panning */
+        }
 
-<div class="banner-text">
-  <div class="bar">
-    <img alt="Home" onclick="location.href='../index.html'" src="../../homeimgs/favicon.png" class="logo" draggable="false">
-    <h1>destpl</h1>	
-	</div>
-  <iframe style="width: 41.6%; height: 590px; overflow: auto;" class="srcCenterGame" src=game.html frameborder="0" width="320" height="280">
-  </iframe>
-</div>
+        .srcCenterGame {
+            width: 80%; /* Responsive width */
+            max-width: 1000px; /* Limit the maximum width */
+            height: 590px; /* Set the height */
+            border: none; /* Remove default border */
+        }
 
+        .iframe-container {
+            width: 100%; /* Ensure full width for centering */
+            text-align: center; /* Center the iframe */
+            margin-top: 70px; /* Optional: Space above the iframe */
+            position: fixed;
+            left: -20%;
+        }
+    </style>
+</head>
+<body>
+    <div class="animation-area">
+        <ul class="box-area">
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+        </ul>
+    </div>
+
+    <div class="banner-text">
+        <div class="bar">
+            <img alt="Home" onclick="location.href='../index.html'" src="../../homeimgs/favicon.png" class="logo" draggable="false">
+            <h1>destpl</h1>
+        </div>
+    </div>
+    <div class="iframe-container">
+        <iframe class="srcCenterGame" src="game.html" frameborder="0"></iframe>
+    </div>
+</body>
 </html>
-
-
