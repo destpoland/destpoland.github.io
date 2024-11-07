@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8"/>
+    <link rel="manifest" href="manifest.webmanifest">
+
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+
+    <meta name="theme-color" content="#000000" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+
+    <link rel="stylesheet" href="../../styles.css">
+    <link rel="stylesheet" href="../../mobile.css">
+    <script src="../../settings.js"></script>
+	<style>
+		body {
+			margin: 0;
+			padding: 0;
+			background-color: black;
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			height: 100vh;
+			overflow: hidden;
+		}
+	
+		/* D-pad and Space button styles */
+		.dpad, .space-button {
+			position: absolute;
+			display: flex;
+			flex-direction: column;
+			align-items: center;
+			gap: 10px;
+			z-index: 100;
+		}
+		.dpad {
+			bottom: 20px;
+			left: 20px;
+		}
+		.space-button {
+			bottom: 20px;
+			right: 20px;
+		}
+		.dpad button, .space-button button {
+			width: 60px;
+			height: 60px;
+			font-size: 18px;
+			color: #fff;
+			background-color: #404040;
+			border: none;
+			border-radius: 8px;
+			cursor: pointer;
+		}
+		.space-button button {
+			width: 100px; /* Wider for easier access */
+		}
+		.active {
+			background-color: #606060; /* Style for active button */
+		}
+	</style>
+	<style>
+		body {
+			margin: 0;
+			padding: 0;
+			background-color: #000000;
+            overflow: hidden;
+		}
+        #canvasArea {
+            margin-left: auto;
+            margin-right: auto;
+            overflow: hidden;
+        }
+
+        
+	</style>
+    <!-- Libs and GDJS core files : -->
+		<script src="libs/jshashtable.js" crossorigin="anonymous"></script>
+	<script src="logger.js" crossorigin="anonymous"></script>
+	<script src="gd.js" crossorigin="anonymous"></script>
+	<script src="libs/rbush.js" crossorigin="anonymous"></script>
+	<script src="AsyncTasksManager.js" crossorigin="anonymous"></script>
+	<script src="inputmanager.js" crossorigin="anonymous"></script>
+	<script src="jsonmanager.js" crossorigin="anonymous"></script>
+	<script src="Model3DManager.js" crossorigin="anonymous"></script>
+	<script src="ResourceLoader.js" crossorigin="anonymous"></script>
+	<script src="ResourceCache.js" crossorigin="anonymous"></script>
+	<script src="timemanager.js" crossorigin="anonymous"></script>
+	<script src="polygon.js" crossorigin="anonymous"></script>
+	<script src="runtimeobject.js" crossorigin="anonymous"></script>
+	<script src="profiler.js" crossorigin="anonymous"></script>
+	<script src="RuntimeInstanceContainer.js" crossorigin="anonymous"></script>
+	<script src="runtimescene.js" crossorigin="anonymous"></script>
+	<script src="scenestack.js" crossorigin="anonymous"></script>
+	<script src="force.js" crossorigin="anonymous"></script>
+	<script src="RuntimeLayer.js" crossorigin="anonymous"></script>
+	<script src="layer.js" crossorigin="anonymous"></script>
+	<script src="RuntimeCustomObjectLayer.js" crossorigin="anonymous"></script>
+	<script src="timer.js" crossorigin="anonymous"></script>
+	<script src="runtimewatermark.js" crossorigin="anonymous"></script>
+	<script src="runtimegame.js" crossorigin="anonymous"></script>
+	<script src="variable.js" crossorigin="anonymous"></script>
+	<script src="variablescontainer.js" crossorigin="anonymous"></script>
+	<script src="oncetriggers.js" crossorigin="anonymous"></script>
+	<script src="runtimebehavior.js" crossorigin="anonymous"></script>
+	<script src="SpriteAnimator.js" crossorigin="anonymous"></script>
+	<script src="spriteruntimeobject.js" crossorigin="anonymous"></script>
+	<script src="affinetransformation.js" crossorigin="anonymous"></script>
+	<script src="CustomRuntimeObjectInstanceContainer.js" crossorigin="anonymous"></script>
+	<script src="CustomRuntimeObject.js" crossorigin="anonymous"></script>
+	<script src="CustomRuntimeObject2D.js" crossorigin="anonymous"></script>
+	<script src="events-tools/commontools.js" crossorigin="anonymous"></script>
+	<script src="events-tools/variabletools.js" crossorigin="anonymous"></script>
+	<script src="events-tools/runtimescenetools.js" crossorigin="anonymous"></script>
+	<script src="events-tools/inputtools.js" crossorigin="anonymous"></script>
+	<script src="events-tools/objecttools.js" crossorigin="anonymous"></script>
+	<script src="events-tools/cameratools.js" crossorigin="anonymous"></script>
+	<script src="events-tools/soundtools.js" crossorigin="anonymous"></script>
+	<script src="events-tools/storagetools.js" crossorigin="anonymous"></script>
+	<script src="events-tools/stringtools.js" crossorigin="anonymous"></script>
+	<script src="events-tools/windowtools.js" crossorigin="anonymous"></script>
+	<script src="events-tools/networktools.js" crossorigin="anonymous"></script>
+	<script src="splash/gd-logo-dark.js" crossorigin="anonymous"></script>
+	<script src="pixi-renderers/pixi.js" crossorigin="anonymous"></script>
+	<script src="pixi-renderers/pixi-filters-tools.js" crossorigin="anonymous"></script>
+	<script src="pixi-renderers/runtimegame-pixi-renderer.js" crossorigin="anonymous"></script>
+	<script src="pixi-renderers/runtimescene-pixi-renderer.js" crossorigin="anonymous"></script>
+	<script src="pixi-renderers/layer-pixi-renderer.js" crossorigin="anonymous"></script>
+	<script src="pixi-renderers/pixi-image-manager.js" crossorigin="anonymous"></script>
+	<script src="pixi-renderers/pixi-bitmapfont-manager.js" crossorigin="anonymous"></script>
+	<script src="pixi-renderers/spriteruntimeobject-pixi-renderer.js" crossorigin="anonymous"></script>
+	<script src="pixi-renderers/CustomRuntimeObject2DPixiRenderer.js" crossorigin="anonymous"></script>
+	<script src="pixi-renderers/DebuggerPixiRenderer.js" crossorigin="anonymous"></script>
+	<script src="pixi-renderers/loadingscreen-pixi-renderer.js" crossorigin="anonymous"></script>
+	<script src="pixi-renderers/pixi-effects-manager.js" crossorigin="anonymous"></script>
+	<script src="howler-sound-manager/howler.min.js" crossorigin="anonymous"></script>
+	<script src="howler-sound-manager/howler-sound-manager.js" crossorigin="anonymous"></script>
+	<script src="fontfaceobserver-font-manager/fontfaceobserver.js" crossorigin="anonymous"></script>
+	<script src="fontfaceobserver-font-manager/fontfaceobserver-font-manager.js" crossorigin="anonymous"></script>
+	<script src="gdjs-evtsext__cursortype__changecursortype-func.js" crossorigin="anonymous"></script>
+	<script src="gdjs-evtsext__cursortype__onscenepreevents-func.js" crossorigin="anonymous"></script>
+	<script src="gdjs-evtsext__fps__fps-func.js" crossorigin="anonymous"></script>
+	<script src="gdjs-evtsext__fps__fpsdisplayer.js" crossorigin="anonymous"></script>
+	<script src="gdjs-evtsext__fps__onsceneloaded-func.js" crossorigin="anonymous"></script>
+	<script src="gdjs-evtsext__fps__onscenepostevents-func.js" crossorigin="anonymous"></script>
+	<script src="gdjs-evtsext__fps__precisefps-func.js" crossorigin="anonymous"></script>
+	<script src="gdjs-evtsext__panelspritecontinuousbar__panelspritecontinuousbar.js" crossorigin="anonymous"></script>
+	<script src="gdjs-evtsext__panelspritecontinuousbar__resourcebar.js" crossorigin="anonymous"></script>
+	<script src="gdjs-evtsext__panelspriteslider__buttonfsm.js" crossorigin="anonymous"></script>
+	<script src="gdjs-evtsext__panelspriteslider__panelspriteslider.js" crossorigin="anonymous"></script>
+	<script src="gdjs-evtsext__panelspriteslider__slider.js" crossorigin="anonymous"></script>
+	<script src="gdjs-evtsext__repeateveryxseconds__deletetimer-func.js" crossorigin="anonymous"></script>
+	<script src="gdjs-evtsext__repeateveryxseconds__repeat-func.js" crossorigin="anonymous"></script>
+	<script src="gdjs-evtsext__repeateveryxseconds__repeatxtimes-func.js" crossorigin="anonymous"></script>
+	<script src="gdjs-evtsext__repeateveryxseconds__repetition-func.js" crossorigin="anonymous"></script>
+	<script src="gdjs-evtsext__shakeobject__shakeobject_positionangle.js" crossorigin="anonymous"></script>
+	<script src="Extensions/DraggableBehavior/draggableruntimebehavior.js" crossorigin="anonymous"></script>
+	<script src="Extensions/PanelSpriteObject/panelspriteruntimeobject-pixi-renderer.js" crossorigin="anonymous"></script>
+	<script src="Extensions/PanelSpriteObject/panelspriteruntimeobject.js" crossorigin="anonymous"></script>
+	<script src="Extensions/PlatformBehavior/platformerobjectruntimebehavior.js" crossorigin="anonymous"></script>
+	<script src="Extensions/PlatformBehavior/platformruntimebehavior.js" crossorigin="anonymous"></script>
+	<script src="Extensions/PlatformBehavior/platformtools.js" crossorigin="anonymous"></script>
+	<script src="Extensions/SystemInfo/systeminfotools.js" crossorigin="anonymous"></script>
+	<script src="Extensions/TextObject/textruntimeobject-pixi-renderer.js" crossorigin="anonymous"></script>
+	<script src="Extensions/TextObject/textruntimeobject.js" crossorigin="anonymous"></script>
+	<script src="Extensions/TiledSpriteObject/tiledspriteruntimeobject-pixi-renderer.js" crossorigin="anonymous"></script>
+	<script src="Extensions/TiledSpriteObject/tiledspriteruntimeobject.js" crossorigin="anonymous"></script>
+	<script src="Extensions/TweenBehavior/TweenManager.js" crossorigin="anonymous"></script>
+	<script src="Extensions/TweenBehavior/tweenruntimebehavior.js" crossorigin="anonymous"></script>
+	<script src="object-capabilities/AnimatableBehavior.js" crossorigin="anonymous"></script>
+	<script src="object-capabilities/EffectBehavior.js" crossorigin="anonymous"></script>
+	<script src="object-capabilities/FlippableBehavior.js" crossorigin="anonymous"></script>
+	<script src="object-capabilities/OpacityBehavior.js" crossorigin="anonymous"></script>
+	<script src="object-capabilities/ResizableBehavior.js" crossorigin="anonymous"></script>
+	<script src="object-capabilities/ScalableBehavior.js" crossorigin="anonymous"></script>
+	<script src="object-capabilities/TextContainerBehavior.js" crossorigin="anonymous"></script>
+	<script src="Extensions/Effects/brightness-pixi-filter.js" crossorigin="anonymous"></script>
+	<script src="Extensions/Effects/color-replace-pixi-filter.js" crossorigin="anonymous"></script>
+	<script src="Extensions/Effects/pixi-filters/filter-color-replace.js" crossorigin="anonymous"></script>
+	<script src="code0.js" crossorigin="anonymous"></script>
+	<script src="code1.js" crossorigin="anonymous"></script>
+	<script src="data.js" crossorigin="anonymous"></script>
+
+
+</head>
+<body>
+	
+    <div class="animation-area">
+        <ul class="box-area">
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+        </ul>
+    </div>
+	<script>
+		
+    (function() {
+        //Initialization
+        var game = new gdjs.RuntimeGame(gdjs.projectData, {});
+
+        //Create a renderer
+        game.getRenderer().createStandardCanvas(document.body);
+
+        //Bind keyboards/mouse/touch events
+        game.getRenderer().bindStandardEvents(game.getInputManager(), window, document);
+
+        //Load all assets and start the game
+        game.loadAllAssets(function() {
+            game.startGameLoop();
+        });
+    })();
+
+	</script>
+	<script>
+		// Button elements
+		const spaceButton = document.getElementById("spaceButton");
+		const leftButton = document.getElementById("leftButton");
+		const rightButton = document.getElementById("rightButton");
+		const upButton = document.getElementById("upButton");
+		const downButton = document.getElementById("downButton");
+
+		// To track the currently active button
+		let currentActiveButton = null;
+
+		// Function to simulate keypress events
+		function simulateKeyPress(keyCode, isKeyDown) {
+			const eventType = isKeyDown ? "keydown" : "keyup";
+			const event = new KeyboardEvent(eventType, { keyCode: keyCode, which: keyCode, bubbles: true });
+			document.dispatchEvent(event);
+		}
+
+		// Function to activate a specific button
+		function activateButton(button) {
+			button.classList.add('active');
+			const keyCode = parseInt(button.getAttribute("data-keycode"), 10);
+			simulateKeyPress(keyCode, true);
+			currentActiveButton = button; // Set the current active button
+		}
+
+		// Function to deactivate the currently active button
+		function deactivateCurrentButton() {
+			if (currentActiveButton) {
+				currentActiveButton.classList.remove('active');
+				const keyCode = parseInt(currentActiveButton.getAttribute("data-keycode"), 10);
+				simulateKeyPress(keyCode, false);
+				currentActiveButton = null; // Clear the active button
+			}
+		}
+
+		// Function to add touch event listeners to a button
+		function addButtonListeners(button) {
+			button.addEventListener("touchstart", (event) => {
+				event.preventDefault();
+				activateButton(button); // Activate the pressed button
+			});
+
+			button.addEventListener("touchend", (event) => {
+				deactivateCurrentButton(); // Deactivate the pressed button
+			});
+		}
+
+		// Add data-keycode attributes for easier handling
+		spaceButton.setAttribute("data-keycode", 32); // Space key
+		leftButton.setAttribute("data-keycode", 65);  // 'A' key for left movement
+		rightButton.setAttribute("data-keycode", 68); // 'D' key for right movement
+		upButton.setAttribute("data-keycode", 87);    // 'W' key for up movement
+		downButton.setAttribute("data-keycode", 83);  // 'S' key for down movement
+
+		// Add event listeners for each button
+		addButtonListeners(spaceButton);
+		addButtonListeners(leftButton);
+		addButtonListeners(rightButton);
+		addButtonListeners(upButton);
+		addButtonListeners(downButton);
+
+		// Additional logic to handle touchmove for dragging between buttons
+		document.addEventListener("touchmove", (event) => {
+			const touch = event.touches[0];
+			const targetButton = document.elementFromPoint(touch.clientX, touch.clientY);
+
+			if (targetButton && targetButton.tagName === "BUTTON" && targetButton !== currentActiveButton) {
+				// If the target button is different from the currently active button, deactivate the current one and activate the new one
+				deactivateCurrentButton();
+				activateButton(targetButton);
+			}
+		});
+	</script>
+</body>
+</html>

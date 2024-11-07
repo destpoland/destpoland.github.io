@@ -1,0 +1,33 @@
+{
+  "name": "Lumber Company Tycoon",
+  "short_name": "Lumber Company Tycoon",
+  "id": "com.lumbercompany.capivara",
+  "description": "Harvest wood in order to become the best lumberjack! Buy upgrades, , harvest, sell, and most important of all, have fun!",
+  "orientation": "landscape",
+  "start_url": "./index.html",
+  "display": "standalone",
+  "background_color": "black",
+  "categories": ["games", "entertainment"],
+  "icons": [{
+        "src": "1b9744ce809f967555a81a02426f774aea5de87b362547d44bf2108ed255d707-AndroidIcon38.png",
+        "sizes": "36x36"
+      },{
+        "src": "bafeb586b25e5c6c96336db1c62b8244491b5c141575cac173072a84e00f0d38-AndroidIcon48.png",
+        "sizes": "48x48"
+      },{
+        "src": "5bfad7d097bde48f7841b220f74e3a40c165b426149a90db888ce1e93e0f3bb5-AndroidIcon72.png",
+        "sizes": "72x72"
+      },{
+        "src": "6dd6523644c29366171141c8efe66085d0407274a8efe84bf361866874db9cbe-AndroidIcon97.png",
+        "sizes": "96x96"
+      },{
+        "src": "b3f740f8df171e4338210ff1dcfb0a7fad0b712c8705cd78b9817534e2801458-AndroidIcon144.png",
+        "sizes": "144x144"
+      },{
+        "src": "7699ee8f2e20d27b0418ccf37d74c7f3e225f3a063dcdede51090e5c3d9c026a-AndroidIcon192.png",
+        "sizes": "192x192"
+      },{
+        "src": "520b0a34c22763ecec75d77c1cc8254e9c490c27cf7d490d1cd57288fb84694c-DesktopIcon514.png",
+        "sizes": "512x512"
+      }]
+}
