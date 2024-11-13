@@ -1,0 +1,691 @@
+
+@font-face {
+  font-family: "Twemoji";
+  src: url("../fonts/Twemoji.otf");
+}
+
+@font-face {
+  font-family: "Lexend";
+  src: url("../fonts/Lexend.ttf");
+}
+
+:root {
+  --bgprimary: #020617;
+  --border: #1e293b;
+  --bgsecondary: #0f172a;
+  
+  --accent: #22c55e;
+  --error: #ef4444;
+  
+  --text: #fff;
+  
+  --hoverbg: #ffffff;
+  --hoverfg: #000;
+}
+
+* {
+  image-rendering: pixelated;
+  box-sizing: border-box;
+  font-family: "Lexend", "Twemoji", monospace;
+}
+
+body {
+  overscroll-behavior: none;
+  background-color: var(--bgprimary);
+  max-height: 100%;
+  margin: 0;
+  color: var(--text);
+  padding: 0;
+}
+
+@supports (scrollbar-color: auto) {
+  * {
+    scrollbar-color: var(--bgprimary) var(--bgsecondary);
+  }
+}
+
+@supports selector(::-webkit-scrollbar) {
+  *::-webkit-scrollbar {
+    background: var(--bgprimary);
+    /*bit experimental. might remove*/
+    border-left: 1px solid var(--border);
+  }
+  *::-webkit-scrollbar-thumb {
+    background: var(--bgsecondary);
+  }
+}
+
+p {
+  margin: 0;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  margin: auto 0;
+}
+
+button {
+  cursor: pointer;
+  font-size: 0.9em;
+  user-select: none;
+  background-color: var(--bgprimary);
+  border: none;
+  padding: 5px;
+  border-style: solid;
+  border-color: var(--border);
+  border-width: 0.05em;
+  border-radius: 0.25em;
+  color: var(--text);
+  text-align: center;
+  text-wrap: nowrap;
+}
+
+code {
+  background-color: var(--bgprimary);
+  padding: 5px;
+  border-radius: 5px;
+}
+
+p, label, input[type=file] {
+  color: var(--text);
+}
+
+hr {
+  border-color: var(--border);
+}
+
+input[type="text"] {
+  width: 100%;
+  background-color: var(--bgsecondary);
+  border: var(--border) 1px solid;
+  padding-left: 1em;
+  color: var(--text);
+  border-radius: 0.2em;
+}
+
+input[type="color"] {
+  border: solid 1px var(--border);
+  width: 100px;
+  height: 100px;
+  border-radius: 10px;
+  overflow: hidden;
+  cursor: pointer;
+  margin: 0;
+}
+
+input[type="color"]::after {
+  content: "";
+  width: 100px;
+  height: 100px;
+  border-radius: 50px;
+  overflow: hidden;
+}
+
+#mainContent {
+  display: flex;
+  height: 100%;
+  & > * {
+    text-align: center;
+  }
+  & > .col {
+    overflow: hidden auto;
+  }
+}
+
+.emoji {
+  font-family: "Twemoji", monospace;
+}
+
+.invisible {
+  display: none !important;
+  visibility: hidden !important;
+}
+
+#credits {
+  line-height: 2em;
+  & li code {
+    color: #ff306b;
+    font-family: "Courier New", "Courier", monospace;
+  }
+}
+
+#inventoryDisplay {
+  overflow: hidden auto;
+  border-style: solid;
+  border-color: var(--border);
+  border-left: none;
+  border-top: none;
+  border-right: none;
+  flex-grow: 1;
+}
+
+.movementButtons {
+  max-width: 100%;
+  min-width: 0;
+  height: 4em;
+  display: flex;
+  border-bottom: solid var(--border);
+  & button {
+    font-size: 1.2em;
+    padding: 0;
+    margin: 0;
+    border-radius: 0;
+    border: none;
+    background-color: var(--bgsecondary);
+    transition: background-color 0.2s, color 0.2s, border 0.5s;
+  }
+  & > button {
+    flex-grow: 1;
+  }
+}
+
+.movementButtons button:hover {
+  background-color: var(--hoverbg);
+  color: var(--hoverfg);
+}
+
+#teleportContainer {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+  & button {
+    padding: 0;
+  }
+}
+
+#switchDistanceContainer {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  & > button {
+    flex-grow: 1;
+  }
+}
+
+#teleportButton {
+  width: 100%;
+  height: 100%;
+}
+
+#recipeTitle {
+  margin-bottom: 0;
+}
+
+.fas {
+  pointer-events: none;
+}
+
+#switchButtons {
+  display: flex;
+}
+
+.oreDisplay .emoji {
+  font-size: 2em;
+  margin: auto 0;
+  display: block;
+}
+
+.totalAndProbContainer {
+  width: 100%;
+  & > p {
+    text-align: left;
+    margin: 0;
+  }
+}
+
+.oreTotal {
+  color: var(--text);
+}
+
+.oreProb {
+  color: var(--text);
+  opacity: 0.5;
+}
+
+.oreDisplay {
+  display: flex;
+  flex-grow: 1;
+  margin: 0.3em;
+  text-align: left;
+  gap: 0.4em;
+  background: var(--bgsecondary);
+  padding: 10px;
+  border: 1px solid var(--border);
+  font-size: 1.7em;
+}
+
+.oreTitle {
+  margin: 0;
+  font-size: 1.2em;
+}
+
+.layerDisplay {
+  margin-bottom: 1em;
+}
+
+.actualCraftButton {
+  margin: 0.5em;
+}
+
+.recipeIngredient {
+  margin: 0.2em auto;
+}
+
+.recipeRed {
+  color: var(--error);
+}
+
+.recipeGreen {
+  color: var(--accent);
+}
+
+.completedLayer {
+  color: var(--accent);
+}
+
+.itemDescription {
+  font-size: 0.75em;
+}
+
+.gearCrafts {
+  display: none;
+}
+
+.pickaxeCrafts {
+  display: unset;
+}
+
+.craftPickaxeButton, .craftGearButton {
+  margin: 0.1em;
+}
+
+.inventoryButtons {
+  width: 100%;
+}
+
+#generalStats {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: auto 0;
+  text-align: left;
+  & > * {
+    width: 16rem;
+  }
+}
+
+#mineStats {
+  text-align: center;
+  & > p {
+    margin: 0.5em 0;
+  }
+}
+
+#location {
+  font-size: 3em;
+  text-align: left;
+  margin: 0;
+}
+
+#pausedGameContainer {
+  padding: 3em;
+  height: 100%;
+  width: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  backdrop-filter: blur(5px) brightness(0.5);
+  z-index: 3;
+  display: flex;
+  flex-direction: column;
+}
+
+#pausedGameContainer button {
+  text-wrap: nowrap;
+  margin: 0.3em 0;
+}
+
+#blocksMined {
+  margin: 0;
+}
+
+#blockDisplay {
+  margin: 0;
+  line-height: 1.14em;
+  white-space: nowrap;
+  letter-spacing: -0.1em;
+  font-size: 1.4vw;
+  user-select: none;
+  text-wrap: nowrap;
+  text-align: center;
+  margin: auto 0;
+}
+
+.disabledDisplay {
+  letter-spacing: 0 !important;
+  font-family: "Arial";
+}
+
+#latestDisplay {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  font-size: 0.75em;
+  margin: 0;
+  padding: 1em;
+  border-top: solid var(--border);
+  overflow: hidden auto;
+}
+
+#spawnMessage {
+  font-size: 2em;
+  padding: 1rem;
+}
+
+.mobile {
+  padding-bottom: 0.25em;
+  display: block;
+}
+
+#crafting, #craftingClick {
+  margin-bottom: 0.5rem;
+}
+
+#craftingClick > div:first-of-type {
+  margin-bottom: 0.25rem;
+}
+
+.darkButton {
+  background-color: var(--bgsecondary);
+}
+
+#musicVolume, #spawnVolume {
+  width: 100%;
+}
+
+.slidecontainer {
+  display: block;
+  padding: 0.5em;
+}
+
+.slidecontainer > input {
+  width: 100%;
+}
+
+.col {
+  height: 100vh;
+  max-height: 100vh;
+  flex: auto;
+  & > * {
+    overscroll-behavior: none;
+  }
+}
+
+#credits {
+  text-align: left;
+  color: white;
+}
+
+#creditsContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 1em;
+  align-items: center;
+}
+
+#importantButtons, #switchButtons {
+  border-bottom: solid var(--border);
+}
+
+#showPickaxeGearButtons {
+  border-top: solid var(--border);
+}
+
+.headerButtons {
+  display: flex;
+  gap: 0;
+  margin: 0;
+  width: 100%;
+}
+
+.headerButtons > * {
+  border: none;
+  background-color: var(--bgsecondary);
+  flex-grow: 1;
+  color: var(--text);
+  padding: 1em;
+  transition: background-color 0.2s, color 0.2s, border 0.5s;
+}
+
+.headerButtons > *:hover {
+  background-color: var(--hoverbg);
+  color: var(--hoverfg);
+}
+
+.headerButtons > button {
+  border-radius: 0;
+}
+
+.redButton:hover {
+  background-color: var(--error);
+  color: black;
+}
+
+#playButton {
+  min-width: 5em;
+  font-size: 2em;
+  background-color: var(--bgsecondary);
+  transition: 0.2s;
+}
+
+#playButton:hover {
+  background-color: var(--accent);
+  border-color: var(--bgsecondary);
+}
+
+#col-1 {
+  width: 25%;
+  background-color: var(--bgprimary);
+  padding: 0;
+}
+
+#col-2 {
+  min-width: 50%;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  border-style: none solid;
+  border-color: var(--border);
+  background-color: var(--bgprimary);
+}
+
+#col-3 {
+  width: 25%;
+  display: flex;
+  flex-direction: column;
+  padding: 0;
+  align-items: center;
+  background-color: var(--bgprimary);
+}
+
+#col-3 > * {
+  width: 100%;
+}
+
+.volumeController {
+  display: flex;
+  gap: 1em;
+}
+
+#discord {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+  justify-self: end;
+  & > img {
+    width: 1.75em;
+    height: 1.75em;
+    aspect-ratio: 1;
+    margin: 0.5em 0.75em;
+  }
+  & > p {
+    font-size: 100%;
+    margin: 0;
+    text-wrap: nowrap;
+  }
+}
+
+#displayRecipe > div {
+  border: none;
+}
+
+.oreFound {
+  color: var(--accent);
+}
+
+.oreNotFound {
+  color: var(--error);
+}
+
+#pressPlay {
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  color: white;
+  justify-content: center;
+  flex-direction: column;
+  text-align: center;
+  background-image: url("../media/bg.png");
+  background-size: cover;
+  z-index: 4;
+}
+
+#pressPlayText {
+  text-shadow: black 0 0 2rem;
+}
+
+#gameTitle {
+  font-size: 8em;
+  margin: 0;
+  line-height: 1.1em;
+}
+
+#subtextTitle {
+  font-size: 2em;
+  margin: 0;
+  color: #ccc;
+}
+
+#masterVolume {
+  text-align: center;
+  max-width: 30em;
+  gap: 2em;
+  display: flex;
+}
+
+#masterVolume > p {
+  margin: 0;
+}
+
+.subtext {
+  opacity: 0.5;
+  margin: 0;
+  font-size: medium;
+}
+
+#noscript {
+  user-select: none;
+  position: absolute;
+  background-color: var(--bgprimary);
+  width: 100%;
+  height: 100%;
+  z-index: 5;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 10vw;
+  text-align: center;
+  text-wrap: wrap;
+}
+
+.pausedTitleContainer {
+  margin-bottom: auto;
+  color: white;
+}
+
+.revampedSettings {
+  padding: 10px;
+  color: var(--text);
+  width: fit-content;
+  background-color: var(--bgsecondary);
+}
+
+.settingsContainer {
+  padding: 30px;
+  transition: 0.5s;
+  background-color: var(--bgprimary);
+}
+
+.settingsSelector {
+  display: flex;
+  gap: 0.4em;
+}
+
+.settingSelector {
+  --size: 20px;
+  min-height: var(--size);
+  font-weight: 400;
+  padding: calc(var(--size) / 2);
+  min-width: 0 !important;
+  gap: 10px;
+  align-items: center;
+  border: none;
+  font-size: var(--size);
+  margin-bottom: 0 !important;
+  position: relative;
+  display: flex;
+  transition: background 0.2s, color 0.2s;
+  &:hover {
+    background-color: var(--hoverbg);
+    color: var(--hoverfg);
+  }
+}
+
+.logHolder, #generatedLogs {
+  max-height: 500px;
+  overflow-y: auto;
+}
+
+.themeContainer {
+  display: flex;
+  gap: 0.5em;
+}
+
+.colorPicker {
+  display: flex;
+  gap: 0.3em;
+  flex-direction: column;
+  align-items: center;
+}
+
+select[id="themeSelect"] {
+  width: 100%;
+  font-size: larger;
+  background-color: var(--bgsecondary);
+  border: var(--border) 1px solid;
+  padding: 0.5em;
+  color: var(--text);
+  border-radius: 0.2em;
+}
+
+.flex {
+  display: flex;
+  gap: 0.5em;
+}
+
+#updateCapacityButton {
+  margin: 0 !important;
+  min-width: unset;
+}
