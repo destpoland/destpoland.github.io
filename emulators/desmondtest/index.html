@@ -64,6 +64,24 @@
                 user-select: none;
                 
     }
+
+    #msg-layer {
+            position: absolute;
+            left: 0;
+            height: 10%;
+            width: 100%;
+            top: 40vh;
+            background: rgba(2, 1, 1, 0.5);
+            backdrop-filter: blur(3px);
+            -webkit-backdrop-filter: blur(3px);
+            z-index: 99999;
+            color: white;
+            font-size: 20px;
+            display: none;
+            justify-content: center;
+            align-items: center; 
+        }
+
     .vk-rect { 
                 position: absolute;
             }
@@ -140,6 +158,10 @@
       </div> 
       <div style="z-index: 2;position: absolute;bottom: 20px;" id="fps"></div>
 
+    <div id="msg-layer" hidden>
+        <p id="msg-text"></p>
+    </div>
+
       <div id="menu" hidden>
         <button onclick="uiMenuBack()">❮ Sigma</button>
         <hr>
@@ -195,6 +217,7 @@
         <label for="lid-closed">Close the lid</label><br>
         <input type="checkbox" id="cfg-reset" onclick="resetButtonFunc()">
         <label for="cfg-reset">Soft Reset Button</label><br>
+        <button onclick="uiMenuBack(); checkSaveGame();" style="color: red; font-size: 15px; padding: 8px 8px;">Backup Save Button(Save-Ingame-First)</button>
         <hr>
         <div id="menu-savegame">
             <input type="file" id="restore-file" onchange="uiSaveRestore()" hidden>
