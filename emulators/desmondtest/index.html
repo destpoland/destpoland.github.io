@@ -217,7 +217,7 @@
         <label for="lid-closed">Close the lid</label><br>
         <input type="checkbox" id="cfg-reset" onclick="resetButtonFunc()">
         <label for="cfg-reset">Soft Reset Button</label><br>
-        <button onclick="uiMenuBack(); checkSaveGame();" style="color: red; font-size: 15px; padding: 8px 8px;">Backup Save Button(Save-Ingame-First)</button>
+        <button onclick="saveButton2()" style="color: red; font-size: 15px; padding: 8px 8px;">Backup Save Button(Save-Ingame-First)</button>
         <hr>
         <div id="menu-savegame">
             <input type="file" id="restore-file" onchange="uiSaveRestore()" hidden>
@@ -353,7 +353,19 @@ function showModal() {
     modal.style.display = "block";
 }
 </script>
-
+<script>
+  function saveButton2() {
+    uiMenuBack()
+    checkSaveGame()
+    setTimeout(function (){
+  
+    checkSaveGame()
+    console.log("saved2")
+            
+    }, 1000);
+  }
+    
+</script>
 
 
 <desmond-player id="desplayer" style="position: absolute;left: 26%;top: 30%;border-color: black;transform: scale(2);"></desmond-player>
