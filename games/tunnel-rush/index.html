@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+<head> 
+  <title>Tunnel Rush</title>
+  <link rel="stylesheet" href="style/style.css">
+  <link rel="icon" href="img/tunnel.jpg">
+</head>
+<style>
+  body {
+    margin: 0;
+    padding: 0;
+    background-color: black;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    overflow: hidden;
+  }
+  
+  /* Button styles */
+  .left-button, .right-button {
+    position: absolute;
+    bottom: 150px;
+    width: 100px;
+    height: 100px;
+    font-size: 18px;
+    color: #fff;
+    background-color: #404040;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    z-index: 1000;
+  }
+
+  .left-button {
+    left: 20px;
+  }
+  
+  .right-button {
+    right: 20px;
+  }
+
+  .active {
+    background-color: #606060; /* Style for active button */
+  }
+</style>
+<body>
+  <div id="gameContainer" style="width: 100%; height: 100%; margin: auto; z-index: 1;"></div>
+  
+  <!-- Left and right buttons -->
+  <button id="leftButton" class="left-button">◀</button>
+  <button id="rightButton" class="right-button">▶</button>
+
+  <script src="UnityLoader.js"></script>
+  <script src="UnityProgress.js"></script>
+  <script>
+    var gameInstance = UnityLoader.instantiate("gameContainer", "build.json", {
+      onProgress: UnityProgress,
+      Module: { onRuntimeInitialized: function() { UnityProgress(gameInstance, "complete"); } }
+    });
+  </script>
+
+  <script>
+    // Button event listeners for left and right only
+    const leftButton = document.getElementById("leftButton");
+    const rightButton = document.getElementById("rightButton");
+
+    function simulateKeyPress(keyCode, isKeyDown) {
+      const eventType = isKeyDown ? "keydown" : "keyup";
+      const event = new KeyboardEvent(eventType, { keyCode: keyCode, which: keyCode, bubbles: true });
+      window.dispatchEvent(event);
+    }
+
+    function handleButtonPress(button, keyCode) {
+      button.addEventListener("touchstart", (event) => {
+        event.preventDefault();
+        console.log(`Button pressed: ${button.innerText} (Key Code: ${keyCode})`);
+        simulateKeyPress(keyCode, true);
+      });
+
+      button.addEventListener("touchend", () => {
+        console.log(`Button released: ${button.innerText} (Key Code: ${keyCode})`);
+        simulateKeyPress(keyCode, false);
+      });
+    }
+
+    // Setup button listeners for left (A key) and right (D key)
+    handleButtonPress(leftButton, 65);    // A key
+    handleButtonPress(rightButton, 68);   // D key
+  </script>
+</body>
+</html>
