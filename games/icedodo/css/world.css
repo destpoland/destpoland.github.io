@@ -37,13 +37,13 @@ html, body {
 #left_mobile_btn {
 	border-top-right-radius: 75px;
 	border-bottom-right-radius: 75px;
-	top: 200px;
+	bottom: 200px;
 	left: 0px;
 }
 #right_mobile_btn {
 	border-top-left-radius: 75px;
 	border-bottom-left-radius: 75px;
-	top: 200px;
+	bottom: 200px;
 	right: 0px;
 }
 #space_mobile_btn {
