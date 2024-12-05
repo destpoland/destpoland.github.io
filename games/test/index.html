@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<div class="animation-area">
+    <ul class="box-area">
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+    </ul>
+</div>
+<link rel="stylesheet" href="../../styles.css">
+<link rel="stylesheet" href="../../mobile.css">
+<link rel="stylesheet" href="styles.css">
+<link rel="stylesheet" href="interactions.css">
+<script src="../../settings.js"></script>
+
+<div id="miniGame" style="display: none;">
+    <div class="main-bar">
+        <div id="smallBar" class="small-bar"></div>
+        <div id="fish" class="fish"></div>
+    </div>
+    <button id="moveButton">Hold to Move</button>
+    <p id="gameStatus">Try to align the bar with the fish!</p>
+</div>
+
+<div id="main">
+    <div id="main-tb"></div>
+    <div id="main-mb"><div class="s"></div></div>
+    <div id="main-res">
+        <button class="s" onclick="changeState('begin')"></button>
+         <!-- Home Buttons -->
+        <button class="s1" style="display: none;" onclick="changeState('town')">Go to the town</button>
+        <button class="s1" style="display: none;" onclick="changeState('outside')">Go outside</button>
+        <!-- Outside Buttons -->
+        <button class="s1" style="display: none;" onclick="changeState('pond')">Go over to the pond.</button>
+        <button id="goBackHome" class="s1" style="display: none;" onclick="changeState('home')">Go back home</button>
+        <!-- Pond Buttons -->
+        <button class="s1" style="display: none;" onclick="cast()">Cast your rod.</button>
+        <button id="reelIN" class="s1" style="display: none;" onclick="changeState('reel');">Reel in your rod!</button>
+        <button id="goBackF" class="s1" style="display: none;" onclick="changeState('goBackF');">Go Back</button>
+
+        <!-- Town Buttons -->
+
+        
+    </div>
+</div>
+
+<script>
+function changeState(location) {
+    const textElement = document.querySelector('#main-mb .s'); // Target div.s1 for text
+    const buttonElements = document.querySelectorAll('#main-res button'); // All buttons in main-res
+    const goBackHomeButton = document.querySelector('#goBackHome');
+    // Ensure textElement exists
+    if (textElement) {
+        // Reset all buttons to be hidden initially
+        buttonElements.forEach(button => (button.style.display = "none"));
+        buttonElements.forEach((button, index) => {
+            console.log(`Button ${index}:`, button.innerText || button.getAttribute('id') || button.className);
+        });
+        textElement.classList.remove('s1', 's2', 's3', 's4', 's5', 's6');
+
+        if (location === 'begin') {
+            textElement.classList.add('s1');
+            
+            buttonElements[1].style.display = "inline"; // "Go to the town" button
+            buttonElements[2].style.display = "inline"; // "Go Outside" button
+        } else if (location === 'town') {
+            textElement.classList.add('s3');
+
+            
+            // Show specific buttons for 'town' state
+            goBackHomeButton.style.display = "inline"; // "Go back home" button
+        } else if (location === 'outside') {
+            textElement.classList.add('s2');
+            
+            // Show specific buttons for 'outside' state
+            goBackHomeButton.style.display = "inline";
+            buttonElements[3].style.display = "inline"; // "Go to the pond" button
+        } else if (location === 'home') {
+           textElement.classList.add('s1');
+            
+            buttonElements[1].style.display = "inline"; // "Go to the town" button
+            buttonElements[2].style.display = "inline"; // "Go Outside" button
+        } else if (location === 'pond') {
+           textElement.classList.add('s4');
+            
+            buttonElements[4].style.display = "inline"; // "Go Outside" button
+            goBackHomeButton.style.display = "inline"; // "Go Outside" button
+        } else if (location === 'goBackF') {
+           textElement.classList.add('s4');
+            
+            buttonElements[4].style.display = "inline"; // "Go Outside" button
+            goBackHomeButton.style.display = "inline"; // "Go Outside" button
+        } 
+        
+    }
+}
+
+
+
+function startFishing() {
+    const statusElement = document.querySelector('#main-mb .s');
+    if (!statusElement) {
+        console.log("Element not found");
+        return; // Exit the function if element isn't found
+    }
+
+    // Proceed with class removal and addition
+    statusElement.classList.remove('s1', 's2', 's3', 's4');
+    statusElement.classList.add('s5');
+    console.log("Class changed to s5");
+
+    const goBackHomeButton = document.querySelector('#goBackHome');
+    if (goBackHomeButton) {
+        goBackHomeButton.style.display = "none";
+    }
+
+    let dotCount = 0;
+
+    // Generate a random timer between 2-8 seconds
+    const randomTime = Math.floor(Math.random() * 7) + 2;
+
+    // Update the status text every 500ms to animate the dots
+    const animationInterval = setInterval(() => {
+        dotCount = (dotCount + 1) % 4; // Cycle through 0, 1, 2, 3
+        const dots = '.'.repeat(dotCount); // Create dots based on count
+        statusElement.innerText = `Waiting${dots}`;
+    }, 500);
+
+    // End the fishing process after the random time
+    setTimeout(() => {
+        clearInterval(animationInterval); // Stop the animation
+        statusElement.innerText = 'Something tugged!'; // Reset text
+        console.log("Fishing completed!"); // Log to console
+
+        // Show the reelIN button after fishing completes
+        const reelIN = document.querySelector('#reelIN');
+        const goBackF = document.querySelector('#goBackF');
+        if (reelIN) {
+            reelIN.style.display = "inline"; // Show the "Reel in your rod!" button
+        }
+
+        // Start a timer between 2-5 seconds for the user to click reelIN
+        const reelInTimeout = Math.floor(Math.random() * 4) + 2; // 2-5 seconds
+        console.log(`Reel in timeout set to ${reelInTimeout} seconds`);
+
+        const reelInTimer = setTimeout(() => {
+            // If time runs out, the line snaps and the fish gets away
+            statusElement.innerText = 'The fish got away!'; // Message for fish escaping
+            reelIN.style.display = "none"; // Hide the reel button
+            console.log("The fish got away!");
+        }, reelInTimeout * 1000);
+
+        // Add an event listener to the "Reel in" button
+        reelIN.addEventListener('click', () => {
+            // If user clicks "Reel in", stop the timeout and proceed
+            clearTimeout(reelInTimer); // Stop the timer
+            statusElement.classList.remove('s1', 's2', 's3', 's4', 's5');
+            statusElement.classList.add('s6');
+            reelIN.style.display = "none"; // Hide the reel button
+            statusElement.innerText = '';
+            console.log("You reeled in the fish!");
+            goBackF.style.display = "inline";
+        });
+    }, randomTime * 1000);
+}
+
+function cast() {
+    changeState('cast');
+    startFishing();
+}
+
+document.addEventListener('DOMContentLoaded', () => {
+    const goBackHomeButton = document.querySelector('button[onclick="changeState(\'home\')"]');
+    const parent = goBackHomeButton.parentElement;
+
+    if (goBackHomeButton && parent) {
+        parent.appendChild(goBackHomeButton); // Moves the button to the end of its container
+    }
+});
+</script>
+
+</html>
+
+

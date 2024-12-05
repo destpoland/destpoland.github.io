@@ -1,0 +1,31 @@
+div.s::before {
+    content: "You awake";
+}
+
+button.s::before {
+    content: "->";
+}
+
+div.s1::before {
+    content: "You are at home. What will you do?";
+}
+
+div.s2::before {
+    content: "You are at outside. What will you do?";
+}
+
+div.s3::before {
+    content: "You are at the town. What will you do now?";
+}
+
+div.s4::before {
+    content: "The pond shines.";
+}
+
+div.s5::before {
+    content: "";
+}
+
+div.s6::before {
+    content: "You reeled in the fish!";
+}
