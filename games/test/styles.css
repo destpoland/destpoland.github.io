@@ -1,3 +1,110 @@
+#log {
+    display: block;
+    background-color: rgba(17, 48, 48, 0.6);
+    width: 320px;
+    height: 795px;
+    border: solid 3px black;
+    position: absolute;    
+    top: 15px;
+    left: 970px;
+}
+#log-tb{
+    display: block;
+    position: absolute;    
+    background: rgba(19,75,75,1);
+    width: 100%;
+    height: 70px;
+    border-bottom: dashed black;
+    text-align: center;
+    align-content: center;
+    color: black;
+    font-size: 50px;
+}
+
+
+#status {
+    display: block;
+    background-color: rgba(17, 48, 48, 0.6);
+    width: 500px;
+    height: 350px;
+    border: solid 3px black;
+    position: absolute;    
+    top: 15px;
+    left: 457px;
+    opacity: 1;
+    transition: opacity 0.8s ease-in-out;
+}
+#status.show {
+    opacity: 1;
+}
+#status-tb {
+    display: block;
+    position: absolute;    
+    background: rgba(19,75,75,1);
+    width: 100%;
+    height: 70px;
+    border-bottom: dashed black;
+}
+#status-tb-main {
+    display: block;
+    position: absolute;    
+    background: rgb(26, 117, 117);
+    top: 7%;
+    left: 15%;
+    width: 40%;
+    height: 50%;
+    border-radius: 8px;
+    text-align: center;
+    align-content: center;
+    color: black;
+    font-size: 30px;
+    border: solid 2px black;
+}
+#status-tb-main-lvl {
+    display: block;
+    position: absolute;    
+    background: rgb(26, 117, 117);
+    top: 7%;
+    left: 56%;
+    width: 29%;
+    height: 50%;
+    border-radius: 8px;
+    text-align: center;
+    align-content: center;
+    color: black;
+    font-size: 30px;
+    border: solid 2px black;
+}
+#status-tb-health {
+    display: block;
+    position: absolute;    
+    background: rgb(40, 151, 25);
+    top: 63%;
+    left: 15%;
+    width: 70%;
+    height: 30%;
+    border-radius: 10px;
+    text-align: center;
+    align-content: center;
+    color: black;
+    font-size: 20px;
+    border: solid 2px black;
+}
+#status-games {
+    display: block;
+    position: absolute;    
+    background: rgb(26, 117, 117);
+    top: 30%;
+    left: 10%;
+    width: 78%;
+    height: 60%;
+    text-align: center;
+    align-content: center;
+    color: black;
+    font-size: 30px;
+    border: solid 2px black;
+}
+
 #main {
     display: block;
     background-color: rgba(17, 48, 48, 0.6);
@@ -5,10 +112,9 @@
     height: 430px;
     border: solid 3px black;
     position: absolute;    
-    top: 330px;
+    top: 380px;
     left: 457px;
 }
-
 #main-tb {
     display: block;
     background: rgba(19,75,75,1);
@@ -40,7 +146,7 @@
     border: solid 2px black;
     
 }
-#main-resb, button {
+#main-res button {
     display: block;
     width: 100%;
     background: none;
@@ -53,37 +159,41 @@
 }
 
 
+#saveb {
+    position: fixed;
+    bottom: 0px;
+    right: 0px;
+}
 
 
 
-
-.main-bar {
-    width: 300px;
-    height: 20px;
-    background-color: #ccc;
+#miniGameContainer {
     position: relative;
-    margin: 20px auto;
+    width: 100%;
+    height: 60px;  /* Adjust as needed for your game */
+    background-color: #f0f0f0;
 }
 
-/* Small bar that the player controls */
-.small-bar {
-    width: 20px;
+#progressBarContainer {
+    width: 100%;
     height: 20px;
-    background-color: blue;
-    position: absolute;
-    bottom: 0;
-    left: 0; /* Start at the left */
-    transition: left 0.1s ease-out;
+    background-color: #ddd;
+    position: relative;
 }
 
-/* Fish (black line) */
-.fish {
-    width: 10px;
-    height: 5px;
-    background-color: black;
+#progressBar {
+    height: 100%;
+    background-color: #4caf50; /* Green color for the progress */
+    width: 50%;
+}
+
+#fishBar {
     position: absolute;
     top: 0;
-    transition: left 0.1s ease-out;
+    left: 0; /* Initially on the left side */
+    height: 100%;
+    width: 10px;
+    background-color: black;
 }
 
 /* Move button */
@@ -108,11 +218,29 @@
     #main {
         display: block;
         background-color: rgba(17, 48, 48, 0.6);
-        width: 500px;
+        width: 450px;
         height: 430px;
         border: solid 3px black;
         position: absolute;    
-        top: 220px;
+        top: 375px;
         left: 260px;
+    }
+    #status {
+        display: block;
+        background-color: rgba(17, 48, 48, 0.6);
+        width: 500px;
+        height: 350px;
+        border: solid 3px black;
+        position: absolute;    
+        top: 15px;
+        left: 260px;
+        opacity: 0;
+        transition: opacity 0.8s ease-in-out;
+    }
+    body {
+        -webkit-user-select: none; /* Prevent text selection on Webkit browsers (Safari, Chrome) */
+        -moz-user-select: none; /* For Firefox */
+        -ms-user-select: none; /* For IE and Edge */
+        user-select: none; /* Standard syntax */
     }
 }

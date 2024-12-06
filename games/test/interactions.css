@@ -29,3 +29,30 @@ div.s5::before {
 div.s6::before {
     content: "You reeled in the fish!";
 }
+
+div.f1::before {
+    content: "You caught the fish 😁";
+}
+div.f2::before {
+    content: "You lost the fish 😢";
+}
+
+
+
+
+div.enemy::before {
+    content: "Nothing.";
+}
+div.enemy-lvl::after {
+    content: "0";
+}
+div.enemy-hp::after {
+    content: "1/1";
+}
+
+
+
+
+
+
+

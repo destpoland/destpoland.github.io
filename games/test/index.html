@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html>
-<meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
 <div class="animation-area">
     <ul class="box-area">
         <li></li>
@@ -18,15 +18,42 @@
 <link rel="stylesheet" href="styles.css">
 <link rel="stylesheet" href="interactions.css">
 <script src="../../settings.js"></script>
-
-<div id="miniGame" style="display: none;">
-    <div class="main-bar">
-        <div id="smallBar" class="small-bar"></div>
-        <div id="fish" class="fish"></div>
-    </div>
-    <button id="moveButton">Hold to Move</button>
-    <p id="gameStatus">Try to align the bar with the fish!</p>
+<script>function resetData() {    localStorage.removeItem("savedPage");     localStorage.removeItem("autoLoadEnabled");     autoLoadSelect.value = "off";     alert("Save data deleted and auto-load disabled.");  }</script>
+<script>function save() {    const pageContent = content.innerHTML;    localStorage.setItem("savedPage", pageContent);    alert("Page saved!");  };</script>
+<script>function load() {    const savedPage = localStorage.getItem("savedPage");    if (savedPage) {      content.innerHTML = savedPage;      alert("Page loaded!");    } else {      alert("No saved page found.");    }  };</script>
+<div id="content">
+<div id="saveb">
+    <button onclick="save()" id="saveBtn">Save</button>
+    <button onclick="load()" id="loadBtn">Load</button>
+    <button onclick="resetData()" id="deleteBtn">Reset</button>
 </div>
+
+<div id="log">
+    <div id="log-tb">History Log</div>
+</div>
+
+
+<div id="status">
+    <div id="status-tb">
+        <div class="enemy" id="status-tb-main"></div>
+        <div class="enemy-lvl" id="status-tb-main-lvl">lvl: </div>
+        <div class="enemy-hp" id="status-tb-health">hp: </div>
+    </div>
+    <div id="status-games">
+        <div id="miniGame" style="display: none;">
+            <div class="main-bar">
+                <div id="smallBar" class="small-bar"></div>
+                <div id="fish" class="fish"></div>
+            </div>
+            <button id="moveButton">Hold to Move</button>
+            <p id="gameStatus">Try to align the bar with the fish!</p>
+        </div>
+
+    </div>
+
+</div>
+
+
 
 <div id="main">
     <div id="main-tb"></div>
@@ -49,12 +76,14 @@
         
     </div>
 </div>
+</div>
 
 <script>
 function changeState(location) {
     const textElement = document.querySelector('#main-mb .s'); // Target div.s1 for text
     const buttonElements = document.querySelectorAll('#main-res button'); // All buttons in main-res
     const goBackHomeButton = document.querySelector('#goBackHome');
+    const status = document.querySelector('#status');
     // Ensure textElement exists
     if (textElement) {
         // Reset all buttons to be hidden initially
@@ -62,13 +91,17 @@ function changeState(location) {
         buttonElements.forEach((button, index) => {
             console.log(`Button ${index}:`, button.innerText || button.getAttribute('id') || button.className);
         });
-        textElement.classList.remove('s1', 's2', 's3', 's4', 's5', 's6');
+        textElement.classList.remove('s1', 's2', 's3', 's4', 's5', 's6', 'f1', 'f2');
 
         if (location === 'begin') {
             textElement.classList.add('s1');
             
             buttonElements[1].style.display = "inline"; // "Go to the town" button
             buttonElements[2].style.display = "inline"; // "Go Outside" button
+            console.log(status)
+            setTimeout(() => {
+                status.classList.add("show"); // Add the fade-in class
+            }, 10);
         } else if (location === 'town') {
             textElement.classList.add('s3');
 
@@ -92,10 +125,13 @@ function changeState(location) {
             buttonElements[4].style.display = "inline"; // "Go Outside" button
             goBackHomeButton.style.display = "inline"; // "Go Outside" button
         } else if (location === 'goBackF') {
-           textElement.classList.add('s4');
+            textElement.classList.add('s4');
             
             buttonElements[4].style.display = "inline"; // "Go Outside" button
             goBackHomeButton.style.display = "inline"; // "Go Outside" button
+        } 
+        else if (location === 'reel') {
+            startFishingMinigame()
         } 
         
     }
@@ -111,7 +147,7 @@ function startFishing() {
     }
 
     // Proceed with class removal and addition
-    statusElement.classList.remove('s1', 's2', 's3', 's4');
+    statusElement.classList.remove('s1', 's2', 's3', 's4', 's6', 'f1', 'f2');
     statusElement.classList.add('s5');
     console.log("Class changed to s5");
 
@@ -160,12 +196,11 @@ function startFishing() {
         reelIN.addEventListener('click', () => {
             // If user clicks "Reel in", stop the timeout and proceed
             clearTimeout(reelInTimer); // Stop the timer
-            statusElement.classList.remove('s1', 's2', 's3', 's4', 's5');
+            statusElement.classList.remove('s1', 's2', 's3', 's4', 's5', 'f1', 'f2');
             statusElement.classList.add('s6');
             reelIN.style.display = "none"; // Hide the reel button
             statusElement.innerText = '';
             console.log("You reeled in the fish!");
-            goBackF.style.display = "inline";
         });
     }, randomTime * 1000);
 }
@@ -185,6 +220,8 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 </script>
 
+<script src="save.js"></script>
+<script src="fishing.js"></script>
 </html>
 
 
