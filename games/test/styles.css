@@ -1,3 +1,169 @@
+#player {
+    display: block;
+    position: absolute;
+    background-color: rgba(17, 48, 48, 0.6);
+    top: 15px;
+    width: 320px;
+    height: 350px;
+    border: solid 3px black;
+    position: absolute;    
+    left: 125px;
+}
+
+#player-tb {
+    display: block;
+    position: absolute;    
+    background: rgba(19,75,75,1);
+    width: 100%;
+    height: 70px;
+    border-bottom: dashed black;
+    text-align: center;
+    align-content: center;
+    color: black;
+    font-size: 40px;
+}
+#player-tb-main {
+    display: block;
+    position: absolute;    
+    background: rgb(26, 117, 117);
+    top: 7px;
+    left: 10px;
+    width: 80px;
+    height: 30px;
+    border-radius: 8px;
+    text-align: center;
+    align-content: center;
+    color: black;
+    font-size: 26px;
+    border: solid 2px black;
+}
+#player-tb-health {
+    display: block;
+    position: absolute;    
+    background: rgb(40, 151, 25);
+    top: 13px;
+    left: 100px;
+    width: 210px;
+    height: 20px;
+    border-radius: 10px;
+    text-align: center;
+    align-content: center;
+    color: black;
+    font-size: 20px;
+    border: solid 2px black;
+}
+#player-tb-hunger {
+    display: block;
+    position: absolute;    
+    background: rgb(128, 66, 15);
+    top: 40px;
+    left: 100px;
+    width: 210px;
+    height: 20px;
+    border-radius: 10px;
+    text-align: center;
+    align-content: center;
+    color: black;
+    font-size: 20px;
+    border: solid 2px black;
+}
+#player-str {
+    display: block;
+    position: absolute;    
+    background: rgb(26, 117, 117);
+    top: 7px;
+    left: 10px;
+    min-width: 170px;
+    height: 30px;
+    border-radius: 8px;
+    text-align: center;
+    align-content: center;
+    color: black;
+    font-size: 26px;
+    border: solid 2px black;
+}
+#player-def {
+    display: block;
+    position: absolute;    
+    background: rgb(26, 117, 117);
+    top: 44px;
+    left: 10px;
+    min-width: 170px;
+    height: 30px;
+    border-radius: 8px;
+    text-align: center;
+    align-content: center;
+    color: black;
+    font-size: 26px;
+    border: solid 2px black;
+}
+#player-agl {
+    display: block;
+    position: absolute;    
+    background: rgb(26, 117, 117);
+    top: 81px;
+    left: 10px;
+    min-width: 170px;
+    height: 30px;
+    border-radius: 8px;
+    text-align: center;
+    align-content: center;
+    color: black;
+    font-size: 26px;
+    border: solid 2px black;
+}
+#player-int {
+    display: block;
+    position: absolute;    
+    background: rgb(26, 117, 117);
+    top: 118px;
+    left: 10px;
+    min-width: 170px;
+    height: 30px;
+    border-radius: 8px;
+    text-align: center;
+    align-content: center;
+    color: black;
+    font-size: 26px;
+    border: solid 2px black;
+}
+
+#inventory {
+    display: block;
+    position: absolute;
+    background-color: rgba(17, 48, 48, 0.6);
+    top: 380px;
+    width: 320px;
+    height: 430px;
+    border: solid 3px black;
+    position: absolute;    
+    left: 125px;
+}
+#inventory-tb{
+    display: block;
+    position: absolute;    
+    background: rgba(19,75,75,1);
+    width: 100%;
+    height: 70px;
+    border-bottom: dashed black;
+    text-align: center;
+    align-content: center;
+    color: black;
+    font-size: 50px;
+}
+#inventory-section{
+    display: block;
+    position: absolute;    
+    background: none;
+    top: 74px;
+    width: 100%;
+    height: 82.8%;
+}
+
+
+
+
+
 #log {
     display: block;
     background-color: rgba(17, 48, 48, 0.6);
@@ -20,7 +186,23 @@
     color: black;
     font-size: 50px;
 }
+#log-section{
+    display: block;
+    position: absolute;    
+    background: none;
+    top: 72px;
+    width: 100%;
+    height: 91%;
+    overflow-y: scroll;
+    overflow-x: hidden;
+}
+#log-section::-webkit-scrollbar { 
+    display: none;  /* Safari and Chrome */
+}
 
+.logtext + .logtext{
+    margin-top: 2px;
+  }
 
 #status {
     display: block;
@@ -103,6 +285,7 @@
     color: black;
     font-size: 30px;
     border: solid 2px black;
+    border-radius: 10px;
 }
 
 #main {

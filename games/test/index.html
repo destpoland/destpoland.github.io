@@ -19,18 +19,57 @@
 <link rel="stylesheet" href="interactions.css">
 <script src="../../settings.js"></script>
 <script>function resetData() {    localStorage.removeItem("savedPage");     localStorage.removeItem("autoLoadEnabled");     autoLoadSelect.value = "off";     alert("Save data deleted and auto-load disabled.");  }</script>
-<script>function save() {    const pageContent = content.innerHTML;    localStorage.setItem("savedPage", pageContent);    alert("Page saved!");  };</script>
-<script>function load() {    const savedPage = localStorage.getItem("savedPage");    if (savedPage) {      content.innerHTML = savedPage;      alert("Page loaded!");    } else {      alert("No saved page found.");    }  };</script>
-<div id="content">
+
+<script>
+function load() {    
+    const savedPage = localStorage.getItem("savedItems");    
+    const savedStats = localStorage.getItem("savedStats");  
+        if (savedPage) {  
+        items = JSON.parse(savedPage)
+        console.log(items)
+        addActions()
+        updateInventory()
+        }
+        if (savedStats) {
+        stats = JSON.parse(savedStats)
+        console.log(stats)
+        updateStats()
+        }
+    };
+</script>
+
 <div id="saveb">
-    <button onclick="save()" id="saveBtn">Save</button>
     <button onclick="load()" id="loadBtn">Load</button>
     <button onclick="resetData()" id="deleteBtn">Reset</button>
 </div>
-
+<div id="content">
 <div id="log">
     <div id="log-tb">History Log</div>
+    <div id="log-section"></div>
 </div>
+
+
+<div id="inventory">
+    <div id="inventory-tb">Inventory</div>
+    <div id="inventory-section"></div>
+</div>
+
+<div id="player">
+    <div id="player-tb">
+        <div class="player" id="player-tb-main">You</div>
+        <div class="player-hp" id="player-tb-health">health: </div>
+        <div class="player-hunger" id="player-tb-hunger">hunger: </div>
+    </div>
+    <div id="inventory-section">
+        <div id="player-str">Strength: </div>
+        <div id="player-def">Defense: </div>
+        <div id="player-agl">Agility: </div>
+        <div id="player-int">Intelligence: </div>
+
+    </div>
+</div>
+
+
 
 
 <div id="status">
@@ -215,12 +254,15 @@ document.addEventListener('DOMContentLoaded', () => {
     const parent = goBackHomeButton.parentElement;
 
     if (goBackHomeButton && parent) {
-        parent.appendChild(goBackHomeButton); // Moves the button to the end of its container
+        parent.appendChild(goBackHomeButton);
     }
 });
 </script>
 
 <script src="save.js"></script>
+<script src="history.js"></script>
+<script src="player.js"></script>
+<script src="inventory.js"></script>
 <script src="fishing.js"></script>
 </html>
 

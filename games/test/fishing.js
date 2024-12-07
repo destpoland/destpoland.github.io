@@ -1,15 +1,13 @@
+const fishingRods = [
+    { name: 'Basic Rod', stayStillFactor: 0, progressSpeedFactor: 0.4, blueBoxWidth: 50 },
+    { name: 'Advanced Rod', stayStillFactor: 0.05, progressSpeedFactor: 0.3, blueBoxWidth: 70 },
+    { name: 'Master Rod', stayStillFactor: 0.1, progressSpeedFactor: 0.2, blueBoxWidth: 100 }
+];
+
+var selectedRod = fishingRods[0];
+
 function startFishingMinigame() {
-    // Define fishing rods with increased luck
-    const fishingRods = [
-        { name: 'Basic Rod', stayStillFactor: 0, progressSpeedFactor: 0.4, blueBoxWidth: 50 },
-        { name: 'Advanced Rod', stayStillFactor: 0.05, progressSpeedFactor: 0.3, blueBoxWidth: 70 },
-        { name: 'Master Rod', stayStillFactor: 0.1, progressSpeedFactor: 0.2, blueBoxWidth: 90 }
-    ];
 
-    // Select a rod (could be based on player's choice)
-    const selectedRod = fishingRods[0]; // For example, Basic Rod
-
-    // Fish categories with their weights and rarities
     const fishTypes = {
         Common: [
             { name: 'Salmon', baseSpeed: 1.5, standStillChance: 0.5, speedIncreaseRate: 0.1, weight: 1 },
@@ -264,35 +262,37 @@ function startFishingMinigame() {
             progress -= selectedRod.progressSpeedFactor; // Slow down progress decrease
         }
 
-        // Update progress bar
         progressBar.style.width = `${progress}%`;
 
-        // End the game when progress reaches 100 or goes below 0
+
         if (progress >= 100) {
             gameEnded = true;
             console.log(`You caught a ${fish.name}!`);
-            miniGameContainer.style.display = 'none'; // Hide game when fish is caught
+            miniGameContainer.style.display = 'none'; 
             progressBarContainer.style.display = 'none';
             statusElement.classList.remove('s1', 's2', 's3', 's4', 's5', 's6');
             statusElement.classList.add('f1');
+            history(`You reeled in a ${fish.name}`)
+            addItem(`${fish.name}`)
             goBackF.style.display = "inline";
         } else if (progress <= 0) {
             progressAtZeroTime++;
             if (progressAtZeroTime > 100) {
                 gameEnded = true;
                 console.log(`Game Over! No ${fish.name} caught.`);
-                miniGameContainer.style.display = 'none'; // Hide game when progress reaches 0
+                miniGameContainer.style.display = 'none'; 
                 progressBarContainer.style.display = 'none';
                 statusElement.classList.remove('s1', 's2', 's3', 's4', 's5', 's6');
                 statusElement.classList.add('f2');
+                history('Fish got away')
                 goBackF.style.display = "inline";
             }
         }
 
-        // Continue game loop
+
         requestAnimationFrame(gameLoop);
     };
 
-    // Start game loop
+
     gameLoop();
 }
