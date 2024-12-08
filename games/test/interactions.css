@@ -6,12 +6,20 @@ button.s::before {
     content: "->";
 }
 
+button.b::before {
+    content: "->";
+}
+
+div.b1::before {
+    content: "You have woken up on the side of the road.";
+}
+
 div.s1::before {
-    content: "You are at home. What will you do?";
+    content: "You are on the side of the road.";
 }
 
 div.s2::before {
-    content: "You are at outside. What will you do?";
+    content: "You are outside. What will you do?";
 }
 
 div.s3::before {
@@ -37,6 +45,27 @@ div.f2::before {
     content: "You lost the fish 😢";
 }
 
+
+div.Begging::before {
+    content: "You are begging";
+}
+div.StoppedBegging::before {
+    content: "You stopped begging";
+}
+
+/* District Location Names */
+div.District1Loc::before {
+    content: "You are at District 1";
+}
+div.District2Loc::before {
+    content: "You are at District 2";
+}
+div.District3Loc::before {
+    content: "You are at District 3";
+}
+div.District4Loc::before {
+    content: "You are at District 4";
+}
 
 
 

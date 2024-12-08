@@ -18,12 +18,19 @@
 <link rel="stylesheet" href="styles.css">
 <link rel="stylesheet" href="interactions.css">
 <script src="../../settings.js"></script>
-<script>function resetData() {    localStorage.removeItem("savedPage");     localStorage.removeItem("autoLoadEnabled");     autoLoadSelect.value = "off";     alert("Save data deleted and auto-load disabled.");  }</script>
 
 <script>
 function load() {    
     const savedPage = localStorage.getItem("savedItems");    
     const savedStats = localStorage.getItem("savedStats");  
+    const savedCash = localStorage.getItem("savedCash");  
+    const savedMaxHealth = localStorage.getItem("savedMaxHealth");  
+    const savedCurrentHealth = localStorage.getItem("savedCurrentHealth");  
+    const savedMaxHunger = localStorage.getItem("savedMaxHunger");  
+    const savedCurrentHunger = localStorage.getItem("savedCurrentHunger");
+    const savedState =   localStorage.getItem("savedState");
+    const savedEquippedItem = JSON.parse(localStorage.getItem("savedEquippedItem"));
+    const equippetdText = document.getElementById('inventory-tb-EquippedItem');
         if (savedPage) {  
         items = JSON.parse(savedPage)
         console.log(items)
@@ -35,12 +42,51 @@ function load() {
         console.log(stats)
         updateStats()
         }
+        if (savedCash) {
+        stats = JSON.parse(savedCash)
+        console.log(savedCash)
+        updateCash()
+        }
+        if (savedMaxHealth) {
+        HealthMax = JSON.parse(savedMaxHealth)
+        console.log(savedMaxHealth)
+        }
+        if (savedCurrentHealth) {
+        HealthAmount = JSON.parse(savedCurrentHealth)
+        console.log(savedCurrentHealth)
+        updateHealth() 
+        }
+        if (savedMaxHunger) {
+        HungerMax = JSON.parse(savedMaxHunger)
+        console.log(savedMaxHunger)
+        }
+        if (savedCurrentHunger) {
+        HungerMax = JSON.parse(savedCurrentHunger)
+        console.log(savedCurrentHunger)
+        updateHunger()
+        }
+        if (savedState) {
+            if (savedState === 'reel') {
+                changeState('goBackF')
+            } else { 
+                changeState(savedState)
+            }
+        }
+        if (savedEquippedItem) {
+            equippetdText.innerHTML = savedEquippedItem
+            if (equippetdText.innerHTML.includes("Rod")) {
+                console.log(savedEquippedItem)
+            }
+            const item = items.find(i => i.name === savedEquippedItem.name);
+            if (item) {
+            itemEquip(item); // Re-equip the item
+            }
+        }
     };
 </script>
 
 <div id="saveb">
     <button onclick="load()" id="loadBtn">Load</button>
-    <button onclick="resetData()" id="deleteBtn">Reset</button>
 </div>
 <div id="content">
 <div id="log">
@@ -50,15 +96,25 @@ function load() {
 
 
 <div id="inventory">
-    <div id="inventory-tb">Inventory</div>
+    <div id="inventory-tb">
+        <div id="inventory-tb-name">Inventory</div>
+        <div id="inventory-tb-EquippedItem"></div>
+    </div>
     <div id="inventory-section"></div>
 </div>
 
-<div id="player">
+<div id="player"> 
     <div id="player-tb">
         <div class="player" id="player-tb-main">You</div>
-        <div class="player-hp" id="player-tb-health">health: </div>
-        <div class="player-hunger" id="player-tb-hunger">hunger: </div>
+        <div class="player" id="player-tb-cash"> 0¥</div>
+        <div id="player-tb-healthBar">
+            <div id="health-overlay-player">health:</div>
+            <div class="player-hp" id="player-tb-health"> </div>
+        </div>
+        <div class="player-hunger" id="player-tb-hungerBar">
+            <div id="hunger-overlay-player">hunger:</div>
+            <div class="player-hunger" id="player-tb-hunger"> </div>
+        </div>
     </div>
     <div id="inventory-section">
         <div id="player-str">Strength: </div>
@@ -87,6 +143,9 @@ function load() {
             <button id="moveButton">Hold to Move</button>
             <p id="gameStatus">Try to align the bar with the fish!</p>
         </div>
+        <div id="game-container" style="display: none;">
+            <img id="bucket" src="images/tincan.png" alt="Bucket">
+          </div>
 
     </div>
 
@@ -98,20 +157,28 @@ function load() {
     <div id="main-tb"></div>
     <div id="main-mb"><div class="s"></div></div>
     <div id="main-res">
+         <!-- Starting Buttons -->
         <button class="s" onclick="changeState('begin')"></button>
-         <!-- Home Buttons -->
+         <!-- Street Buttons -->
         <button class="s1" style="display: none;" onclick="changeState('town')">Go to the town</button>
         <button class="s1" style="display: none;" onclick="changeState('outside')">Go outside</button>
         <!-- Outside Buttons -->
         <button class="s1" style="display: none;" onclick="changeState('pond')">Go over to the pond.</button>
-        <button id="goBackHome" class="s1" style="display: none;" onclick="changeState('home')">Go back home</button>
+        <button id="goBackHome" class="s1" style="display: none;" onclick="changeState('home')">Go back to the street</button>
         <!-- Pond Buttons -->
-        <button class="s1" style="display: none;" onclick="cast()">Cast your rod.</button>
+        <button id="castRod" class="s1" style="display: none;" onclick="cast()"></button>
         <button id="reelIN" class="s1" style="display: none;" onclick="changeState('reel');">Reel in your rod!</button>
-        <button id="goBackF" class="s1" style="display: none;" onclick="changeState('goBackF');">Go Back</button>
-
+        <button id="goBackF" class="s1" style="display: none;" onclick="changeState('goBackF');">Go back</button>
+        <button id="goBackOutside" class="s1" style="display: none;" onclick="changeState('goBackOutside');">Go back outside</button>
         <!-- Town Buttons -->
+        <button id="District1Loc" style="display: none;" onclick="changeState('District1');">Go to District 1</button>
+        <button id="District2Loc" style="display: none;" onclick="changeState('District2');">Go to District 2</button>
+        <button id="District3Loc" style="display: none;" onclick="changeState('District3');">Go to District 3</button>
+        <button id="District4Loc" style="display: none;" onclick="changeState('District4');">Go to District 4</button>
 
+        <button id="goBackTown" style="display: none;" onclick="changeState('goBackTown');">Go back to town</button>
+        <!--Begging-->
+        <button id="beg" class="s1" style="display: none;" onclick="beg()">Start begging</button>
         
     </div>
 </div>
@@ -122,7 +189,12 @@ function changeState(location) {
     const textElement = document.querySelector('#main-mb .s'); // Target div.s1 for text
     const buttonElements = document.querySelectorAll('#main-res button'); // All buttons in main-res
     const goBackHomeButton = document.querySelector('#goBackHome');
+    const goBackF = document.querySelector('#goBackF');
+    const goBackTown = document.querySelector('#goBackTown');
     const status = document.querySelector('#status');
+    const begButton = document.querySelector('#beg');
+    const savedState = location;
+    localStorage.setItem("savedState", savedState);   
     // Ensure textElement exists
     if (textElement) {
         // Reset all buttons to be hidden initially
@@ -130,10 +202,10 @@ function changeState(location) {
         buttonElements.forEach((button, index) => {
             console.log(`Button ${index}:`, button.innerText || button.getAttribute('id') || button.className);
         });
-        textElement.classList.remove('s1', 's2', 's3', 's4', 's5', 's6', 'f1', 'f2');
+        textElement.className = 's';
 
         if (location === 'begin') {
-            textElement.classList.add('s1');
+            textElement.classList.add('b1');
             
             buttonElements[1].style.display = "inline"; // "Go to the town" button
             buttonElements[2].style.display = "inline"; // "Go Outside" button
@@ -141,11 +213,24 @@ function changeState(location) {
             setTimeout(() => {
                 status.classList.add("show"); // Add the fade-in class
             }, 10);
+        } else if (location === 'wakeup') {
+            textElement.classList.add('s3');
+
+            
+            // Show specific buttons for 'town' state
+            buttonElements[2].style.display = "inline"; // "Go to the town" button
+            buttonElements[3].style.display = "inline"; // "Go Outside" button
+
+            buttonElements[0].style.display = "none";
         } else if (location === 'town') {
             textElement.classList.add('s3');
 
             
             // Show specific buttons for 'town' state
+            buttonElements[8].style.display = "inline";
+            buttonElements[9].style.display = "inline";
+            buttonElements[10].style.display = "inline";
+            buttonElements[11].style.display = "inline";
             goBackHomeButton.style.display = "inline"; // "Go back home" button
         } else if (location === 'outside') {
             textElement.classList.add('s2');
@@ -154,23 +239,67 @@ function changeState(location) {
             goBackHomeButton.style.display = "inline";
             buttonElements[3].style.display = "inline"; // "Go to the pond" button
         } else if (location === 'home') {
-           textElement.classList.add('s1');
+            textElement.classList.add('s1');
             
             buttonElements[1].style.display = "inline"; // "Go to the town" button
             buttonElements[2].style.display = "inline"; // "Go Outside" button
+            console.log(equippetdText.innerHTML)
+            if(equippetdText.innerHTML === "Tin Can") {
+                begButton.style.display = "inline";
+            }
+
         } else if (location === 'pond') {
            textElement.classList.add('s4');
             
-            buttonElements[4].style.display = "inline"; // "Go Outside" button
-            goBackHomeButton.style.display = "inline"; // "Go Outside" button
+            buttonElements[7].style.display = "inline"; // "Go Outside" button
+            updateCastButton() // "Go Outside" button
         } else if (location === 'goBackF') {
+            textElement.innerText = ''
             textElement.classList.add('s4');
-            
             buttonElements[4].style.display = "inline"; // "Go Outside" button
             goBackHomeButton.style.display = "inline"; // "Go Outside" button
+        } else if (location === 'goBackOutside') {
+            textElement.classList.add('s2');
+            
+            // Show specific buttons for 'outside' state
+            goBackHomeButton.style.display = "inline";
+            buttonElements[3].style.display = "inline"; // "Go to the pond" button
         } 
         else if (location === 'reel') {
             startFishingMinigame()
+        } 
+        else if (location === 'beg') {
+            textElement.classList.add('Begging');
+            
+            goBackHomeButton.style.display = "inline";
+        } 
+        else if (location === 'goBackTown') {
+            textElement.classList.add('s3');
+
+            buttonElements[8].style.display = "inline";
+            buttonElements[9].style.display = "inline";
+            buttonElements[10].style.display = "inline";
+            buttonElements[11].style.display = "inline";
+            goBackHomeButton.style.display = "inline"; // "Go back home" button
+        } 
+
+        // All The Districts
+        else if (location === 'District1') {
+            textElement.classList.add('District1Loc');
+            goBackTown.style.display = "inline";
+        } else if (location === 'District2') {
+            textElement.classList.add('District2Loc');
+
+            goBackTown.style.display = "inline";
+        } 
+        else if (location === 'District3') {
+            textElement.classList.add('District3Loc');
+
+            goBackTown.style.display = "inline";
+        } else if (location === 'District4') {
+            textElement.classList.add('District4Loc');
+
+            goBackTown.style.display = "inline";
         } 
         
     }
@@ -186,7 +315,7 @@ function startFishing() {
     }
 
     // Proceed with class removal and addition
-    statusElement.classList.remove('s1', 's2', 's3', 's4', 's6', 'f1', 'f2');
+    statusElement.classList.remove('s1', 's2', 's3', 's4', 's6', 'f1', 'f2', 'Begging', 'StoppedBegging');
     statusElement.classList.add('s5');
     console.log("Class changed to s5");
 
@@ -229,6 +358,7 @@ function startFishing() {
             statusElement.innerText = 'The fish got away!'; // Message for fish escaping
             reelIN.style.display = "none"; // Hide the reel button
             console.log("The fish got away!");
+            goBackF.style.display = "inline";
         }, reelInTimeout * 1000);
 
         // Add an event listener to the "Reel in" button
@@ -248,6 +378,10 @@ function cast() {
     changeState('cast');
     startFishing();
 }
+function beg() {
+    changeState('beg');
+    startBeggingGame();
+}
 
 document.addEventListener('DOMContentLoaded', () => {
     const goBackHomeButton = document.querySelector('button[onclick="changeState(\'home\')"]');
@@ -262,7 +396,9 @@ document.addEventListener('DOMContentLoaded', () => {
 <script src="save.js"></script>
 <script src="history.js"></script>
 <script src="player.js"></script>
-<script src="inventory.js"></script>
+<script src="cash.js"></script>
+<script src="inventory.js"></script>\
+<script src="catcher.js"></script>
 <script src="fishing.js"></script>
 </html>
 

@@ -26,21 +26,36 @@
     display: block;
     position: absolute;    
     background: rgb(26, 117, 117);
-    top: 7px;
+    top: 4px;
     left: 10px;
     width: 80px;
-    height: 30px;
+    height: 25px;
     border-radius: 8px;
     text-align: center;
     align-content: center;
     color: black;
-    font-size: 26px;
+    font-size: 23px;
     border: solid 2px black;
 }
-#player-tb-health {
+#player-tb-cash {
     display: block;
     position: absolute;    
-    background: rgb(40, 151, 25);
+    background: rgb(26, 117, 117);
+    top: 39px;
+    left: 10px;
+    width: 80px;
+    height: 25px;
+    border-radius: 8px;
+    text-align: center;
+    align-content: center;
+    color: black;
+    font-size: 23px;
+    border: solid 2px black;
+}
+#player-tb-healthBar {
+    display: block;
+    position: absolute;    
+    background: #887f7f;
     top: 13px;
     left: 100px;
     width: 210px;
@@ -52,10 +67,27 @@
     font-size: 20px;
     border: solid 2px black;
 }
-#player-tb-hunger {
+#player-tb-health {
+    background: green;
+    width: 100%;
+    height: 98%;
+    border-radius: 7px;
+    font-size: 20px;
+}
+#health-overlay-player {
+    background-color: none;
+    position: absolute;
+    z-index:100;
+    text-align: center;
+    align-content: center;
+    color: black;
+    border-radius: 7px;
+    width: 100%;
+}
+#player-tb-hungerBar {
     display: block;
     position: absolute;    
-    background: rgb(128, 66, 15);
+    background: #887f7f;
     top: 40px;
     left: 100px;
     width: 210px;
@@ -66,6 +98,23 @@
     color: black;
     font-size: 20px;
     border: solid 2px black;
+}
+#hunger-overlay-player {
+    background-color: none;
+    position: absolute;
+    z-index:100;
+    text-align: center;
+    align-content: center;
+    color: black;
+    border-radius: 7px;
+    width: 100%;
+}
+#player-tb-hunger {
+    background: rgb(112, 50, 21);
+    width: 100%;
+    height: 98%;
+    border-radius: 7px;
+    font-size: 20px;
 }
 #player-str {
     display: block;
@@ -151,6 +200,37 @@
     color: black;
     font-size: 50px;
 }
+#inventory-tb-name{
+    display: block;
+    position: absolute;    
+    background: rgb(26, 117, 117);
+    top: 3px;
+    left: 80px;
+    min-width: 154px;
+    height: 25px;
+    border-radius: 8px;
+    text-align: center;
+    align-content: center;
+    color: black;
+    font-size: 23px;
+    border: solid 2px black;
+}
+#inventory-tb-EquippedItem{
+    display: block;
+    position: absolute;    
+    background: rgb(26, 117, 117);
+    top: 35px;
+    left: 80px;
+    min-width: 154px;
+    height: 25px;
+    border-radius: 8px;
+    text-align: center;
+    align-content: center;
+    color: black;
+    font-size: 23px;
+    border: solid 2px black;
+}
+
 #inventory-section{
     display: block;
     position: absolute;    
@@ -321,13 +401,17 @@
     display: block;
     left: -2px;
     width: 100%;
+    height: 285px;
     border-bottom: black;
     text-align: center;
-    align-content: center;
     color: green;
     font-size: 25px;
     border: solid 2px black;
+    overflow-y: scroll;
     
+}
+#main-res::-webkit-scrollbar { 
+     display: none;
 }
 #main-res button {
     display: block;
@@ -338,7 +422,7 @@
     color: green;
     font-size: 25px;
     border: solid 2px black;
-    
+    overflow-y: hidden;
 }
 
 
@@ -391,39 +475,26 @@
 }
 
 
+  
+#bucket {
+    position: absolute;
+    bottom: 10px;
+    left: 50%;
+    width: 60px;
+    height: 50px;
+    background-color: none;
+    transform: translateX(-50%);
+  }
+  
+  .CatcherItem {
+    position: absolute;
+    top: -30px;
+    width: 10px;
+    height: 10px;
+    background-color: none;
+    border-radius: 50%;
+  }
+  
 
 
 
-
-
-
-@media (pointer:none), (pointer:coarse) {
-    #main {
-        display: block;
-        background-color: rgba(17, 48, 48, 0.6);
-        width: 450px;
-        height: 430px;
-        border: solid 3px black;
-        position: absolute;    
-        top: 375px;
-        left: 260px;
-    }
-    #status {
-        display: block;
-        background-color: rgba(17, 48, 48, 0.6);
-        width: 500px;
-        height: 350px;
-        border: solid 3px black;
-        position: absolute;    
-        top: 15px;
-        left: 260px;
-        opacity: 0;
-        transition: opacity 0.8s ease-in-out;
-    }
-    body {
-        -webkit-user-select: none; /* Prevent text selection on Webkit browsers (Safari, Chrome) */
-        -moz-user-select: none; /* For Firefox */
-        -ms-user-select: none; /* For IE and Edge */
-        user-select: none; /* Standard syntax */
-    }
-}

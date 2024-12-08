@@ -1,29 +1,39 @@
 
-
+var equippedItem = null;
 const itemContainer = document.getElementById('inventory-section');
+const equippetdText = document.getElementById('inventory-tb-EquippedItem');
+const savedState =   localStorage.getItem("savedState");
+
 
 let items = [
     {
       name: 'Basic Rod',
       amount: 1,
       actions: [
-        { label: 'Equip', onClick: equipRod }
+        { label: 'Equip', onClick: equipRod, onClick: itemEquip, isEquipped: false }
       ]
     },
     {
       name: 'Advanced Rod',
       amount: 1,
       actions: [
-        { label: 'Equip', onClick: equipRod }
+        { label: 'Equip', onClick: equipRod, onClick: itemEquip, isEquipped: false }
       ]
     },
     {
        name: 'Master Rod',
        amount: 1,
        actions: [
-        { label: 'Equip', onClick: equipRod }
+        { label: 'Equip', onClick: equipRod, isEquipped: false }
        ]
-      },
+    },
+    {
+       name: 'Tin Can',
+       amount: 1,
+       actions: [
+        { label: 'Equip', onClick: equipCan, isEquipped: false }
+       ]
+    },
     {
       name: 'Shoe',
       amount: 0,
@@ -48,7 +58,31 @@ let items = [
     name: 'Tuna',
     amount: 0,
     },
+    {
+    name: 'Paper Clip',
+    amount: 0,
+    },
+    {
+    name: 'Flint',
+    amount: 0,
+    }
   ];
+
+function itemEquip(item) {
+  items.forEach(i => i.isEquipped = false);
+  item.isEquipped = true;
+  localStorage.setItem("savedEquippedItem", JSON.stringify(item));    
+  equippedItem = item;
+  equippetdText.innerHTML = `${item.name}`
+  console.log(`${item.name} is now equipped.`);
+  if (savedState === "pond") {
+  updateCastButton()
+  }
+}
+
+function equipCan() {
+  console.log("ee")
+}
 
 function equipRod(item) {
     if (item.name === 'Basic Rod') {
@@ -64,6 +98,17 @@ function equipRod(item) {
     
 }
 
+function updateCastButton() {
+  const castButton = document.querySelector('#castRod');
+  if (equippedItem === null) {
+    castButton.style.display = 'none';
+  }
+  else if (equippedItem.name === "Basic Rod" || "Advanced Rod" || "Master Rod") {
+      castButton.style.display = 'inline-block';
+      castButton.textContent = `Cast ${equippedItem.name}?`;
+  } 
+}
+updateCastButton()
 
 function addItem(item) {
     const name = items.find(i => i.name === item);
@@ -73,7 +118,6 @@ function addItem(item) {
     console.log(item)
     updateInventory()
     }
-    console.log("dg")
 }
 
 
@@ -137,17 +181,22 @@ function addActions() {
         switch (item.name) {
             case 'Basic Rod':
             item.actions = [
-              { label: 'Equip', onClick: equipRod }
+              { label: 'Equip', onClick: () => { equipRod(items[0]); itemEquip(items[0]); }}
             ];
             break;
             case 'Advanced Rod':
             item.actions = [
-              { label: 'Equip', onClick: equipRod }
+              { label: 'Equip', onClick: () => { equipRod(items[1]); itemEquip(items[1]); }}
             ];
             break;
             case 'Master Rod':
             item.actions = [
-              { label: 'Equip', onClick: equipRod }
+              { label: 'Equip', onClick: () => { equipRod(items[2]); itemEquip(items[2]); }}
+            ];
+            break;
+            case 'Tin Can':
+            item.actions = [
+              { label: 'Equip', onClick: () => { itemEquip(items[3]); }}
             ];
             break;
         }
