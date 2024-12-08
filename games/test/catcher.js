@@ -136,6 +136,23 @@ const catcherItems = [
     bucket.style.left = `${clampedX}px`;
   });
   
+  // Add touch controls
+  gameContainer.addEventListener("touchmove", (e) => {
+    const rect = gameContainer.getBoundingClientRect();
+    
+    // Get the touch point's X coordinate
+    const touchX = e.touches[0].clientX - rect.left;
+  
+    // Set bucket position directly to touchX, clamping within bounds
+    const bucketWidth = bucket.offsetWidth;
+    const clampedX = Math.max(0, Math.min(touchX, rect.width - bucketWidth));
+    bucket.style.left = `${clampedX}px`;
+  
+    // Prevent default to avoid scrolling on touch
+    e.preventDefault();
+  });
+  
+  
   function increaseDifficulty() {
     if (!gameRunning) return;
   
