@@ -4,7 +4,6 @@ const agl = document.getElementById('player-agl');
 const int = document.getElementById('player-int');
 
 
-
 let stats = [
     {name: 'Strength', level: 0},
     {name: 'Defense', level: 0},
@@ -13,13 +12,15 @@ let stats = [
 ]
 
 function increaseStats(stat, statAmount) {
+    console.log(stats)
     const SelectedStat = stats.find(i => i.name === stat);
     if (SelectedStat) { 
         SelectedStat.level += statAmount
     }
-    updateStats()
     
+    updateStats()
 }
+
 
 function updateStats() {
     stats.forEach(stat => {
