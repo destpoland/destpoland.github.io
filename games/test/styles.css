@@ -56,7 +56,7 @@
     display: block;
     position: absolute;    
     background: #887f7f;
-    top: 13px;
+    top: 7px;
     left: 100px;
     width: 210px;
     height: 20px;
@@ -88,7 +88,7 @@
     display: block;
     position: absolute;    
     background: #887f7f;
-    top: 40px;
+    top: 42px;
     left: 100px;
     width: 210px;
     height: 20px;
@@ -239,9 +239,6 @@
     width: 100%;
     height: 82.8%;
 }
-
-
-
 
 
 #log {
@@ -401,17 +398,33 @@
     display: block;
     left: -2px;
     width: 100%;
-    height: 285px;
+    height: 250px;
     border-bottom: black;
     text-align: center;
     color: green;
     font-size: 25px;
     border: solid 2px black;
-    overflow-y: scroll;
-    
+    overflow-y: scroll; 
 }
+#ActionsTab {
+    position: absolute;
+    display: block;
+    left: -2px;
+    width: 100%;
+    height: 250px;
+    border-bottom: black;
+    text-align: center;
+    color: green;
+    font-size: 25px;
+    border: solid 2px black;
+    overflow-y: scroll; 
+}
+
 #main-res::-webkit-scrollbar { 
      display: none;
+}
+#ActionsTab::-webkit-scrollbar { 
+    display: none;
 }
 #main-res button {
     display: block;
@@ -424,7 +437,94 @@
     border: solid 2px black;
     overflow-y: hidden;
 }
+#ActionsTab button {
+    display: block;
+    width: 100%;
+    background: none;
+    height: 50px;
+    border: solid 2px black;
+    color: green;
+    font-size: 25px;
+    border: solid 2px black;
+    overflow-y: hidden;
+}
 
+#SkillsTab {
+    position: absolute;
+    display: block;
+    left: -2px;
+    width: 100%;
+    height: 250px;
+    border-bottom: black;
+    text-align: center;
+    color: green;
+    font-size: 25px;
+    border: solid 2px black;
+    overflow-y: scroll; 
+}
+#SkillsTab button {
+    display: block;
+    width: 100%;
+    background: none;
+    height: 50px;
+    border: solid 2px black;
+    color: green;
+    font-size: 25px;
+    border: solid 2px black;
+    overflow-y: hidden;
+}
+#SkillsTab::-webkit-scrollbar { 
+    display: none;
+}
+
+#AssemblyTab {
+    position: absolute;
+    display: block;
+    left: -2px;
+    width: 100%;
+    height: 250px;
+    border-bottom: black;
+    text-align: center;
+    color: green;
+    font-size: 25px;
+    border: solid 2px black;
+    overflow-y: scroll; 
+}
+#AssemblyTab button {
+    display: block;
+    width: 100%;
+    background: none;
+    height: 50px;
+    border: solid 2px black;
+    color: green;
+    font-size: 25px;
+    border: solid 2px black;
+    overflow-y: hidden;
+}
+#AssemblyTab::-webkit-scrollbar { 
+    display: none;
+}
+
+#main-bt {
+    display: flex;
+    position: absolute;
+    background: rgba(19,75,75,1);
+    width: 100%;
+    height: 32px;
+    top: 395px;
+    border-top: solid black;
+}
+#main-bt-actions {
+    position: static;
+    background: rgba(19,75,75,1);
+    width: 33.3%;
+    top: -5px;
+    height: 100%;
+    border: solid 1px black;
+    text-align: center;
+    color: black;
+    font-size: 30px;
+}
 
 #saveb {
     position: fixed;
@@ -496,5 +596,24 @@
   }
   
 
+.garbage {
+    position: absolute;
+    width: 50px;
+    height: 50px;
+    background-size: cover;
+    cursor: grab;
+}
+#redBar {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 50px;
+    background-color: none;
+    background-image: url('images/dumpster.png');
+    background-size: cover; /* Makes the image cover the entire div */
+    background-position: center; /* Centers the image */
+    background-repeat: no-repeat;
+}
 
 

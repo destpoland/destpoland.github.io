@@ -21,7 +21,6 @@
 
 <script>
 function load() {    
-    updateInventory()
     const savedPage = localStorage.getItem("savedItems");    
     const savedStats = localStorage.getItem("savedStats");  
     const savedCash = localStorage.getItem("savedCash");  
@@ -85,6 +84,7 @@ function load() {
         }
     };
 </script>
+<script>window.onload = load;</script>
 
 <div id="saveb">
     <button onclick="load()" id="loadBtn">Load</button>
@@ -94,7 +94,6 @@ function load() {
     <div id="log-tb">History Log</div>
     <div id="log-section"></div>
 </div>
-
 
 <div id="inventory">
     <div id="inventory-tb">
@@ -126,9 +125,6 @@ function load() {
     </div>
 </div>
 
-
-
-
 <div id="status">
     <div id="status-tb">
         <div class="enemy" id="status-tb-main"></div>
@@ -147,12 +143,14 @@ function load() {
         <div id="game-container" style="display: none;">
             <img id="bucket" src="images/tincan.png" alt="Bucket">
           </div>
+        <div id="garbage-game-container" style="display: none;">
+            <div id="redBar" src="images/tincan.png"></div>
+        </div>
+        
 
     </div>
 
 </div>
-
-
 
 <div id="main">
     <div id="main-tb"></div>
@@ -182,6 +180,18 @@ function load() {
         <button id="beg" class="s1" style="display: none;" onclick="beg()">Start begging</button>
         
     </div>
+    <div id="main-bt">
+        <button id="main-bt-actions" onclick="openSkills()">Skills</button>
+        <button id="main-bt-actions" onclick="openAssembly()">Assembly</button>
+        <button id="main-bt-actions" onclick="openActions()">Actions</button>
+    </div>
+    <div id="ActionsTab" style="display: none;">
+        <button id="Scavenge" class="s1" style="display: none;" onclick="startGarbageGame()">Scavenge</button>
+    </div>
+    <div id="SkillsTab" style="display: none;">
+    </div>
+    <div id="AssemblyTab" style="display: none;">
+    </div>
 </div>
 </div>
 
@@ -200,9 +210,7 @@ function changeState(location) {
     if (textElement) {
         // Reset all buttons to be hidden initially
         buttonElements.forEach(button => (button.style.display = "none"));
-        buttonElements.forEach((button, index) => {
-            console.log(`Button ${index}:`, button.innerText || button.getAttribute('id') || button.className);
-        });
+        
         textElement.className = 's';
 
         if (location === 'begin') {
@@ -308,6 +316,7 @@ function changeState(location) {
 
 
 
+
 function startFishing() {
     const statusElement = document.querySelector('#main-mb .s');
     if (!statusElement) {
@@ -395,11 +404,13 @@ document.addEventListener('DOMContentLoaded', () => {
 </script>
 
 <script src="save.js"></script>
+<script src="actions-tab.js"></script>
 <script src="history.js"></script>
 <script src="player.js"></script>
 <script src="cash.js"></script>
-<script src="inventory.js"></script>\
+<script src="inventory.js"></script>
 <script src="catcher.js"></script>
+<script src="searchGarbage.js"></script>
 <script src="fishing.js"></script>
 </html>
 

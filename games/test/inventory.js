@@ -65,6 +65,22 @@ let items = [
     {
     name: 'Flint',
     amount: 0,
+    },
+    {
+    name: 'Paper',
+    amount: 0,
+    },
+    {
+    name: 'Scraps',
+    amount: 0,
+    },
+    {
+    name: 'Rotten food',
+    amount: 0,
+    },
+    {
+    name: 'Broken Glass',
+    amount: 0,
     }
   ];
 
@@ -100,10 +116,14 @@ function equipRod(item) {
 
 function updateCastButton() {
   const castButton = document.querySelector('#castRod');
-  if (equippedItem === null) {
+  if ((equippedItem === null)) {
+    
+  }
+  else if (!["Basic Rod", "Advanced Rod", "Master Rod"].includes(equippedItem.name)) {
     castButton.style.display = 'none';
   }
-  else if (equippedItem.name === "Basic Rod" || "Advanced Rod" || "Master Rod") {
+  else if (["Basic Rod", "Advanced Rod", "Master Rod"].includes(equippedItem.name)) {
+      console.log(equippedItem)
       castButton.style.display = 'inline-block';
       castButton.textContent = `Cast ${equippedItem.name}?`;
   } 

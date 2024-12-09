@@ -79,6 +79,17 @@ div.enemy-hp::after {
     content: "1/1";
 }
 
+div.SkillsTab::before {
+    content: "Skills Tab";
+}
+div.AssemblyTab::before {
+    content: "Assembly Tab";
+}
+div.ActionsTab::before {
+    content: "Actions Tab";
+}
+
+
 
 
 

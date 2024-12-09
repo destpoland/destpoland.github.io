@@ -1,14 +1,16 @@
 const catcherItems = [
-    { name: "Paper Clip", weight: 85, image: "images/paperclip.png" },
-    { name: "Flint", weight: 13, image: "images/flint.png" },
-    { name: "Yuan", weight: 2, image: "images/yuan.png" },
+    { name: "Paper Clip", weight: 65, image: "images/paperclip.png" },
+    { name: "Flint", weight: 20, image: "images/flint.png" },
+    { name: "Yuan", weight: 15, image: "images/yuan.png" },
   ];
   
+  const begButton = document.querySelector('#beg');
+
   const gameContainer = document.getElementById("status-games");
   const bucket = document.getElementById("bucket");
   const catcherGame = document.getElementById("game-container");
   
-  let spawnInterval = 2000; // Initial spawn interval
+  let spawnInterval = 1000; // Initial spawn interval
   let fallSpeed = 2;
   let activeItems = [];
   let gameRunning = false; // Set to false initially
@@ -78,6 +80,7 @@ const catcherItems = [
       item.remove();
     });
     console.log(`${items.length} CatcherItems deleted.`);
+    begButton.style.display = 'inline'
   }
   
   function updateItems() {
@@ -183,7 +186,7 @@ const catcherItems = [
     }, spawnInterval);
   
     // Schedule the next difficulty increase
-    difficultyTimer = setTimeout(increaseDifficulty, 2000); // Increase every 2 seconds
+    difficultyTimer = setTimeout(increaseDifficulty, 1000); // Increase every 2 seconds
   }
   
   // Start the game and spawning items
@@ -191,7 +194,7 @@ const catcherItems = [
     if (gameRunning) return;
     fallSpeed = 2
     gameRunning = true;
-    spawnInterval = 2000;
+    spawnInterval = 1000;
     clearTimeout(difficultyTimer); // Reset the spawn interval to the initial value
     activeItems = []; // Clear the active items
     catcherGame.style.display = "block"; // Show the game area
@@ -231,6 +234,7 @@ const catcherItems = [
       deleteCatcherItems(); // Delete all items
       startBeggingGame();
     }, 2000); // Restart after 2 seconds
+
   }
   
   // Start the game on load

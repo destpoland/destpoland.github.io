@@ -6,6 +6,7 @@ const fishingRods = [
 
 var selectedRod = fishingRods[0];
 
+
 function startFishingMinigame() {
 
     const fishTypes = {
