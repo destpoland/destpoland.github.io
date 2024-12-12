@@ -9,6 +9,10 @@ let items = [
     {
       name: 'Basic Rod',
       amount: 1,
+      buyable: true,
+      price: 100,
+      unlocked: 1,
+      singlePurchaseBought: false,
       actions: [
         { label: 'Equip', onClick: equipRod, onClick: itemEquip, isEquipped: false }
       ]
@@ -16,6 +20,10 @@ let items = [
     {
       name: 'Advanced Rod',
       amount: 1,
+      buyable: true,
+      price: 500,
+      unlocked: 0,
+      singlePurchaseBought: false,
       actions: [
         { label: 'Equip', onClick: equipRod, onClick: itemEquip, isEquipped: false }
       ]
@@ -23,6 +31,10 @@ let items = [
     {
        name: 'Master Rod',
        amount: 1,
+       buyable: true,
+       price: 1000,
+       unlocked: 0,
+       singlePurchaseBought: false,
        actions: [
         { label: 'Equip', onClick: equipRod, isEquipped: false }
        ]
@@ -30,6 +42,10 @@ let items = [
     {
        name: 'Tin Can',
        amount: 1,
+       buyable: false,
+       singlePurchaseBought: false,
+       unlocked: 1,
+       price: 1000,
        actions: [
         { label: 'Equip', onClick: equipCan, isEquipped: false }
        ]
@@ -41,38 +57,56 @@ let items = [
     {
       name: 'Salmon',
       amount: 0,
+      sellable: true,
+      price: 10,
     },
     {
     name: 'Trout',
     amount: 0,
+    sellable: true,
+    price: 10,
     },
     {
     name: 'Bass',
     amount: 0,
+    sellable: true,
+    price: 10,
     },
     {
     name: 'Swordfish',
     amount: 0,
+    sellable: true,
+    price: 10,
     },
     {
     name: 'Tuna',
     amount: 0,
+    sellable: true,
+    price: 10,
     },
     {
     name: 'Paper Clip',
     amount: 0,
+    sellable: true,
+    price: 10,
     },
     {
     name: 'Flint',
     amount: 0,
+    sellable: true,
+    price: 10,
     },
     {
     name: 'Paper',
     amount: 0,
+    sellable: true,
+    price: 10,
     },
     {
     name: 'Scraps',
     amount: 0,
+    sellable: true,
+    price: 10,
     },
     {
     name: 'Rotten food',
@@ -81,6 +115,7 @@ let items = [
     {
     name: 'Broken Glass',
     amount: 0,
+    buyable: false,
     }
   ];
 
@@ -93,6 +128,9 @@ function itemEquip(item) {
   console.log(`${item.name} is now equipped.`);
   if (savedState === "pond") {
   updateCastButton()
+  }
+  if (savedState === "home") {
+  updateTinCanButton()
   }
 }
 
@@ -114,26 +152,38 @@ function equipRod(item) {
     
 }
 
+function updateTinCanButton() {
+  const begButton = document.querySelector('#beg');
+  console.log(equippedItem.name)
+  if ((equippedItem === null)) {
+  }
+  else if (["Tin Can"].includes(equippedItem.name)) {
+    console.log("eeee")
+    begButton.style.display = "inline";
+  }
+  else if (!["Tin Can"].includes(equippedItem.name)) {
+    begButton.style.display = 'none';
+  }
+}
+
 function updateCastButton() {
   const castButton = document.querySelector('#castRod');
+  console.log(equippedItem.name)
   if ((equippedItem === null)) {
-    
   }
   else if (!["Basic Rod", "Advanced Rod", "Master Rod"].includes(equippedItem.name)) {
     castButton.style.display = 'none';
   }
   else if (["Basic Rod", "Advanced Rod", "Master Rod"].includes(equippedItem.name)) {
-      console.log(equippedItem)
       castButton.style.display = 'inline-block';
       castButton.textContent = `Cast ${equippedItem.name}?`;
   } 
 }
-updateCastButton()
 
-function addItem(item) {
+function addItem(item, itemAmount) {
     const name = items.find(i => i.name === item);
     if (name) { 
-    name.amount++
+    name.amount += itemAmount
     console.log(item.amount)
     console.log(item)
     updateInventory()

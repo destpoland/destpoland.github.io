@@ -11,7 +11,7 @@ const config = {
         { name: "Junk", rarity: 500, image: "images/junk.png" },
         { name: "Paper", rarity: 20, image: "images/paper.png" },
         { name: "Scraps", rarity: 30, image: "images/scraps.png" },
-        { name: "Rotten food", rarity: 5, image: "images/rotten-food.png" },
+        { name: "Rotten food", rarity: 5, image: "images/rottenfood.png" },
         { name: "Broken Glass", rarity: 8, image: "images/glass-shard.png" },
         { name: "Tin Can", rarity: 1, image: "images/tincan.png" },
         

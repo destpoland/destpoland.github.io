@@ -20,7 +20,11 @@
 <script src="../../settings.js"></script>
 
 <script>
+function reset(){
+    localStorage.clear()
+}
 function load() {    
+    updateInventory()
     const savedPage = localStorage.getItem("savedItems");    
     const savedStats = localStorage.getItem("savedStats");  
     const savedCash = localStorage.getItem("savedCash");  
@@ -29,6 +33,7 @@ function load() {
     const savedMaxHunger = localStorage.getItem("savedMaxHunger");  
     const savedCurrentHunger = localStorage.getItem("savedCurrentHunger");
     const savedState =   localStorage.getItem("savedState");
+    const currentSavedState = localStorage.getItem("savedState");
     const savedEquippedItem = JSON.parse(localStorage.getItem("savedEquippedItem"));
     const equippetdText = document.getElementById('inventory-tb-EquippedItem');
         if (savedPage) {  
@@ -71,6 +76,9 @@ function load() {
                 changeState(savedState)
             }
         }
+        if (currentSavedState) {
+            changeState(currentSavedState)
+            }
         if (savedEquippedItem) {
             equippetdText.innerHTML = savedEquippedItem
             if (equippetdText.innerHTML.includes("Rod")) {
@@ -87,6 +95,7 @@ function load() {
 
 <div id="saveb">
     <button onclick="load()" id="loadBtn">Load</button>
+    <button onclick="reset()" id="loadBtn">Reset</button>
 </div>
 <div id="content">
 <div id="log">
@@ -145,6 +154,12 @@ function load() {
         <div id="garbage-game-container" style="display: none;">
             <div id="redBar" src="images/tincan.png"></div>
         </div>
+        <div id="bank-menu">
+            <input id="depositBankMenu"style="display: none;"></input>
+            <button id="confirmBank"style="display: none;">Confirm</button>
+            <input id="withdrawBankMenu"style="display: none;"></input>
+            <button id="confirmBankWithdraw"style="display: none;">Confirm</button>
+        </div>
         
 
     </div>
@@ -152,7 +167,9 @@ function load() {
 </div>
 
 <div id="main">
-    <div id="main-tb"></div>
+    <div id="main-tb">
+        <div id="main-tb-time">Friday: 10:00</div>
+    </div>
     <div id="main-mb"><div class="s"></div></div>
     <div id="main-res">
          <!-- Starting Buttons -->
@@ -173,17 +190,29 @@ function load() {
         <button id="District2Loc" style="display: none;" onclick="changeState('District2');">Go to District 2</button>
         <button id="District3Loc" style="display: none;" onclick="changeState('District3');">Go to District 3</button>
         <button id="District4Loc" style="display: none;" onclick="changeState('District4');">Go to District 4</button>
+        <!--District 1-->
+        <button id="goToMerchant" style="display: none;" onclick="changeState('goToMerchant');">Visit Merchant</button>
+        <button id="merchantSell" style="display: none;" onclick="changeState('merchantSell');">Sell</button>
+        <button id="merchantBuy" style="display: none;" onclick="changeState('merchantBuy');">Buy</button>
+        <button id="goBackDistrict1" style="display: none;" onclick="changeState('District1');">Go back</button>
+
+        <button id="goToBank" style="display: none;" onclick="changeState('goToBank');">Go to the bank</button>
+        <button id="depositBank" style="display: none;" onclick="bankDeposit()">Deposit</button>
+        <button id="withdrawBank" style="display: none;" onclick="bankWithdraw()">Withdraw</button>
+
 
         <button id="goBackTown" style="display: none;" onclick="changeState('goBackTown');">Go back to town</button>
         <!--Begging-->
         <button id="beg" class="s1" style="display: none;" onclick="beg()">Start begging</button>
         
+        <button id="goBackUni" class="s1" style="display: none;" onclick="goBack()">Go back</button>
     </div>
     <div id="main-bt">
         <button id="main-bt-actions" onclick="openSkills()">Skills</button>
         <button id="main-bt-actions" onclick="openAssembly()">Assembly</button>
         <button id="main-bt-actions" onclick="openActions()">Actions</button>
     </div>
+    <!--Actions Tab-->
     <div id="ActionsTab" style="display: none;">
         <button id="Scavenge" class="s1" style="display: none;" onclick="startGarbageGame()">Scavenge</button>
     </div>
@@ -191,6 +220,9 @@ function load() {
     </div>
     <div id="AssemblyTab" style="display: none;">
     </div>
+    <!--Merchant-->
+
+
 </div>
 </div>
 
@@ -201,15 +233,29 @@ function changeState(location) {
     const goBackHomeButton = document.querySelector('#goBackHome');
     const goBackF = document.querySelector('#goBackF');
     const goBackTown = document.querySelector('#goBackTown');
+    const goBackDistrict1 = document.querySelector('#goBackDistrict1');
+    const merchantSell = document.querySelector('#merchantSell');
+    const merchantBuy = document.querySelector('#merchantBuy');
+    const goToBank = document.querySelector('#goToBank');
+    const withdrawBank = document.querySelector('#withdrawBank');
+    const depositBank = document.querySelector('#depositBank');
     const status = document.querySelector('#status');
     const begButton = document.querySelector('#beg');
+    const goBackUniveral = document.querySelector('#goBackUni');
     const savedState = location;
+    const currentSavedState = localStorage.getItem("savedState");
+    const currentBankMoney = localStorage.getItem("bankDeposit");
+    if (currentSavedState) {
+        if (currentSavedState !== savedState) {
+            localStorage.setItem("previousState", currentSavedState);
+        }
+    }
     localStorage.setItem("savedState", savedState);   
     // Ensure textElement exists
     if (textElement) {
         // Reset all buttons to be hidden initially
         buttonElements.forEach(button => (button.style.display = "none"));
-        
+        textElement.innerHTML = '';
         textElement.className = 's';
 
         if (location === 'begin') {
@@ -253,7 +299,7 @@ function changeState(location) {
             buttonElements[2].style.display = "inline"; // "Go Outside" button
             console.log(equippetdText.innerHTML)
             if(equippetdText.innerHTML === "Tin Can") {
-                begButton.style.display = "inline";
+                updateCastButton()
             }
 
         } else if (location === 'pond') {
@@ -294,6 +340,8 @@ function changeState(location) {
         // All The Districts
         else if (location === 'District1') {
             textElement.classList.add('District1Loc');
+            goToMerchant.style.display = "inline";
+            goToBank.style.display = 'inline'
             goBackTown.style.display = "inline";
         } else if (location === 'District2') {
             textElement.classList.add('District2Loc');
@@ -309,11 +357,47 @@ function changeState(location) {
 
             goBackTown.style.display = "inline";
         } 
+        // District 1
+        else if (location === 'goToMerchant') {
+            textElement.classList.add('StartMerchant');
+
+            merchantSell.style.display = "inline";
+            merchantBuy.style.display = "inline";
+            goBackDistrict1.style.display = "inline";
+        }
+        else if (location === 'merchantSell') {
+            textElement.classList.add('SellMerchant');
+            merchantsellfix()
+            goBackUniveral.style.display = "inline";
+        }
+        else if (location === 'merchantBuy') {
+            textElement.classList.add('BuyMerchant');
+            merchantbuyfix()
+            goBackUniveral.style.display = "inline";
+            
+        }
+        else if (location === 'goToBank') {
+            textElement.classList.add('empty');
+            textElement.innerHTML = `You have ${currentBankMoney} in the bank.`
+
+            depositBank.style.display = "inline";
+            withdrawBank.style.display = "inline";
+            goBackUniveral.style.display = "inline";
+        }
         
     }
 }
 
-
+function goBack() {
+    const previousState = localStorage.getItem("previousState");
+    changeState(previousState)
+}
+function merchantsellfix() {
+    merchantSell()
+}
+function merchantbuyfix() {
+    merchantBuy()
+}
 
 
 function startFishing() {
@@ -356,7 +440,7 @@ function startFishing() {
         const goBackF = document.querySelector('#goBackF');
         if (reelIN) {
             reelIN.style.display = "inline"; // Show the "Reel in your rod!" button
-        }
+        }merchantSell()
 
         // Start a timer between 2-5 seconds for the user to click reelIN
         const reelInTimeout = Math.floor(Math.random() * 4) + 2; // 2-5 seconds
@@ -410,7 +494,10 @@ document.addEventListener('DOMContentLoaded', () => {
 <script src="inventory.js"></script>
 <script src="catcher.js"></script>
 <script src="searchGarbage.js"></script>
+<script src="town-locations.js"></script>
 <script src="fishing.js"></script>
+<script src="merchant.js"></script>
+<script src="time.js"></script>
 </html>
 
 

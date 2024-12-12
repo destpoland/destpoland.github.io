@@ -1,6 +1,9 @@
 div.s::before {
     content: "You awake";
 }
+div.empty::before {
+    content: "";
+}
 
 button.s::before {
     content: "->";
@@ -65,6 +68,20 @@ div.District3Loc::before {
 }
 div.District4Loc::before {
     content: "You are at District 4";
+}
+/* District 1*/
+div.StartMerchant::before {
+    content: "You are at the Merchant.";
+}
+div.SellMerchant::before {
+    content: "What would you like to sell?";
+}
+div.BuyMerchant::before {
+    content: "What would you like to buy?";
+}
+
+div.StartBank::before {
+    content: "You have 0 money in the bank.";
 }
 
 
