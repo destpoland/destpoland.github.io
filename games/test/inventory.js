@@ -14,7 +14,14 @@ let items = [
       unlocked: 1,
       singlePurchaseBought: false,
       actions: [
-        { label: 'Equip', onClick: equipRod, onClick: itemEquip, isEquipped: false }
+        {
+          label: 'Equip',
+          onClick: () => {
+            equipRod();   
+            itemEquip();  
+          },
+      isEquipped: false
+        }
       ]
     },
     {
@@ -25,7 +32,14 @@ let items = [
       unlocked: 0,
       singlePurchaseBought: false,
       actions: [
-        { label: 'Equip', onClick: equipRod, onClick: itemEquip, isEquipped: false }
+        {
+          label: 'Equip',
+          onClick: () => {
+            equipRod();   
+            itemEquip();  
+          },
+      isEquipped: false
+        }
       ]
     },
     {
@@ -36,8 +50,15 @@ let items = [
        unlocked: 0,
        singlePurchaseBought: false,
        actions: [
-        { label: 'Equip', onClick: equipRod, onClick: itemEquip, isEquipped: false }
-       ]
+        {
+          label: 'Equip',
+          onClick: () => {
+            equipRod();   
+            itemEquip();  
+          },
+      isEquipped: false
+        }
+      ]
     },
     {
        name: 'Tin Can',
@@ -47,8 +68,15 @@ let items = [
        unlocked: 1, 
        price: 1000,
        actions: [
-        { label: 'Equip', onClick: equipCan, onClick: itemEquip, isEquipped: false }
-       ]
+        {
+          label: 'Equip',
+          onClick: () => {
+            itemEquip();  
+          },
+      isEquipped: false
+        }
+      ]
+       
     },
     {
       name: 'Shoe',
@@ -128,10 +156,6 @@ function itemEquip(item) {
   console.log(`${item.name} is now equipped.`);
   savedState = localStorage.getItem("savedState");
   updateEquippedItemActions()
-}
-
-function equipCan() {
-  console.log("ee")
 }
 
 function equipRod(item) {
