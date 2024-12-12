@@ -274,7 +274,7 @@ function startFishingMinigame() {
             statusElement.classList.remove('s1', 's2', 's3', 's4', 's5', 's6');
             statusElement.classList.add('f1');
             history(`You reeled in a ${fish.name}`)
-            addItem(`${fish.name}`)
+            addItem(`${fish.name}`, 1)
             goBackF.style.display = "inline";
         } else if (progress <= 0) {
             progressAtZeroTime++;

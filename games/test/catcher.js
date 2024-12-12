@@ -106,7 +106,7 @@ const catcherItems = [
         if (`${item.name}` === "Yuan") {
             increaseCash(1)
         } else {
-        addItem(`${item.name}`)
+        addItem(`${item.name}`, 1)
         }
         gameRunning = false;
         deleteCatcherItems();

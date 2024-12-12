@@ -24,7 +24,6 @@ function reset(){
     localStorage.clear()
 }
 function load() {    
-    updateInventory()
     const savedPage = localStorage.getItem("savedItems");    
     const savedStats = localStorage.getItem("savedStats");  
     const savedCash = localStorage.getItem("savedCash");  
@@ -494,7 +493,6 @@ document.addEventListener('DOMContentLoaded', () => {
 <script src="inventory.js"></script>
 <script src="catcher.js"></script>
 <script src="searchGarbage.js"></script>
-<script src="town-locations.js"></script>
 <script src="fishing.js"></script>
 <script src="merchant.js"></script>
 <script src="time.js"></script>
