@@ -2,7 +2,7 @@
 var equippedItem = null;
 const itemContainer = document.getElementById('inventory-section');
 const equippetdText = document.getElementById('inventory-tb-EquippedItem');
-const savedState =   localStorage.getItem("savedState");
+var savedState = localStorage.getItem("savedState");
 
 
 let items = [
@@ -36,7 +36,7 @@ let items = [
        unlocked: 0,
        singlePurchaseBought: false,
        actions: [
-        { label: 'Equip', onClick: equipRod, isEquipped: false }
+        { label: 'Equip', onClick: equipRod, onClick: itemEquip, isEquipped: false }
        ]
     },
     {
@@ -44,10 +44,10 @@ let items = [
        amount: 1,
        buyable: false,
        singlePurchaseBought: false,
-       unlocked: 1,
+       unlocked: 1, 
        price: 1000,
        actions: [
-        { label: 'Equip', onClick: equipCan, isEquipped: false }
+        { label: 'Equip', onClick: equipCan, onClick: itemEquip, isEquipped: false }
        ]
     },
     {
@@ -126,12 +126,8 @@ function itemEquip(item) {
   equippedItem = item;
   equippetdText.innerHTML = `${item.name}`
   console.log(`${item.name} is now equipped.`);
-  if (savedState === "pond") {
-  updateCastButton()
-  }
-  if (savedState === "home") {
-  updateTinCanButton()
-  }
+  savedState = localStorage.getItem("savedState");
+  updateEquippedItemActions()
 }
 
 function equipCan() {
@@ -152,33 +148,33 @@ function equipRod(item) {
     
 }
 
-function updateTinCanButton() {
+function updateEquippedItemActions() {
   const begButton = document.querySelector('#beg');
-  console.log(equippedItem.name)
-  if ((equippedItem === null)) {
+  const castButton = document.querySelector('#castRod');
+  savedState = localStorage.getItem("savedState");
+  if (equippedItem === null) {
+    console.log("sigma")
   }
-  else if (["Tin Can"].includes(equippedItem.name)) {
-    console.log("eeee")
-    begButton.style.display = "inline";
+  else if (savedState === "home") {
+    if (["Tin Can"].includes(equippedItem.name)) {
+      console.log("eeee")
+      begButton.style.display = "inline";
+    }
+    else if (!["Tin Can"].includes(equippedItem.name)) {
+      begButton.style.display = 'none';
+    }
   }
-  else if (!["Tin Can"].includes(equippedItem.name)) {
-    begButton.style.display = 'none';
+  else if (savedState === "pond") {
+    if (!["Basic Rod", "Advanced Rod", "Master Rod"].includes(equippedItem.name)) {
+      castButton.style.display = 'none';
+    }
+    else if (["Basic Rod", "Advanced Rod", "Master Rod"].includes(equippedItem.name)) {
+        castButton.style.display = 'inline-block';
+        castButton.textContent = `Cast ${equippedItem.name}?`;
+    } 
   }
 }
 
-function updateCastButton() {
-  const castButton = document.querySelector('#castRod');
-  console.log(equippedItem.name)
-  if ((equippedItem === null)) {
-  }
-  else if (!["Basic Rod", "Advanced Rod", "Master Rod"].includes(equippedItem.name)) {
-    castButton.style.display = 'none';
-  }
-  else if (["Basic Rod", "Advanced Rod", "Master Rod"].includes(equippedItem.name)) {
-      castButton.style.display = 'inline-block';
-      castButton.textContent = `Cast ${equippedItem.name}?`;
-  } 
-}
 
 function addItem(item, itemAmount) {
     const name = items.find(i => i.name === item);

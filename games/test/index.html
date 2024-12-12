@@ -244,6 +244,7 @@ function changeState(location) {
     const savedState = location;
     const currentSavedState = localStorage.getItem("savedState");
     const currentBankMoney = localStorage.getItem("bankDeposit");
+    updateEquippedItemActions()
     if (currentSavedState) {
         if (currentSavedState !== savedState) {
             localStorage.setItem("previousState", currentSavedState);
@@ -288,24 +289,20 @@ function changeState(location) {
         } else if (location === 'outside') {
             textElement.classList.add('s2');
             
-            // Show specific buttons for 'outside' state
             goBackHomeButton.style.display = "inline";
-            buttonElements[3].style.display = "inline"; // "Go to the pond" button
+            buttonElements[3].style.display = "inline"; 
         } else if (location === 'home') {
             textElement.classList.add('s1');
+            updateEquippedItemActions()
             
-            buttonElements[1].style.display = "inline"; // "Go to the town" button
-            buttonElements[2].style.display = "inline"; // "Go Outside" button
+            buttonElements[1].style.display = "inline"; 
+            buttonElements[2].style.display = "inline"; 
             console.log(equippetdText.innerHTML)
-            if(equippetdText.innerHTML === "Tin Can") {
-                updateCastButton()
-            }
 
         } else if (location === 'pond') {
-           textElement.classList.add('s4');
-            
-            buttonElements[7].style.display = "inline"; // "Go Outside" button
-            updateCastButton() // "Go Outside" button
+            textElement.classList.add('s4');
+            updateEquippedItemActions()
+            buttonElements[7].style.display = "inline"; 
         } else if (location === 'goBackF') {
             textElement.innerText = ''
             textElement.classList.add('s4');
