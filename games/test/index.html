@@ -70,7 +70,7 @@ function load() {
         }
         if (savedState) {
             if (savedState === 'reel') {
-                changeState('goBackF')
+                changeState('pond')
             } else { 
                 changeState(savedState)
             }
@@ -80,17 +80,17 @@ function load() {
             }
         if (savedEquippedItem) {
             equippetdText.innerHTML = savedEquippedItem
-            if (equippetdText.innerHTML.includes("Rod")) {
-                console.log(savedEquippedItem)
-            }
             const item = items.find(i => i.name === savedEquippedItem.name);
             if (item) {
             itemEquip(item); // Re-equip the item
             }
         }
+        updateInventory()
     };
 </script>
-<script>window.onload = load;</script>
+<script>
+window.onload = load;
+</script>
 
 <div id="saveb">
     <button onclick="load()" id="loadBtn">Load</button>
@@ -214,6 +214,8 @@ function load() {
     <!--Actions Tab-->
     <div id="ActionsTab" style="display: none;">
         <button id="Scavenge" class="s1" style="display: none;" onclick="startGarbageGame()">Scavenge</button>
+        <button id="Fishing" class="s1" style="display: none;" onclick="cast()">Fishing</button>
+        <button id="Begging" class="s1" style="display: none;" onclick="startBeggingGame()">Begging</button>
     </div>
     <div id="SkillsTab" style="display: none;">
     </div>
@@ -304,10 +306,7 @@ function changeState(location) {
             updateEquippedItemActions()
             buttonElements[7].style.display = "inline"; 
         } else if (location === 'goBackF') {
-            textElement.innerText = ''
-            textElement.classList.add('s4');
-            buttonElements[4].style.display = "inline"; // "Go Outside" button
-            goBackHomeButton.style.display = "inline"; // "Go Outside" button
+            changeState("pond") // "Go Outside" button
         } else if (location === 'goBackOutside') {
             textElement.classList.add('s2');
             
@@ -398,6 +397,8 @@ function merchantbuyfix() {
 
 function startFishing() {
     const statusElement = document.querySelector('#main-mb .s');
+    ActionsTabElement.style.display = 'none'
+    isActionTabOpen = 0
     if (!statusElement) {
         console.log("Element not found");
         return; // Exit the function if element isn't found
@@ -436,7 +437,7 @@ function startFishing() {
         const goBackF = document.querySelector('#goBackF');
         if (reelIN) {
             reelIN.style.display = "inline"; // Show the "Reel in your rod!" button
-        }merchantSell()
+        }
 
         // Start a timer between 2-5 seconds for the user to click reelIN
         const reelInTimeout = Math.floor(Math.random() * 4) + 2; // 2-5 seconds

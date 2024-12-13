@@ -80,7 +80,8 @@ const catcherItems = [
       item.remove();
     });
     console.log(`${items.length} CatcherItems deleted.`);
-    begButton.style.display = 'inline'
+    ActionsTabElement.style.pointerEvents = 'auto';
+    fullactionstab.style.pointerEvents = 'auto';
   }
   
   function updateItems() {
@@ -99,10 +100,6 @@ const catcherItems = [
       ) {
         console.log(`Caught item: ${item.name}`);
         history(`Someone gave you a ${item.name}`)
-        const textElement = document.querySelector('#main-mb .s'); 
-        console.log(textElement)
-        textElement.className = 's';
-        textElement.classList.add('StoppedBegging'); 
         if (`${item.name}` === "Yuan") {
             increaseCash(1)
         } else {
@@ -199,6 +196,8 @@ const catcherItems = [
     activeItems = []; // Clear the active items
     catcherGame.style.display = "block"; // Show the game area
     console.log("Game state reset.");
+    ActionsTabElement.style.pointerEvents = 'none';
+    fullactionstab.style.pointerEvents = 'none';
     resetGame();
   }
   

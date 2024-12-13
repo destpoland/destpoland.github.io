@@ -49,12 +49,6 @@ div.f2::before {
 }
 
 
-div.Begging::before {
-    content: "You are begging";
-}
-div.StoppedBegging::before {
-    content: "You stopped begging";
-}
 
 /* District Location Names */
 div.District1Loc::before {

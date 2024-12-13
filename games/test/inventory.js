@@ -156,6 +156,7 @@ function itemEquip(item) {
   console.log(`${item.name} is now equipped.`);
   savedState = localStorage.getItem("savedState");
   updateEquippedItemActions()
+  updateActions()
 }
 
 function equipRod(item) {
@@ -173,28 +174,32 @@ function equipRod(item) {
 }
 
 function updateEquippedItemActions() {
-  const begButton = document.querySelector('#beg');
-  const castButton = document.querySelector('#castRod');
   savedState = localStorage.getItem("savedState");
+  const fishingAction = actions.find(action => action.name === "Fishing");
+  const BeggingAction = actions.find(action => action.name === "Begging");
+  const savedEquippedItem = JSON.parse(localStorage.getItem("savedEquippedItem"));
+
   if (equippedItem === null) {
-    console.log("sigma")
+
   }
   else if (savedState === "home") {
     if (["Tin Can"].includes(equippedItem.name)) {
-      console.log("eeee")
-      begButton.style.display = "inline";
+      BeggingAction.unlocked = true
     }
     else if (!["Tin Can"].includes(equippedItem.name)) {
       begButton.style.display = 'none';
+      BeggingAction.unlocked = false
     }
   }
   else if (savedState === "pond") {
     if (!["Basic Rod", "Advanced Rod", "Master Rod"].includes(equippedItem.name)) {
-      castButton.style.display = 'none';
+      fishingAction.unlocked = false
+      
     }
     else if (["Basic Rod", "Advanced Rod", "Master Rod"].includes(equippedItem.name)) {
-        castButton.style.display = 'inline-block';
-        castButton.textContent = `Cast ${equippedItem.name}?`;
+        fishingAction.unlocked = true
+        const LoadActionsText = document.querySelector(`#Fishing`);
+        LoadActionsText.innerHTML = `Cast ${savedEquippedItem.name}`
     } 
   }
 }
