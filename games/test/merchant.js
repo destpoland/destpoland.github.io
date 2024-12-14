@@ -4,7 +4,7 @@ const mainres = document.getElementById('main-res');
 function merchantBuy() {
     const buyableItemsButtons = mainres.querySelectorAll('.buyableItem');
     buyableItemsButtons.forEach(button => {
-        button.remove(); // Corrected line to remove each button
+        button.remove(); 
     });
 
     items.forEach((buyableItems) => {

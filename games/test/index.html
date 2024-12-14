@@ -399,6 +399,15 @@ function changeState(location) {
 function goBack() {
     const previousState = localStorage.getItem("previousState");
     changeState(previousState)
+    const sellableItemsButtons = mainres.querySelectorAll('.sellableitem');
+    sellableItemsButtons.forEach(button => {
+        button.remove(); 
+    });
+    const buyableItemsButtons = mainres.querySelectorAll('.buyableItem');
+    buyableItemsButtons.forEach(button => {
+        button.remove(); 
+    });
+
 }
 function merchantsellfix() {
     merchantSell()

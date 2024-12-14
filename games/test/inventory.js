@@ -162,13 +162,10 @@ function itemEquip(item) {
 function equipRod(item) {
     if (item.name === 'Basic Rod') {
         selectedRod = fishingRods[0];
-        console.log(selectedRod)
     } else if (item.name === 'Advanced Rod') {
         selectedRod = fishingRods[1];
-        console.log(selectedRod)
     } else if (item.name === 'Master Rod') {
         selectedRod = fishingRods[2];
-        console.log(selectedRod)
     }
     
 }
