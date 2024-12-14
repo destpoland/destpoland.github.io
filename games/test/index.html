@@ -351,6 +351,7 @@ function changeState(location) {
             goToMerchant.style.display = "inline";
             goToBank.style.display = 'inline'
             goBackTown.style.display = "inline";
+
         } else if (location === 'District2') {
             textElement.classList.add('District2Loc');
 
@@ -399,6 +400,7 @@ function changeState(location) {
 function goBack() {
     const previousState = localStorage.getItem("previousState");
     changeState(previousState)
+    //Merchant Fixes
     const sellableItemsButtons = mainres.querySelectorAll('.sellableitem');
     sellableItemsButtons.forEach(button => {
         button.remove(); 
@@ -407,7 +409,12 @@ function goBack() {
     buyableItemsButtons.forEach(button => {
         button.remove(); 
     });
-
+    //Hide Withdraw/Deposit
+    withdrawInput.style.display = 'none'; 
+    confirmWithdraw.style.display = 'none'; 
+    depositInput.style.display = 'none';
+    confirmDeposit.style.display = 'none';
+    
 }
 function merchantsellfix() {
     merchantSell()
