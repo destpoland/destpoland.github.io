@@ -17,8 +17,8 @@ let items = [
         {
           label: 'Equip',
           onClick: () => {
-            equipRod();   
-            itemEquip();  
+            equipRod(items[0]);   
+            itemEquip(items[0]);  
           },
       isEquipped: false
         }
@@ -35,8 +35,8 @@ let items = [
         {
           label: 'Equip',
           onClick: () => {
-            equipRod();   
-            itemEquip();  
+            equipRod(items[1]);   
+            itemEquip(items[1]);  
           },
       isEquipped: false
         }
@@ -53,8 +53,8 @@ let items = [
         {
           label: 'Equip',
           onClick: () => {
-            equipRod();   
-            itemEquip();  
+            equipRod(items[2]);   
+            itemEquip(items[2]);  
           },
       isEquipped: false
         }
@@ -71,7 +71,7 @@ let items = [
         {
           label: 'Equip',
           onClick: () => {
-            itemEquip();  
+            itemEquip(items[3]);  
           },
       isEquipped: false
         }

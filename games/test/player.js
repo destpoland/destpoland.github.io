@@ -55,6 +55,19 @@ var HealthMax = 5
 var HungerAmount = 100
 var HungerMax = 100
 
+if (
+    localStorage.getItem("savedCurrentHealth") === null ||
+    localStorage.getItem("savedCurrentHunger") === null
+) {
+    localStorage.setItem("savedMaxHealth", HealthMax);
+    localStorage.setItem("savedCurrentHealth", HealthAmount);
+
+    localStorage.setItem("savedMaxHunger", HungerMax);
+    localStorage.setItem("savedCurrentHunger", HungerAmount);
+}
+
+
+
 function updateHealth() {
     PlayerHealth.innerHTML = ('health: ' + (HealthAmount) + '/' + (HealthMax));
     healthBar.style.width = `${(HealthAmount / HealthMax) * 100}%`;
@@ -82,7 +95,7 @@ function changeHealth(stat, amount) {
 
 
 function updateHunger() {
-    PlayerHunger.innerHTML = ('health: ' + (HungerAmount) + '/' + (HungerMax));
+    PlayerHunger.innerHTML = ('hunger: ' + (HungerAmount) + '/' + (HungerMax));
     hungerBar.style.width = `${(HungerAmount / HungerMax) * 100}%`;
     const savedMaxHunger = HungerMax;  
     const savedCurrentHunger = HungerAmount;  

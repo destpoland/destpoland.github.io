@@ -9,6 +9,9 @@
     position: absolute;    
     left: 125px;
 }
+body {
+    user-select: none;
+}
 
 #player-tb {
     display: block;

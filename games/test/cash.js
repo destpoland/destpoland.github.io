@@ -36,6 +36,9 @@ function bankDeposit() {
 }
 
 const depositedBankMoney = localStorage.getItem("bankDeposit")
+if (localStorage.getItem("bankDeposit") === null) {
+    localStorage.setItem("bankDeposit", 0);
+}
 let currentCash = localStorage.getItem("savedCash")
 
 function handleDeposit() {
@@ -55,6 +58,7 @@ function handleDeposit() {
             if(savedState === "goToBank") {
                 textElement.className = 's';
                 textElement.classList.add('empty');
+
                 textElement.innerHTML = `You have ${currentBankMoney} in the bank.`
             }
             decreaseCash(amount)

@@ -142,23 +142,11 @@ function startFishingMinigame() {
     progressBar.style.background = 'green';
     progressBarContainer.appendChild(progressBar);
 
-    const mobileButton = document.createElement('button');
-    mobileButton.textContent = 'Catch Fish'; // Text on the button
-    mobileButton.style.position = 'absolute';
-    mobileButton.style.width = '100px';
-    mobileButton.style.height = '40px';
-    mobileButton.style.bottom = '-60px'; // Position the button below the progress bar
-    mobileButton.style.left = '50%';
-    mobileButton.style.transform = 'translateX(-50%)'; // Center the button
-    mobileButton.style.backgroundColor = '#4CAF50'; // Button color
-    mobileButton.style.color = 'white';
-    mobileButton.style.fontSize = '16px';
-    mobileButton.style.border = 'none';
-    mobileButton.style.borderRadius = '5px';
-    mobileButton.style.cursor = 'pointer';
 
-    // Append the button under the progress bar
-    progressBarContainer.appendChild(mobileButton);
+    const mobileButton = document.getElementById('Fishing-Button');
+
+    mobileButton.style.display = 'inline'
+
 
     // Mobile Button press and release event listeners
     mobileButton.addEventListener('mousedown', () => {
@@ -276,6 +264,7 @@ function startFishingMinigame() {
             history(`You reeled in a ${fish.name}`)
             addItem(`${fish.name}`, 1)
             goBackF.style.display = "inline";
+            mobileButton.style.display = 'none'
         } else if (progress <= 0) {
             progressAtZeroTime++;
             if (progressAtZeroTime > 100) {
@@ -287,6 +276,7 @@ function startFishingMinigame() {
                 statusElement.classList.add('f2');
                 history('Fish got away')
                 goBackF.style.display = "inline";
+                mobileButton.style.display = 'none'
             }
         }
 

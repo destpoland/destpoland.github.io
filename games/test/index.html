@@ -21,7 +21,17 @@
 
 <script>
 function reset(){
-    localStorage.clear()
+    localStorage.removeItem("savedItems");
+    localStorage.removeItem("savedStats");
+    localStorage.removeItem("savedCash");
+    localStorage.removeItem("savedMaxHealth");
+    localStorage.removeItem("savedCurrentHealth");
+    localStorage.removeItem("savedMaxHunger");
+    localStorage.removeItem("savedCurrentHunger");
+    localStorage.removeItem("savedState");
+    localStorage.removeItem("previousState");
+    localStorage.removeItem("bankDeposit");
+    localStorage.removeItem("savedEquippedItem");
 }
 function load() {    
     const savedPage = localStorage.getItem("savedItems");    
@@ -32,7 +42,6 @@ function load() {
     const savedMaxHunger = localStorage.getItem("savedMaxHunger");  
     const savedCurrentHunger = localStorage.getItem("savedCurrentHunger");
     const savedState =   localStorage.getItem("savedState");
-    const currentSavedState = localStorage.getItem("savedState");
     const savedEquippedItem = JSON.parse(localStorage.getItem("savedEquippedItem"));
     const equippetdText = document.getElementById('inventory-tb-EquippedItem');
         if (savedPage) {  
@@ -69,20 +78,20 @@ function load() {
         updateHunger()
         }
         if (savedState) {
-            if (savedState === 'reel') {
-                changeState('pond')
-            } else { 
-                changeState(savedState)
-            }
+        const savedStateCheck = localStorage.getItem("savedState");
+        console.log(savedStateCheck)
+        if (savedStateCheck === 'reel' || savedStateCheck === 'cast') {
+        changeState('pond')
+        } else {
+        changeState(savedState)
         }
-        if (currentSavedState) {
-            changeState(currentSavedState)
-            }
+        }
         if (savedEquippedItem) {
             equippetdText.innerHTML = savedEquippedItem
             const item = items.find(i => i.name === savedEquippedItem.name);
             if (item) {
-            itemEquip(item); // Re-equip the item
+            itemEquip(item);
+            equipRod(item) // Re-equip the item
             }
         }
         updateInventory()
@@ -203,6 +212,7 @@ window.onload = load;
         <button id="goBackTown" style="display: none;" onclick="changeState('goBackTown');">Go back to town</button>
         <!--Begging-->
         <button id="beg" class="s1" style="display: none;" onclick="beg()">Start begging</button>
+        <button id="Fishing-Button" class="s1" style="display: none;" >Hold to reel</button>
         
         <button id="goBackUni" class="s1" style="display: none;" onclick="goBack()">Go back</button>
     </div>
@@ -306,7 +316,10 @@ function changeState(location) {
             updateEquippedItemActions()
             buttonElements[7].style.display = "inline"; 
         } else if (location === 'goBackF') {
-            changeState("pond") // "Go Outside" button
+            changeState("pond") 
+            openActions()
+            ActionsTabElement.style.pointerEvents = 'auto';
+            fullactionstab.style.pointerEvents = 'auto';
         } else if (location === 'goBackOutside') {
             textElement.classList.add('s2');
             
@@ -397,8 +410,7 @@ function merchantbuyfix() {
 
 function startFishing() {
     const statusElement = document.querySelector('#main-mb .s');
-    ActionsTabElement.style.display = 'none'
-    isActionTabOpen = 0
+    openActions()
     if (!statusElement) {
         console.log("Element not found");
         return; // Exit the function if element isn't found
@@ -424,6 +436,8 @@ function startFishing() {
         dotCount = (dotCount + 1) % 4; // Cycle through 0, 1, 2, 3
         const dots = '.'.repeat(dotCount); // Create dots based on count
         statusElement.innerText = `Waiting${dots}`;
+        ActionsTabElement.style.pointerEvents = 'none';
+        fullactionstab.style.pointerEvents = 'none';
     }, 500);
 
     // End the fishing process after the random time
