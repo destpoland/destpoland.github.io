@@ -8,21 +8,21 @@ var selectedRod = fishingRods[0];
 
 
 function startFishingMinigame() {
-
+    
     const fishTypes = {
         Common: [
-            { name: 'Salmon', baseSpeed: 1.5, standStillChance: 0.5, speedIncreaseRate: 0.1, weight: 1 },
-            { name: 'Shoe', baseSpeed: 1.3, standStillChance: 0.6, speedIncreaseRate: 0, weight: 3 }
+            { name: 'Salmon', baseSpeed: 1.5, standStillChance: 0.5, speedIncreaseRate: 0.1, weight: 1, xp: 2 },
+            { name: 'Shoe', baseSpeed: 1.3, standStillChance: 0.6, speedIncreaseRate: 0, weight: 3, xp: 1 }
         ],
         Uncommon: [
-            { name: 'Trout', baseSpeed: 1.8, standStillChance: 0.3, speedIncreaseRate: 0.15, weight: 1 },
-            { name: 'Bass', baseSpeed: 1.8, standStillChance: 0.3, speedIncreaseRate: 0.12, weight: 1 }
+            { name: 'Trout', baseSpeed: 1.8, standStillChance: 0.3, speedIncreaseRate: 0.15, weight: 1, xp: 4 },
+            { name: 'Bass', baseSpeed: 1.8, standStillChance: 0.3, speedIncreaseRate: 0.12, weight: 1, xp: 4 }
         ],  
         Epic: [
-            { name: 'Swordfish', baseSpeed: 2.2, standStillChance: 0.2, speedIncreaseRate: 0.25, weight: 1 }
+            { name: 'Swordfish', baseSpeed: 2.2, standStillChance: 0.2, speedIncreaseRate: 0.25, weight: 1, xp: 8 }
         ],
         Legendary: [
-            { name: 'Tuna', baseSpeed: 2.5, standStillChance: 0.05, speedIncreaseRate: 0.2, weight: 1 }
+            { name: 'Tuna', baseSpeed: 2.5, standStillChance: 0.05, speedIncreaseRate: 0.2, weight: 1, xp: 20 }
         ]
     };
 
@@ -265,6 +265,7 @@ function startFishingMinigame() {
             addItem(`${fish.name}`, 1)
             goBackF.style.display = "inline";
             mobileButton.style.display = 'none'
+            increaseSkillXp("FishingSkill", fish.xp)
         } else if (progress <= 0) {
             progressAtZeroTime++;
             if (progressAtZeroTime > 100) {

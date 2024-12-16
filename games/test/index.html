@@ -32,6 +32,7 @@ function reset(){
     localStorage.removeItem("previousState");
     localStorage.removeItem("bankDeposit");
     localStorage.removeItem("savedEquippedItem");
+    localStorage.removeItem("savedSkills");
 }
 function load() {    
     const savedPage = localStorage.getItem("savedItems");    
@@ -42,6 +43,7 @@ function load() {
     const savedMaxHunger = localStorage.getItem("savedMaxHunger");  
     const savedCurrentHunger = localStorage.getItem("savedCurrentHunger");
     const savedState =   localStorage.getItem("savedState");
+    const savedSkills =   localStorage.getItem("savedSkills");
     const savedEquippedItem = JSON.parse(localStorage.getItem("savedEquippedItem"));
     const equippetdText = document.getElementById('inventory-tb-EquippedItem');
         if (savedPage) {  
@@ -49,6 +51,11 @@ function load() {
         console.log(items)
         addActions()
         updateInventory()
+        }
+        if (savedSkills) {  
+        skills = JSON.parse(savedSkills)
+        console.log(items)
+        updateSkills()
         }
         if (savedStats) {
         stats = JSON.parse(savedStats)
@@ -227,7 +234,23 @@ window.onload = load;
         <button id="Fishing" class="s1" style="display: none;" onclick="cast()">Fishing</button>
         <button id="Begging" class="s1" style="display: none;" onclick="startBeggingGame()">Begging</button>
     </div>
+    <!--Skills Tab-->
     <div id="SkillsTab" style="display: none;">
+        <div id="FishingSkill" >
+            <span>Fishing Skill: </span><span id="skillLevel">1</span>
+            <label id="skill-bar">
+                <label id="FishingXp">XP: 0/100</label>
+                <label class="FishingXp-Bar"id="skill-barOverlay"> </label>
+            </label>
+        </div>
+
+        <div id="BeggingSkill" >Begging Skill
+            <label id="skill-bar">
+                <label id="FishingXp">XP: 0/100</label>
+                <label class="FishingXp-Bar"id="skill-barOverlay"> </label>
+            </label>
+        </div>
+        
     </div>
     <div id="AssemblyTab" style="display: none;">
     </div>
@@ -436,7 +459,7 @@ function startFishing() {
     statusElement.classList.remove('s1', 's2', 's3', 's4', 's6', 'f1', 'f2', 'Begging', 'StoppedBegging');
     statusElement.classList.add('s5');
     console.log("Class changed to s5");
-
+    buttonElements[8].style.display = "none"; 
     const goBackHomeButton = document.querySelector('#goBackHome');
     if (goBackHomeButton) {
         goBackHomeButton.style.display = "none";

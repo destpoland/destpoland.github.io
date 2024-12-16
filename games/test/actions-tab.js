@@ -7,6 +7,14 @@ const fullactionstab = document.querySelector('#main-bt');
 
 var isActionTabOpen = 0
 
+const tabs = {
+    Actions: ActionsTabElement,
+    Skills: SkillsTabElement,
+    Assembly: AssemblyTabElement,
+};
+
+let currentTab = null;
+
 let actions = [
     {
     name: 'Scavenge',
@@ -22,105 +30,177 @@ let actions = [
     }
 ];
 
-function openSkills() {
-    const savedState = localStorage.getItem("savedState");
-    ActionsTabElement.style.display = 'none'
-    AssemblyTabElement.style.display = 'none'
-    if (isActionTabOpen === 0) {
-    buttonElements.forEach(button => (button.style.display = "none"));
+let skills = [
+    {
+    name: "FishingSkill",
+    unlocked: false,
+    level: 2,
+    xp: 0,
+    maxXp: 100,    
+    },
+    {
+    name: 'BeggingSkill',
+    unlocked: false,
+    level: 0,
+    xp: 0,
+    maxXp: 100,    
+    },
+]
+
+
+
+function fixErrorsForActions() {
     textElement.className = 's';
+    textElement.innerHTML = '';
+    buttonElements.forEach(button => (button.style.display = "none"));
+    //Hide Withdraw/Deposit
+    withdrawInput.style.display = 'none'; 
+    confirmWithdraw.style.display = 'none'; 
+    depositInput.style.display = 'none';
+    confirmDeposit.style.display = 'none';
+    //hide merchant items
+    const buyableItemsButtons = mainres.querySelectorAll('.buyableItem');
+    buyableItemsButtons.forEach(button => {
+        button.remove(); 
+    });
+    const sellableItemsButtons = mainres.querySelectorAll('.sellableitem');
+    sellableItemsButtons.forEach(button => {
+        button.remove(); 
+    });
+}
 
-    textElement.classList.add('SkillsTab');
-    SkillsTabElement.style.display = 'inline'
-    isActionTabOpen = 1
+function switchTab(newTab) {
+    // Hide all tabs
+    Object.values(tabs).forEach(tab => {
+        tab.style.display = 'none';
+    });
 
-    } else if (isActionTabOpen === 1) {
-    changeState(savedState);
-    SkillsTabElement.style.display = 'none'
-    isActionTabOpen = 0
+    // Reset common UI elements
+    fixErrorsForActions();
+    textElement.className = 's'; // Reset class
+    textElement.innerHTML = ''; // Reset content
+
+    if (currentTab !== newTab) {
+        // Show the selected tab
+        const tabElement = tabs[newTab];
+        if (tabElement) {
+            tabElement.style.display = 'inline';
+            textElement.classList.add(`${newTab}Tab`);
+            currentTab = newTab;
+
+            // Tab-specific updates
+            if (newTab === "Actions") updateActions();
+            if (newTab === "Skills") updateSkills();
+        }
+    } else {
+        changeState(savedState)
+        currentTab = null;
     }
 }
+
+// Tab functions
 function openAssembly() {
-    const savedState = localStorage.getItem("savedState");
-    ActionsTabElement.style.display = 'none'
-    SkillsTabElement.style.display = 'none'
-    if (isActionTabOpen === 0) {
-    buttonElements.forEach(button => (button.style.display = "none"));
-    textElement.className = 's';
-    
-
-    textElement.classList.add('AssemblyTab');
-    AssemblyTabElement.style.display = 'inline'
-    isActionTabOpen = 1
-
-    } else if (isActionTabOpen === 1) {
-    changeState(savedState);
-    AssemblyTabElement.style.display = 'none'
-    isActionTabOpen = 0
-    }
+    switchTab("Assembly");
 }
 
-
+function openSkills() {
+    switchTab("Skills");
+}
 
 function openActions() {
-    const savedState = localStorage.getItem("savedState");
-    SkillsTabElement.style.display = 'none'
-    AssemblyTabElement.style.display = 'none'
-    if (isActionTabOpen === 0) {
-    buttonElements.forEach(button => (button.style.display = "none"));
-    textElement.className = 's';
+    switchTab("Actions");
+}
+
+
+
+function saveSkills() {
+    console.log("Saving skills:", skills);
+    localStorage.setItem("savedSkills", JSON.stringify(skills));
+}
+
+function increaseSkillLevel(skill, progress) {
+    const matchedSkill = skills.find(s => s.name === skill);
+    matchedSkill.unlocked = true
+    matchedSkill.level += progress
     
+    saveSkills()
+    updateSkills()  
+}
 
-    textElement.classList.add('ActionsTab');
-    ActionsTabElement.style.display = 'inline'
-    isActionTabOpen = 1
-    updateActions()
+function increaseSkillXp(skill, progress) {
+    const matchedSkill = skills.find(s => s.name === skill);
+    matchedSkill.unlocked = true
+    matchedSkill.xp += parseFloat(progress); 
+    
+    saveSkills()
+    updateSkills()  
+    
+}
 
-    } else if (isActionTabOpen === 1) {
-        changeState(savedState);
-        ActionsTabElement.style.display = 'none'
-        
-        isActionTabOpen = 0
+function updateSkillXP(skill) {
+    const xpFill = document.querySelector(`#${skill} #skill-barOverlay`);
+    const matchedSkill = skills.find(s => s.name === skill);
 
-        const name = actions.filter(i => i.unlocked === true);
-            name.forEach(item => {
-                const LoadActions = document.querySelectorAll(`#${item.name}`);
-                LoadActions.forEach(action => {
-                    action.style.display = 'none';
-                });
-            });
-        } 
+    if (xpFill && matchedSkill) {
+        const progressPercentage = (matchedSkill.xp / matchedSkill.maxXp) * 100;
+        xpFill.style.width = `${progressPercentage}%`;
     }
+}
 
 
-    function updateActions() {
-        const savedEquippedItem = JSON.parse(localStorage.getItem("savedEquippedItem"));
-        const savedState = localStorage.getItem("savedState");
+
+function updateSkills() {
+    skills.forEach(skill => {
+        const skillElements = document.querySelectorAll(`#${skill.name}`);
+        skillElements.forEach(element => {
+            if (skill.unlocked) {
+                element.style.display = 'flex';
+
+                // Update text
+            
+                const elementXP = element.querySelector('#FishingXp');
+                const elementSkillLevel = element.querySelector('#skillLevel');
+                if (elementXP) {
+                    elementXP.textContent = `XP: ${skill.xp}/${skill.maxXp}`;
+                    elementSkillLevel.textContent = `${skill.level}`
+                }
+
+                updateSkillXP(skill.name);
+            } else {
+                element.style.display = 'none';
+            }
+            
+        });
+    });
+}
+
+function updateActions() {
+    const savedEquippedItem = JSON.parse(localStorage.getItem("savedEquippedItem"));
+    const savedState = localStorage.getItem("savedState");
     
-        actions.forEach(action => {
-            const LoadActions = document.querySelectorAll(`#${action.name}`);
-            if (action.unlocked) {
-                LoadActions.forEach(element => {
-                    if (
-                        (action.name === "Scavenge" && (savedState === 'home' || savedState === 'District3')) ||
-                        (action.name === "Fishing" && savedState === 'pond') ||
-                        (action.name === "Begging" && savedState === 'home')
-                    ) {
-                        element.style.display = 'inline';
+    actions.forEach(action => {
+        const LoadActions = document.querySelectorAll(`#${action.name}`);
+        if (action.unlocked) {
+            LoadActions.forEach(element => {
+                if (
+                    (action.name === "Scavenge" && (savedState === 'home' || savedState === 'District3')) ||
+                    (action.name === "Fishing" && savedState === 'pond') ||
+                    (action.name === "Begging" && savedState === 'home')
+                ) {
+                    element.style.display = 'inline';
     
-                        if (action.name === "Fishing" && savedEquippedItem) {
-                            const LoadActionsText = document.querySelector(`#Fishing`);
-                            if (LoadActionsText) {
-                                LoadActionsText.innerHTML = `Cast ${savedEquippedItem.name}`;
-                            }
+                    if (action.name === "Fishing" && savedEquippedItem) {
+                        const LoadActionsText = document.querySelector(`#Fishing`);
+                        if (LoadActionsText) {
+                            LoadActionsText.innerHTML = `Cast ${savedEquippedItem.name}`;
                         }
                     }
-                });
-            } else {
-                LoadActions.forEach(element => {
-                    element.style.display = 'none';
-                });
-            }
-        });
-    }
-    
+                }
+            });
+        } else {
+            LoadActions.forEach(element => {
+                element.style.display = 'none';
+            });
+        }
+    });
+}
