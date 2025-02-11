@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+  <script src="https://cdn.socket.io/4.5.0/socket.io.min.js"></script>
+
+<video id="userScreen" autoplay></video>
+<button id="startScreen">Start Sharing</button>
+
+<script>
+  const startScreenButton = document.getElementById("startScreen");
+  const userScreen = document.getElementById("userScreen");
+
+  startScreenButton.addEventListener("click", () => {
+    // Ask for screen sharing permission
+    navigator.mediaDevices.getDisplayMedia({ video: true })
+      .then((stream) => {
+        userScreen.srcObject = stream; // Show user's screen in video element
+
+        // Send the stream to the server
+        sendScreenToServer(stream);
+      })
+      .catch((err) => {
+        console.error("Error: " + err);
+      });
+  });
+
+  function sendScreenToServer(stream) {
+    // Convert the stream to a base64-encoded image (or you can send as stream)
+    // For simplicity, let's use `canvas` to capture images
+
+    const canvas = document.createElement('canvas');
+    const context = canvas.getContext('2d');
+    const video = document.createElement('video');
+    video.srcObject = stream;
+
+    // Wait for the video to load, then draw it on the canvas
+    video.onloadeddata = () => {
+      context.drawImage(video, 0, 0, canvas.width, canvas.height);
+      const imageData = canvas.toDataURL('image/png'); // Get base64 image
+
+      // Send the image data to the server
+      socket.emit("screen-capture", imageData);
+    };
+  }
+</script>
+
+
+<img id="userScreenImage" />
+<script>
+  const socket = io("http://127.0.0.1:5500/settings/sharedscreen.html"); // Connect to your server
+
+  socket.on("screen-share", (imageData) => {
+    // When a screen capture is received, update the image on the page
+    document.getElementById("userScreenImage").src = imageData;
+  });
+</script>
+
+</html>

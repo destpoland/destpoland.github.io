@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Screen Sharing</title>
+  <script src="https://cdn.socket.io/4.5.0/socket.io.min.js"></script> <!-- Add Socket.io client script -->
+</head>
+<body>
+  <h1>Admin Screen</h1>
+  <img id="userScreenImage" alt="User's screen will appear here" />
+  
+  <script>
+    // Connect to the WebSocket server
+    const socket = io("http://localhost:3000");
+
+    // Listen for the 'screen-share' event from the server
+    socket.on("screen-share", (imageData) => {
+      // When screen data is received, display it in the image element
+      document.getElementById("userScreenImage").src = imageData;
+    });
+  </script>
+</body>
+</html>

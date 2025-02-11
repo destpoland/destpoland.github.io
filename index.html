@@ -21,14 +21,6 @@
 <link rel="stylesheet" href="styles.css">
 <link rel="stylesheet" href="mobile.css">
 <script src="settings.js"></script>
-<script src="https://cdn.socket.io/4.0.1/socket.io.min.js"></script>
-<script>
-  const socket = io("http://localhost:3000"); // Connect to the server
-
-  socket.on("user-count", (count) => {
-    console.log(`Users online: ${count}`);
-  });
-</script>
 <body>
 
 
@@ -58,8 +50,16 @@
 	
   </div>
 </div>
-  
+<script type="text/javascript">
+    (function(c,l,a,r,i,t,y){
+        c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+        t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+        y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+    })(window, document, "clarity", "script", "q7xzcdite5");
+</script>
 </body>
+
+
 
 </html>
 
