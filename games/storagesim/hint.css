@@ -1,0 +1,26 @@
+
+#hint {
+	position:absolute;
+	left:424px;
+	top:5px;
+	margin:0;
+	padding:0;
+	font-family:Papercuts, Verdana, Arial, sans-serif;
+	font-size:26px;
+	color:#fff;
+	text-shadow:-2px -2px 0 #000, 2px -2px 0 #000, -2px 2px 0 #000, 2px 2px 0 #000;
+	pointer-events:none;
+	opacity:0;
+}
+@keyframes hintFade {
+	0% {opacity:0}
+	10% {opacity:1}
+	90% {opacity:1}
+	100% {opacity:0}
+}
+@keyframes hintFade2 {
+	0% {opacity:0}
+	10% {opacity:1}
+	90% {opacity:1}
+	100% {opacity:0}
+}

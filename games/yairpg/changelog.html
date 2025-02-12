@@ -1,0 +1,458 @@
+
+<!DOCTYPE html>
+<html>
+<body>
+    <head>
+        <script type="module" src = "src/game_version.js"> </script>
+
+        <style>
+            .collapsible {
+                background-color: #eee;
+                color: #444;
+                cursor: pointer;
+                padding: 18px;
+                width: 100%;
+                border: none;
+                text-align: left;
+                outline: none;
+                font-weight: bold;
+                font-size: 16px;
+                border-top: 1px solid gray;
+            }
+            .collapsible:hover, .collapsible.active {
+                background-color: #ccc;
+            }
+            .content {
+                padding: 0 18px;
+                display: none;
+                overflow: hidden;
+                background-color: #f1f1f1;
+            }
+
+            #header {
+                background-color: #eee;
+                color: #444;
+                font-size: 20px;
+                padding: 18px;
+                width: fit-content;
+                border: none;
+                text-align: left;
+                outline: none;
+                font-weight: bold;
+                margin-bottom: 20px;
+                font-family: sans-serif;
+            }
+        </style>
+    </head>
+
+<div id="header">Click on blocks to unfold their content</div>
+
+<button type="button" class="collapsible">v0.4.3/v0.4.4 - GUI remake and Crafting</button>
+<div class="content"><pre>
+v0.4.3
+    - remade GUI to be a single tab
+    - implemented a crafting system
+    - added 3rd type of passive activity, resource gathering; if you are not starting a new game, for both this and crafting talk with the village elder
+    - changed some action icons
+    - expanded the breakdowns of hero stats
+    - new equipment slot, currently with 1 craftable thingy that can go there
+    - minimum damage getting through armor is now 10% of original value, instead of 1
+    - weapon skills (and unarmed) now increase hit chance
+    - 2 new combat locations: the rat saga continues + 3rd combat location in forest (beat 2nd, then talk with certain someone)
+    - changed scaling of location type penalties with skill level (it now has constant rate of change with levels, meaning first few levels won't reduce it as drastically as they used to)
+    - skill descriptions now have their id displayed
+    - skill names in books and in skill rewards now match what's displayed in other places (e.g. a multiplier to a not yet unlocked skill will have its name shown as "????")
+    - slightly reduced frequency of background 'noises'
+    - slightly nerfed: attack power of tier 2 equipment, stances (heavy/quick), xp values of some enemies, attack speed from unarmed skill, some skill milestone rewards
+    - fixed an issue where tooltips tended to lag a lot on chrome while devtools were open
+    - fixed the bug with messages about reaching level 0 in skill (maybe this time it will finally work, eh?)
+    - fixed a bug where enemy size kept being defaulted to "small"
+    - increased xp requirements for 'iron skin' and further reduced its xp gain if wearing any armor
+    - fixed a bug with tooltip refresh for multi-target stances
+    - tooltips of location types now show the penalties (both current and base values)
+    - restructured some of the code for updating character stats, for easier future use
+    - added a simple loading screen
+    - rewrote some ugly code to a more manageable form
+v0.4.3a
+    - fixed bug that broke combat when using shield
+v0.4.3b
+    - fixed crafting tooltips
+    - fixed some unlocks that didn't work
+    - fixed bug with consumables resulting in max health/stamina becoming NaN
+    - fixed bug on trying to trade some of new equipment
+v0.4.3c
+    - fixed bug with one of unlocks
+    - fixed wrong recipe name in crafting
+    - fixed bug on trying to trade some of new equipment (again)
+    - fixed quality rounding
+v0.4.3d
+    - fixed bug with crafting quality defaulting to 100%
+    - fixed bug where some of unlocked activities could become locked again after reloading
+v0.4.3d2
+    - fixed wrong chances on resource gathering (instead of being X, they were 1 minus X)
+v0.4.3e
+    - fixed wrong success chance on item crafting
+    - fixed unavailable unlock
+    - fixed bug where new clothing was unequippable without a reload
+    - fixed bug where unarmed dmg bonus was applied twice
+    - tweaked the autoscrolling of recipes to no longer happen when it's unnecessary
+v0.4.3f
+    - fixed trade bug
+v0.4.3f2
+    - fixed a broken unlock when talking to "Farm supervisor"
+v0.4.3g
+    - fixed bug where light level multiplier and unarmed attack speed were not being properly removed
+    - fixed scaling of some gathering actions (now they start from 0 instead of 1)
+    - wool now gets properly crafted into wool cloth instead of wolf leather
+    - fixed issue with time adjustment for attack loops
+v0.4.3h
+    - added drops to elite wolf rat guardians, incl. new item that currently has no crafting usage but might get it somewhere later
+    - fixed bug where loot from resource gathering was displayed in event category instead of loot category
+    - fixed bug where it was impossible to trade iron chainmail torso armor
+v0.4.3h2
+    - fixed trade bug when dealing with 3+ pieces of same unstackable item
+v0.4.3h3
+    - fixed the terrible issues caused by the previous "fix"
+    - crafting 'Iron Chainmail' now gives xp to the proper skill
+v0.4.3i
+    - fixed bug with tool equipping
+    - fixed bug with combat timers
+v0.4.3i2
+    - fixed another trade bug (this better be the last of them...)
+v0.4.3j
+    - updated descriptions of environmental skills to reflect formula change
+    - fixed some more bugs with crafting
+v0.4.3j2
+    - fixed another trade bug
+v0.4.3k
+    - fixed formulas for scaling of gathering/crafting chances
+    - defense now works the same way for enemies as it does for the hero (not blocking more than 90%)
+v0.4.3k2
+    - fixed a broken unlock for clearing 3rd forest location and increased area type xp gain from it
+v0.4.3l
+    - fixed an issue where state of BGM filter for message log wasn't being saved
+    - fixed a bug with message log where wrong message type was being removed
+    - fixed bug where drop chances were appearing in wrong places in bestiary tooltips
+v0.4.3m
+    - displayed skills are now grouped in categories
+    - hero levels now increase skill xp gain
+    - some minor rebalances and fixes
+    - fixed healing bug
+    - fixed bug with environmental penalties where only one effect would apply to a given stat
+v0.4.3n
+    - component value now scales with quality
+    - fixed another healing bug
+    - fixed bug with leather hats
+    - fixed a bug where weapon type related bonuses weren't applied on skill levelup
+
+v0.4.4
+    - all items now stack (for those with quality, it's only when quality is the same)
+    - completely rewrote how active effects work and updated their display
+    - xp value of crafted components now scales with their material cost (you don't have to solely craft dagger blades anymore)
+    - increased material cost of some crafting recipes
+    - increased minimum crafting xp value
+    - slowed down resource gathering activities
+    - crafting xp is now reduced when skill is above requirements: -20% per level for item recipes, while for components/equipment soft cap is 8*tier and hard cap 8*tier*sqrt(quality_multiplier)
+    - mentions of skills should now update properly, no more "?????" in descriptions
+    - item quality is now used as an additional sorting param if names/prices are the same
+    - for equipment crafting, available components are now sorted (by tier -> name -> quality)
+    - fixed visual bug where stance list would slightly change in width on hover, resulting in awkward flickering
+    - separated saves between main and dev releases
+    - fixed some bugs with item values
+    - tweaked item price rounding
+    - updated some display elements to a form that hopefully will be much easier to manage
+    - rewrote item quality from fractions to integers (no more floating point errors, yay)
+v0.4.4a
+    - fixed bug when selling more than 1 of an item
+    - fixed bug with item recipe tooltips not updating when needed
+v0.4.4b
+    - fixed bug when buying more than 1 of an item
+v0.4.4c
+    - fixed bug with crafting xp cap
+    - fixed bug where material count for clothing recipes was always at 0
+    - fixed bug that made it impossible to read books
+v0.4.4d
+    - crafting when skill is past hardcap now provides 1 xp instead of 0
+    - fixed component sorting in crafting
+v0.4.4e
+    - quick fix to importing saves
+v0.4.4f
+    - implemented additional separate autosave every 60 minutes, which can be loaded from options panel
+    - added a button to import a save from the other release (main if you are on dev, dev if you are on main) in options panel
+    - fixed lack of recipe display refresh on failed crafting (for 'items' category)
+    - fixed wrong month numbering in exported files
+    - fixed broken names of %-based effects
+v0.4.4g
+    - fixed xp gains for some resource gathering activities
+    - fixed bug with prices of component-less equipment
+v0.4.4h
+    - fixed displayed money not updating after obtaining cash via dialogue
+    - fix for a bug with saves not loading on dev in some circumstances
+</pre>
+</div>
+<button type="button" class="collapsible">v0.4 - Combat Stances</button>
+<div class="content"><pre>
+v0.4.0
+    - introduced combat stances, talk with village guard to unlock (ask him for tips if you already met him earlier); lots of names were suggested by Varian on our discord channel
+    - some combat related skills now gain xp even if their original condition (e.g. succeeding in some action) is not fulfilled, although at half the efficiency
+    - the rat saga continues
+    - a bit more content after leaving the village
+    - added some background "sounds"
+    - new skills and activities (check training options in village and cave, they might be instantly unlocked if you are far enough)
+    - rebalance; changes to some displayed texts
+    - modified changelog and help page to a form easier to navigate
+    - regeneration when sleeping now scales with "Sleeping" skill
+    - trade all button + another trade bugfix (plz let it be the last one)
+v0.4.0a
+    - balance changes
+    - switching weapons now won't make dead enemies suddenly start attacking again
+    - CSS fixes
+    - dialogue text fixes
+    - level bonuses from "Presence sensing" skill, expanded bonuses for some other skills
+v0.4.0b
+    - more balance changes
+    - changed some background 'sounds'
+    - bugfixes
+v0.4.0c
+    - fixed bug with doubled stamina usage when some attacks would one-shot an enemy wave
+    - reduced frequency of background 'sounds'
+    - raised max level of presence sensing but reduced initial xp cost
+    - fixed rounding of displayed health
+    - fixed doubling of some skill bars
+    - fixed a bug where if reading a book inventory would get sorted every irl second
+    - 'broad arc' stamina cost raised to 4
+v0.4.0d
+    - hitcount of multi-target stances now properly updates in their descriptions when needed
+    - 'suspicious wall', 'village guard' and 'suspicious man' are no longer 'small' targets
+    - 'broad arc' dmg multiplier reduced to 0.4
+    - 'cave depths' location is now a tiny bit harder
+    - location types now how their stage displayed (e.g 'dark III')
+    - fixed 'quick steps' skill's too low xp cost
+v0.4.0e
+    - stabilized enemy attack timers (based on expected time vs actual time) to hopefully fix the issue with enemy attacks firing slower than expected
+v0.4.0f
+    - fixed issue with xp multiplier rewards from skill levels not working properly after reloading the game
+v0.4.0g
+    - fixed stance skills having no effect
+    - stamina efficiency in 'Data' is now shown with 2 decimal places
+    - minor CSS fix
+v0.4.0h
+    - fixed wrong stance names in some skill descriptions
+    - crit rate / crit power breakdown is now shown with 2 decimal places
+v0.4.0i
+    - fixed a bug where when entering activity with a maxxed out skill, xp% would be NaN
+    - CSS fixes for inventory
+v0.4.0j
+    - fixed multi-trade buttons that were broken by previous patch
+v0.4.0k
+    - simplified some code
+v0.4.0l
+    - CSS fixes for inventory
+v0.4.0m
+    - fixed skill-specific xp bonuses not working
+    - added a few more skill level rewards
+    - slightly reduced xp multipliers and crit rate from skill levels
+v0.4.0n
+    - another CSS fix for inventory
+    - another bugfix for trade (displayed value vs actual value sometimes differed)
+v0.4.0o
+    - equalized base xp costs for stance skills at 60, modified how they gain xp
+    - added parent skill for stance skills
+    - added some more names to existing skills
+</pre>
+</div>
+
+<button type="button" class="collapsible">v0.3.5 - Economy Rework</button>
+<div class="content"><pre>
+v0.3.5
+    - reworked economy (drop rates no longer go down, instead price of enemy loot goes down as more and more is sold, they also slowly recover over time; solution suggested by 10mart10 on our discord channel)
+    - added quick travel to [last combat location] and to [last location where player slept]
+    - xp multipliers are now displayed - for skills in their onhover tooltip, for hero in data tab
+    - shield blocking skill now increases max dmg than can be blocked; block chance reduced by 5% points (goes from 75% to 95%)
+      it also has 30 levels instead of 20 now
+    - combat areas now have their descriptions available as tooltips when hovering over their name
+    - added more entries to the "help" section
+    - nerfed xp rewards for clearing both cave areas, added xp rewards for both forest areas
+    - buffed wolves (probably not enough, you guys are too strong)
+    - some other balance changes for skills, hero and items
+    - enemies in combat now display their chance to hit hero and to dodge hero's attack, instead of AP/EP
+    - some style fixes, styling for money
+    - fixed parent skill xp gain (now they will keep up in xp with their most leveled child)
+    - added skill sorting (by name and by level); fixed inventory sorting; you can now also click button again to reverse sort direction (switch between ascending and descending)
+v0.3.5a
+    - minor CSS fix
+v0.3.5b
+    - equipment display fix
+    - trade bug fix
+v0.3.5c
+    - fixed skill rewards being added twice
+v0.3.5d
+    - some values wouldn't refresh properly
+    - added consolelogging of some warnings in case of unexpected results
+    - fixed some rounding issues
+    - some balance changes
+    - another trade fix
+v0.3.5e
+    - xp bonus from parent skill is now included in xp gains in skill tooltip
+    - minor balance change
+    - fixed some styling
+v0.3.5f
+    - (hopefully) fixed issue with attack speed
+v0.3.5g
+    - fixed unarmed attack speed bonus not being added
+v0.3.5h
+    - fixed minor bug with loading older saves
+v0.3.5i
+    - fixed attacks getting faster on 0 stamina
+</pre>
+</div>
+<button type="button" class="collapsible">v0.3.4</button>
+<div class="content"><pre>
+v0.3.4
+    - implemented books (only 2 available for now); both provide small bonuses to xp gains upon finish
+v0.3.4e
+    - huge buff to shield block chance, other balance changes
+    - bugfixes (trade, loading, wrong values in bestiary)
+    - added console message on auto save
+    - added visual distinction to the book that is being read
+    - travel options in locations now don't get grouped if there's nothing other than travel available (e.g. the cave)
+    - modified function for inventory display so it can now not only refresh all items but also a single one
+    - compatibility for saves from older versions
+    - fixed that ugly display of "def" in combat
+v0.3.4f
+    - fixed reward of "tight manouvers" skill
+    - fixed display of "stamina efficiency" reward
+    - fixed issue with area unlocks (didnt work if it was supposed to be unlocked by clearing some combat zone)
+    - minor balance changes
+v0.3.4g
+    - fixed wrong rounding of dropchances in bestiary
+    - fixed lack of rounding in reading time
+    - fixed xp gains from harder areas
+    - removed underscores from some descriptions
+    - slightly nerfed some xp bonuses
+v0.3.4h
+    - fixed shield block chance reaching 100% way too soon
+    - fixed block chance display in combat
+    - added game version to save file, for future usage
+v0.3.4i
+    - now can take less than 1 dmg from an attack, if using a shield
+    - rounded some dmg numbers
+v0.3.4i-2
+    - minor fix to CSS
+</pre></div>
+
+<button type="button" class="collapsible">v0.3.3</button>
+<div class="content"><pre>
+v0.3.3
+    - rebalanced stat gains from skill milestones
+    - added another combat location between infested field and cave depths, to smooth the progression
+    - skill groups replaced with parent skills; now they only provide xp bonus and their child skills have their own milestones
+    - refactored calculations of stats from skills/milestones/equipment/level to a more manageable form
+    - refactored equipment stat calculations
+    - implemented xp bonuses (for now only from skill milestones)
+</pre></div>
+<button type="button" class="collapsible">v0.3</button>
+<div class="content"><pre>
+v0.3
+    - drop chance now scales with how many of specific enemy were killed, down to 1/10th at 999+
+    - fixed minor bugs when trading stackable items
+    - changed the starting year to 1000
+    - location choices now get foldered only when there's more than two (used to be at more than one)
+    - equipment prices increased by ~50%
+    - introduced bestiary with list of all killed enemies (killcount, description, stats, drops their chances)
+    - rebalanced "sleeping" skill rewards
+v0.3b
+    - fixed wrong milestone levels on weapon skills after loading game
+    - changed xp scaling of some skills
+    - fixed wrong calculations on shield blocking skill
+v0.3c
+    - fixed a minor error when loading save with any skill having less xp than needed to be visible
+    - changed the way savefiles are loaded to avoid a bunch of issues
+</pre></div>
+<button type="button" class="collapsible">v0.2.9</button>
+<div class="content"><pre>
+v0.2.9
+    - added "iron skin" skill that provides a tiny bit of def, xp is gained for fighting with no armour equipped
+    - evasion xp is increased by 50% when fighting with no armor equipped (let's call it an adrenaline bonus)
+    - changed the hit-chance formula to non-linear
+v0.2.9b
+    - "iron skin" now works
+    - minor fixes to some formulas
+</pre></div>
+<button type="button" class="collapsible">v0.2.8</button>
+<div class="content"><pre>
+v0.2.8
+    - message log can now be filtered for stuff related to combat/levelups&unlocks/events/loot
+    - now if there's more than 1 option in any category (work, train, travel, talk, trade), 
+      it's available via separate list of choices instead of all being crammed together
+    - rounded displayed values for some skill effects
+</pre></div>
+<button type="button" class="collapsible">v0.2.7</button>
+<div class="content"><pre>
+v0.2.7
+    - reworked the location type system
+    - payments for some jobs are now affected by related skill
+    - moved dialogue answers to dialouge box (instead of message log)
+</pre></div>
+<button type="button" class="collapsible">v0.2.5</button>
+<div class="content"><pre>
+v0.2.5
+    - modified tooltip positioning so that they don't leave the screen
+    - rounded some displayed numbers
+    - slightly weakened first enemy type
+    - some minor bugfixes
+</pre></div>
+<button type="button" class="collapsible">v0.2.4</button>
+<div class="content"><pre>
+v0.2.4
+    - introduced location types (for combat zones), that bring some additional penalties to hit/evasion chance
+    - added a new job, unlocked after clearing 2nd combat zone
+</pre></div>
+<button type="button" class="collapsible">v0.2.2</button>
+<div class="content"><pre>
+v0.2.2
+    - fixed issue where multi-enemy locations required killing X enemies, instead of killing X enemy groups
+    - implemented stamina effects on character's attack speed and attack power
+    - number of [alive] enemies now has negative impact on character's hit chance
+    - number of enemies multiplies gained character xp by sqrt of group size
+    - new training activity
+</pre></div>
+<button type="button" class="collapsible">v0.2.1</button>
+<div class="content"><pre>
+v0.2.1
+    - fixed two small problems when importing file
+    - fixed issue with combat being paused when area page is hidden
+    - rewrote the combat loops, made it work properly when tab is not focused
+</pre></div>
+<button type="button" class="collapsible">v0.2</button>
+<div class="content"><pre>
+v0.2.0
+    - fixed all the bugs I managed to find; 
+    fighting against groups now should work without any issues (other than balance)
+
+    - restructured a lot of code, mostly moved stuff to new places,
+    but also created some new methods for updating the display
+
+    - moved the page selection buttons to the top
+    - switched from fontawesome to google icons
+</pre></div>
+    <script>
+        const btns = document.getElementsByClassName("collapsible");
+        //const content = document.getElementById("content");
+    
+        for(let i = 0; i < btns.length; i++) {
+            btns[i].addEventListener("click", () => {
+                btns[i].classList.toggle("active");
+                const content = btns[i].nextElementSibling;
+                if (content.style.display !== "block"){
+                    content.style.display = "block";
+                } else {
+                    content.style.display = "none";
+                }
+            });
+        }
+        
+    </script>
+    
+</body>
+</html>

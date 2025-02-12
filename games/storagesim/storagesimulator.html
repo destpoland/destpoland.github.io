@@ -1,0 +1,587 @@
+
+<!DOCTYPE html>
+
+<html lang="en" oncontextmenu="return false">
+	<head>
+		<title>Kodub - Storage Simulator</title>
+
+		<style>
+			html, body {
+				margin:0;
+				padding:0;
+				background:#4f4f4f;
+
+				overflow:hidden;
+
+				-webkit-touch-callout:none;
+				-webkit-user-select:none;
+				-khtml-user-select:none;
+				-moz-user-select:none;
+				-ms-user-select:none;
+				user-select:none;
+				cursor:default;
+			}
+
+			#game {
+				display:none;
+				position:absolute;
+				left:0;
+				top:0;
+				width:100%;
+				height:100%;
+			}
+
+			#screen {
+				position:absolute;
+				left:0;
+				top:0;
+				width:100%;
+				height:100%;
+			}
+
+			#toolbar {
+				margin:0;
+				padding:0;
+				position:absolute;
+				top:0;
+				left:0;
+			}
+			#toolbar div {
+				display:inline-block;
+				margin:6px 0 6px 6px;
+				padding:0;
+				width:72px;
+				height:72px;
+				background:#666 url("images/ui.png");
+				background-position:center center;
+				background-size:64px 64px, auto;
+				background-repeat:no-repeat, repeat;
+				border:1px solid #000;
+				border-radius:6px;
+				box-shadow:0 0 5px #000, inset 0 0 5px #000;
+				cursor:pointer;
+			}
+			#toolbar div:hover {
+				background:#777 url("images/ui.png");
+				background-position:center center;
+				background-size:64px 64px, auto;
+				background-repeat:no-repeat, repeat;
+			}
+			#toolbar div:active {
+				background:#555 url("images/ui.png");
+				background-position:center center;
+				background-size:64px 64px, auto;
+				background-repeat:no-repeat, repeat;
+			}
+			#toolbar div.selected {
+				background:#888 url("images/ui.png");
+				background-position:center center;
+				background-size:64px 64px, auto;
+				background-repeat:no-repeat, repeat;
+			}
+
+			#toolbarQuit {
+				background-image:url("images/quit.png"), url("images/ui.png") !important;
+			}
+			#toolbarOptions {
+				background-image:url("images/options.png"), url("images/ui.png") !important;
+			}
+			#toolbarStatistics {
+				background-image:url("images/statistics.png"), url("images/ui.png") !important;
+			}
+			#toolbarEditor {
+				display:none !important;
+				background-image:url("images/editor.png"), url("images/ui.png") !important;
+			}
+			#toolbarShop {
+				background-image:url("images/shop.png"), url("images/ui.png") !important;
+			}
+			#toolbarSave {
+				background-image:url("images/load.png"), url("images/ui.png") !important;
+			}
+
+			#money {
+				position:absolute;
+				left:12px;
+				top:86px;
+				margin:0;
+				padding:0;
+				font-family:Papercuts, Arial, sans-serif;
+				font-weight:bold;
+				font-size:40px;
+				color:#f4c32e;
+				text-shadow:-2px -2px 0 #000, 2px -2px 0 #000, -2px 2px 0 #000, 2px 2px 0 #000;
+				pointer-events:none;
+			}
+			#money.red {
+				color:#dd0808;
+			}
+			#moneyChange {
+				position:absolute;
+				left:12px;
+				top:138px;
+				margin:0;
+				padding:0;
+				font-family:Papercuts, Arial, sans-serif;
+				font-weight:bold;
+				font-size:28px;
+				color:#15d80a;
+				text-shadow:-2px -2px 0 #000, 2px -2px 0 #000, -2px 2px 0 #000, 2px 2px 0 #000;
+				opacity:0;
+				pointer-events:none;
+			}
+			#moneyChange.red {
+				color:#d80a0a;
+			}
+			@keyframes moneyChangeFade {
+				0% {opacity:0}
+				2% {opacity:1}
+				90% {opacity:1}
+				100% {opacity:0}
+			}
+			@keyframes moneyChangeFade2 {
+				0% {opacity:0}
+				2% {opacity:1}
+				90% {opacity:1}
+				100% {opacity:0}
+			}
+
+			#packageList {
+				position:absolute;
+				right:0;
+				top:0;
+				margin:0;
+				padding:0;
+				pointer-events:none;
+			}
+			#packageList canvas {
+				display:block;
+				margin:8px;
+				padding:0;
+				box-shadow:0 0 10px #000;
+			}
+
+			@font-face {
+				font-family:Papercuts;
+				src:url(papercuts.ttf);
+			}
+
+			#menu {
+				position:absolute;
+				left:0;
+				top:0;
+				width:100%;
+				height:100%;
+				background:url("images/menu.jpg") center bottom;
+				background-size:cover;
+				text-align:center;
+			}
+			#menu h1 {
+				margin:4% 0 0 0;
+				padding:0;
+				text-align:center;
+				font-family:Papercuts, Verdana, Arial, sans-serif;
+				font-weight:bold;
+				font-size:120px;
+				line-height:0.95;
+				color:#fff;
+				text-shadow:-2px -2px 0 #000, 2px -2px 0 #000, -2px 2px 0 #000, 2px 2px 0 #000, 0 0 10px #000;
+			}
+			#menu .info {
+				position:absolute;
+				bottom:0;
+				right:0;
+				margin:0 8px;
+				padding:0;
+				text-align:center;
+				font-family:Papercuts, Verdana, Arial, sans-serif;
+				font-size:20px;
+				color:#fff;
+				text-shadow:-2px -2px 0 #000, 2px -2px 0 #000, -2px 2px 0 #000, 2px 2px 0 #000;
+			}
+
+			#menu #menuLoading {
+				margin:15vh 0 0 0;
+				padding:0;
+			}
+			#menu #menuLoading p {
+				margin:0;
+				padding:0;
+				text-align:center;
+				font-family:Papercuts, Verdana, Arial, sans-serif;
+				font-size:48px;
+				color:#fff;
+				text-shadow:-2px -2px 0 #000, 2px -2px 0 #000, -2px 2px 0 #000, 2px 2px 0 #000;
+			}
+			#menuLoadingBar {
+				position:relative;
+				margin:0 auto;
+				padding:0;
+				width:420px;
+				height:32px;
+				border:2px solid #000;
+				border-radius:6px;
+				overflow:hidden;
+			}
+			#menuLoadingBar span {
+				display:block;
+				margin:0;
+				padding:0;
+				width:0;
+				height:32px;
+				border-radius:6px;
+				background:#fff;
+				box-shadow:0 0 10px #000;
+			}
+
+			#menu #menuButtons {
+				display:none;
+				margin:15vh 0 0 0;
+				padding:0;
+			}
+			#menu #menuButtons div {
+				display:inline-block;
+				margin:0;
+				padding:0;
+				height:108px;
+			}
+			#menu #menuButtons div div {
+				display:inline-block;
+				margin:0 6px 0 6px;
+				padding:0;
+				width:108px;
+				height:108px;
+				background:#666 url("images/ui.png");
+				background-position:center center;
+				background-size:96px 96px, auto;
+				background-repeat:no-repeat, repeat;
+				border:1px solid #000;
+				border-radius:6px;
+				box-shadow:0 0 20px #000, inset 0 0 5px #000;
+				cursor:pointer;
+			}
+			#menu #menuButtons div:hover div {
+				background:#777 url("images/ui.png");
+				background-position:center center;
+				background-size:96px 96px, auto;
+				background-repeat:no-repeat, repeat;
+			}
+			#menu #menuButtons div:active div {
+				background:#555 url("images/ui.png");
+				background-position:center center;
+				background-size:96px 96px, auto;
+				background-repeat:no-repeat, repeat;
+			}
+			#menu #menuButtons div p {
+				margin:-6px 0 0 0;
+				padding:0;
+				text-align:center;
+				font-family:Papercuts, Verdana, Arial, sans-serif;
+				font-size:40px;
+				color:#fff;
+				text-shadow:-2px -2px 0 #000, 2px -2px 0 #000, -2px 2px 0 #000, 2px 2px 0 #000;
+				pointer-events:none;
+				opacity:0;
+				transition:0.1s ease-in-out;
+			}
+			#menu #menuButtons div:hover p {
+				opacity:1;
+			}
+
+			#menuSingleplayer div {
+				background-image:url("images/singleplayer.png"), url("images/ui.png") !important;
+			}
+			#menuCoop div {
+				background-image:url("images/coop.png"), url("images/ui.png") !important;
+			}
+			#menuLoad div {
+				background-image:url("images/load.png"), url("images/ui.png") !important;
+			}
+			#menuOptions div {
+				background-image:url("images/options.png"), url("images/ui.png") !important;
+			}
+
+			#options {
+				display:none;
+				position:absolute;
+				top:0;
+				left:0;
+				width:100%;
+				height:100%;
+				pointer-events:none;
+			}
+			#options > div {
+				position:relative;
+				display:block;
+				margin:280px auto;
+				padding:30px 30px 8px 30px;
+				width:590px;
+				background:#666 url("images/ui.png");
+				box-shadow:0 0 20px #000, inset 0 0 20px #000;
+				border:2px solid #000;
+				border-radius:10px;
+				font-family:Papercuts, Verdana, Arial, sans-serif;
+				font-size:40px;
+				color:#fff;
+				text-shadow:-2px -2px 0 #000, 2px -2px 0 #000, -2px 2px 0 #000, 2px 2px 0 #000;
+				pointer-events:auto;
+			}
+			#options > div > h2 {
+				margin:-12px 0 6px 0;
+				padding:0;
+				line-height:1;
+				font-size:38px;
+				text-align:center;
+			}
+			#options > div > #optionsClose {
+				position:absolute;
+				left:12px;
+				top:12px;
+				margin:0;
+				padding:0;
+				width:38px;
+				height:38px;
+				background:#b95151;
+				background-image:url("images/cross.png") !important;
+				background-position:center center;
+				background-size:32px 32px;
+				background-repeat:no-repeat;
+				border:1px solid #000;
+				border-radius:6px;
+				box-shadow:0 0 20px #000, inset 0 0 5px #000;
+				cursor:pointer;
+			}
+			#options > div > #optionsClose:hover {
+				background:#de6161;
+				background-position:center center;
+				background-size:32px 32px;
+				background-repeat:no-repeat;
+			}
+			#options > div > #optionsClose:active {
+				background:#9a3939;
+				background-position:center center;
+				background-size:32px 32px;
+				background-repeat:no-repeat;
+			}
+			#options > div > div {
+				margin:0;
+				padding:0;
+				line-height:1.5;
+			}
+			#options > div > div > div {
+				display:inline-block;
+				margin:0;
+				padding:0;
+			}
+			#options > div > div > div:last-of-type {
+				float:right;
+			}
+			#options > div > div > div span {
+				display:inline-block;
+				margin:0 10px;
+				padding:0;
+				color:#aaa;
+				cursor:pointer;
+			}
+			#options > div > div > div span.selected {
+				color:#fff;
+			}
+			.dpad, .space-button {
+		position: absolute;
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		gap: 10px;
+	}
+	.dpad {
+		bottom: 20px;
+		left: 20px;
+	}
+	
+	.dpad button, .space-button button {
+		width: 90px;
+		height: 90px;
+		font-size: 18px;
+		color: #fff;
+		background-color: #404040;
+		border: none;
+		border-radius: 8px;
+		cursor: pointer;
+	}
+	
+	.active {
+		background-color: #606060; /* Style for active button */
+	}
+		</style>
+
+		<link rel="stylesheet" type="text/css" href="confirm.css">
+		<link rel="stylesheet" type="text/css" href="hint.css">
+		<link rel="stylesheet" type="text/css" href="info.css">
+		<link rel="stylesheet" type="text/css" href="save_ui.css">
+		<link rel="stylesheet" type="text/css" href="shop.css">
+		<link rel="stylesheet" type="text/css" href="statistics.css">
+	</head>
+	<body>
+		
+		<div id="game">
+			<canvas id="screen"></canvas>
+			<div id="toolbar">
+				<div id="toolbarQuit"></div>
+				<div id="toolbarOptions"></div>
+				<div id="toolbarStatistics"></div>
+				<div id="toolbarEditor"></div>
+				<div id="toolbarShop"></div>
+				<div id="toolbarSave"></div>
+			</div>
+			<div id="hint"></div>
+			<h1 id="money"></h1>
+			<h2 id="moneyChange"></h2>
+			<div id="packageList"></div>
+			<div id="info"></div>
+		</div>
+
+		<div id="menu">
+			<h1>Storage Simulator</h1>
+			<p class="info">Kodub.com - 1.03.1</p>
+			<div id="menuLoading">
+				<p>Loading</p>
+				<div id="menuLoadingBar"><span></span></div>
+			</div>
+			<div id="menuButtons">
+				<div id="menuSingleplayer"><div></div><p>Solo</p></div>
+				<div id="menuCoop"><div></div><p>Coop</p></div>
+				<div id="menuLoad"><div></div><p>Load</p></div>
+				<div id="menuOptions"><div></div><p>Options</p></div>
+			</div>
+		</div>
+
+		<div id="saveUI">
+			<span id="saveClose"></span>
+			<div id="saveSlot1"></div>
+			<div id="saveSlot2"></div>
+			<div id="saveSlot3"></div>
+		</div>
+
+		<div id="options">
+			<div>
+				<h2>Options</h2>
+				<div id="optionsClose"></div>
+				<div id="optionsShadow"><div>Shadow Quality</div><div><span>Low</span><span class="selected">Medium</span><span>High</span></div></div>
+				<div id="optionsAmbientOcclusion"><div>Ambient Occlusion</div><div><span>Off</span><span class="selected">On</span></div></div>
+			</div>
+		</div>
+
+		<div id="shop">
+			<div>
+				<h2>Shop</h2>
+				<div id="shopClose"></div>
+				<div id="shopScroll"><div></div></div>
+				<div id="shopContent"></div>
+			</div>
+		</div>
+
+		<div id="statistics">
+			<div>
+				<h2>Statistics</h2>
+				<div id="statisticsClose"></div>
+				<div id="statisticsContent"></div>
+			</div>
+		</div>
+
+		<div id="confirm">
+			<div>
+				<p id="confirmMessage"></p>
+				<div id="confirmOk"></div>
+				<div id="confirmCancel"></div>
+			</div>
+		</div>
+
+		<script src="main.js" defer></script>
+		<div class="dpad">
+			<button id="upButton">▲</button>
+			<div class="dpad-controls">
+				<button id="leftButton">◀</button>
+				<button id="downButton">▼</button>
+				<button id="rightButton">▶</button>
+			</div>
+		</div>
+		<script type="text/javascript">
+            (function(c,l,a,r,i,t,y){
+                c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+                t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+                y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+            })(window, document, "clarity", "script", "q7xzcdite5");
+        </script>
+		<script>
+			// Button elements
+			const leftButton = document.getElementById("leftButton");
+			const rightButton = document.getElementById("rightButton");
+			const upButton = document.getElementById("upButton");
+			const downButton = document.getElementById("downButton");
+	
+			// To track the currently active button
+			let currentActiveButton = null;
+	
+			// Function to simulate keypress events
+			function simulateKeyPress(keyCode, isKeyDown) {
+				const eventType = isKeyDown ? "keydown" : "keyup";
+				const event = new KeyboardEvent(eventType, { keyCode: keyCode, which: keyCode, bubbles: true });
+				document.dispatchEvent(event);
+			}
+	
+			// Function to activate a specific button
+			function activateButton(button) {
+				button.classList.add('active');
+				const keyCode = parseInt(button.getAttribute("data-keycode"), 10);
+				simulateKeyPress(keyCode, true);
+				currentActiveButton = button; // Set the current active button
+			}
+	
+			// Function to deactivate the currently active button
+			function deactivateCurrentButton() {
+				if (currentActiveButton) {
+					currentActiveButton.classList.remove('active');
+					const keyCode = parseInt(currentActiveButton.getAttribute("data-keycode"), 10);
+					simulateKeyPress(keyCode, false);
+					currentActiveButton = null; // Clear the active button
+				}
+			}
+	
+			// Function to add touch event listeners to a button
+			function addButtonListeners(button) {
+				button.addEventListener("touchstart", (event) => {
+					event.preventDefault();
+					activateButton(button); // Activate the pressed button
+				});
+	
+				button.addEventListener("touchend", (event) => {
+					deactivateCurrentButton(); // Deactivate the pressed button
+				});
+			}
+	
+			// Add data-keycode attributes for easier handling
+			leftButton.setAttribute("data-keycode", 65);  // 'A' key for left movement
+			rightButton.setAttribute("data-keycode", 68); // 'D' key for right movement
+			upButton.setAttribute("data-keycode", 87);    // 'W' key for up movement
+			downButton.setAttribute("data-keycode", 83);  // 'S' key for down movement
+	
+			// Add event listeners for each button
+			addButtonListeners(leftButton);
+			addButtonListeners(rightButton);
+			addButtonListeners(upButton);
+			addButtonListeners(downButton);
+	
+			// Additional logic to handle touchmove for dragging between buttons
+			document.addEventListener("touchmove", (event) => {
+				const touch = event.touches[0];
+				const targetButton = document.elementFromPoint(touch.clientX, touch.clientY);
+	
+				if (targetButton && targetButton.tagName === "BUTTON" && targetButton !== currentActiveButton) {
+					// If the target button is different from the currently active button, deactivate the current one and activate the new one
+					deactivateCurrentButton();
+					activateButton(targetButton);
+				}
+			});
+		</script>
+	</body>
+</html>

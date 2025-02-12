@@ -1,0 +1,179 @@
+
+#shop {
+	display:none;
+	position:absolute;
+	top:0;
+	left:0;
+	width:100%;
+	height:100%;
+	pointer-events:none;
+}
+#shop > div {
+	position:relative;
+	display:block;
+	margin:110px auto;
+	padding:30px 0 0 0;
+	width:590px;
+	background:#666 url("images/ui.png");
+	box-shadow:0 0 20px #000, inset 0 0 20px #000;
+	border:2px solid #000;
+	border-radius:10px;
+	font-family:Papercuts, Verdana, Arial, sans-serif;
+	font-size:40px;
+	color:#fff;
+	text-shadow:-2px -2px 0 #000, 2px -2px 0 #000, -2px 2px 0 #000, 2px 2px 0 #000;
+	overflow:hidden;
+	pointer-events:auto;
+}
+#shop > div > h2 {
+	margin:-12px 0 6px 0;
+	padding:0;
+	line-height:1;
+	font-size:38px;
+	text-align:center;
+}
+#shop > div > p {
+	margin:0;
+	padding:0;
+	line-height:1;
+	font-size:32px;
+}
+#shop > div > #shopClose {
+	position:absolute;
+	left:12px;
+	top:12px;
+	margin:0;
+	padding:0;
+	width:38px;
+	height:38px;
+	background:#b95151;
+	background-image:url("images/cross.png") !important;
+	background-position:center center;
+	background-size:32px 32px;
+	background-repeat:no-repeat;
+	border:1px solid #000;
+	border-radius:6px;
+	box-shadow:0 0 20px #000, inset 0 0 5px #000;
+	cursor:pointer;
+}
+#shop > div > #shopClose:hover {
+	background:#de6161;
+	background-position:center center;
+	background-size:32px 32px;
+	background-repeat:no-repeat;
+}
+#shop > div > #shopClose:active {
+	background:#9a3939;
+	background-position:center center;
+	background-size:32px 32px;
+	background-repeat:no-repeat;
+}
+
+#shopScroll {
+	margin:0;
+	padding:0;
+	position:absolute;
+	bottom:0;
+	right:0;
+	width:10px;
+	min-height:calc(320px - 2px);
+	height:calc(100vh - 230px - 2px);
+	border-left:2px solid #000;
+	background:#222 url("images/ui.png");
+	box-shadow:0 0 8px 0 #000, 0 0 8px 1px #000 inset;
+	pointer-events:none;
+}
+#shop.noScrollbar #shopScroll {
+	display:none;
+}
+#shopScroll div {
+	position:absolute;
+	margin:0;
+	padding:0;
+	width:100%;
+	background:#fff url("images/ui.png");
+	box-shadow:0 0 8px 1px #000 inset;
+	pointer-events:auto;
+}
+#shopScroll div:hover {
+	background:#ccc url("images/ui.png");
+}
+#shopScroll div:active {
+	background:#999 url("images/ui.png");
+}
+
+#shopContent {
+	margin:0;
+	padding:12px 500px 0 0;
+	width:calc(578px + 500px);
+	min-height:320px;
+	height:calc(100vh - 230px);
+	box-sizing:border-box;
+	border-top:2px solid #000;
+	text-align:left;
+	overflow-y:scroll;
+}
+#shop.noScrollbar #shopContent {
+	width:calc(590px + 500px);
+}
+#shopContent span {
+	display:block;
+	margin:0 0 10px 0;
+	padding:0;
+	width:578px;
+}
+#shop.noScrollbar #shopContent span {
+	width:590px;
+}
+#shopContent span > div {
+	display:inline-block;
+	margin:0 0 0 10px;
+	padding:0;
+	vertical-align:top;
+	width:270px;
+	overflow:hidden;
+	border:2px solid #000;
+	border-radius:6px;
+	box-shadow:0 0 20px #000, inset 0 0 5px #000;
+	text-align:center;
+}
+#shop.noScrollbar #shopContent span > div {
+	width:276px;
+}
+#shopContent span > div canvas {
+	margin:0;
+	padding:0;
+	width:100%;
+	border-bottom:2px solid #000;
+}
+#shopContent span > div h1 {
+	margin:-10px 0 0 0;
+	padding:0;
+	font-size:30px;
+}
+#shopContent span > div p {
+	margin:0;
+	padding:0;
+	font-size:24px;
+}
+#shopContent span > div div {
+	margin:8px 0 0 0;
+	padding:6px 0 0 0;
+	background:#37a016 url("images/ui.png");
+	border-top:2px solid #000;
+	font-size:32px;
+	color:#f4c32e;
+	cursor:pointer;
+}
+#shopContent span > div div:hover {
+	background:#44af23 url("images/ui.png");
+}
+#shopContent span > div div:active {
+	background:#2e8812 url("images/ui.png");
+}
+#shopContent span > div div.disabled {
+	background:#306320 url("images/ui.png") !important;
+	text-shadow:-2px -2px 0 rgba(0,0,0,0.7), 2px -2px 0 rgba(0,0,0,0.7), -2px 2px 0 rgba(0,0,0,0.7), 2px 2px 0 rgba(0,0,0,0.7);
+	color:rgba(220, 194, 116, 0.7);
+	cursor:default;
+}

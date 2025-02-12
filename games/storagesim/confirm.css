@@ -1,0 +1,64 @@
+
+#confirm {
+	display:none;
+	position:absolute;
+	left:0;
+	top:0;
+	width:100%;
+	height:100%;
+	text-align:center;
+	pointer-events:none;
+}
+
+#confirm > div {
+	position:relative;
+	display:inline-block;
+	margin:280px auto;
+	padding:30px 15px 18px 15px;
+	background:#666 url("images/ui.png");
+	box-shadow:0 0 20px #000, inset 0 0 20px #000;
+	border:2px solid #000;
+	border-radius:10px;
+	font-family:Papercuts, Verdana, Arial, sans-serif;
+	font-size:40px;
+	line-height:1;
+	color:#fff;
+	text-shadow:-2px -2px 0 #000, 2px -2px 0 #000, -2px 2px 0 #000, 2px 2px 0 #000;
+	pointer-events:auto;
+}
+
+#confirmMessage {
+	margin:0;
+	padding:0 10px 20px 10px;
+}
+
+#confirmOk, #confirmCancel {
+	display:inline-block;
+	margin:0;
+	padding:10px 12px 6px 12px;
+	line-height:1;
+	box-shadow:0 0 5px #000, inset 0 0 5px #000;
+	border:2px solid #000;
+	border-radius:10px;
+	cursor:pointer;
+}
+#confirmOk {
+	float:left;
+	background:#65b951 url("images/ui.png");
+}
+#confirmOk:hover {
+	background:#6fde61 url("images/ui.png");
+}
+#confirmOk:active {
+	background:#449a38 url("images/ui.png");
+}
+#confirmCancel {
+	float:right;
+	background:#b95151 url("images/ui.png");
+}
+#confirmCancel:hover {
+	background:#de6161 url("images/ui.png");
+}
+#confirmCancel:active {
+	background:#9a3939 url("images/ui.png");
+}
