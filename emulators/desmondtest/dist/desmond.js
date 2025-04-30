@@ -2798,11 +2798,11 @@ module.exports = localforage_js;
 
       var player = document.querySelector("desmond-player");
       if (player) {
-      var shadow = player.attachShadow({mode: "open"});
-      shadow.innerHTML=`<div id="player">
-        <canvas id="top" width="512" height="384"></canvas>
-        <canvas id="bottom" width="256" height="192" style="top: 0px;"></canvas>`;
-              var getFileBlob=function(e,t){var n=new XMLHttpRequest;n.open('GET',e),n.responseType='blob',n.addEventListener('load',function(){t(n.response)}),n.send()},blobToFile=function(e,t){return e.lastModifiedDate=new Date,e.name=t,e},getFileObject=function(e,t){getFileBlob(e,function(e){t(blobToFile(e,'test.jpg'))})};function loadURL(e, a){getFileObject(e,function(e){console.log(e),tryLoadROM(e),status();a()})}; 
+        var shadow = player.attachShadow({
+            mode: "open"
+        });
+        shadow.innerHTML = '<div id="desplayer">\n        <canvas id="top" width="256" height="192" style="left: -40px; top: -20px; width: 384px; height: 288px; position: relative;"> </canvas>\n        <canvas id="bottom" width="256" height="192" style="left: 355px;top: 50px;width: 128px;height: 96px;position: fixed;"></canvas>';
+        var getFileBlob=function(e,t){var n=new XMLHttpRequest;n.open('GET',e),n.responseType='blob',n.addEventListener('load',function(){t(n.response)}),n.send()},blobToFile=function(e,t){return e.lastModifiedDate=new Date,e.name=t,e},getFileObject=function(e,t){getFileBlob(e,function(e){t(blobToFile(e,'test.jpg'))})};function loadURL(e, a){getFileObject(e,function(e){console.log(e),tryLoadROM(e),status();a()})}; 
        player.loadURL = function(u, cb) { 
          player.enableMicrophone = function() {
     var micPtr = Module._realloc(0, 0x1000)
@@ -3116,7 +3116,7 @@ shadow.querySelector("#player").hidden = false;
             var buf = e.data
             var samplesReceived = buf.length / 2
             if (this.fifoLen + samplesReceived >= this.FIFO_CAP) {
-                console.log('o')
+                
                 return
             }
 
@@ -3146,7 +3146,7 @@ shadow.querySelector("#player").hidden = false;
 
         for (var i = 0; i < chan0.length; i++) {
             if (this.fifoLen < 1) {
-                console.log("u")
+                
                 break
             }
             chan0[i] = this.fifo0[this.fifoHead] / 32768.0

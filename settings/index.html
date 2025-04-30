@@ -35,13 +35,119 @@
 		<button class="button" onclick="setTheme('dark')">Dark</button>
 		<button class="button" onclick="abtblank()">About:Blank</button>
 		<label for="fileInput" class="button">Custom Upload</label>
-    <button class="button" onclick="location.href='../games/test/'">Test Game</button>
+    <button class="button" onclick="location.href='../games/test/'">Test Game</button>\
+    <button class="button" onclick="saveLocalStorageData()">SaveData</button>
+    <input type="file" id="uploadFile" accept=".txt,.json" style="display: none;">
+    <button class="button" onclick="uploadLocalStorage()">UploadData</button>
 		<input id="fileInput" type="file" onchange="uploadFile()" onclick="setTheme('custom')"/>
 	  
 	</div>
 
 </div>
   
+<script>
+  async function saveLocalStorageData() {
+    const data = {};
+    for (let i = 0; i < localStorage.length; i++) {
+        const key = localStorage.key(i);
+        data[key] = localStorage.getItem(key);
+    }
+
+    const jsonString = JSON.stringify(data);
+    const encrypted = await encryptData(jsonString, "안녕 트윈");
+
+    const blob = new Blob([encrypted], { type: 'application/octet-stream' });
+    const link = document.createElement("a");
+    link.href = URL.createObjectURL(blob);
+    link.download = "DestPLData.txt";
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+  }
+function uploadLocalStorage() {
+  document.getElementById('uploadFile').click();
+}
+
+document.getElementById('uploadFile').addEventListener('change', async function () {
+    const file = this.files[0];
+    if (!file) return;
+
+    const reader = new FileReader();
+    reader.onload = async function (e) {
+        try {
+            const decrypted = await decryptData(e.target.result, "안녕 트윈");
+            const data = JSON.parse(decrypted);
+            for (const key in data) {
+                localStorage.setItem(key, data[key]);
+            }
+            alert("data should be restored 🙏");
+        } catch (err) {
+            alert("failed u on ur own 💔");
+            console.error(err);
+        }
+    };
+    reader.readAsArrayBuffer(file);
+});
+
+
+async function encryptData(plaintext, password) {
+    const encoder = new TextEncoder();
+    const iv = crypto.getRandomValues(new Uint8Array(12));
+    const key = await deriveKey(password, iv);
+
+    const ciphertext = await crypto.subtle.encrypt(
+        { name: "AES-GCM", iv },
+        key,
+        encoder.encode(plaintext)
+    );
+
+    const combined = new Uint8Array(iv.byteLength + ciphertext.byteLength);
+    combined.set(iv, 0);
+    combined.set(new Uint8Array(ciphertext), iv.byteLength);
+    return combined;
+}
+
+async function decryptData(buffer, password) {
+    const iv = new Uint8Array(buffer.slice(0, 12));
+    const data = buffer.slice(12);
+    const key = await deriveKey(password, iv);
+
+    const decrypted = await crypto.subtle.decrypt(
+        { name: "AES-GCM", iv },
+        key,
+        data
+    );
+
+    const decoder = new TextDecoder();
+    return decoder.decode(decrypted);
+}
+
+async function deriveKey(password, salt) {
+    const encoder = new TextEncoder();
+    const keyMaterial = await crypto.subtle.importKey(
+        "raw",
+        encoder.encode(password),
+        { name: "PBKDF2" },
+        false,
+        ["deriveKey"]
+    );
+
+    return crypto.subtle.deriveKey(
+        {
+            name: "PBKDF2",
+            salt,
+            iterations: 100000,
+            hash: "SHA-256",
+        },
+        keyMaterial,
+        { name: "AES-GCM", length: 256 },
+        false,
+        ["encrypt", "decrypt"]
+    );
+}
+
+</script>
+
 <script>
     function abtblank() {
         const url = location.href;
@@ -60,7 +166,7 @@
           const popup = window.open("about:blank", name, `width=${width},height=${height}`);
 
           if (!popup || popup.closed) {
-            alert("Allow popups and redirects to hide this from showing up in your history.");
+            alert("all popups twin 💔");
           } else {
             const doc = popup.document;
             const iframe = doc.createElement("iframe");
