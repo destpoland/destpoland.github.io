@@ -28,12 +28,12 @@ body {
     margin: auto;
 }
 #application-canvas.fill-mode-KEEP_ASPECT {
-    width: 100%;
+    width: 50%;
     height: auto;
     margin: 0;
 }
 #application-canvas.fill-mode-FILL_WINDOW {
-    width: 100%;
+    width: 50%;
     height: 100%;
     margin: 0;
 }

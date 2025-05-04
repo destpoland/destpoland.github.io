@@ -12,7 +12,7 @@
   
   <script>
     // Connect to the WebSocket server
-    const socket = io("http://localhost:3000");
+    const socket = io("https://destpl.netlify.app/settings/test.html");
 
     // Listen for the 'screen-share' event from the server
     socket.on("screen-share", (imageData) => {

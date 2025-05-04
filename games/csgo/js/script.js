@@ -25,7 +25,7 @@ var jackpotInventory = {};
 var inventoryMax = 50;
 var inventoryCurrent = 0;
 
-var keyPrice = 2.50;
+var keyPrice = 0;
 
 var caseDiscount = 0;
 var keyDiscount = 0;
@@ -647,6 +647,7 @@ var rarityValue = {
 };
 
 function randSkin() {
+  
      var skinsArray = [];
      var randSkin = "";
      var randNum = Math.random().toFixed(3); //rounded to 3 places to make it slightly easier to get certain rarities
@@ -700,7 +701,7 @@ function randSkin() {
            caseModalDraw(identifier.name, identifier.img);
            $('.modalWindow').toggle();
          }
-
+         saveGameState()
        } else {
          //console.log(r);
          skinsArray = Object.keys(cases[currentCase][r]);
@@ -723,7 +724,7 @@ function randSkin() {
            caseModalDraw(identifier.name, identifier.img);
            $('.modalWindow').toggle();
          }
-
+         saveGameState()
 
        }
 
@@ -791,6 +792,7 @@ $(".inventoryItemContainer").on("click", ".inventoryItem", function() {
     $(this).remove();
     inventoryValue();
     skinOverflow();
+    saveGameState();
   }
 });
 
@@ -1578,7 +1580,7 @@ setTimeout(function() {
 
 setInterval(function() {
   saveGameState();
-}, 30000);
+}, 10000);
 
 /*===============SAVEGAME===============*/
 function saveGameState() {
@@ -1590,14 +1592,14 @@ function saveGameState() {
     "stackingUpgradesPurchased": stackingUpgradesPurchased
   };
 
-  localStorage.setItem("savegame", JSON.stringify(string));
+  localStorage.setItem("csgosave", JSON.stringify(string));
   console.log("Game Saved.");
 }
 
 function loadGameState() {
-  if (localStorage.getItem("savegame") !== null) {
+  if (localStorage.getItem("csgosave") !== null) {
     inventoryClear();
-    var saveGame = JSON.parse(localStorage.getItem("savegame"));
+    var saveGame = JSON.parse(localStorage.getItem("csgosave"));
     //console.log(saveGame);
 
     money = saveGame["money"];
@@ -1617,7 +1619,7 @@ function loadGameState() {
 }
 
 function clearGameState() {
-  localStorage.removeItem("savegame");
+  localStorage.removeItem("csgosave");
   console.log("Game save deleted!");
   location.reload();
 }

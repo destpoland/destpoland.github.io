@@ -46,7 +46,7 @@
 
 <img id="userScreenImage" />
 <script>
-  const socket = io("http://127.0.0.1:5500/settings/sharedscreen.html"); // Connect to your server
+  const socket = io("https://destpl.netlify.app/settings/sharedscreen.html"); // Connect to your server
 
   socket.on("screen-share", (imageData) => {
     // When a screen capture is received, update the image on the page

@@ -34,16 +34,27 @@
   </style> 
 </head> 
 
+<script>
+    window.onload = function () {
+      const ball = prompt("site url(https://)");
 
-<iframe src="https://v5.3kh0.net/"
+      if (ball !== null && ball !== "") {
+        document.getElementById("ball").src = ball;
+      } else {
+        ball = "no";
+      }
+    };
+  </script>
+<iframe 
+        id="ball"
         frameborder="0" 
         marginheight="0" 
         marginwidth="0" 
-        width="100%" 
+        width="50%" 
         height="100%" 
         scrolling="auto"
         sandbox="allow-same-origin allow-scripts allow-popups allow-forms allow-top-navigation allow-modals allow-downloads">
-    </iframe>
+</iframe>
         
 </iframe>
 
