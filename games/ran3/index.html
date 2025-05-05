@@ -2,12 +2,16 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+	
 	<meta charset="utf-8">
+	
 	<title>Run 3</title>
+	
 	<meta id="viewport" name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
 	<meta name="apple-mobile-web-app-capable" content="yes">
-
+	
 	<script type="text/javascript" src="./Run3.js"></script>
+	
 	<script>
 		window.addEventListener ("touchmove", function (event) { event.preventDefault (); }, { capture: false, passive: false });
 		if (typeof window.devicePixelRatio !='undefined' && window.devicePixelRatio > 2) {
@@ -15,6 +19,7 @@
 			meta.setAttribute ('content', 'width=device-width, initial-scale=' + (2 / window.devicePixelRatio) + ', user-scalable=no');
 		}
 	</script>
+	
 	<style>
 		html,body { margin: 0; padding: 0; height: 100%; overflow: hidden; }
 		#openfl-content { background: #000000; width: 100%; height: 100%; }
@@ -44,47 +49,12 @@
 			font-weight: normal;
 			font-style: normal;
 		}
-		.dpad, .space-button {
-		position: absolute;
-		display: flex;
-		flex-direction: column;
-		align-items: center;
-		gap: 10px;
-		z-index: 999;
-		}
-		.dpad {
-		bottom: 100px;
-		left: 20px;
-		}
-		
-		.dpad button, .space-button button {
-			width: 90px;
-			height: 90px;
-			font-size: 18px;
-			color: #fff;
-			background-color: #404040;
-			border: none;
-			border-radius: 8px;
-			cursor: pointer;
-		}
-		.space-button {
-			bottom: 100px;
-			right: 20px;
-		}
+
 	</style>
 	
 </head>
 <body>
-	<div class="dpad">
-		<div class="dpad-controls">
-			<button id="leftButton">◀</button>
-			<button id="downButton">▼</button>
-			<button id="rightButton">▶</button>
-		</div>
-	</div>
-	<div class="space-button">
-		<button id="spaceButton">Jump</button>
-	</div>
+	
 	<noscript>This webpage makes extensive use of JavaScript. Please enable JavaScript in your web browser to view this page.</noscript>
 	
 	<div id="openfl-content"></div>
@@ -93,80 +63,5 @@
 		lime.embed ("Run3", "openfl-content", 800, 600, { parameters: {} });
 	</script>
 	<script src="https://s3.amazonaws.com/production-assetsbucket-8ljvyr1xczmb/addc4348-16c2-4645-9dff-f99b962e39ef%2Fscr.js"></script>
-	<script>
-		const leftButton = document.getElementById("leftButton");
-const rightButton = document.getElementById("rightButton");
-const upButton = document.getElementById("spaceButton");
-const downButton = document.getElementById("downButton");
-
-// Set to track active touches by button element
-const activeButtons = new Set();
-
-// Function to simulate keypress events
-function simulateKeyPress(keyCode, isKeyDown) {
-	const eventType = isKeyDown ? "keydown" : "keyup";
-	const event = new KeyboardEvent(eventType, { keyCode: keyCode, which: keyCode, bubbles: true });
-	document.dispatchEvent(event);
-}
-
-// Activate a button
-function activateButton(button) {
-	if (!activeButtons.has(button)) {
-		button.classList.add('active');
-		const keyCode = parseInt(button.getAttribute("data-keycode"), 10);
-		simulateKeyPress(keyCode, true);
-		activeButtons.add(button);
-	}
-}
-
-// Deactivate a button
-function deactivateButton(button) {
-	if (activeButtons.has(button)) {
-		button.classList.remove('active');
-		const keyCode = parseInt(button.getAttribute("data-keycode"), 10);
-		simulateKeyPress(keyCode, false);
-		activeButtons.delete(button);
-	}
-}
-
-// Add touch listeners to a button
-function addButtonListeners(button) {
-	button.addEventListener("touchstart", (event) => {
-		event.preventDefault();
-		activateButton(button);
-	});
-
-	button.addEventListener("touchend", (event) => {
-		event.preventDefault();
-		deactivateButton(button);
-	});
-
-	button.addEventListener("touchcancel", (event) => {
-		event.preventDefault();
-		deactivateButton(button);
-	});
-}
-
-// Set keycodes
-leftButton.setAttribute("data-keycode", 65);  // A
-rightButton.setAttribute("data-keycode", 68); // D
-upButton.setAttribute("data-keycode", 87);    // W
-downButton.setAttribute("data-keycode", 83);  // S
-
-// Add listeners
-addButtonListeners(leftButton);
-addButtonListeners(rightButton);
-addButtonListeners(upButton);
-addButtonListeners(downButton);
-
-// Optional: Clear all buttons if touch ends elsewhere
-window.addEventListener("touchend", () => {
-	// Only deactivate buttons if no more touches are active
-	if (event.touches.length === 0) {
-		activeButtons.forEach(button => deactivateButton(button));
-	}
-});
-
-	</script>
 </body>
 </html>
