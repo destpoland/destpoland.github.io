@@ -1,0 +1,17 @@
+html, body {
+	padding: 0;
+	margin: 0;
+	background: #000000;
+	overflow: hidden;
+}
+
+#preloader-progress {
+	color: #ffffff20;
+	position: fixed;
+	bottom: 1vmax;
+	right: 1vmax;
+	text-align: right;
+	font-size: 2vmin;
+	font-family: sans-serif;
+	z-index: 999;
+}

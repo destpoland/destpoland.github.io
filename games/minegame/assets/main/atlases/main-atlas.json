@@ -1,0 +1,63 @@
+{
+  "frames": {
+    "particles/egg/0": {
+      "frame": {
+        "x": 2,
+        "y": 2,
+        "w": 87,
+        "h": 202
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 87,
+        "h": 202
+      },
+      "sourceSize": {
+        "w": 87,
+        "h": 202
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    },
+    "particles/egg/1": {
+      "frame": {
+        "x": 2,
+        "y": 208,
+        "w": 16,
+        "h": 16
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 16,
+        "h": 16
+      },
+      "sourceSize": {
+        "w": 16,
+        "h": 16
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    }
+  },
+  "meta": {
+    "app": "http://github.com/odrick/free-tex-packer-core",
+    "version": "0.3.4",
+    "image": "main-atlas.png",
+    "format": "RGBA8888",
+    "size": {
+      "w": 91,
+      "h": 226
+    },
+    "scale": 1
+  }
+}

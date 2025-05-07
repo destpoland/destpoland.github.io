@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+    <title>Dig Deep</title>
+
+    <meta http-equiv="Content-Type" content="text/html, charset=utf-8"/>
+    <meta name="apple-mobile-web-app-capable" content="yes"/>
+    <meta name="apple-touch-fullscreen" content="yes"/>
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent"/>
+    <meta name="msapplication-tap-highlight" content="no"/>
+    <meta name="MobileOptimized" content="960"/>
+    <meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0, initial-scale=1.0, user-scalable=no, minimal-ui"/>
+    <meta charset="utf-8"/>
+
+    <link rel="stylesheet" type="text/css" href="style/index.css" nonce="czI9jTcYzgDwmJUwg991fg"/>
+
+    <script src="./ytgame.js" nonce="czI9jTcYzgDwmJUwg991fg"></script>
+<script src="game.js" nonce="czI9jTcYzgDwmJUwg991fg"></script>
+<script nonce="czI9jTcYzgDwmJUwg991fg">window.addEventListener("load", () => window.runGame());</script>
+</head>
+
+<script>
+    function someFunction() {
+        console.log(localStorage.getItem("DigDeepSave1"));  // You can now use it outside
+    }
+    
+    window.addEventListener("load", () => {
+        // Step 1: Immediately back up DigDeepSave to DigDeepSave1
+        
+
+        const saveData = localStorage.getItem("DigDeepSave");
+        
+        if (saveData !== null) {
+            localStorage.setItem("DigDeepSave1", saveData);
+            myMHInstance.localStorage.data = JSON.parse(saveData)
+        }
+    
+        // Step 2: After 10 seconds, back it up again
+        setTimeout(() => {
+            const delayedSaveData = localStorage.getItem("DigDeepSave");
+            if (delayedSaveData !== null) {
+                localStorage.setItem("DigDeepSave1", delayedSaveData);
+            }
+        }, 10000); // 10 seconds
+    
+        // Step 3: Begin syncing DigDeepSave1 back into DigDeepSave every 5 seconds
+        setTimeout(() => {
+            setInterval(() => {
+                const backupSave = localStorage.getItem("DigDeepSave1");
+                if (backupSave !== null) {
+                    localStorage.setItem("DigDeepSave1", JSON.stringify(myMHInstance.localStorage.data))
+                    localStorage.setItem("DigDeepSave", backupSave);
+                }
+            }, 5000); // every 5 seconds
+        }, 10000); // start this 10 seconds after load
+    });
+    </script>
+    
+
+<body>
+    <div id="preloader-progress"></div>
+    <div id="game"></div>
+</body>
+</html>
