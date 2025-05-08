@@ -1,0 +1,44 @@
+{"frames": [
+
+{
+	"filename": "tape0",
+	"frame": {"x":0,"y":0,"w":46,"h":1024},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":46,"h":1024},
+	"sourceSize": {"w":46,"h":1024}
+},
+{
+	"filename": "tape1",
+	"frame": {"x":47,"y":0,"w":52,"h":1024},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":52,"h":1024},
+	"sourceSize": {"w":52,"h":1024}
+},
+{
+	"filename": "roll",
+	"frame": {"x":100,"y":0,"w":241,"h":318},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":0,"y":0,"w":241,"h":318},
+	"sourceSize": {"w":289,"h":318}
+},
+{
+	"filename": "cutter",
+	"frame": {"x":342,"y":0,"w":660,"h":626},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":660,"h":626},
+	"sourceSize": {"w":660,"h":626}
+}],
+"meta": {
+	"app": "https://www.codeandweb.com/texturepacker",
+	"version": "1.0",
+	"image": "sheet.png",
+	"format": "RGBA8888",
+	"size": {"w":1024,"h":1024},
+	"scale": "1",
+	"smartupdate": "$TexturePacker:SmartUpdate:f933951e917e35a5fd85482a1397ec42:7ad37d3b67d554c3f83e67349a994995:9c44ecd7e9a522007eaff2949095bc1d$"
+}
+}
