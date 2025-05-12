@@ -1,0 +1,132 @@
+{"frames": {
+
+"city.png":
+{
+	"frame": {"x":1,"y":172,"w":216,"h":165},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":21,"y":15,"w":216,"h":165},
+	"sourceSize": {"w":256,"h":256}
+},
+"civ_arrow.png":
+{
+	"frame": {"x":633,"y":144,"w":89,"h":115},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":20,"y":6,"w":89,"h":115},
+	"sourceSize": {"w":128,"h":128}
+},
+"expansion.png":
+{
+	"frame": {"x":555,"y":278,"w":135,"h":127},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":63,"y":49,"w":135,"h":127},
+	"sourceSize": {"w":256,"h":256}
+},
+"money1.png":
+{
+	"frame": {"x":429,"y":298,"w":124,"h":132},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":66,"y":30,"w":124,"h":132},
+	"sourceSize": {"w":256,"h":256}
+},
+"money2.png":
+{
+	"frame": {"x":507,"y":144,"w":124,"h":132},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":66,"y":30,"w":124,"h":132},
+	"sourceSize": {"w":256,"h":256}
+},
+"money3.png":
+{
+	"frame": {"x":245,"y":336,"w":182,"h":132},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":25,"y":30,"w":182,"h":132},
+	"sourceSize": {"w":256,"h":256}
+},
+"placeholder.png":
+{
+	"frame": {"x":1,"y":1,"w":234,"h":169},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":9,"y":15,"w":234,"h":169},
+	"sourceSize": {"w":256,"h":256}
+},
+"prod1.png":
+{
+	"frame": {"x":419,"y":1,"w":162,"h":141},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":47,"y":55,"w":162,"h":141},
+	"sourceSize": {"w":256,"h":256}
+},
+"prod2.png":
+{
+	"frame": {"x":583,"y":1,"w":162,"h":141},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":47,"y":55,"w":162,"h":141},
+	"sourceSize": {"w":256,"h":256}
+},
+"prod3.png":
+{
+	"frame": {"x":341,"y":151,"w":164,"h":145},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":46,"y":51,"w":164,"h":145},
+	"sourceSize": {"w":256,"h":256}
+},
+"road.png":
+{
+	"frame": {"x":555,"y":407,"w":128,"h":50},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":0,"y":39,"w":128,"h":50},
+	"sourceSize": {"w":128,"h":128}
+},
+"tech1.png":
+{
+	"frame": {"x":1,"y":339,"w":120,"h":130},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":68,"y":44,"w":120,"h":130},
+	"sourceSize": {"w":256,"h":256}
+},
+"tech2.png":
+{
+	"frame": {"x":123,"y":339,"w":120,"h":130},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":68,"y":44,"w":120,"h":130},
+	"sourceSize": {"w":256,"h":256}
+},
+"tech3.png":
+{
+	"frame": {"x":219,"y":172,"w":120,"h":162},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":68,"y":12,"w":120,"h":162},
+	"sourceSize": {"w":256,"h":256}
+},
+"town.png":
+{
+	"frame": {"x":237,"y":1,"w":180,"h":148},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":38,"y":28,"w":180,"h":148},
+	"sourceSize": {"w":256,"h":256}
+}},
+"meta": {
+	"app": "https://www.codeandweb.com/texturepacker",
+	"version": "1.0",
+	"image": "images/civ_images.png",
+	"format": "RGBA8888",
+	"size": {"w":746,"h":470},
+	"scale": "1",
+	"smartupdate": "$TexturePacker:SmartUpdate:5a40a9c717c50dbb5407ed75064c5d2a:45fc4000cf4251c5d31241aab97564a3:c590832ea43a10dd49783ef421339b1d$"
+}
+}

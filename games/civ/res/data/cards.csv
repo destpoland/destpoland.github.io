@@ -1,0 +1,330 @@
+,,,,,,,,,,,,,,,
+// FACES,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,
+_property,id,name,metaCategory,category,animalImage,rarity,sort,civ,,reward,colors[0],colors[1],colors[2],colors[3],description
+_type,,,,,,,,,,,,,,,
+_location,cards,,,,,,,,,,,,,,
+,// default values,,,,,,,,,// these are encoded,,,,,
+,default,,pet,,,common,a,,,pswm,,,,,
+,,,,,,,,,,,,,,,
+,// dogs,,,,,,,,,,,,,,
+,d1,Laika,,dog,,legendary,,russia,,ssswsss,red,lightgray,red,,A Soviet space dog - the first animal to orbit the Earth.
+,d2,Hachikō,,dog,,legendary,,japan,,fffffff,white,orangered,white,,Known for his remarkable loyalty – Hachikō the Akita waited for his master every day even after his master's death.
+,d3,Fido,,dog,,legendary,,usa,,smfffms,mediumblue,white,mediumblue,,The original Fido - Abraham Lincoln's dog
+,d4,Spuds,,dog,,common,,usa,,mffffm,peachpuff,mintcream,saddlebrown,,"Honey Tree Evil Eye, a female Bull Terrier, was better known for her role as Spuds MacKenzie"
+,d5,Gidget,,dog,,common,,usa,,ffffff,navajowhite,blanchedalmond,navajowhite,,"Gidget, a female Chihuaha, was best known as the Taco Bell Chihuahua."
+,d6,Ace,,dog,,rare,,usa,,pmpmpm,sandybrown,chocolate,sandybrown,,Ace the Wonder Dog was a German Shepherd that acted in numerous films and serials in the 1930s and 1940s
+,d7,Butkus,,dog,,epic,,usa,,pmwwmp,#4a2605,chocolate,#4a2605,,Butkus Stallone was Sylvester Stallone's personal pet Bullmastiff
+,d8,Hooch,,dog,,epic,,usa,,ppwwwm,firebrick,chocolate,firebrick,,"Beasley, a Dogue de Bordeaux, starred as Hooch in the film Turner & Hooch"
+,d9,Milo,,dog,,rare,,usa,,smmmms,seagreen,yellowgreen,seagreen,,"Max, a Jack Russell Terrier, played Milo in the Jim Carrey movie The Mask"
+,da,Rin Tin Tin,,dog,,epic,,usa,,pmmmmp,darkkhaki,moccasin,darkkhaki,,An internationally famous German Shepherd – his descendants starred in other performing roles
+,db,Toto,,dog,,epic,,usa,,spffpm,black,black,black,,"The famous dog role in The Wizard of Oz was played by Terry, a Cairn Terrier"
+,dc,Eddie,,dog,,common,,usa,,mpmsms,peru,seashell,peru,,The role of Eddie on the TV show Frasier was played by Moose and his son Enzo
+,dd,Lassie,,dog,,common,,usa,,mfpfpm,rosybrown,navajowhite,rosybrown,,"Pal, a Collie, played Lassie in various movies and television shows"
+,de,Benji,,dog,,common,,usa,,mmffmm,maroon,moccasin,maroon,,The fictional hero of a series of movies - a lovable mixed-breed dog who helps out the many people he meets
+,df,Pompey,,dog,,epic,,france,,mwswmw,darkorange,wheat,darkorange,,"Thwarted the attempted assassination of his master, William the Silent, Prince of Orange"
+,dg,Bobbie,,dog,,legendary,,usa,,pwpwpwp,sandybrown,ivory,sandybrown,,"After being separated from his family during a cross-country trip, Bobbie traveled over 4000 km on foot to return home"
+,dh,Dookie,,dog,,rare,,england,,mmsmmm,beige,sandybrown,tan,,The first of many Corgis owned by the British royal family
+,di,Baikal,,dog,,epic,,russia,,sfsfsf,crimson,cornsilk,crimson,,"One of Pavlov's dogs, famous from the “conditioned reflex” experiments"
+,dj,Belka,,dog,,legendary,,russia,,sssssss,bisque,seashell,bisque,,One of two Russian mixed breed dogs who together went to space and returned.  Belka later had a puppy given to Caroline Kennedy by Nikita Khrushchev
+,dk,Benedictine,,dog,,epic,,usa,,mmmfff,#4a2605,tan,#4a2605,,A St. Bernard recognized as the world's heaviest dog at 166kg
+,dl,Chips,,dog,,legendary,,usa,,fwwwwwf,#3a1A05,sandybrown,#3a1A05,,The most decorated war dog of World War II
+,dm,Smoky,,dog,,legendary,,usa,,swwwwws,whitesmoke,#d0d0d0,whitesmoke,,"Rescued from a foxhole during World War II, later became the first therapy dog"
+,dn,Rags,,dog,,rare,,usa,,wmwmwm,gray,#faebd7,gray,,A military dog involved in a raid on a leader of ISIS
+,do,Stubby,,dog,,legendary,,usa,,fwwwwwm,gray,lightgray,gray,,"The most decorated war dog of World War I, Sergeant Stubby participated in 17 battles on the Western Front."
+,dp,Ashley,,dog,,rare,,usa,,pmpspm,gray,black,gray,,"Ashley Whippet was the first notable disc dog, winner of three Canine Frisbee Disc World Championships"
+,dq,McGrath,,dog,,epic,,england,,mmfpmm,lavender,lavender,lavender,,Master McGrath was a greyhound who won numerous races and was granted an audience with the British Royal Family
+,dr,Sombra,,dog,,rare,,colombia,,swwpww,black,#a07f7f,black,,A German Shepherd police dog credited with over 200 arrests with the National Police of Colombia
+,ds,Gabi,,dog,,rare,,russia,,sswwmm,black,sandybrown,black,,A German Shepherd who worked as a guard dog at the Belgrade Zoo and managed to defeat an escaped jaguar.
+,dt,Oscar,,dog,,common,,england,,ssfmss,maroon,black,maroon,,"Hypnodog – a black Labrador retriever, famous for performing as a canine hypnotist."
+,du,Don,,dog,,rare,,germany,,smpmss,maroon,mistyrose,maroon,,Don the Talking Dog – learned to vocalize several words in German
+,dv,Balto,,dog,,epic,,usa,,sswspp,maroon,brown,maroon,,The lead sled dog on the final leg of a run taking diphtheria antitoxin to Alaska to fight an epidemic
+,dw,Kira,,dog,,rare,,usa,,sspwpp,paleturquoise,lightcyan,paleturquoise,,Twice helped her owner break through ice to rescue dogs stranded in a frozen lake
+,dx,Peter,,dog,,legendary,,england,,wwpfpww,navajowhite,sandybrown,navajowhite,,A rescue dog who helped find numerous people after attacks on London during World War II
+,dy,Max,,dog,,epic,,usa,,ssffss,silver,ghostwhite,silver,,One of the world's oldest dogs – lived over 29 years
+,dz,Clifford,,dog,,common,,usa,,pppppp,red,red,red,,The Big Red Dog
+,dA,Mishka,,dog,,common,,usa,,ppmfmm,#606060,azure,#606060,,"A Siberian Husky, famous for saying “I love you.”"
+,dB,Bingo,,dog,,common,,usa,,sffffs,pink,yellow,pink,,The farmer's dog whose name every US schoolchild learns to spell
+,dC,Baekgu,,dog,,rare,,korea,,sspmfs,tomato,darkorange,tomato,,Made friends with a lonely lion named Soonee
+,dD,Snoopy,,dog,,common,,usa,,mmffpm,black,white,black,,The real hero of the classic comic strip Peanuts
+,dE,Protodog,,dog,,legendary,,zulu,,sfpmwfw,yellow,cyan,palegreen,,The dog that first sat at a fireside with early humans.  The ancient ancestor of our loyal companions of today
+,,,,,,,,,,,,,,//old,Email me (info@whalebunny.com) with the name and background info of your dog for a chance to have it appear here
+,,,,,,,,,,,,,,,
+,// cats,,,,,,,,,,// these colors are all good unless they're whitewhitewhite,,,,
+,f1,Félicette,,cat,,legendary,,france,,sssssss,black,#C0D8FF,black,,"The first cat in space, launched as part of the French space program in 1963"
+,f2,Tuxedo Stan,,cat,,rare,,canada,,mfmfmf,gray,snow,gray,,"Tuxedo Stan ran for mayor of Halifax, Nova Scotia in 2012"
+,f3,Paddles,,cat,,rare,,newzealand,,mpmpmp,sandybrown,wheat,sandybrown,,The First Cat of New Zealand – Paddles was a rescue cat adopted by Prime Minister Jacinda Ardern
+,f4,Bob,,cat,,common,,england,,mfmpmf,orange,gold,orange,,Played the lead role in his own movie “A Street Cat Named Bob”.
+,f5,Catmando,,cat,,epic,,england,,smmwfp,orange,white,orange,,Joint leader of Britain's Official Monster Raving Loony Party from 1999 to 2002
+,f6,Larry,,cat,,rare,,england,,ffmmff,burlywood,lightyellow,burlywood,,Chief Mouser at 10 Downing Street in London
+,f7,Tom Kitten,,cat,,rare,,usa,,ppmmpp,#202020,#222255,#202020,,One of the many pets in John F. Kennedy's family
+,f8,Sockington,,cat,,common,,usa,,msffsm,dimgray,lightgray,dimgray,,Famous for his insightful tweets about cat life
+,f9,Henri,,cat,,common,,usa,,mmmfmf,black,#E2E2E2,black,,"Henri, le Chat Noir, is the star of a series of short films about himself."
+,fa,Tara,,cat,,epic,,usa,,wwwwww,rosybrown,tan,rosybrown,,Tara heroically rescued a child in her family from a dog attack
+,fb,Niki,,cat,,common,,russia,,mspsms,#E3E3E3,aliceblue,#E3E3E3,,"A Russian cat famous for human-like behavior, including sitting upright on his hind legs"
+,fc,Dusty,,cat,,rare,,usa,,mpmwmw,#744d18,#352313,#744d18,,"Known as Dusty the Klepto Kitty, famous for his acts of cat burglary, including carrying home a human's bra"
+,fd,Maru,,cat,,common,,japan,,pmsmsp,peru,antiquewhite,peru,,"A Japanese cat, popular on YouTube, famous for playing with cardboard boxes"
+,fe,Scarlett,,cat,,epic,,usa,,wfpwfw,sandybrown,peachpuff,sandybrown,,A stray cat who risked her life to save her kittens from a burning garage
+,ff,Little Nicky,,cat,,epic,,usa,,ssssss,saddlebrown,lightyellow,saddlebrown,,The first commercially produced cat clone for an individual owner
+,fg,Unsinkable Sam,,cat,,legendary,,england,,wpwpwpw,black,aquamarine,black,,"Survived three shipwrecks, beginning with the sinking of the battleship Bismark in 1941"
+,fh,Mr. Bigglesworth,,cat,,common,,england,,mpwmpm,pink,pink,pink,,Dr. Evil's cat was played by a hairless Sphynx named Ted Nude-Gent
+,fi,Pickles,,cat,,legendary,,newzealand,,mfmwfmf,wheat,linen,antiquewhite,,Pickles lives permanently on the Hobbiton set in New Zealand
+,fj,Tommaso,,cat,,rare,,italy,,mmmmmm,#206020,#202020,#206020,,Inherited $13 million when his owner died
+,fk,All Ball,,cat,,legendary,,usa,,sfsfsfs,lightgrey,#e0e0e0,lightgrey,,A tailess kitten adopted by Koko the gorilla
+,fl,"Zoe, PhD",,cat,,rare,,usa,,sssmms,maroon,lightsalmon,maroon,,A cat accredited by the American Psychotherapy Association
+,fm,Orangey,,cat,,rare,,usa,,msfmms,orangered,orange,orangered,,A cat actor who appeared in several movies including Breakfast at Tiffany's
+,fn,Creme Puff,,cat,,legendary,,usa,,ssfwfss,antiquewhite,ghostwhite,antiquewhite,,One of the world's oldest cats – lived over 38 years
+,fo,Towser,,cat,,epic,,england,,ffwwff,darkred,wheat,darkred,,"Holds the Guiness World Record for the most mice caught, over 28,000"
+,fp,Artful Dodger,,cat,,common,,england,,ssppps,moccasin,papayawhip,moccasin,,"A cat who learned to take the bus from town to town in Dorset, England"
+,fq,Bart,,cat,,epic,,usa,,wswsws,darkgreen,#80a895,gray,,"The Zombie Cat: Bart survived a traffic accident, was unintentionally buried alive, and clawed his way out of the grave"
+,fr,Blackie,,cat,,common,,usa,,swpmsf,#303030,black,#303030,,"A ""talking cat"" involved in a court case about feline rights of free speech"
+,fs,Beerbohm,,cat,,epic,,england,,mpmfmp,sienna,palevioletred,sienna,,A thespian cat who lived in a London theater and occasionally walked on stage during performances
+,ft,Emily,,cat,,epic,,france,,spssms,lightsteelblue,skyblue,lightsteelblue,,An American cat who stowed away on a boat and ended up in France
+,fu,Crimean Tom,,cat,,legendary,,russia,,wfffffw,darkred,crimson,darkred,,Tom helped British troops find food in Sevastopol during the Crimean War
+,fv,Fred,,cat,,epic,,usa,,wwppww,gray,black,gray,,Fred the Undercover Kitty helped the NYPD arrest a fake veterinarian
+,fw,Ketzel,,cat,,rare,,usa,,pmspsp,#303030,ivory,#303030,,Won an award for an original piano music composition
+,fx,Mike,,cat,,rare,,england,,wpmpmw,#00247d,white,#cf142b,,Guarded the gates of the British Museum
+,fy,Oscar,,cat,,legendary,,england,,ssswsss,steelblue,#dedede,lightsteelblue,,"The Bionic Cat:  After losing his hind feet in an accident, Oscar had new prosthetic feet surgically attached"
+,fz,Tiddles,,cat,,common,,england,,ffffff,lemonchiffon,yellow,gold,,Tiddles lived in the Paddington Station ladies' room.  He was fed constantly by his admirers and became famously fat.
+,fA,Tibs,,cat,,epic,,england,,wwffpp,palevioletred,mistyrose,darkmagenta,,Tibs the Great worked as a mouse hunter at the British Post Office headquarters for 14 years
+,fB,Crookshanks,,cat,,legendary,,england,,swpfpws,#ffc20d,#ffcd0d,#ffc20d,,Hermione's unusually intelligent feline companion
+,fC,Sylvester,,cat,,common,,usa,,fwpswf,black,white,black,,The unlucky but committed antagonist of Tweety Bird
+,fD,Jiji,,cat,,legendary,,japan,,sspwpss,#9563dc,#151515,#9563dc,,Kiki's sarcastic but loyal companion
+,fE,Protocat,,cat,,legendary,,zulu,,sfpmwmw,yellow,violet,palegreen,,The cat that first laid a mouse at a human's feet.  The ancestor of today's feline friends.
+,,,,,,,,,,,,,,// old,Email me (info@whalebunny.com) with the name and background info of your cat for a chance to have it appear here
+//backups,,,,,,,,,//nice gray not in use,,#303030,#505050,#303030,,
+//,willow,,,,,,,,,,,,,,
+//,aristocats?,,,,,,,,"// need more conceptual colors, like red/white/red japanese historical cats",,,,,,
+//,lucifer from cinderella,,,,,,,,,,,,,,
+//,the marvel cat?,,,,,,,,,,,,,,
+//,"pickles, the dog that found the world cup trophy",,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,
+,// currently grouping horses and elephants together.  Will change this later.,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,
+,e1,Abul-Abbas,,elephant,,epic,e,france,,wwwwww,indianred,mistyrose,gold,,The war elephant of Charlemagne
+,e2,Babar,,elephant,,common,e,france,,sfsfmf,lightgrey,gold,lightgrey,,The hero of the Babar children's book series by Jean de Brunhoff
+,e3,Horton,,elephant,,common,e,usa,,smwwfs,tan,lightsteelblue,tan,,The keen-hearing hero of the Dr. Seuss classic
+,e4,Dumbo,,elephant,,common,e,usa,,msffsm,deeppink,gainsboro,deeppink,,The big-eared flying elephant
+,e5,Mahapadma,,elephant,,legendary,e,india,,wpwswpw,black,white,gray,,The elephant supporting the Earth while standing on the shell of a giant turtle
+,e6,Hathi,,elephant,,rare,e,africa,,wppppw,tan,gray,tan,,The leader of the elephant troop in The Jungle Book by Rudyard Kipling
+,e7,Hassan,,elephant,,epic,e,china,,smsmms,white,white,white,,The Stolen White Elephant in a story by Mark Twain.  The elephant's full name was Hassan Ben Ali Ben Selim Abdallah Mohammed Mois Alhammal Jamsetjejeebhoy Dhuleep Sultan Ebu Bhudpoor
+,e8,Elmer,,elephant,,rare,e,england,,sfsfsf,gold,hotpink,turquoise,,The Patchwork Elephant in the stories by David McKee
+,e9,Nellie,,elephant,,common,e,england,,smpfms,aquamarine,lightcyan,aquamarine,,The hero of a classic children's song
+,ea,Tantor,,elephant,,rare,e,usa,,ppsspp,rosybrown,darkgray,rosybrown,,A friend of Tarzan
+,eb,Chengallur,,elephant,,epic,e,india,,ssppss,tan,mistyrose,tan,,Chengallur Ranganathan was the tallest elephant that ever lived
+,ec,Kandula,,elephant,,legendary,e,srilanka,,wmwpwmw,gray,royalblue,gray,,The legendary royal war elephant of the Sri Lankan prince Dutugamunu
+,ed,Keshavan,,elephant,,epic,e,india,,mmffmm,darkgray,gray,darkgray,,"Guruvayur Keshavan was a famous temple elephant in India, given the title “Gajarajan” meaning Elephant King"
+,ee,Ruby,,elephant,,common,e,usa,,mmssmm,gainsboro,rosybrown,gainsboro,,An elephant who created paint on canvas art
+,ef,Suleiman,,elephant,,rare,e,germany,,mmffmw,gray,thistle,gray,,An elephant presented as a gift to Maximillian II (later the Holy Roman Emperor)
+,eg,Surus,,elephant,,legendary,e,italy,,wwwwwww,rosybrown,brown,rosybrown,,One of Hannibal's war elephants that crossed the Alps in 218 BC
+,eh,Mudanda,,elephant,,legendary,,africa,,ppsfspp,chocolate,peru,chocolate,,A matriarch of her family in Tsavo National Park – lived 60 years
+,ei,Airaavata,,elephant,,legendary,,india,,mmpmsmm,gold,white,gold,,Airaavata carries the Hindu god Indra.  Airaavata has five heads and 10 tusks.  (illustrated here: the middle head)
+,ej,Lin Wang,,elephant,,rare,,china,,pppppp,lightcyan,lightsteelblue,lightcyan,,A construction elephant in China during World War II.  Later taken to Taiwan and made a citizen of Taipei
+,ek,Mahmud,,elephant,,epic,,yemen,,sfmwfs,mistyrose,palevioletred,mistyrose,,The elephant who halted at the border of Mecca and refused to invade.
+,,,,,,,,,,,,,,,
+// new elephants – a work in progress,,,,,,,,,,these have not really been assigned,,,,,
+//,el,Kabumpo,,elephant,,rare,,,,wwwwwm,,,,,The Elegant Elephant of Pumperdink in the land of Oz
+//,em,Chota,,elephant,,epic,,,,fpppff,mistyrose,white,mistyrose,,Jahan's elephant in The Architect's Apprentice by Elif Şafak
+//,en,Eddie,,elephant,,common,,,,swswsw,,,,,One of Maisy's friends in the Maisy Mouse book series by Lucy Cousins
+//,eo,Tubul,,elephant,,legendary,,,,wwwpwww,,,,,One of four elephants supporting the Discworld in the works of Terry Pratchett
+//,ep,Uncle,,elephant,,common,,,,sfpfps,,,,,The rich philanthropic elephant in the series of books by J. P. Martin
+//,eq,Jumbo Jim,,elephant,,rare,,,,wfppww,,,,,The hero of a classic comic strip by Bertie Brown
+//,er,O. Fanth Mzn,,elephant,,rare,,,,fmffms,,,,,A publisher and editor in the world of the Tom Poes comic strip by Maren Toonder
+//,qs,Perry,,elephant,,rare,,,,sfppmm,,,,,"Perry Pachidermia, Pinky's boss in the Pinky comics by Massimo Mattioli"
+//,qt,Pellefant,,elephant,,rare,,,,wwssww,cornflowerblue,oceanblue,cornflowerblue,,The blue toy elephant who came to life in the story by Rune Andréasson
+//,qu,Shep,,elephant,,common,,,,wwwwss,bluegray,lightgrey,bluegray,,George's pet dog in George of the Jungle by Jay Ward and Bill Scott
+//,qv,Horatio,,elephant,,common,,,,wwpwww,,,,,The easily excitable elevator operator from Sesame Street
+//,qw,Stampy,,elephant,,common,,,,fpsfwf,cornflowerblue,lightgrey,cornflowerblue,,"Briefly the pet of Bart Simpson.  Like people, some animals are just jerks."
+//,qx,Elly,,elephant,,epic,,,,ssssww,pink,pink,pink,,The graceful scooter-riding elephant in the world of Pocoyo
+//,qy,Gajendra,,elephant,,legendary,,,,pppwfpp,white,rosybrown,white,,An elephant attacked by a crocodile and saved by the god Vishnu
+//,qz,Solomon,,elephant,,legendary,,,,pmpmpmp,purple,purple,purple,,The adventurous hero of The Elephant's Journey by 	José Saramago
+//,qA,Kisasi,,elephant,,legendary,,,,wwmmmww,grape,violapurple,plumpurple,,A huge elephant ghost who wanders the earth exacting revenge on ivory poachers
+//,qB,Echo,,elephant,,epic,,,,wfmmpw,,,,,The wise old matriarch of a clan of elephants in the Amboseli National park in Kenya
+//,qC,Joyraj,,elephant,,epic,,,,fmfmfm,,,,,"The ""Pride of Kaziranga"" in Assam India, involved in anti-poaching, rescuing animals, and starring in elephant festivals"
+//,qD,Pang Noi,,elephant,,epic,,,,wwpsfw,,,,,A female elephant smuggled from Thailand to a work camp in Laos and eventually rescued in a 3 month journey back to Thailand
+//,qE,Big Tim,,elephant,,legendary,,,,pspspsp,,,,,A giant tusker elephant known and loved throughout Kenya
+,,,,,,,,,,,,,,,
+// extra,,Isilo,,elephant,,,,,,,,,,,"A tusker who lived in Tembe Elephant Park in South Africa, with tusks over 3 meters long."
+// extra,,Four-Tusk,,elephant,,,,,,,,brown,,,An elephant king outsmarted by a clever rabbit named Victory
+// extra,,,,,,,,,,,,,,,
+// extra,,Your Elephant,,elephant,,,,zulu,,sfpmwmw,yellow,violet,palegreen,,Email me (info@whalebunny.com) with the name and background info of your favorite elephant for a chance to have it appear here
+,,,,,,,,,,,,,,,
+,,,,,,,,,,,//ears,// face,// hair,// stripe,
+,h1,Tencendur,,elephant,horse,epic,h,france,,wwwwwm,maroon,brown,sienna,sandybrown,The warhorse of King Charlemagne
+,h2,Mortis,,elephant,horse,legendary,h,greece,,wwwpwww,lightgray,white,gray,#E0E0E0,"And I looked, and behold, a pale horse! And its rider's name was Death."
+,h3,Artax,,elephant,horse,rare,h,germany,,swswsw,lightgray,#e0e0e0,ivory,#e0e0e0,Atreyu's horse in The Neverending Story
+,h4,Boxer,,elephant,horse,common,h,russia,,fpppff,saddlebrown,saddlebrown,maroon,saddlebrown,"A faithful, strong, and naive horse in George Orwell's Animal Farm"
+,h5,Capilet,,elephant,horse,rare,h,england,,sfpfps,lightgray,gray,gray,gray,Sir Andrew's horse in Shakespeare's Twelfth Night
+,h6,Di Lu,,elephant,horse,epic,h,china,,wfppww,indianred,lightsalmon,salmon,darkred,The mount of the Chinese warlord Liu Bei from the Romance of the Three Kingdoms
+,h7,Bree,,elephant,horse,common,h,england,,fmffms,sandybrown,lightyellow,sandybrown,tan,The title character from The Horse and His Boy
+,h8,Jim,,elephant,horse,common,h,usa,,sfppmm,black,#404040,#606060,#404040,A cab horse who lived for a while in Oz.
+,h9,Morgenstern,,elephant,horse,rare,h,usa,,wwssww,gray,black,black,gray,Julian's horse in the Chronicles of Amber
+,ha,Pegasus,,elephant,horse,legendary,h,greece,,pppwfpp,azure,white,lightcyan,white,The winged steed from Greek mythology
+,hb,Roach,,elephant,horse,rare,h,poland,,wwpwww,darkred,brown,black,black,The mount of Geralt of Rivia (The Witcher)
+,hc,Rocinante,,elephant,horse,common,h,spain,,fpsfwf,darkgray,gray,white,gainsboro,The horse of Don Quixote
+,hd,Shadowfax,,elephant,horse,epic,h,england,,ssssww,ghostwhite,white,whitesmoke,white,Gandalf's exceptional steed
+,he,Brego,,elephant,horse,rare,h,england,,wwwwss,darkred,saddlebrown,black,snow,Aragorn's horse
+,hf,Sleipnir,,elephant,horse,legendary,h,norway,,pmpmpmp,indigo,thistle,black,lavender,The eight-legged mount of Odin
+,hg,Hengroen,,elephant,horse,epic,h,england,,wfmmpw,ivory,ivory,white,silver,King Arthur's horse
+,hh,Tikbalang,,elephant,horse,legendary,h,philippines,,wwmmmww,darkred,black,firebrick,crimson,The demon horse of Philippine folklore
+,hi,Uchchaihshravas,,elephant,horse,legendary,h,india,,pspspsp,gray,white,gold,red,The seven-headed flying horse from Hindu legend.  (illustrated here: the friendly head)
+,hj,Goliath,,elephant,horse,epic,h,france,,wwpsfw,black,#303030,black,#303030,The mount of Etienne of Navarre
+,hk,Pokey,,elephant,horse,common,h,usa,,fmfmfm,orangered,orangered,black,orangered,Gumby's valiant steed
+,,,,,,,,,,,,,,,
+// new horses – a work in progress,,,,,,,,,,these have not really been assigned,,,,,
+//,hl,Mister Ed,,,,common,,,,wwwwww,,,,,A talking horse from the stories of Walter R. Brooks
+//,hm,Magic,,,,common,,,,sfsfmf,,,,,"A miniature therapy horse, working in hospitals and hospice programs in the U.S."
+//,hn,Li'l Sebastian,,,,rare,,,,smwwfs,,,,,The miniature horse celebrated by the citizens of Pawnee
+//,ho,Binky,,,,epic,,,,msffsm,"milky white, but glowing?",,,,The horse ridden by Death in Terry Pratchett's Discworld
+//,hp,Seabiscuit,,,,common,,,,mmssmm,,,,,A champion thoroughbred racehorse in the 1930s and 1940s
+//,hq,Dilu,,,,epic,,,,wppppw,,,,,The horse of the Chinese warlord Liu Bei in the Romance of the Three Kingdoms
+//,hr,Black Beauty,,,,common,,,,smsmms,bluegray,black,gray,,The hero of the classic children's book by Anna Sewell
+//,hs,Joey,,,,rare,,,,sfsfsf,,,,,The hero of the novel War Horse by Michael Morpurgo
+//,ht,Gunpowder,,,,common,,,,smpfms,,,,,Ichabod Crane's horse in The Legend of Sleepy Hollow
+//,hu,Melody Belle,,,,rare,,,,ppsspp,,,,,The only horse to win the New Zealand Triple Crown
+//,hv,Chollima,,,,legendary,,,,wpwswpw,,,,,The swift and powerful winged horse from Korean mythology
+//,hw,Picasso,,,,rare,,,,pppppp,,,,,famous wild mustang
+//,hx,Shabdiz,,,,legendary,,,,wmwpwmw,,,,,The swift stallion of Khosrau Parves of Persia
+//,hy,Wihwin,,,,legendary,,,,wwwwwww,,,,,The demonic water horse of Central America
+//,hz,Inciatus,,,,rare,,,,mmffmw,,,,,"The pampered horse of Caligula, who wanted to make him a political officer"
+//,hA,Yulong,,,,epic,,,,mmffmm,,,,,Journey to the West
+//,hB,Morvark ,,,,legendary,,,,ppsfspp,flame red,black,flame,,A supernatural horse from Breton legend with the ability to gallop on top of the waves
+//,hC,Abraxas,,,,epic,,,,ssppss,flame red,,,,One of the  horses pulling the sun across the sky in Greek mythology
+//,hD,Šarac,,,,legendary,,,,mmpmsmm,black,white,gray,,The powerful and loyal horse companion in Serbian stories about Prince Marko
+//,hE,Lou Drapé,,,,epic,,,,sfmwfs,,,,,A folklore horse in the Gard region of France who abducts children at night
+,,,,,,,,,,,,,,,
+//extra,,Wildfire,,,,,,,,,,,,,The lost pony in the song by Michael Martin Murphey
+//extra,,Tornado,,,,,,,,mmffmm,,,,,the horse of zorro
+//extra,,Trigger,,,,,,,,,,,,,roy rogers
+//extra,,Mammoth,,,,,,,,,,,,,"The largest horse in history, weighing over 1500 kg."
+//extra,,Silver Blaze,,,,,,,,,,,,,A horse who mysteriously disappears in a Sherlock Holmes story
+//extra,,Donkey (from shrek),,,,,,,,,,,,,
+//extra,,Keshi,,,,,,,,,,,,,The horse demon who fought with Krishna
+//extra,,Hayagriva,,,,,,,,,,,,,"Hindu god with a horse head and human body, worshiped for his wisdom and strength"
+,,,,,,,,,,,,,,,
+// The plan now is to have 40 horses and 40 elephants and somehow make them visually distinct.  See https://en.wikipedia.org/wiki/List_of_fictional_pachyderms,,,,,,,,,,,,,,,
+// new horses should be no problem in theory,,,,,,,,,,,,,,,
+"// and then worry about birds and possibly monkeys – see notes in code, I think.",,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,
+"// rabbits, a work in progress.  Note that rabbit art (svg) is tested and working",,,,,,,,,,,// four colors for rabbits,,,,
+//,r1,Moon Rabbit,,,,legendary,,,,,,,,,The rabbit who lives on the moon and grinds ingredients in his mortar and pestle
+//,r2,Bigwig,,,,,,,,wwwppp,,,,,The bravest and toughest rabbit in the Watership Down warren
+//,r3,Peter Rabbit,,,,,,,,,,,,,The hero of the series of children's books by Beatrix Potter
+//,r4,Harvey,,,,,,,,,,,,,The six-foot invisible rabbit from the film and play of the same name
+//,r5,Hazel,,,,epic,,,,mfwpsm,,,,,"The intelligent, caring, courageous Chief Rabbit of Watership Down"
+//,r6,March Hare,,,,,,,,,,,,,The hare from Alice's Adventures in Wonderland who believes it's always tea time
+//,r7,Rabbit,,,,,,,,pppppp,,,,,The practical hard-working rabbit friend of Winnie the Pooh
+//,r8,Runny Babbit,,,,,,,,,,,,,The hero of the book Runny Babbit by Shel Silverstein
+//,r9,The Velveteen Rabbit,,,,,,,,,,,,,"Once a toy, transformed into a real rabbit by the love of its owner in the book of the same name"
+//,ra,White Rabbit,,,,,,,,,,,,,The nervous and always-late rabbit from Alice's Adventures in Wonderland
+//,rb,Bugs,,,,,,,,,,,,,The sarcastic carrot-munching hero from Looney Tunes
+//,rc,Jaxxon,,,,,,,,,,,,,A Lepi smuggler friend of Han Solo
+//,rd,Mr. Bun,,,,,,,,,,,,,Susie's stuffed rabbit in the Calvin and Hobbes comics
+//,re,The Rabbit of Caerbannog,,,,,,,,wwwwwf,,,,,The killer rabbit from Monty Python and the Holy Grail
+//,ef,Roger Rabbit,,,,,,,,,,,,,The rabbit accused of murder in Who Framed Roger Rabbit
+//,eg,Hutch,,,,,,,,,,,,,A rabbit with some human characteristics from The Curse of the Were-Rabbit
+//,eh,Usagi,,,,,,,,,,"white, black",,,A ronin samurai in the world of Usagi Yojimbo by Stan Sakai
+//,ei,Mr. Herriman,,,,,,,,,,gray white?,,,The strict rule-following manager of Foster's Home for Imaginary Friends
+//,ej,The Easter Bunny,,,,epic,,,,,,,,,The egg-delivering rabbit seen around Easter in some cultures
+//,ek,Aesop's Hare,,,,,,,,,,,,,The overconfident racer in the classic tale of The Hare and the Tortoise
+//,el,Nanabhozo,,,,legendary,,,,,,,,,An adventurous deity from Algonquin mythology who often appears as a rabbit
+//,em,Tu,,,,,,,,,,,,,The rabbit in the Chinese zodiac
+//,en,The Hare of Inaba,,,,legendary,,,,,,,,,A clever rabbit of Japanese myth
+//,eo,Al-Mi'raj,,,,legendary,,,,,,,,,A mythical beast from Sea-Serpent Island in the Indian Ocean
+//,ep,Macuiltochtli,,,,legendary,,,,,,,,,A divine rabbit known for frequent drunken partying
+//,eq,Fiver,,,,,,,,sspmss,,,,,The small visionary companion of Hazel in Watership Down
+//,rr,Jiibayaabooz,,,,legendary,,,,,,,,,A trickster rabbit from the stories of the Ojibwe people
+//,rs,Kaltes-Ekwa,,,,legendary,,,,,,,,,A goddess shapeshifter (often appearing as a rabbit) from Ugrian mythology
+//,rt,Blupee,,,,,,,,,,"Glowy blue, bone-colored ears",,,A rabbit-like creature from The Breath of the Wild
+//,ru,Woundwort,,,,epic,,,,wwwwww,,,,,"The fearless, intelligent, power-wielding leader of the Efrafa warren in Watership Down"
+//,rv,El-ahrairah,,,,legendary,,,,,,,,,The legendary trickster rabbit hero of the rabbits in Watership Down
+//,rw,WhaleBunny,,,,,,,,,,,,,A friendly whale who loves to be a bunny from time to time
+//,rx,Uncle Wiggily,,,,,,,,,,,,,The main character in the series of children's stories by Howard R. Garis
+//,ry,Foo Foo,,,,,,,,,,,,,Little Bunny Foo Foo is the main character of a children's song about a violent rabbit who scoops up field mice and bops them on the head
+//,rz,Bun-Bun,,,,,,,,,,,,,A rabbit with a switchblade in the online comic Sluggy Freelance
+//,rA,Bean Bunny,,,,,,,,,,,,,The adorable rabbit from the world of the Muppets
+//,rB,Aplíkmuj,,,,legendary,,,,,,,,,A light-hearted trickster from Mi'kmaq folklore
+//,rC,Moskim,,,,legendary,,,,,,,,,A benevolent rabbit hero of Lenape folklore
+//,rD,Victory,,,,epic,,,,,,,,,The clever rabbit who outsmarted an elephant king
+//,rE,Bodhisattva Rabbit,,,,epic,,,,,,,,,"Once, the Buddha was born as a rabbit offered to sacrifice himself to feed a hungry traveler who turned out to be the god Sakra"
+// extras,,,,,,,,,,,,,,,
+//,,reader rabbit,,,,,,,,,,,,,
+//,,basil staghare,,,,,,,,,,,,,
+//,,Judy Hops,,,,,,,,,,,,,
+//,,Edward Tulane,,,,,,,,,,,,,kids book
+//,,Alec,,,,,,,,,,,,,from the short film presto
+,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,
+"// birds, a work in progress",,,,,,,,,,//fmpws,// beak,// left side,// right side,,
+,b1,Alex,,bird,,rare,,,,spspsp,darkgray,gray,lightgray,,A smart grey parrot who could count and sort materials
+,b2,Bubi,,bird,,rare,,,,fmmmmw,darkgray,rosybrown,saddlebrown,,"An eagle-owl who lives near a stadium in Helsinki.  When he appears, it's a good omen for the Finland national football team."
+,b3,Cher Ami,,bird,,epic,,,,wsffww,darkcyan,dimgray,lightgray,,A homing pigeon who helped save a trapped infantry division in World War I
+,b4,Winkie,,bird,,rare,,,,wfffww,darkturquoise,lightgray,dimgray,,A homing pigeon who helped save a flight crew stranded in the North Sea during World War II
+,b5,Gertie,,bird,,common,,,,mfppfp,greenyellow,darkturquoise,powderblue,,"The story of her heroic efforts to raise her family under the Wisconsin Avenue bridge inspired locals and was immortalized in books, toys, and sculpture"
+,b6,Greater,,bird,,rare,,,,ssfpfs,dimgray,pink,violet,,"The oldest flamingo on record, living over 83 years"
+,b7,Jimmy,,bird,,common,,,,mmppmm,dimgray,silver,midnightblue,,An acting raven who appeared in more than 1000 films including It's a Wonderful Life and The Wizard of Oz
+,b8,Martha,,bird,,rare,,,,fswssf,darkseagreen,steelblue,darkslateblue,,The last American Passenger Pigeon before the species went extinct
+,b9,Nils Olav,,bird,,rare,,,,wpmppw,darkgoldenrod,orangered,dimgray,,The king penguin mascot and colonel-in-chief of the Norwegian King's Guard
+,ba,Old Abe,,bird,,rare,,,,wmwmww,gold,white,mistyrose,,A bald eagle mascot of an infantry regiment in the American Civil War
+,bb,Pale Male,,bird,,rare,,,,fpmffm,silver,darkgoldenrod,moccasin,,A red-tailed hawk living near Central Park in New York City
+,bc,Nigel,,bird,,common,,,,fpmfww,orangered,peachpuff,lightyellow,,The friendly pelican and dentistry enthusiast
+,bd,Louis,,bird,,epic,,,,mmppfm,darkgoldenrod,whitesmoke,snow,,The hero of E. B. White's novel The Trumpet of the Swan
+,be,Jonathan,,bird,,rare,,,,pppppm,khaki,lightcyan,azure,,The title character from the novella Jonathan Livingston Seagull
+,bf,Moses,,bird,,epic,,,,smpfws,lightgray,darkslategray,black,,A raven character from George Orwell's Animal Farm who preached of the happy place animals go after death
+,bg,Quoth,,bird,,epic,,,,smffms,dimgray,midnightblue,#202020,,A raven with a taste for eyeballs who appears in several of Terry Pratchett's Discworld books
+,bh,Captain Flint,,bird,,legendary,,,,smmmmmm,lightcoral,red,gold,,Long John Silver's parrot in Treasure Island
+,bi,Fawkes,,bird,,epic,,,,sssssw,darkgray,orange,maroon,,Dumbledore's pet phoenix
+,bj,Hedwig,,bird,,common,,,,sssssf,dimgray,snow,azure,,Harry's snowy owl
+,bk,Opus,,bird,,epic,,,,fmpfmp,orange,dimgray,indigo,,The bow-tie wearing penguin appearing in several comic creations by Berke Breathed
+,bl,Woodstock,,bird,,common,,,,spspff,gold,gold,gold,,The loyal companion of Snoopy from the Peanuts comic strip
+,bm,Huginn and Munnin,,bird,,legendary,,,,swwswws,dimgray,darkgreen,#208040,,A pair of ravens who bring information to the Norse god Odin
+,bn,Camilla,,bird,,common,,,,fffffw,orangered,red,floralwhite,,Gonzo's love interest
+,bo,Big Bird,,bird,,epic,,,,fssssf,gold,yellow,khaki,,A long-time denizen of Sesame Street
+,bp,The Shangyang,,bird,,legendary,,,,ssfsspm,darkolivegreen,greenyellow,lime,,A legendary Chinese bird that could predict rain
+,bq,The Fenghuang,,bird,,legendary,,,,wpmmmpw,#202020,crimson,maroon,,The legendary phoenix ruler of birds associated with Chinese empresses
+,br,The Goofus,,bird,,legendary,,,,pppmppp,red,pink,slateblue,,The Goofus Bird flies backwards and builds its nest upside down.
+,bs,Keehar,,bird,,epic,,,,fpwppp,gold,lightcyan,lightsteelblue,,A seabird befriended by the rabbits of Watership Down
+,bt,Rooster of Barcelos,,bird,,common,,,,fwsmmm,yellow,red,#202020,,A miraculous bird from stories in Portugal
+,bu,Archimedes,,bird,,legendary,,,,wsssssw,silver,tan,sienna,,the familiar of Merlyn from The Once and Future King by T. H. White
+,bv,Chil,,bird,,rare,,,,swfpps,rosybrown,peru,slategray,,A kite bird that helps Mowgli escape the Bandar-Log in The Jungle Book
+,bw,Owl,,bird,,common,,,,sfsmps,darkgoldenrod,saddlebrown,wheat,,The excellent speller and knowledgeable friend of Winnie the Pooh
+,bx,Gwaihir,,bird,,legendary,,,,wwswsww,silver,darkgoldenrod,sienna,,The giant eagle who rescues Gandalf more than once in The Lord of the Rings
+,by,Simon,,bird,,epic,,,,mmmmmm,snow,mistyrose,khaki,,The cockatoo who dances to beatboxing from his friend Dwayne
+,bz,Marahute,,bird,,epic,,,,sfmmmp,gold,peachpuff,goldenrod,,The huge golden eagle from The Rescuers Down Under
+,bA,Woodsy,,bird,,common,,,,ssspps,sandybrown,gold,sienna,,An anti-pollution spokesbird for the US Forest Service
+,bB,Sam the Eagle,,bird,,common,,,,fmfmfm,lightsteelblue,lightsteelblue,lightsteelblue,,The Muppet defender of conservative values and fierce opponent of namby-pamby weirdos
+,bC,Garuda,,bird,,legendary,,,,mmwspmm,snow,gold,silver,,The legendary bird creature appearing in several world religions and national insignias
+,bD,The Roc,,bird,,legendary,,,,wwpspww,darkgray,#402015,#803010,,The enormous bird of prey appearing in several stories in Middle Eastern mythology
+,bE,Wisdom,,bird,,legendary,,,,spmpsps,wheat,ivory,silver,,The oldest confirmed wild bird in the world
+// extras,,,,,,,,,,,,,,,
+//,,Tweety,,Review – are any of these better than the above? Or less lawyer-bait?,,,,,,,,,,,
+//,,the owl from secret of nimh or the crow,,,,,,,,,,,,,
+//,,zazu,,,,,,,,,,,,,
+//,,roadrunner,,,,,,,,,,,,,
+//,,st. luis cardinal,,,,,,,,,,,,,
+//,,falco,,,,,,,,,,,,,
+//,,sparrow from redwall,,,,,,,,,,,,,
+//,,blue from rio,,,,,,,,,,,,,
+//,,hewey from pebble,,,,,,,,,,,,,
+//,,albatros from rescuers,,,,,,,,,,,,,
+//,,the albatros from ancient mariner,,,,,,,,,,,,,
+//,,Jeremy (secret of nimh),,,,,,,,,,,,,
+//,,,,,,,,,,,,,,,
+//,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,
+// extras,,The Vermillion Bird,,,,,,,,,,,,,The symbol of Fire in the Taoist five-element system
+//,,Blitz,,,,,,,,,,,,,The mascot of the Seattle Seahawks
+// too many muppets?,,,,,,,,,,,,,,,
+//,,condorito,,,,,,,,,,,,,
+//,,disney birds,,,,,,,,,,,,,
+//,,foghorn leghorn,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,
+"// bears would work, especially counting stuffed bears, toy bears",,,,,,,,,,,,,,,
+//,,,,,,,,,,,,,,,
+//,,,,,,,,,,,,,,,
+//,,,,,,,,,,,,,,,

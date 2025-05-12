@@ -1,0 +1,136 @@
+{
+	"short_name": "CivHero",
+	"name": "CivHero",
+	"description": "Build a civilization in 10 minutes",
+	"lang": "en-US",
+	"icons": [
+		{
+			"src": "icons/icon-72x72.png",
+			"type": "image/png",
+			"purpose": "any",
+			"sizes": "72x72"
+		},
+		{
+			"src": "icons/icon-96x96.png",
+			"type": "image/png",
+			"purpose": "any",
+			"sizes": "96x96"
+		},
+		{
+			"src": "icons/icon-128x128.png",
+			"type": "image/png",
+			"purpose": "any",
+			"sizes": "128x128"
+		},
+		{
+			"src": "icons/icon-144x144.png",
+			"type": "image/png",
+			"purpose": "any",
+			"sizes": "144x144"
+		},
+		{
+			"src": "icons/icon-152x152.png",
+			"type": "image/png",
+			"purpose": "any",
+			"sizes": "152x152"
+		},
+		{
+			"src": "icons/icon-180x180.png",
+			"type": "image/png",
+			"purpose": "any",
+			"sizes": "180x180"
+		},
+		{
+			"src": "icons/icon-192x192.png",
+			"type": "image/png",
+			"purpose": "any",
+			"sizes": "192x192"
+		},
+		{
+			"src": "icons/icon-256x256.png",
+			"type": "image/png",
+			"purpose": "any",
+			"sizes": "256x256"
+		},
+		{
+			"src": "icons/icon-384x384.png",
+			"type": "image/png",
+			"purpose": "any",
+			"sizes": "384x384"
+		},
+		{
+			"src": "icons/icon-512x512.png",
+			"type": "image/png",
+			"purpose": "any",
+			"sizes": "512x512"
+		},
+
+		{
+			"src": "icons/m_icon-72x72.png",
+			"type": "image/png",
+			"purpose": "maskable",
+			"sizes": "72x72"
+		},
+		{
+			"src": "icons/m_icon-96x96.png",
+			"type": "image/png",
+			"purpose": "maskable",
+			"sizes": "96x96"
+		},
+		{
+			"src": "icons/m_icon-128x128.png",
+			"type": "image/png",
+			"purpose": "maskable",
+			"sizes": "128x128"
+		},
+		{
+			"src": "icons/m_icon-144x144.png",
+			"type": "image/png",
+			"purpose": "maskable",
+			"sizes": "144x144"
+		},
+		{
+			"src": "icons/m_icon-152x152.png",
+			"type": "image/png",
+			"purpose": "maskable",
+			"sizes": "152x152"
+		},
+		{
+			"src": "icons/m_icon-180x180.png",
+			"type": "image/png",
+			"purpose": "maskable",
+			"sizes": "180x180"
+		},
+		{
+			"src": "icons/m_icon-192x192.png",
+			"type": "image/png",
+			"purpose": "maskable",
+			"sizes": "192x192"
+		},
+		{
+			"src": "icons/m_icon-256x256.png",
+			"type": "image/png",
+			"purpose": "maskable",
+			"sizes": "256x256"
+		},
+		{
+			"src": "icons/m_icon-384x384.png",
+			"type": "image/png",
+			"purpose": "maskable",
+			"sizes": "384x384"
+		},
+		{
+			"src": "icons/m_icon-512x512.png",
+			"type": "image/png",
+			"purpose": "maskable",
+			"sizes": "512x512"
+		}
+	],
+	"scope": "../",
+	"start_url": "../?source=pwa",
+	"background_color": "#000000",
+	"display": "standalone",
+	"orientation": "any",
+	"theme_color": "#df5a5b",
+	"categories": ["games", "entertainment", "puzzle"]
+}

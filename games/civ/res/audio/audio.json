@@ -1,0 +1,77 @@
+{
+	"sounds" : [
+		{"id":"click", "resource":"res/audio/sfx/click.m4a", "volume":0.4},
+		{"id":"select", "resource":"res/audio/sfx/button_select.m4a", "count":4, "volume":0.03},
+		{"id":"slide_in", "resource":"res/audio/sfx/fip1.m4a", "volume":0.2},
+		{"id":"page_flip", "resource":"res/audio/sfx/fip2.m4a", "volume":0.4},
+
+		{"id":"arrive", "resource":"res/audio/sfx/arrive.m4a", "volume":0.6},
+
+		{"id":"success", "resource":"res/audio/sfx/applause_cheers.m4a", "volume":0.8},
+		{"id":"success_ai", "resource":"res/audio/sfx/applause_light.m4a", "volume":0.1},
+		
+		[
+			{"id":"card_deal", "resource":"res/audio/sfx/cards_1.m4a", "volume":0.8},
+			{"id":"card_deal", "resource":"res/audio/sfx/cards_2.m4a", "volume":0.8},
+			{"id":"card_deal", "resource":"res/audio/sfx/cards_3.m4a", "volume":0.8},
+			{"id":"card_deal", "resource":"res/audio/sfx/cards_4.m4a", "volume":0.8}
+		],
+		{"id":"card_single", "resource":"res/audio/sfx/fip3.m4a", "volume":0.8},
+		{"id":"card_unlock", "resource":"res/audio/sfx/card_unlock.m4a", "volume":1},
+		
+		[
+			{"id":"step", "resource":"res/audio/sfx/step1.m4a", "volume":0.4},
+			{"id":"step", "resource":"res/audio/sfx/step2.m4a", "volume":0.4},
+			{"id":"step", "resource":"res/audio/sfx/step3.m4a", "volume":0.4}
+		],
+		
+		{"id":"rest", "resource":"res/audio/sfx/rest.m4a", "volume":0.1},
+		{"id":"civ_meet", "resource":"res/audio/sfx/civ_meet.m4a", "volume":0.8},
+		{"id":"points_start", "resource":"res/audio/sfx/points_start.m4a", "volume":0.4},
+		
+		{"id":"harvest", "resource":"res/audio/sfx/harvest.m4a", "volume":0.05},
+		{"id":"treasure", "resource":"res/audio/sfx/treasure3.m4a", "volume":0.4},
+		{"id":"treasure_tease", "resource":"res/audio/sfx/treasure_tease.m4a", "volume":0.7},
+		{"id":"pet_cat", "resource":"res/audio/sfx/pet_cat.m4a", "volume":0.8},
+		{"id":"pet_dog", "resource":"res/audio/sfx/pet_dog.m4a", "volume":0.8},
+		{"id":"pet_elephant", "resource":"res/audio/sfx/pet_elephant.m4a", "volume":0.8},
+		{"id":"pet_horse", "resource":"res/audio/sfx/pet_horse.m4a", "volume":0.8},
+		{"id":"theft", "resource":"res/audio/sfx/yoink.m4a", "volume":0.7},
+
+		{"id":"detect", "resource":"res/audio/sfx/detect.m4a", "volume":0.8},
+		
+		{"id":"build", "resource":"res/audio/sfx/build.m4a", "volume":0.8},
+		{"id":"build_big", "resource":"res/audio/sfx/build_big.m4a", "volume":0.8},
+		
+		{"id":"attack_monster", "resource":"res/audio/sfx/attack_monster.m4a", "volume":0.8},
+		{"id":"attack_civ_clash", "resource":"res/audio/sfx/impact2.m4a", "volume":0.7},
+		{"id":"attack_civ_knock", "resource":"res/audio/sfx/impact3.m4a", "volume":0.7},
+		
+		{"id":"dragon_growl", "resource":"res/audio/sfx/creatures/dragon/dragon_notice.m4a", "volume":0.5},
+		[
+			{"id":"dragon_attack", "resource":"res/audio/sfx/creatures/dragon/dragon_attack.m4a", "volume":0.4},
+			{"id":"dragon_attack", "resource":"res/audio/sfx/creatures/dragon/dragon_attack2.m4a", "volume":0.4}
+		],
+		{"id":"dragon_die", "resource":"res/audio/sfx/creatures/dragon/dragon_die.m4a", "volume":0.6},
+		
+		{"id":"spider_growl", "resource":"res/audio/sfx/creatures/spider/spider_notice.mp3", "volume":0.8},
+		{"id":"spider_attack", "resource":"res/audio/sfx/creatures/spider/spider_attack.mp3", "volume":0.7},
+		{"id":"spider_die", "resource":"res/audio/sfx/creatures/spider/spider_die.mp3", "volume":0.9},
+		
+		{"id":"skull_growl", "resource":"res/audio/sfx/creatures/skull/skull_notice.mp3", "volume":0.2},
+		{"id":"skull_attack", "resource":"res/audio/sfx/creatures/skull/skull_attack.m4a", "volume":0.2},
+		{"id":"skull_die", "resource":"res/audio/sfx/creatures/skull/skull_die.m4a", "volume":0.3},
+
+		{"id":"blob_growl", "resource":"res/audio/sfx/creatures/blob/blob_notice.mp3", "volume":0.6},
+		[
+			{"id":"blob_attack", "resource":"res/audio/sfx/creatures/blob/blob_attack.mp3", "volume":0.6},
+			{"id":"blob_attack", "resource":"res/audio/sfx/creatures/blob/blob_attack2.mp3", "volume":0.6}
+		],
+		{"id":"blob_die", "resource":"res/audio/sfx/creatures/blob/blob_die.mp3", "volume":0.6},
+		
+		{"id":"warning", "resource":"res/audio/sfx/warning.m4a", "volume":0.3},
+		
+		
+		{"id":"----------- fake_end_ignore_this_one", "resource":"res/audio/sfx/click.m4a", "volume":0}
+	]
+}

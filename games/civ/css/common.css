@@ -1,0 +1,42 @@
+html, body {
+	overscroll-behavior-x: none;
+}
+
+body {
+	overflow:hidden;
+	margin:0px;
+	padding:0px;
+	position:fixed;
+	
+	outline:0;
+	-ms-touch-action: none;
+	–ms-content-zooming: none;
+	touch-action: none;
+
+	-webkit-overflow-scrolling: none; /* getting desperate... */
+	
+	-webkit-touch-callout: none;
+	-webkit-user-select: none;
+	-webkit-user-drag: none;
+	-khtml-user-select: none;
+	-moz-user-select: none;
+	-ms-user-select: none;
+	user-select: none;
+	-ms-touch-select: none;
+
+	margin-top: auto;
+	margin-left: auto;
+	
+	font-family: 'acmeregular';
+
+}
+
+html {
+	position:fixed;
+}
+
+canvas {
+	
+	position:absolute;
+
+}

@@ -1,0 +1,2824 @@
+{
+  "_format": "rat_keyanim",
+  "_version": 1,
+  "objects": [
+    {
+      "name": "avatar",
+      "animations": [
+        {
+          "frame_rate": 24,
+          "name": "angry",
+          "bones": [
+            {
+              "id": "root",
+              "tracks": [
+                {
+                  "property": "x",
+                  "keys": [
+                    {
+                      "frame": 0,
+                      "easing": "AUTO",
+                      "interpolation": "BEZIER",
+                      "val": 0.0
+                    },
+                    {
+                      "frame": 12,
+                      "easing": "AUTO",
+                      "interpolation": "BEZIER",
+                      "val": 0.0
+                    },
+                    {
+                      "frame": 24,
+                      "easing": "AUTO",
+                      "interpolation": "BEZIER",
+                      "val": 0.0
+                    }
+                  ]
+                },
+                {
+                  "property": "y",
+                  "keys": [
+                    {
+                      "frame": 0,
+                      "easing": "EASE_OUT",
+                      "interpolation": "CUBIC",
+                      "val": -0.0
+                    },
+                    {
+                      "frame": 12,
+                      "easing": "EASE_IN",
+                      "interpolation": "CUBIC",
+                      "val": -0.25863024592399597
+                    },
+                    {
+                      "frame": 24,
+                      "easing": "EASE_OUT",
+                      "interpolation": "CUBIC",
+                      "val": -0.0
+                    }
+                  ]
+                },
+                {
+                  "property": "z",
+                  "keys": [
+                    {
+                      "frame": 0,
+                      "easing": "AUTO",
+                      "interpolation": "BEZIER",
+                      "val": 0.0
+                    },
+                    {
+                      "frame": 12,
+                      "easing": "AUTO",
+                      "interpolation": "BEZIER",
+                      "val": 0.0
+                    },
+                    {
+                      "frame": 24,
+                      "easing": "AUTO",
+                      "interpolation": "BEZIER",
+                      "val": 0.0
+                    }
+                  ]
+                },
+                {
+                  "property": "rx",
+                  "keys": [
+                    {
+                      "frame": 0,
+                      "easing": "AUTO",
+                      "interpolation": "BEZIER",
+                      "val": 0.0
+                    },
+                    {
+                      "frame": 3,
+                      "easing": "AUTO",
+                      "interpolation": "BEZIER",
+                      "val": 0.0
+                    },
+                    {
+                      "frame": 6,
+                      "easing": "AUTO",
+                      "interpolation": "BEZIER",
+                      "val": 0.0
+                    },
+                    {
+                      "frame": 8,
+                      "easing": "AUTO",
+                      "interpolation": "BEZIER",
+                      "val": 0.0
+                    },
+                    {
+                      "frame": 11,
+                      "easing": "AUTO",
+                      "interpolation": "BEZIER",
+                      "val": 0.0
+                    },
+                    {
+                      "frame": 14,
+                      "easing": "AUTO",
+                      "interpolation": "BEZIER",
+                      "val": 0.0
+                    },
+                    {
+                      "frame": 16,
+                      "easing": "AUTO",
+                      "interpolation": "BEZIER",
+                      "val": 0.0
+                    },
+                    {
+                      "frame": 18,
+                      "easing": "AUTO",
+                      "interpolation": "BEZIER",
+                      "val": 0.0
+                    },
+                    {
+                      "frame": 20,
+                      "easing": "AUTO",
+                      "interpolation": "BEZIER",
+                      "val": 0.0
+                    },
+                    {
+                      "frame": 22,
+                      "easing": "AUTO",
+                      "interpolation": "BEZIER",
+                      "val": 0.0
+                    },
+                    {
+                      "frame": 24,
+                      "easing": "AUTO",
+                      "interpolation": "BEZIER",
+                      "val": 0.0
+                    }
+                  ]
+                },
+                {
+                  "property": "ry",
+                  "keys": [
+                    {
+                      "frame": 0,
+                      "easing": "AUTO",
+                      "interpolation": "LINEAR",
+                      "val": 0.0
+                    },
+                    {
+                      "frame": 3,
+                      "easing": "AUTO",
+                      "interpolation": "LINEAR",
+                      "val": -0.0
+                    },
+                    {
+                      "frame": 6,
+                      "easing": "AUTO",
+                      "interpolation": "LINEAR",
+                      "val": -0.0
+                    },
+                    {
+                      "frame": 8,
+                      "easing": "AUTO",
+                      "interpolation": "LINEAR",
+                      "val": -0.0
+                    },
+                    {
+                      "frame": 11,
+                      "easing": "AUTO",
+                      "interpolation": "LINEAR",
+                      "val": -0.0
+                    },
+                    {
+                      "frame": 14,
+                      "easing": "AUTO",
+                      "interpolation": "LINEAR",
+                      "val": -0.0
+                    },
+                    {
+                      "frame": 16,
+                      "easing": "AUTO",
+                      "interpolation": "LINEAR",
+                      "val": -0.0
+                    },
+                    {
+                      "frame": 18,
+                      "easing": "AUTO",
+                      "interpolation": "LINEAR",
+                      "val": 0.0
+                    },
+                    {
+                      "frame": 20,
+                      "easing": "AUTO",
+                      "interpolation": "LINEAR",
+                      "val": -0.0
+                    },
+                    {
+                      "frame": 22,
+                      "easing": "AUTO",
+                      "interpolation": "LINEAR",
+                      "val": -0.0
+                    },
+                    {
+                      "frame": 24,
+                      "easing": "AUTO",
+                      "interpolation": "LINEAR",
+                      "val": 0.0
+                    }
+                  ]
+                },
+                {
+                  "property": "rz",
+                  "keys": [
+                    {
+                      "frame": 0,
+                      "easing": "AUTO",
+                      "interpolation": "LINEAR",
+                      "val": -0.06981317698955536
+                    },
+                    {
+                      "frame": 3,
+                      "easing": "AUTO",
+                      "interpolation": "LINEAR",
+                      "val": 0.12818284332752228
+                    },
+                    {
+                      "frame": 6,
+                      "easing": "AUTO",
+                      "interpolation": "LINEAR",
+                      "val": -0.2329297959804535
+                    },
+                    {
+                      "frame": 8,
+                      "easing": "AUTO",
+                      "interpolation": "LINEAR",
+                      "val": -0.0035486894194036722
+                    },
+                    {
+                      "frame": 11,
+                      "easing": "AUTO",
+                      "interpolation": "LINEAR",
+                      "val": -0.19662483036518097
+                    },
+                    {
+                      "frame": 14,
+                      "easing": "AUTO",
+                      "interpolation": "LINEAR",
+                      "val": 0.1236502081155777
+                    },
+                    {
+                      "frame": 16,
+                      "easing": "AUTO",
+                      "interpolation": "LINEAR",
+                      "val": 0.03239357843995094
+                    },
+                    {
+                      "frame": 18,
+                      "easing": "AUTO",
+                      "interpolation": "LINEAR",
+                      "val": 0.0872664600610733
+                    },
+                    {
+                      "frame": 20,
+                      "easing": "AUTO",
+                      "interpolation": "LINEAR",
+                      "val": -0.20507696270942688
+                    },
+                    {
+                      "frame": 22,
+                      "easing": "AUTO",
+                      "interpolation": "LINEAR",
+                      "val": 0.16699635982513428
+                    },
+                    {
+                      "frame": 24,
+                      "easing": "AUTO",
+                      "interpolation": "LINEAR",
+                      "val": 0.06981316953897476
+                    }
+                  ]
+                }
+              ]
+            }
+          ],
+          "length": 24,
+          "start_frame": 0,
+          "end_frame": 24
+        },
+        {
+          "frame_rate": 24,
+          "name": "attack",
+          "bones": [
+            {
+              "id": "root",
+              "tracks": [
+                {
+                  "property": "x",
+                  "keys": [
+                    {
+                      "frame": 0,
+                      "easing": "EASE_IN_OUT",
+                      "interpolation": "LINEAR",
+                      "val": 0.0
+                    },
+                    {
+                      "frame": 8,
+                      "easing": "EASE_IN",
+                      "interpolation": "LINEAR",
+                      "val": 1.0
+                    },
+                    {
+                      "frame": 12,
+                      "easing": "EASE_OUT",
+                      "interpolation": "LINEAR",
+                      "val": 2.200000047683716
+                    },
+                    {
+                      "frame": 16,
+                      "easing": "EASE_IN_OUT",
+                      "interpolation": "LINEAR",
+                      "val": 0.9827394485473633
+                    },
+                    {
+                      "frame": 24,
+                      "easing": "AUTO",
+                      "interpolation": "CONSTANT",
+                      "val": 0.0
+                    }
+                  ]
+                },
+                {
+                  "property": "y",
+                  "keys": [
+                    {
+                      "frame": 0,
+                      "easing": "EASE_OUT",
+                      "interpolation": "CUBIC",
+                      "val": -0.0
+                    },
+                    {
+                      "frame": 8,
+                      "easing": "EASE_IN",
+                      "interpolation": "CUBIC",
+                      "val": -1.2999999523162842
+                    },
+                    {
+                      "frame": 12,
+                      "easing": "EASE_OUT",
+                      "interpolation": "CUBIC",
+                      "val": -0.699999988079071
+                    },
+                    {
+                      "frame": 16,
+                      "easing": "EASE_IN",
+                      "interpolation": "CUBIC",
+                      "val": -1.2999999523162842
+                    },
+                    {
+                      "frame": 24,
+                      "easing": "AUTO",
+                      "interpolation": "CONSTANT",
+                      "val": -0.0
+                    }
+                  ]
+                },
+                {
+                  "property": "z",
+                  "keys": [
+                    {
+                      "frame": 0,
+                      "easing": "EASE_IN_OUT",
+                      "interpolation": "CUBIC",
+                      "val": 0.0
+                    },
+                    {
+                      "frame": 8,
+                      "easing": "EASE_IN",
+                      "interpolation": "CUBIC",
+                      "val": 0.0
+                    },
+                    {
+                      "frame": 12,
+                      "easing": "EASE_OUT",
+                      "interpolation": "CUBIC",
+                      "val": 0.0
+                    },
+                    {
+                      "frame": 16,
+                      "easing": "EASE_IN_OUT",
+                      "interpolation": "CUBIC",
+                      "val": 0.0
+                    },
+                    {
+                      "frame": 24,
+                      "easing": "AUTO",
+                      "interpolation": "CONSTANT",
+                      "val": 0.0
+                    }
+                  ]
+                },
+                {
+                  "property": "rx",
+                  "keys": [
+                    {
+                      "frame": 0,
+                      "easing": "EASE_IN_OUT",
+                      "interpolation": "CUBIC",
+                      "val": 0.0
+                    },
+                    {
+                      "frame": 8,
+                      "easing": "EASE_IN",
+                      "interpolation": "CUBIC",
+                      "val": 0.0
+                    },
+                    {
+                      "frame": 12,
+                      "easing": "EASE_OUT",
+                      "interpolation": "CUBIC",
+                      "val": 0.0
+                    },
+                    {
+                      "frame": 24,
+                      "easing": "AUTO",
+                      "interpolation": "CONSTANT",
+                      "val": 0.0
+                    }
+                  ]
+                },
+                {
+                  "property": "ry",
+                  "keys": [
+                    {
+                      "frame": 0,
+                      "easing": "EASE_IN_OUT",
+                      "interpolation": "CUBIC",
+                      "val": 0.0
+                    },
+                    {
+                      "frame": 8,
+                      "easing": "EASE_IN",
+                      "interpolation": "CUBIC",
+                      "val": 0.0
+                    },
+                    {
+                      "frame": 12,
+                      "easing": "EASE_OUT",
+                      "interpolation": "CUBIC",
+                      "val": 0.0
+                    },
+                    {
+                      "frame": 24,
+                      "easing": "AUTO",
+                      "interpolation": "CONSTANT",
+                      "val": 0.0
+                    }
+                  ]
+                },
+                {
+                  "property": "rz",
+                  "keys": [
+                    {
+                      "frame": 0,
+                      "easing": "EASE_IN_OUT",
+                      "interpolation": "CUBIC",
+                      "val": -0.0
+                    },
+                    {
+                      "frame": 8,
+                      "easing": "EASE_IN",
+                      "interpolation": "CUBIC",
+                      "val": -0.0
+                    },
+                    {
+                      "frame": 12,
+                      "easing": "EASE_OUT",
+                      "interpolation": "CUBIC",
+                      "val": -0.3092873990535736
+                    },
+                    {
+                      "frame": 24,
+                      "easing": "AUTO",
+                      "interpolation": "CONSTANT",
+                      "val": -0.0
+                    }
+                  ]
+                }
+              ]
+            }
+          ],
+          "length": 24,
+          "start_frame": 0,
+          "end_frame": 24
+        },
+        {
+          "frame_rate": 24,
+          "name": "dead",
+          "bones": [
+            {
+              "id": "root",
+              "tracks": [
+                {
+                  "property": "rx",
+                  "keys": [
+                    {
+                      "frame": 0,
+                      "easing": "AUTO",
+                      "interpolation": "BEZIER",
+                      "val": 0.0
+                    },
+                    {
+                      "frame": 48,
+                      "easing": "AUTO",
+                      "interpolation": "BEZIER",
+                      "val": 0.0
+                    }
+                  ]
+                },
+                {
+                  "property": "ry",
+                  "keys": [
+                    {
+                      "frame": 0,
+                      "easing": "AUTO",
+                      "interpolation": "BEZIER",
+                      "val": 0.0
+                    },
+                    {
+                      "frame": 48,
+                      "easing": "AUTO",
+                      "interpolation": "BEZIER",
+                      "val": 0.0
+                    }
+                  ]
+                },
+                {
+                  "property": "rz",
+                  "keys": [
+                    {
+                      "frame": 0,
+                      "easing": "AUTO",
+                      "interpolation": "BEZIER",
+                      "val": 1.8692227602005005
+                    },
+                    {
+                      "frame": 48,
+                      "easing": "AUTO",
+                      "interpolation": "BEZIER",
+                      "val": 1.8675023317337036
+                    }
+                  ]
+                }
+              ]
+            }
+          ],
+          "length": 48,
+          "start_frame": 0,
+          "end_frame": 48
+        },
+        {
+          "frame_rate": 24,
+          "name": "got_hit_monster",
+          "bones": [
+            {
+              "id": "root",
+              "tracks": [
+                {
+                  "property": "x",
+                  "keys": [
+                    {
+                      "frame": 0,
+                      "easing": "AUTO",
+                      "interpolation": "BEZIER",
+                      "val": 0.0
+                    },
+                    {
+                      "frame": 10,
+                      "easing": "AUTO",
+                      "interpolation": "BEZIER",
+                      "val": 0.0
+                    },
+                    {
+                      "frame": 12,
+                      "easing": "AUTO",
+                      "interpolation": "BEZIER",
+                      "val": -0.28214213252067566
+                    },
+                    {
+                      "frame": 24,
+                      "easing": "AUTO",
+                      "interpolation": "BEZIER",
+                      "val": 0.0
+                    }
+                  ]
+                },
+                {
+                  "property": "y",
+                  "keys": [
+                    {
+                      "frame": 0,
+                      "easing": "EASE_OUT",
+                      "interpolation": "CUBIC",
+                      "val": -0.0
+                    },
+                    {
+                      "frame": 10,
+                      "easing": "AUTO",
+                      "interpolation": "CUBIC",
+                      "val": -0.6552837491035461
+                    },
+                    {
+                      "frame": 12,
+                      "easing": "EASE_IN",
+                      "interpolation": "CUBIC",
+                      "val": -0.658331573009491
+                    },
+                    {
+                      "frame": 24,
+                      "easing": "AUTO",
+                      "interpolation": "BEZIER",
+                      "val": -0.0
+                    }
+                  ]
+                },
+                {
+                  "property": "z",
+                  "keys": [
+                    {
+                      "frame": 0,
+                      "easing": "AUTO",
+                      "interpolation": "BEZIER",
+                      "val": 0.0
+                    },
+                    {
+                      "frame": 10,
+                      "easing": "AUTO",
+                      "interpolation": "BEZIER",
+                      "val": 0.0
+                    },
+                    {
+                      "frame": 12,
+                      "easing": "AUTO",
+                      "interpolation": "BEZIER",
+                      "val": 0.0
+                    },
+                    {
+                      "frame": 24,
+                      "easing": "AUTO",
+                      "interpolation": "BEZIER",
+                      "val": 0.0
+                    }
+                  ]
+                },
+                {
+                  "property": "rx",
+                  "keys": [
+                    {
+                      "frame": 0,
+                      "easing": "AUTO",
+                      "interpolation": "BEZIER",
+                      "val": 0.0
+                    },
+                    {
+                      "frame": 12,
+                      "easing": "AUTO",
+                      "interpolation": "BEZIER",
+                      "val": 0.0
+                    },
+                    {
+                      "frame": 24,
+                      "easing": "AUTO",
+                      "interpolation": "BEZIER",
+                      "val": 0.0
+                    }
+                  ]
+                },
+                {
+                  "property": "ry",
+                  "keys": [
+                    {
+                      "frame": 0,
+                      "easing": "AUTO",
+                      "interpolation": "BEZIER",
+                      "val": -0.0
+                    },
+                    {
+                      "frame": 12,
+                      "easing": "AUTO",
+                      "interpolation": "BEZIER",
+                      "val": -0.0
+                    },
+                    {
+                      "frame": 24,
+                      "easing": "AUTO",
+                      "interpolation": "BEZIER",
+                      "val": -0.0
+                    }
+                  ]
+                },
+                {
+                  "property": "rz",
+                  "keys": [
+                    {
+                      "frame": 0,
+                      "easing": "AUTO",
+                      "interpolation": "BEZIER",
+                      "val": -0.0
+                    },
+                    {
+                      "frame": 12,
+                      "easing": "AUTO",
+                      "interpolation": "BEZIER",
+                      "val": -0.23874999582767487
+                    },
+                    {
+                      "frame": 24,
+                      "easing": "AUTO",
+                      "interpolation": "BEZIER",
+                      "val": -0.0
+                    }
+                  ]
+                }
+              ]
+            }
+          ],
+          "length": 24,
+          "start_frame": 0,
+          "end_frame": 24
+        },
+        {
+          "frame_rate": 24,
+          "name": "hit_knocked_down",
+          "bones": [
+            {
+              "id": "root",
+              "tracks": [
+                {
+                  "property": "x",
+                  "keys": [
+                    {
+                      "frame": 0,
+                      "easing": "AUTO",
+                      "interpolation": "LINEAR",
+                      "val": 0.0
+                    },
+                    {
+                      "frame": 12,
+                      "easing": "EASE_OUT",
+                      "interpolation": "CUBIC",
+                      "val": -0.14107102155685425
+                    },
+                    {
+                      "frame": 24,
+                      "easing": "AUTO",
+                      "interpolation": "BEZIER",
+                      "val": 0.0
+                    }
+                  ]
+                },
+                {
+                  "property": "y",
+                  "keys": [
+                    {
+                      "frame": 0,
+                      "easing": "EASE_OUT",
+                      "interpolation": "CUBIC",
+                      "val": -0.0
+                    },
+                    {
+                      "frame": 12,
+                      "easing": "EASE_IN",
+                      "interpolation": "CUBIC",
+                      "val": -0.658331573009491
+                    },
+                    {
+                      "frame": 24,
+                      "easing": "AUTO",
+                      "interpolation": "BEZIER",
+                      "val": -0.0
+                    }
+                  ]
+                },
+                {
+                  "property": "z",
+                  "keys": [
+                    {
+                      "frame": 0,
+                      "easing": "AUTO",
+                      "interpolation": "BEZIER",
+                      "val": 0.0
+                    },
+                    {
+                      "frame": 12,
+                      "easing": "AUTO",
+                      "interpolation": "BEZIER",
+                      "val": 0.0
+                    },
+                    {
+                      "frame": 24,
+                      "easing": "AUTO",
+                      "interpolation": "BEZIER",
+                      "val": 0.0
+                    }
+                  ]
+                },
+                {
+                  "property": "rx",
+                  "keys": [
+                    {
+                      "frame": 0,
+                      "easing": "AUTO",
+                      "interpolation": "BEZIER",
+                      "val": 0.0
+                    },
+                    {
+                      "frame": 12,
+                      "easing": "AUTO",
+                      "interpolation": "BEZIER",
+                      "val": 0.0
+                    },
+                    {
+                      "frame": 24,
+                      "easing": "AUTO",
+                      "interpolation": "BEZIER",
+                      "val": 0.0
+                    }
+                  ]
+                },
+                {
+                  "property": "ry",
+                  "keys": [
+                    {
+                      "frame": 0,
+                      "easing": "AUTO",
+                      "interpolation": "BEZIER",
+                      "val": -0.0
+                    },
+                    {
+                      "frame": 12,
+                      "easing": "AUTO",
+                      "interpolation": "BEZIER",
+                      "val": -0.0
+                    },
+                    {
+                      "frame": 24,
+                      "easing": "AUTO",
+                      "interpolation": "BEZIER",
+                      "val": -0.0
+                    }
+                  ]
+                },
+                {
+                  "property": "rz",
+                  "keys": [
+                    {
+                      "frame": 0,
+                      "easing": "AUTO",
+                      "interpolation": "BEZIER",
+                      "val": -0.0
+                    },
+                    {
+                      "frame": 12,
+                      "easing": "AUTO",
+                      "interpolation": "LINEAR",
+                      "val": -0.0
+                    },
+                    {
+                      "frame": 24,
+                      "easing": "AUTO",
+                      "interpolation": "BEZIER",
+                      "val": 1.8675023317337036
+                    }
+                  ]
+                }
+              ]
+            }
+          ],
+          "length": 24,
+          "start_frame": 0,
+          "end_frame": 24
+        },
+        {
+          "frame_rate": 24,
+          "name": "hop",
+          "bones": [
+            {
+              "id": "root",
+              "tracks": [
+                {
+                  "property": "x",
+                  "keys": [
+                    {
+                      "frame": 0,
+                      "easing": "AUTO",
+                      "interpolation": "BEZIER",
+                      "val": 0.0
+                    },
+                    {
+                      "frame": 24,
+                      "easing": "AUTO",
+                      "interpolation": "BEZIER",
+                      "val": 0.0
+                    },
+                    {
+                      "frame": 48,
+                      "easing": "AUTO",
+                      "interpolation": "BEZIER",
+                      "val": 0.0
+                    }
+                  ]
+                },
+                {
+                  "property": "y",
+                  "keys": [
+                    {
+                      "frame": 0,
+                      "easing": "EASE_OUT",
+                      "interpolation": "CUBIC",
+                      "val": -0.0
+                    },
+                    {
+                      "frame": 24,
+                      "easing": "EASE_IN",
+                      "interpolation": "CUBIC",
+                      "val": -0.658331573009491
+                    },
+                    {
+                      "frame": 48,
+                      "easing": "AUTO",
+                      "interpolation": "BEZIER",
+                      "val": -0.0
+                    }
+                  ]
+                },
+                {
+                  "property": "z",
+                  "keys": [
+                    {
+                      "frame": 0,
+                      "easing": "AUTO",
+                      "interpolation": "BEZIER",
+                      "val": 0.0
+                    },
+                    {
+                      "frame": 24,
+                      "easing": "AUTO",
+                      "interpolation": "BEZIER",
+                      "val": 0.0
+                    },
+                    {
+                      "frame": 48,
+                      "easing": "AUTO",
+                      "interpolation": "BEZIER",
+                      "val": 0.0
+                    }
+                  ]
+                }
+              ]
+            }
+          ],
+          "length": 48,
+          "start_frame": 0,
+          "end_frame": 48
+        },
+        {
+          "frame_rate": 24,
+          "name": "hop_tilt",
+          "bones": [
+            {
+              "id": "root",
+              "tracks": [
+                {
+                  "property": "x",
+                  "keys": [
+                    {
+                      "frame": 0,
+                      "easing": "AUTO",
+                      "interpolation": "BEZIER",
+                      "val": 0.0
+                    },
+                    {
+                      "frame": 10,
+                      "easing": "AUTO",
+                      "interpolation": "BEZIER",
+                      "val": 0.0
+                    },
+                    {
+                      "frame": 14,
+                      "easing": "AUTO",
+                      "interpolation": "BEZIER",
+                      "val": 0.0
+                    },
+                    {
+                      "frame": 24,
+                      "easing": "AUTO",
+                      "interpolation": "BEZIER",
+                      "val": 0.0
+                    }
+                  ]
+                },
+                {
+                  "property": "y",
+                  "keys": [
+                    {
+                      "frame": 0,
+                      "easing": "EASE_OUT",
+                      "interpolation": "CUBIC",
+                      "val": -0.0
+                    },
+                    {
+                      "frame": 10,
+                      "easing": "EASE_IN",
+                      "interpolation": "CUBIC",
+                      "val": -2.0
+                    },
+                    {
+                      "frame": 14,
+                      "easing": "EASE_IN",
+                      "interpolation": "CUBIC",
+                      "val": -2.0
+                    },
+                    {
+                      "frame": 24,
+                      "easing": "AUTO",
+                      "interpolation": "BEZIER",
+                      "val": -0.0
+                    }
+                  ]
+                },
+                {
+                  "property": "z",
+                  "keys": [
+                    {
+                      "frame": 0,
+                      "easing": "AUTO",
+                      "interpolation": "BEZIER",
+                      "val": 0.0
+                    },
+                    {
+                      "frame": 10,
+                      "easing": "AUTO",
+                      "interpolation": "BEZIER",
+                      "val": 0.0
+                    },
+                    {
+                      "frame": 14,
+                      "easing": "AUTO",
+                      "interpolation": "BEZIER",
+                      "val": 0.0
+                    },
+                    {
+                      "frame": 24,
+                      "easing": "AUTO",
+                      "interpolation": "BEZIER",
+                      "val": 0.0
+                    }
+                  ]
+                },
+                {
+                  "property": "rx",
+                  "keys": [
+                    {
+                      "frame": 0,
+                      "easing": "AUTO",
+                      "interpolation": "BEZIER",
+                      "val": 0.0
+                    },
+                    {
+                      "frame": 12,
+                      "easing": "AUTO",
+                      "interpolation": "BEZIER",
+                      "val": 0.0
+                    },
+                    {
+                      "frame": 24,
+                      "easing": "AUTO",
+                      "interpolation": "BEZIER",
+                      "val": 0.0
+                    }
+                  ]
+                },
+                {
+                  "property": "ry",
+                  "keys": [
+                    {
+                      "frame": 0,
+                      "easing": "AUTO",
+                      "interpolation": "BEZIER",
+                      "val": -0.0
+                    },
+                    {
+                      "frame": 12,
+                      "easing": "AUTO",
+                      "interpolation": "BEZIER",
+                      "val": 0.0
+                    },
+                    {
+                      "frame": 24,
+                      "easing": "AUTO",
+                      "interpolation": "BEZIER",
+                      "val": -0.0
+                    }
+                  ]
+                },
+                {
+                  "property": "rz",
+                  "keys": [
+                    {
+                      "frame": 0,
+                      "easing": "AUTO",
+                      "interpolation": "BEZIER",
+                      "val": -0.0
+                    },
+                    {
+                      "frame": 12,
+                      "easing": "AUTO",
+                      "interpolation": "BEZIER",
+                      "val": -0.6981316804885864
+                    },
+                    {
+                      "frame": 24,
+                      "easing": "AUTO",
+                      "interpolation": "BEZIER",
+                      "val": -0.0
+                    }
+                  ]
+                }
+              ]
+            }
+          ],
+          "length": 24,
+          "start_frame": 0,
+          "end_frame": 24
+        },
+        {
+          "frame_rate": 24,
+          "name": "idle",
+          "bones": [
+            {
+              "id": "root",
+              "tracks": [
+                {
+                  "property": "x",
+                  "keys": [
+                    {
+                      "frame": 0,
+                      "easing": "AUTO",
+                      "interpolation": "BEZIER",
+                      "val": 0.0
+                    },
+                    {
+                      "frame": 12,
+                      "easing": "AUTO",
+                      "interpolation": "BEZIER",
+                      "val": 0.0
+                    },
+                    {
+                      "frame": 24,
+                      "easing": "AUTO",
+                      "interpolation": "BEZIER",
+                      "val": 0.0
+                    },
+                    {
+                      "frame": 36,
+                      "easing": "AUTO",
+                      "interpolation": "BEZIER",
+                      "val": 0.0
+                    },
+                    {
+                      "frame": 48,
+                      "easing": "AUTO",
+                      "interpolation": "BEZIER",
+                      "val": 0.0
+                    }
+                  ]
+                },
+                {
+                  "property": "y",
+                  "keys": [
+                    {
+                      "frame": 0,
+                      "easing": "EASE_OUT",
+                      "interpolation": "CUBIC",
+                      "val": -0.0
+                    },
+                    {
+                      "frame": 12,
+                      "easing": "EASE_IN",
+                      "interpolation": "CUBIC",
+                      "val": -0.25863024592399597
+                    },
+                    {
+                      "frame": 24,
+                      "easing": "EASE_OUT",
+                      "interpolation": "CUBIC",
+                      "val": -0.0
+                    },
+                    {
+                      "frame": 36,
+                      "easing": "EASE_IN",
+                      "interpolation": "CUBIC",
+                      "val": -0.25863024592399597
+                    },
+                    {
+                      "frame": 48,
+                      "easing": "AUTO",
+                      "interpolation": "BEZIER",
+                      "val": -0.0
+                    }
+                  ]
+                },
+                {
+                  "property": "z",
+                  "keys": [
+                    {
+                      "frame": 0,
+                      "easing": "AUTO",
+                      "interpolation": "BEZIER",
+                      "val": 0.0
+                    },
+                    {
+                      "frame": 12,
+                      "easing": "AUTO",
+                      "interpolation": "BEZIER",
+                      "val": 0.0
+                    },
+                    {
+                      "frame": 24,
+                      "easing": "AUTO",
+                      "interpolation": "BEZIER",
+                      "val": 0.0
+                    },
+                    {
+                      "frame": 36,
+                      "easing": "AUTO",
+                      "interpolation": "BEZIER",
+                      "val": 0.0
+                    },
+                    {
+                      "frame": 48,
+                      "easing": "AUTO",
+                      "interpolation": "BEZIER",
+                      "val": 0.0
+                    }
+                  ]
+                },
+                {
+                  "property": "rx",
+                  "keys": [
+                    {
+                      "frame": 0,
+                      "easing": "AUTO",
+                      "interpolation": "BEZIER",
+                      "val": 0.0
+                    },
+                    {
+                      "frame": 24,
+                      "easing": "AUTO",
+                      "interpolation": "BEZIER",
+                      "val": 0.0
+                    },
+                    {
+                      "frame": 48,
+                      "easing": "AUTO",
+                      "interpolation": "BEZIER",
+                      "val": 0.0
+                    }
+                  ]
+                },
+                {
+                  "property": "ry",
+                  "keys": [
+                    {
+                      "frame": 0,
+                      "easing": "AUTO",
+                      "interpolation": "BEZIER",
+                      "val": 0.0
+                    },
+                    {
+                      "frame": 24,
+                      "easing": "AUTO",
+                      "interpolation": "BEZIER",
+                      "val": 0.0
+                    },
+                    {
+                      "frame": 48,
+                      "easing": "AUTO",
+                      "interpolation": "BEZIER",
+                      "val": 0.0
+                    }
+                  ]
+                },
+                {
+                  "property": "rz",
+                  "keys": [
+                    {
+                      "frame": 0,
+                      "easing": "AUTO",
+                      "interpolation": "BEZIER",
+                      "val": -0.06981317698955536
+                    },
+                    {
+                      "frame": 24,
+                      "easing": "AUTO",
+                      "interpolation": "BEZIER",
+                      "val": 0.06981316953897476
+                    },
+                    {
+                      "frame": 48,
+                      "easing": "AUTO",
+                      "interpolation": "BEZIER",
+                      "val": -0.06981316953897476
+                    }
+                  ]
+                }
+              ]
+            }
+          ],
+          "length": 48,
+          "start_frame": 0,
+          "end_frame": 48
+        },
+        {
+          "frame_rate": 24,
+          "name": "knocked_down",
+          "bones": [
+            {
+              "id": "root",
+              "tracks": [
+                {
+                  "property": "x",
+                  "keys": [
+                    {
+                      "frame": 0,
+                      "easing": "AUTO",
+                      "interpolation": "BEZIER",
+                      "val": 0.0
+                    },
+                    {
+                      "frame": 24,
+                      "easing": "AUTO",
+                      "interpolation": "BEZIER",
+                      "val": 0.0
+                    },
+                    {
+                      "frame": 48,
+                      "easing": "AUTO",
+                      "interpolation": "BEZIER",
+                      "val": 0.0
+                    }
+                  ]
+                },
+                {
+                  "property": "y",
+                  "keys": [
+                    {
+                      "frame": 0,
+                      "easing": "EASE_OUT",
+                      "interpolation": "CUBIC",
+                      "val": -0.0
+                    },
+                    {
+                      "frame": 24,
+                      "easing": "EASE_IN",
+                      "interpolation": "CUBIC",
+                      "val": -0.658331573009491
+                    },
+                    {
+                      "frame": 48,
+                      "easing": "AUTO",
+                      "interpolation": "BEZIER",
+                      "val": -0.0
+                    }
+                  ]
+                },
+                {
+                  "property": "z",
+                  "keys": [
+                    {
+                      "frame": 0,
+                      "easing": "AUTO",
+                      "interpolation": "BEZIER",
+                      "val": 0.0
+                    },
+                    {
+                      "frame": 24,
+                      "easing": "AUTO",
+                      "interpolation": "BEZIER",
+                      "val": 0.0
+                    },
+                    {
+                      "frame": 48,
+                      "easing": "AUTO",
+                      "interpolation": "BEZIER",
+                      "val": 0.0
+                    }
+                  ]
+                },
+                {
+                  "property": "rx",
+                  "keys": [
+                    {
+                      "frame": 0,
+                      "easing": "AUTO",
+                      "interpolation": "BEZIER",
+                      "val": 0.0
+                    },
+                    {
+                      "frame": 48,
+                      "easing": "AUTO",
+                      "interpolation": "BEZIER",
+                      "val": 0.0
+                    }
+                  ]
+                },
+                {
+                  "property": "ry",
+                  "keys": [
+                    {
+                      "frame": 0,
+                      "easing": "AUTO",
+                      "interpolation": "BEZIER",
+                      "val": -0.0
+                    },
+                    {
+                      "frame": 48,
+                      "easing": "AUTO",
+                      "interpolation": "BEZIER",
+                      "val": -0.0
+                    }
+                  ]
+                },
+                {
+                  "property": "rz",
+                  "keys": [
+                    {
+                      "frame": 0,
+                      "easing": "AUTO",
+                      "interpolation": "BEZIER",
+                      "val": -0.0
+                    },
+                    {
+                      "frame": 48,
+                      "easing": "AUTO",
+                      "interpolation": "BEZIER",
+                      "val": 1.8675023317337036
+                    }
+                  ]
+                }
+              ]
+            }
+          ],
+          "length": 48,
+          "start_frame": 0,
+          "end_frame": 48
+        },
+        {
+          "frame_rate": 24,
+          "name": "monster_attack",
+          "bones": [
+            {
+              "id": "root",
+              "tracks": [
+                {
+                  "property": "x",
+                  "keys": [
+                    {
+                      "frame": 0,
+                      "easing": "EASE_IN_OUT",
+                      "interpolation": "LINEAR",
+                      "val": 0.0
+                    },
+                    {
+                      "frame": 8,
+                      "easing": "EASE_IN",
+                      "interpolation": "LINEAR",
+                      "val": 1.0
+                    },
+                    {
+                      "frame": 12,
+                      "easing": "EASE_OUT",
+                      "interpolation": "LINEAR",
+                      "val": 2.200000047683716
+                    },
+                    {
+                      "frame": 16,
+                      "easing": "EASE_IN_OUT",
+                      "interpolation": "LINEAR",
+                      "val": 0.9827394485473633
+                    },
+                    {
+                      "frame": 24,
+                      "easing": "AUTO",
+                      "interpolation": "CONSTANT",
+                      "val": 0.0
+                    }
+                  ]
+                },
+                {
+                  "property": "y",
+                  "keys": [
+                    {
+                      "frame": 0,
+                      "easing": "EASE_OUT",
+                      "interpolation": "CUBIC",
+                      "val": -0.0
+                    },
+                    {
+                      "frame": 8,
+                      "easing": "EASE_IN",
+                      "interpolation": "CUBIC",
+                      "val": -1.5
+                    },
+                    {
+                      "frame": 12,
+                      "easing": "EASE_OUT",
+                      "interpolation": "CUBIC",
+                      "val": -0.699999988079071
+                    },
+                    {
+                      "frame": 16,
+                      "easing": "EASE_IN",
+                      "interpolation": "CUBIC",
+                      "val": -1.5
+                    },
+                    {
+                      "frame": 24,
+                      "easing": "AUTO",
+                      "interpolation": "CONSTANT",
+                      "val": -0.0
+                    }
+                  ]
+                },
+                {
+                  "property": "z",
+                  "keys": [
+                    {
+                      "frame": 0,
+                      "easing": "EASE_IN_OUT",
+                      "interpolation": "CUBIC",
+                      "val": 0.0
+                    },
+                    {
+                      "frame": 8,
+                      "easing": "EASE_IN",
+                      "interpolation": "CUBIC",
+                      "val": 0.0
+                    },
+                    {
+                      "frame": 12,
+                      "easing": "EASE_OUT",
+                      "interpolation": "CUBIC",
+                      "val": 0.0
+                    },
+                    {
+                      "frame": 16,
+                      "easing": "EASE_IN_OUT",
+                      "interpolation": "CUBIC",
+                      "val": 0.0
+                    },
+                    {
+                      "frame": 24,
+                      "easing": "AUTO",
+                      "interpolation": "CONSTANT",
+                      "val": 0.0
+                    }
+                  ]
+                },
+                {
+                  "property": "rx",
+                  "keys": [
+                    {
+                      "frame": 0,
+                      "easing": "EASE_IN_OUT",
+                      "interpolation": "CUBIC",
+                      "val": 0.0
+                    },
+                    {
+                      "frame": 8,
+                      "easing": "EASE_IN",
+                      "interpolation": "CUBIC",
+                      "val": 0.0
+                    },
+                    {
+                      "frame": 12,
+                      "easing": "EASE_OUT",
+                      "interpolation": "CUBIC",
+                      "val": 0.0
+                    },
+                    {
+                      "frame": 24,
+                      "easing": "AUTO",
+                      "interpolation": "CONSTANT",
+                      "val": 0.0
+                    }
+                  ]
+                },
+                {
+                  "property": "ry",
+                  "keys": [
+                    {
+                      "frame": 0,
+                      "easing": "EASE_IN_OUT",
+                      "interpolation": "CUBIC",
+                      "val": 0.0
+                    },
+                    {
+                      "frame": 8,
+                      "easing": "EASE_IN",
+                      "interpolation": "CUBIC",
+                      "val": 0.0
+                    },
+                    {
+                      "frame": 12,
+                      "easing": "EASE_OUT",
+                      "interpolation": "CUBIC",
+                      "val": 0.0
+                    },
+                    {
+                      "frame": 24,
+                      "easing": "AUTO",
+                      "interpolation": "CONSTANT",
+                      "val": 0.0
+                    }
+                  ]
+                },
+                {
+                  "property": "rz",
+                  "keys": [
+                    {
+                      "frame": 0,
+                      "easing": "EASE_IN_OUT",
+                      "interpolation": "CUBIC",
+                      "val": -0.0
+                    },
+                    {
+                      "frame": 8,
+                      "easing": "EASE_IN",
+                      "interpolation": "CUBIC",
+                      "val": -0.0
+                    },
+                    {
+                      "frame": 12,
+                      "easing": "EASE_OUT",
+                      "interpolation": "CUBIC",
+                      "val": 0.2967059910297394
+                    },
+                    {
+                      "frame": 24,
+                      "easing": "AUTO",
+                      "interpolation": "CONSTANT",
+                      "val": -0.0
+                    }
+                  ]
+                },
+                {
+                  "property": "sx",
+                  "keys": [
+                    {
+                      "frame": 0,
+                      "easing": "AUTO",
+                      "interpolation": "BEZIER",
+                      "val": 1.0
+                    },
+                    {
+                      "frame": 12,
+                      "easing": "AUTO",
+                      "interpolation": "BEZIER",
+                      "val": 1.0499999523162842
+                    },
+                    {
+                      "frame": 24,
+                      "easing": "AUTO",
+                      "interpolation": "BEZIER",
+                      "val": 1.0
+                    }
+                  ]
+                },
+                {
+                  "property": "sy",
+                  "keys": [
+                    {
+                      "frame": 0,
+                      "easing": "AUTO",
+                      "interpolation": "BEZIER",
+                      "val": 1.0
+                    },
+                    {
+                      "frame": 12,
+                      "easing": "AUTO",
+                      "interpolation": "BEZIER",
+                      "val": 1.0499999523162842
+                    },
+                    {
+                      "frame": 24,
+                      "easing": "AUTO",
+                      "interpolation": "BEZIER",
+                      "val": 1.0
+                    }
+                  ]
+                },
+                {
+                  "property": "sz",
+                  "keys": [
+                    {
+                      "frame": 0,
+                      "easing": "AUTO",
+                      "interpolation": "BEZIER",
+                      "val": 1.0
+                    },
+                    {
+                      "frame": 12,
+                      "easing": "AUTO",
+                      "interpolation": "BEZIER",
+                      "val": 1.0
+                    },
+                    {
+                      "frame": 24,
+                      "easing": "AUTO",
+                      "interpolation": "BEZIER",
+                      "val": 1.0
+                    }
+                  ]
+                }
+              ]
+            }
+          ],
+          "length": 24,
+          "start_frame": 0,
+          "end_frame": 24
+        },
+        {
+          "frame_rate": 24,
+          "name": "none",
+          "bones": [
+            {
+              "id": "root",
+              "tracks": [
+                {
+                  "property": "x",
+                  "keys": [
+                    {
+                      "frame": 0,
+                      "easing": "AUTO",
+                      "interpolation": "BEZIER",
+                      "val": 0.0
+                    },
+                    {
+                      "frame": 24,
+                      "easing": "AUTO",
+                      "interpolation": "BEZIER",
+                      "val": 0.0
+                    }
+                  ]
+                },
+                {
+                  "property": "y",
+                  "keys": [
+                    {
+                      "frame": 0,
+                      "easing": "EASE_OUT",
+                      "interpolation": "CUBIC",
+                      "val": -0.0
+                    },
+                    {
+                      "frame": 24,
+                      "easing": "AUTO",
+                      "interpolation": "BEZIER",
+                      "val": -0.0
+                    }
+                  ]
+                },
+                {
+                  "property": "z",
+                  "keys": [
+                    {
+                      "frame": 0,
+                      "easing": "AUTO",
+                      "interpolation": "BEZIER",
+                      "val": 0.0
+                    },
+                    {
+                      "frame": 24,
+                      "easing": "AUTO",
+                      "interpolation": "BEZIER",
+                      "val": 0.0
+                    }
+                  ]
+                }
+              ]
+            }
+          ],
+          "length": 24,
+          "start_frame": 0,
+          "end_frame": 24
+        },
+        {
+          "frame_rate": 24,
+          "name": "stomp",
+          "bones": [
+            {
+              "id": "root",
+              "tracks": [
+                {
+                  "property": "x",
+                  "keys": [
+                    {
+                      "frame": 0,
+                      "easing": "AUTO",
+                      "interpolation": "BEZIER",
+                      "val": 0.0
+                    },
+                    {
+                      "frame": 30,
+                      "easing": "AUTO",
+                      "interpolation": "BEZIER",
+                      "val": 0.0
+                    },
+                    {
+                      "frame": 48,
+                      "easing": "AUTO",
+                      "interpolation": "BEZIER",
+                      "val": 0.0
+                    }
+                  ]
+                },
+                {
+                  "property": "y",
+                  "keys": [
+                    {
+                      "frame": 0,
+                      "easing": "EASE_OUT",
+                      "interpolation": "CUBIC",
+                      "val": -0.0
+                    },
+                    {
+                      "frame": 30,
+                      "easing": "EASE_IN",
+                      "interpolation": "CUBIC",
+                      "val": -2.0
+                    },
+                    {
+                      "frame": 48,
+                      "easing": "AUTO",
+                      "interpolation": "BEZIER",
+                      "val": -0.0
+                    }
+                  ]
+                },
+                {
+                  "property": "z",
+                  "keys": [
+                    {
+                      "frame": 0,
+                      "easing": "AUTO",
+                      "interpolation": "BEZIER",
+                      "val": 0.0
+                    },
+                    {
+                      "frame": 30,
+                      "easing": "AUTO",
+                      "interpolation": "BEZIER",
+                      "val": 0.0
+                    },
+                    {
+                      "frame": 48,
+                      "easing": "AUTO",
+                      "interpolation": "BEZIER",
+                      "val": 0.0
+                    }
+                  ]
+                },
+                {
+                  "property": "rx",
+                  "keys": [
+                    {
+                      "frame": 0,
+                      "easing": "AUTO",
+                      "interpolation": "BEZIER",
+                      "val": 0.0
+                    },
+                    {
+                      "frame": 48,
+                      "easing": "AUTO",
+                      "interpolation": "BEZIER",
+                      "val": 0.0
+                    }
+                  ]
+                },
+                {
+                  "property": "ry",
+                  "keys": [
+                    {
+                      "frame": 0,
+                      "easing": "AUTO",
+                      "interpolation": "BEZIER",
+                      "val": -0.0
+                    },
+                    {
+                      "frame": 48,
+                      "easing": "AUTO",
+                      "interpolation": "BEZIER",
+                      "val": -0.0
+                    }
+                  ]
+                },
+                {
+                  "property": "rz",
+                  "keys": [
+                    {
+                      "frame": 0,
+                      "easing": "AUTO",
+                      "interpolation": "BEZIER",
+                      "val": -0.0
+                    },
+                    {
+                      "frame": 48,
+                      "easing": "AUTO",
+                      "interpolation": "BEZIER",
+                      "val": -6.2831854820251465
+                    }
+                  ]
+                }
+              ]
+            }
+          ],
+          "length": 48,
+          "start_frame": 0,
+          "end_frame": 48
+        },
+        {
+          "frame_rate": 24,
+          "name": "stomp2",
+          "bones": [
+            {
+              "id": "root",
+              "tracks": [
+                {
+                  "property": "x",
+                  "keys": [
+                    {
+                      "frame": 0,
+                      "easing": "AUTO",
+                      "interpolation": "BEZIER",
+                      "val": 0.0
+                    },
+                    {
+                      "frame": 9,
+                      "easing": "AUTO",
+                      "interpolation": "BEZIER",
+                      "val": 0.0
+                    },
+                    {
+                      "frame": 14,
+                      "easing": "AUTO",
+                      "interpolation": "BEZIER",
+                      "val": 0.0
+                    },
+                    {
+                      "frame": 22,
+                      "easing": "AUTO",
+                      "interpolation": "BEZIER",
+                      "val": 0.0
+                    }
+                  ]
+                },
+                {
+                  "property": "y",
+                  "keys": [
+                    {
+                      "frame": 0,
+                      "easing": "EASE_OUT",
+                      "interpolation": "CUBIC",
+                      "val": -0.0
+                    },
+                    {
+                      "frame": 9,
+                      "easing": "AUTO",
+                      "interpolation": "CUBIC",
+                      "val": -2.0
+                    },
+                    {
+                      "frame": 14,
+                      "easing": "EASE_IN",
+                      "interpolation": "CUBIC",
+                      "val": -2.0
+                    },
+                    {
+                      "frame": 22,
+                      "easing": "AUTO",
+                      "interpolation": "BEZIER",
+                      "val": -0.0
+                    }
+                  ]
+                },
+                {
+                  "property": "z",
+                  "keys": [
+                    {
+                      "frame": 0,
+                      "easing": "AUTO",
+                      "interpolation": "BEZIER",
+                      "val": 0.0
+                    },
+                    {
+                      "frame": 9,
+                      "easing": "AUTO",
+                      "interpolation": "BEZIER",
+                      "val": 0.0
+                    },
+                    {
+                      "frame": 14,
+                      "easing": "AUTO",
+                      "interpolation": "BEZIER",
+                      "val": 0.0
+                    },
+                    {
+                      "frame": 22,
+                      "easing": "AUTO",
+                      "interpolation": "BEZIER",
+                      "val": 0.0
+                    }
+                  ]
+                },
+                {
+                  "property": "rx",
+                  "keys": [
+                    {
+                      "frame": 0,
+                      "easing": "AUTO",
+                      "interpolation": "BEZIER",
+                      "val": 0.0
+                    },
+                    {
+                      "frame": 14,
+                      "easing": "AUTO",
+                      "interpolation": "BEZIER",
+                      "val": 0.0
+                    },
+                    {
+                      "frame": 22,
+                      "easing": "AUTO",
+                      "interpolation": "BEZIER",
+                      "val": 0.0
+                    }
+                  ]
+                },
+                {
+                  "property": "ry",
+                  "keys": [
+                    {
+                      "frame": 0,
+                      "easing": "AUTO",
+                      "interpolation": "BEZIER",
+                      "val": -0.0
+                    },
+                    {
+                      "frame": 14,
+                      "easing": "AUTO",
+                      "interpolation": "BEZIER",
+                      "val": -0.0
+                    },
+                    {
+                      "frame": 22,
+                      "easing": "AUTO",
+                      "interpolation": "BEZIER",
+                      "val": -0.0
+                    }
+                  ]
+                },
+                {
+                  "property": "rz",
+                  "keys": [
+                    {
+                      "frame": 0,
+                      "easing": "AUTO",
+                      "interpolation": "BEZIER",
+                      "val": -0.0
+                    },
+                    {
+                      "frame": 14,
+                      "easing": "AUTO",
+                      "interpolation": "BEZIER",
+                      "val": -6.108652591705322
+                    },
+                    {
+                      "frame": 22,
+                      "easing": "AUTO",
+                      "interpolation": "BEZIER",
+                      "val": -6.2831854820251465
+                    }
+                  ]
+                },
+                {
+                  "property": "sx",
+                  "keys": [
+                    {
+                      "frame": 0,
+                      "easing": "AUTO",
+                      "interpolation": "BEZIER",
+                      "val": 1.0
+                    },
+                    {
+                      "frame": 12,
+                      "easing": "AUTO",
+                      "interpolation": "BEZIER",
+                      "val": 1.2000000476837158
+                    },
+                    {
+                      "frame": 22,
+                      "easing": "AUTO",
+                      "interpolation": "BEZIER",
+                      "val": 1.0
+                    }
+                  ]
+                },
+                {
+                  "property": "sy",
+                  "keys": [
+                    {
+                      "frame": 0,
+                      "easing": "AUTO",
+                      "interpolation": "BEZIER",
+                      "val": 1.0
+                    },
+                    {
+                      "frame": 12,
+                      "easing": "AUTO",
+                      "interpolation": "BEZIER",
+                      "val": 1.2000000476837158
+                    },
+                    {
+                      "frame": 22,
+                      "easing": "AUTO",
+                      "interpolation": "BEZIER",
+                      "val": 1.0
+                    }
+                  ]
+                },
+                {
+                  "property": "sz",
+                  "keys": [
+                    {
+                      "frame": 0,
+                      "easing": "AUTO",
+                      "interpolation": "BEZIER",
+                      "val": 1.0
+                    },
+                    {
+                      "frame": 12,
+                      "easing": "AUTO",
+                      "interpolation": "BEZIER",
+                      "val": 1.0
+                    },
+                    {
+                      "frame": 22,
+                      "easing": "AUTO",
+                      "interpolation": "BEZIER",
+                      "val": 1.0
+                    }
+                  ]
+                }
+              ]
+            }
+          ],
+          "length": 22,
+          "start_frame": 0,
+          "end_frame": 22
+        },
+        {
+          "frame_rate": 24,
+          "name": "stomp3",
+          "bones": [
+            {
+              "id": "root",
+              "tracks": [
+                {
+                  "property": "x",
+                  "keys": [
+                    {
+                      "frame": 0,
+                      "easing": "AUTO",
+                      "interpolation": "BEZIER",
+                      "val": 0.0
+                    },
+                    {
+                      "frame": 9,
+                      "easing": "AUTO",
+                      "interpolation": "BEZIER",
+                      "val": 0.0
+                    },
+                    {
+                      "frame": 14,
+                      "easing": "AUTO",
+                      "interpolation": "BEZIER",
+                      "val": 0.0
+                    },
+                    {
+                      "frame": 22,
+                      "easing": "AUTO",
+                      "interpolation": "BEZIER",
+                      "val": 0.0
+                    },
+                    {
+                      "frame": 28,
+                      "easing": "AUTO",
+                      "interpolation": "BEZIER",
+                      "val": 0.0
+                    },
+                    {
+                      "frame": 37,
+                      "easing": "AUTO",
+                      "interpolation": "BEZIER",
+                      "val": 0.0
+                    }
+                  ]
+                },
+                {
+                  "property": "y",
+                  "keys": [
+                    {
+                      "frame": 0,
+                      "easing": "EASE_OUT",
+                      "interpolation": "CUBIC",
+                      "val": -0.0
+                    },
+                    {
+                      "frame": 9,
+                      "easing": "AUTO",
+                      "interpolation": "CUBIC",
+                      "val": -2.0
+                    },
+                    {
+                      "frame": 14,
+                      "easing": "EASE_IN",
+                      "interpolation": "CUBIC",
+                      "val": -2.0
+                    },
+                    {
+                      "frame": 22,
+                      "easing": "EASE_OUT",
+                      "interpolation": "CUBIC",
+                      "val": -0.0
+                    },
+                    {
+                      "frame": 28,
+                      "easing": "EASE_IN",
+                      "interpolation": "CUBIC",
+                      "val": -2.5
+                    },
+                    {
+                      "frame": 31,
+                      "easing": "EASE_IN",
+                      "interpolation": "CUBIC",
+                      "val": -2.5
+                    },
+                    {
+                      "frame": 37,
+                      "easing": "AUTO",
+                      "interpolation": "BEZIER",
+                      "val": -0.0
+                    }
+                  ]
+                },
+                {
+                  "property": "z",
+                  "keys": [
+                    {
+                      "frame": 0,
+                      "easing": "AUTO",
+                      "interpolation": "BEZIER",
+                      "val": 0.0
+                    },
+                    {
+                      "frame": 9,
+                      "easing": "AUTO",
+                      "interpolation": "BEZIER",
+                      "val": 0.0
+                    },
+                    {
+                      "frame": 14,
+                      "easing": "AUTO",
+                      "interpolation": "BEZIER",
+                      "val": 0.0
+                    },
+                    {
+                      "frame": 22,
+                      "easing": "AUTO",
+                      "interpolation": "BEZIER",
+                      "val": 0.0
+                    },
+                    {
+                      "frame": 28,
+                      "easing": "AUTO",
+                      "interpolation": "BEZIER",
+                      "val": 0.0
+                    },
+                    {
+                      "frame": 37,
+                      "easing": "AUTO",
+                      "interpolation": "BEZIER",
+                      "val": 0.0
+                    }
+                  ]
+                },
+                {
+                  "property": "rx",
+                  "keys": [
+                    {
+                      "frame": 0,
+                      "easing": "AUTO",
+                      "interpolation": "BEZIER",
+                      "val": 0.0
+                    },
+                    {
+                      "frame": 14,
+                      "easing": "AUTO",
+                      "interpolation": "BEZIER",
+                      "val": 0.0
+                    },
+                    {
+                      "frame": 22,
+                      "easing": "AUTO",
+                      "interpolation": "BEZIER",
+                      "val": 0.0
+                    },
+                    {
+                      "frame": 28,
+                      "easing": "AUTO",
+                      "interpolation": "BEZIER",
+                      "val": 0.0
+                    },
+                    {
+                      "frame": 37,
+                      "easing": "AUTO",
+                      "interpolation": "BEZIER",
+                      "val": 0.0
+                    }
+                  ]
+                },
+                {
+                  "property": "ry",
+                  "keys": [
+                    {
+                      "frame": 0,
+                      "easing": "AUTO",
+                      "interpolation": "BEZIER",
+                      "val": -0.0
+                    },
+                    {
+                      "frame": 14,
+                      "easing": "AUTO",
+                      "interpolation": "BEZIER",
+                      "val": -0.0
+                    },
+                    {
+                      "frame": 22,
+                      "easing": "AUTO",
+                      "interpolation": "BEZIER",
+                      "val": -0.0
+                    },
+                    {
+                      "frame": 28,
+                      "easing": "AUTO",
+                      "interpolation": "BEZIER",
+                      "val": -0.0
+                    },
+                    {
+                      "frame": 37,
+                      "easing": "AUTO",
+                      "interpolation": "BEZIER",
+                      "val": -0.0
+                    }
+                  ]
+                },
+                {
+                  "property": "rz",
+                  "keys": [
+                    {
+                      "frame": 0,
+                      "easing": "AUTO",
+                      "interpolation": "BEZIER",
+                      "val": -0.0
+                    },
+                    {
+                      "frame": 14,
+                      "easing": "AUTO",
+                      "interpolation": "BEZIER",
+                      "val": -6.108652591705322
+                    },
+                    {
+                      "frame": 22,
+                      "easing": "AUTO",
+                      "interpolation": "BEZIER",
+                      "val": -6.2831854820251465
+                    },
+                    {
+                      "frame": 28,
+                      "easing": "AUTO",
+                      "interpolation": "BEZIER",
+                      "val": -5.985897541046143
+                    },
+                    {
+                      "frame": 37,
+                      "easing": "AUTO",
+                      "interpolation": "BEZIER",
+                      "val": -6.2831854820251465
+                    }
+                  ]
+                },
+                {
+                  "property": "sx",
+                  "keys": [
+                    {
+                      "frame": 0,
+                      "easing": "AUTO",
+                      "interpolation": "BEZIER",
+                      "val": 1.0
+                    },
+                    {
+                      "frame": 12,
+                      "easing": "AUTO",
+                      "interpolation": "BEZIER",
+                      "val": 1.2000000476837158
+                    },
+                    {
+                      "frame": 22,
+                      "easing": "AUTO",
+                      "interpolation": "BEZIER",
+                      "val": 1.0
+                    },
+                    {
+                      "frame": 37,
+                      "easing": "AUTO",
+                      "interpolation": "BEZIER",
+                      "val": 1.0
+                    }
+                  ]
+                },
+                {
+                  "property": "sy",
+                  "keys": [
+                    {
+                      "frame": 0,
+                      "easing": "AUTO",
+                      "interpolation": "BEZIER",
+                      "val": 1.0
+                    },
+                    {
+                      "frame": 12,
+                      "easing": "AUTO",
+                      "interpolation": "BEZIER",
+                      "val": 1.2000000476837158
+                    },
+                    {
+                      "frame": 22,
+                      "easing": "AUTO",
+                      "interpolation": "BEZIER",
+                      "val": 1.0
+                    },
+                    {
+                      "frame": 37,
+                      "easing": "AUTO",
+                      "interpolation": "BEZIER",
+                      "val": 1.0
+                    }
+                  ]
+                },
+                {
+                  "property": "sz",
+                  "keys": [
+                    {
+                      "frame": 0,
+                      "easing": "AUTO",
+                      "interpolation": "BEZIER",
+                      "val": 1.0
+                    },
+                    {
+                      "frame": 12,
+                      "easing": "AUTO",
+                      "interpolation": "BEZIER",
+                      "val": 1.0
+                    },
+                    {
+                      "frame": 22,
+                      "easing": "AUTO",
+                      "interpolation": "BEZIER",
+                      "val": 1.0
+                    },
+                    {
+                      "frame": 37,
+                      "easing": "AUTO",
+                      "interpolation": "BEZIER",
+                      "val": 1.0
+                    }
+                  ]
+                },
+                {
+                  "property": "event_0",
+                  "keys": [
+                    {
+                      "frame": 0,
+                      "easing": "AUTO",
+                      "interpolation": "CONSTANT",
+                      "val": 0.0
+                    },
+                    {
+                      "frame": 22,
+                      "easing": "AUTO",
+                      "interpolation": "CONSTANT",
+                      "val": 1.0
+                    }
+                  ]
+                }
+              ]
+            }
+          ],
+          "length": 37,
+          "start_frame": 0,
+          "end_frame": 37
+        },
+        {
+          "frame_rate": 24,
+          "name": "win",
+          "bones": [
+            {
+              "id": "root",
+              "tracks": [
+                {
+                  "property": "x",
+                  "keys": [
+                    {
+                      "frame": 0,
+                      "easing": "AUTO",
+                      "interpolation": "BEZIER",
+                      "val": 0.0
+                    },
+                    {
+                      "frame": 12,
+                      "easing": "AUTO",
+                      "interpolation": "BEZIER",
+                      "val": 0.0
+                    },
+                    {
+                      "frame": 24,
+                      "easing": "AUTO",
+                      "interpolation": "BEZIER",
+                      "val": 0.0
+                    },
+                    {
+                      "frame": 36,
+                      "easing": "AUTO",
+                      "interpolation": "BEZIER",
+                      "val": 0.0
+                    },
+                    {
+                      "frame": 48,
+                      "easing": "AUTO",
+                      "interpolation": "BEZIER",
+                      "val": 0.0
+                    }
+                  ]
+                },
+                {
+                  "property": "y",
+                  "keys": [
+                    {
+                      "frame": 0,
+                      "easing": "EASE_OUT",
+                      "interpolation": "CUBIC",
+                      "val": -0.0
+                    },
+                    {
+                      "frame": 12,
+                      "easing": "EASE_IN",
+                      "interpolation": "CUBIC",
+                      "val": -4.0
+                    },
+                    {
+                      "frame": 24,
+                      "easing": "EASE_OUT",
+                      "interpolation": "CUBIC",
+                      "val": -0.0
+                    },
+                    {
+                      "frame": 36,
+                      "easing": "EASE_IN",
+                      "interpolation": "CUBIC",
+                      "val": -4.0
+                    },
+                    {
+                      "frame": 48,
+                      "easing": "AUTO",
+                      "interpolation": "BEZIER",
+                      "val": -0.0
+                    }
+                  ]
+                },
+                {
+                  "property": "z",
+                  "keys": [
+                    {
+                      "frame": 0,
+                      "easing": "AUTO",
+                      "interpolation": "BEZIER",
+                      "val": 0.0
+                    },
+                    {
+                      "frame": 12,
+                      "easing": "AUTO",
+                      "interpolation": "BEZIER",
+                      "val": 0.0
+                    },
+                    {
+                      "frame": 24,
+                      "easing": "AUTO",
+                      "interpolation": "BEZIER",
+                      "val": 0.0
+                    },
+                    {
+                      "frame": 36,
+                      "easing": "AUTO",
+                      "interpolation": "BEZIER",
+                      "val": 0.0
+                    },
+                    {
+                      "frame": 48,
+                      "easing": "AUTO",
+                      "interpolation": "BEZIER",
+                      "val": 0.0
+                    }
+                  ]
+                },
+                {
+                  "property": "rx",
+                  "keys": [
+                    {
+                      "frame": 0,
+                      "easing": "AUTO",
+                      "interpolation": "BEZIER",
+                      "val": 0.0
+                    },
+                    {
+                      "frame": 6,
+                      "easing": "AUTO",
+                      "interpolation": "BEZIER",
+                      "val": 0.0
+                    },
+                    {
+                      "frame": 12,
+                      "easing": "AUTO",
+                      "interpolation": "BEZIER",
+                      "val": 0.0
+                    },
+                    {
+                      "frame": 18,
+                      "easing": "AUTO",
+                      "interpolation": "BEZIER",
+                      "val": 0.0
+                    },
+                    {
+                      "frame": 24,
+                      "easing": "AUTO",
+                      "interpolation": "BEZIER",
+                      "val": 0.0
+                    },
+                    {
+                      "frame": 31,
+                      "easing": "AUTO",
+                      "interpolation": "BEZIER",
+                      "val": 0.0
+                    },
+                    {
+                      "frame": 36,
+                      "easing": "AUTO",
+                      "interpolation": "BEZIER",
+                      "val": 0.0
+                    },
+                    {
+                      "frame": 42,
+                      "easing": "AUTO",
+                      "interpolation": "BEZIER",
+                      "val": 0.0
+                    },
+                    {
+                      "frame": 48,
+                      "easing": "AUTO",
+                      "interpolation": "BEZIER",
+                      "val": 0.0
+                    }
+                  ]
+                },
+                {
+                  "property": "ry",
+                  "keys": [
+                    {
+                      "frame": 0,
+                      "easing": "AUTO",
+                      "interpolation": "BEZIER",
+                      "val": 0.0
+                    },
+                    {
+                      "frame": 6,
+                      "easing": "AUTO",
+                      "interpolation": "BEZIER",
+                      "val": 0.0
+                    },
+                    {
+                      "frame": 12,
+                      "easing": "AUTO",
+                      "interpolation": "BEZIER",
+                      "val": 0.0
+                    },
+                    {
+                      "frame": 18,
+                      "easing": "AUTO",
+                      "interpolation": "BEZIER",
+                      "val": 0.0
+                    },
+                    {
+                      "frame": 24,
+                      "easing": "AUTO",
+                      "interpolation": "BEZIER",
+                      "val": 0.0
+                    },
+                    {
+                      "frame": 31,
+                      "easing": "AUTO",
+                      "interpolation": "BEZIER",
+                      "val": 0.0
+                    },
+                    {
+                      "frame": 36,
+                      "easing": "AUTO",
+                      "interpolation": "BEZIER",
+                      "val": 0.0
+                    },
+                    {
+                      "frame": 42,
+                      "easing": "AUTO",
+                      "interpolation": "BEZIER",
+                      "val": 0.0
+                    },
+                    {
+                      "frame": 48,
+                      "easing": "AUTO",
+                      "interpolation": "BEZIER",
+                      "val": 0.0
+                    }
+                  ]
+                },
+                {
+                  "property": "rz",
+                  "keys": [
+                    {
+                      "frame": 0,
+                      "easing": "AUTO",
+                      "interpolation": "BEZIER",
+                      "val": -0.06981317698955536
+                    },
+                    {
+                      "frame": 6,
+                      "easing": "AUTO",
+                      "interpolation": "BEZIER",
+                      "val": 0.3490658402442932
+                    },
+                    {
+                      "frame": 12,
+                      "easing": "AUTO",
+                      "interpolation": "BEZIER",
+                      "val": -0.3490658402442932
+                    },
+                    {
+                      "frame": 24,
+                      "easing": "AUTO",
+                      "interpolation": "BEZIER",
+                      "val": -0.0
+                    },
+                    {
+                      "frame": 31,
+                      "easing": "AUTO",
+                      "interpolation": "BEZIER",
+                      "val": -0.3490658402442932
+                    },
+                    {
+                      "frame": 36,
+                      "easing": "AUTO",
+                      "interpolation": "BEZIER",
+                      "val": 0.3490658402442932
+                    },
+                    {
+                      "frame": 48,
+                      "easing": "AUTO",
+                      "interpolation": "BEZIER",
+                      "val": -0.06981316953897476
+                    }
+                  ]
+                }
+              ]
+            }
+          ],
+          "length": 48,
+          "start_frame": 0,
+          "end_frame": 48
+        }
+      ]
+    }
+  ]
+}

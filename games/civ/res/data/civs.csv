@@ -1,0 +1,58 @@
+,,,,,,,,,,,,
+// Civs,,,,,,,,,,,,
+,,,,,,,,,,,,
+,,,,,,,,,,,,
+_property,id,name,heroName,fullName,,rarity,,,,style,colorGroup,description
+_type,,,,,,,,,,,,
+_location,civs,,,,,,,,,,,
+,// default values,,,,,,,,,,,
+,default,,,,,common,,,,,,
+,,,,,,,,,,,,
+,,,,,,,,,,,//maybe not used – the idea was to avoid choosing too-close colors,
+,player,Player,Hero,Player,,common,,,,#3ee849,brightgreen,You
+,,,,,,,,,,,,
+,china,China,Mao,Mao Zedong,,common,,,,#de7c13,orange,The founding father of the People's Republic of China
+,egypt,Egypt,Cleopatra,Cleopatra VII Philopator,,common,,,,#e9cb25,yellow,The last ruler of the ancient kingdom of Egypt before it became a province of the Roman Empire
+,england,England,Victoria,Alexandrina Victoria,,common,,,,#d49696,pink,The Queen of the United Kingdom for 63 years – her reign was marked by an expansion of the British Empire
+,france,France,Napoleon,Napoléon Bonaparte,,common,,,,#b33da7,purple,"Emperor of the French twice, building a large empire that ruled over much of Europe"
+,germany,Germany,Wilhelm,Wilhelm II,,common,,,,#929292,lightgray,The last German Kaiser and King of Prussia
+,india,India,Gandhi,Mohandas Karamchand Gandhi,,common,,,,#2191b5,lightblue,A spiritual and political leader who helped guide India to independence from British rule
+,japan,Japan,Tokugawa,Tokugawa Ieyasu,,common,,,,#e03032,red,"Founder of the Tokugawa shogunate of Japan, which effectively ruled Japan for 200 years"
+,rome,Rome,Julius,Julius Caesar,,common,,,,#683d88,purple,"The leader of the Roman Empire – politician, dictator, military general, historian, and writer"
+,russia,Russia,Catherine,Yekaterina Alekseyevna,,common,,,,#0b9b28,green,"Empress of Russia, leading the country through a period of growth and enlightenment"
+,spain,Spain,Isabela,Isabela I of Castile,,common,,,,#2d3fdf,blue,"Queen of Castile, leading Spain through an age of exploration and expansion"
+,usa,USA,George,George Washington,,common,,,,#393994,blue,The first president of the United States of America
+,zulu,Zulu,Shaka,Shaka Zulu,,common,,,,#7b501f,brown,"Leader of the Zulu Kingdom, known for social and military innovation"
+,aztec,Aztec,Montezuma,Motecuhzoma Xocoyotzin,,,,,,#9665c1,lilac,The leader who brought the Aztec Empire to its greatest size
+,mongolia,Mongolia,Genghis,Genghis Khan,,,,,,#a00045,purple,The first Great Khan of the Mongol Empire
+,arabia,Arabia,Saladin,Salah ad-Din,,,,,,#626262,darkgray,"A powerful sultan, military leader, and philanthropist"
+,greece,Greece,Alexander,Alexander III of Macedon,,,,,,#79d0c1,paleblue,King of Macedonia and one of history's most successful military commanders
+,iroquois,Iroquois,Hiawatha,Hiawatha,,,,,,#8c1872,purple,Leader of the Iroquois Confederacy and great peacemaker
+,korea,Korea,Sejong,Sejong the Great,,,,,,#667403,darkyellow,King of the Joseon dynasty of Korea who brought science and prosperity to his people and created the hangul phonetic writing system
+,maya,Maya,Pakal,Kʼinich Janaabʼ Pakal,,,,,,#b8e02d,yellowgreen,Ruler of the Maya city-state of Palenque responsible for the construction of many Mayan buildings still surviving today
+,celtic,Celtic,Boudica,Boudica,,,,,,#00a177,lightblue,Queen of the Iceni tribe who rose up against the occupying Roman Empire
+,,,,,,,,,,,,
+,// unused color,,,,,,,,,#997b53,,
+,,,,,,,,,,,,
+,// old colors!,,,,,,,,,#40FF40,,
+,// old colors!,,,,,,,,,,,
+,// old colors!,,,,,,,,,#E08030,,
+,// old colors!,,,,,,,,,#edd200,,
+,// old colors!,,,,,,,,,#e4A0A0,,
+,// old colors!,,,,,,,,,#C040C0,,
+,// old colors!,,,,,,,,,#a0a0a0,,
+,// old colors!,,,,,,,,,#40C0C0,,
+,// old colors!,,,,,,,,,#FF4040,,
+,// old colors!,,,,,,,,,#560981,#532973 too dark,
+,// old colors!,,,,,,,,,#2ca939,,
+,// old colors!,,,,,,,,,#4040FF,,
+,// old colors!,,,,,,,,,#303070,#1e2d6c was too dark!,
+,// old colors!,,,,,,,,,#804000,#5c3100 was too dark,
+,// old colors!,,,,,,,,,#ad73cd,,
+,// old colors!,,,,,,,,,#c01359,,
+,// old colors!,,,,,,,,,#5f5f5f,#474747 too dark,
+,// old colors!,,,,,,,,,#8ad6c6,,
+,// old colors!,,,,,,,,,#961970,#74005a too dark,
+,// old colors!,,,,,,,,,#949619,,
+,// old colors!,,,,,,,,,#9cdc1c,,
+,// old colors!,,,,,,,,,#267f7f,,
