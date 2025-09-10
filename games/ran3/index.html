@@ -1,172 +1,301 @@
-
-<!DOCTYPE html>
-<html lang="en">
+<!DOCTYPE HTML>
+<html>
 <head>
-	<meta charset="utf-8">
-	<title>Run 3</title>
-	<meta id="viewport" name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
-	<meta name="apple-mobile-web-app-capable" content="yes">
+  <meta charset="utf-8">
+  <title>Ruffle mobile controls (improved)</title>
+  <style>
+    html,body { height:100%; margin:0; }
+    body {
+      display:flex;
+      justify-content:center;
+      align-items:center;
+      height:100vh;
+      margin:0;
+      flex-direction:column;
+      position:relative;
+      background: #111;
+    }
 
-	<script type="text/javascript" src="./Run3.js"></script>
-	<script>
-		window.addEventListener ("touchmove", function (event) { event.preventDefault (); }, { capture: false, passive: false });
-		if (typeof window.devicePixelRatio !='undefined' && window.devicePixelRatio > 2) {
-			var meta = document.getElementById ("viewport");
-			meta.setAttribute ('content', 'width=device-width, initial-scale=' + (2 / window.devicePixelRatio) + ', user-scalable=no');
-		}
-	</script>
-	<style>
-		html,body { margin: 0; padding: 0; height: 100%; overflow: hidden; }
-		#openfl-content { background: #000000; width: 100%; height: 100%; }
-		@font-face {
-			font-family: 'Comfortaa Bold';
-			src: url('font/COMFORTAA-BOLD.eot?#iefix') format('embedded-opentype'),
-			url('font/COMFORTAA-BOLD.woff') format('woff'),
-			url('font/COMFORTAA-BOLD.TTF') format('truetype'),
-			url('font/COMFORTAA-BOLD.svg#Comfortaa%20Bold') format('svg');
-			font-weight: normal;
-			font-style: normal;
-		}
-		@font-face {
-			font-family: 'Comfortaa';
-			src: url('font/Comfortaa.eot?#iefix') format('embedded-opentype'),
-			url('font/Comfortaa.woff') format('woff'),
-			url('font/Comfortaa.otf') format('truetype');
-			font-weight: normal;
-			font-style: normal;
-		}
-		@font-face {
-			font-family: 'Permanent Marker';
-			src: url('font/PERMANENTMARKER.eot?#iefix') format('embedded-opentype'),
-			url('font/PERMANENTMARKER.woff') format('woff'),
-			url('font/PERMANENTMARKER.TTF') format('truetype'),
-			url('font/PERMANENTMARKER.svg#Permanent%20Marker') format('svg');
-			font-weight: normal;
-			font-style: normal;
-		}
-		.dpad, .space-button {
-		position: absolute;
-		display: flex;
-		flex-direction: column;
-		align-items: center;
-		gap: 10px;
-		z-index: 999;
-		}
-		.dpad {
-		bottom: 100px;
-		left: 20px;
-		}
-		
-		.dpad button, .space-button button {
-			width: 90px;
-			height: 90px;
-			font-size: 18px;
-			color: #fff;
-			background-color: #404040;
-			border: none;
-			border-radius: 8px;
-			cursor: pointer;
-		}
-		.space-button {
-			bottom: 100px;
-			right: 20px;
-		}
-	</style>
-	
+    #ruffle {
+      position: relative;
+      width: 735px;
+      height: 735px;
+      max-width: 95vw;
+      max-height: 95vw;
+      background: #000;
+      overflow:visible;
+    }
+
+    .mobile-btn {
+    position: absolute;
+    width: 64px;
+    height: 64px;
+    line-height: 64px;
+    text-align: center;
+    font-size: 28px;
+    background-color: rgba(0, 0, 0, 0.6);
+    color: white;
+    border-radius: 12px;
+    user-select: none;
+    z-index: 10;
+}
+
+.mobile-btn:active {
+    background-color: rgba(0, 0, 0, 0.8);
+}
+
+/* Bottom-left WASD cluster */
+#down_mobile_btn {
+    bottom: 12px;
+    left: 76px;
+}
+#left_mobile_btn {
+    bottom: 76px;
+    left: 12px;
+}
+#right_mobile_btn {
+    bottom: 76px;
+    left: 140px;
+}
+#up_mobile_btn {
+    bottom: 140px;
+    left: 76px;
+}
+
+/* Bottom-right Space bar */
+#space_mobile_btn {
+    bottom: 20px;
+    right: 20px;
+    width: 120px;
+    height: 64px;
+    line-height: 64px;
+    font-size: 24px;
+}
+
+    /* small screens adjustments */
+    @media (max-width:480px) {
+      .mobile-btn { font-size:14px; padding:8px 12px; border-radius:6px; }
+      #ruffle { width: 92vw; height: 92vw; }
+    }
+  </style>
 </head>
 <body>
-	<div class="dpad">
-		<div class="dpad-controls">
-			<button id="leftButton">◀</button>
-			<button id="downButton">▼</button>
-			<button id="rightButton">▶</button>
-		</div>
-	</div>
-	<div class="space-button">
-		<button id="spaceButton">Jump</button>
-	</div>
-	<noscript>This webpage makes extensive use of JavaScript. Please enable JavaScript in your web browser to view this page.</noscript>
-	
-	<div id="openfl-content"></div>
-	
-	<script type="text/javascript">
-		lime.embed ("Run3", "openfl-content", 800, 600, { parameters: {} });
-	</script>
-	<script src="./scr.js"></script>
-	<script>
-		const leftButton = document.getElementById("leftButton");
-const rightButton = document.getElementById("rightButton");
-const upButton = document.getElementById("spaceButton");
-const downButton = document.getElementById("downButton");
 
-// Set to track active touches by button element
-const activeButtons = new Set();
+  <div id="ruffle">
+    <!-- ruffle player will be appended here -->
+    <div id="up_mobile_btn" class="mobile-btn">↑</div>
+    <div id="down_mobile_btn" class="mobile-btn">↓</div>
+    <div id="left_mobile_btn" class="mobile-btn">←</div>
+    <div id="right_mobile_btn" class="mobile-btn">→</div>
+    <div id="space_mobile_btn" class="mobile-btn">Shift</div>
+  </div>
 
-// Function to simulate keypress events
-function simulateKeyPress(keyCode, isKeyDown) {
-	const eventType = isKeyDown ? "keydown" : "keyup";
-	const event = new KeyboardEvent(eventType, { keyCode: keyCode, which: keyCode, bubbles: true });
-	document.dispatchEvent(event);
-}
+  <!-- Ruffle from CDN -->
+  <script src="https://unpkg.com/@ruffle-rs/ruffle"></script>
 
-// Activate a button
-function activateButton(button) {
-	if (!activeButtons.has(button)) {
-		button.classList.add('active');
-		const keyCode = parseInt(button.getAttribute("data-keycode"), 10);
-		simulateKeyPress(keyCode, true);
-		activeButtons.add(button);
-	}
-}
+  <script>
+  (function () {
+    const SWF_URL = 'run.swf'; // change as needed
+    const WIDTH = 735, HEIGHT = 735;
 
-// Deactivate a button
-function deactivateButton(button) {
-	if (activeButtons.has(button)) {
-		button.classList.remove('active');
-		const keyCode = parseInt(button.getAttribute("data-keycode"), 10);
-		simulateKeyPress(keyCode, false);
-		activeButtons.delete(button);
-	}
-}
+    /* ---- utility: create player and append ---- */
+    const ruffle = window.RufflePlayer ? window.RufflePlayer.newest() : null;
+    if (!ruffle) {
+      console.error("Ruffle library not found.");
+      return;
+    }
 
-// Add touch listeners to a button
-function addButtonListeners(button) {
-	button.addEventListener("touchstart", (event) => {
-		event.preventDefault();
-		activateButton(button);
-	});
+    const container = document.getElementById('ruffle');
+    const player = ruffle.createPlayer();
+    player.style.width = WIDTH + 'px';
+    player.style.height = HEIGHT + 'px';
+    player.style.outline = 'none';
+    // make player focusable
+    player.setAttribute('tabindex', '0');
 
-	button.addEventListener("touchend", (event) => {
-		event.preventDefault();
-		deactivateButton(button);
-	});
+    container.appendChild(player);
 
-	button.addEventListener("touchcancel", (event) => {
-		event.preventDefault();
-		deactivateButton(button);
-	});
-}
+    // load swf
+    player.load({ url: SWF_URL });
 
-// Set keycodes
-leftButton.setAttribute("data-keycode", 65);  // A
-rightButton.setAttribute("data-keycode", 68); // D
-upButton.setAttribute("data-keycode", 87);    // W
-downButton.setAttribute("data-keycode", 83);  // S
+    /* ---- wait for internal canvas to appear (shadow DOM) ---- */
+    function waitForCanvas(playerEl, timeout = 5000) {
+      return new Promise((resolve, reject) => {
+        // already available?
+        try {
+          const sr = playerEl.shadowRoot;
+          if (sr) {
+            const c = sr.querySelector('canvas');
+            if (c) return resolve(c);
+          }
+        } catch (e) {}
 
-// Add listeners
-addButtonListeners(leftButton);
-addButtonListeners(rightButton);
-addButtonListeners(upButton);
-addButtonListeners(downButton);
+        const mo = new MutationObserver(() => {
+          try {
+            const sr = playerEl.shadowRoot;
+            if (sr) {
+              const c = sr.querySelector('canvas');
+              if (c) {
+                mo.disconnect();
+                return resolve(c);
+              }
+            }
+          } catch (e) {}
+        });
 
-// Optional: Clear all buttons if touch ends elsewhere
-window.addEventListener("touchend", () => {
-	// Only deactivate buttons if no more touches are active
-	if (event.touches.length === 0) {
-		activeButtons.forEach(button => deactivateButton(button));
-	}
-});
+        mo.observe(playerEl, { childList: true, subtree: true });
 
-	</script>
+        // safety timeout
+        setTimeout(() => {
+          mo.disconnect();
+          reject(new Error("Timed out waiting for Ruffle canvas"));
+        }, timeout);
+      });
+    }
+
+    /* ---- create keyboard event with keyCode/which override attempt ---- */
+    function createKeyboardEvent(type, opts) {
+      const init = Object.assign({
+        key: opts.key || '',
+        code: opts.code || '',
+        bubbles: true,
+        cancelable: true,
+      }, opts);
+
+      let evt;
+      try {
+        evt = new KeyboardEvent(type, init);
+      } catch (e) {
+        evt = document.createEvent('KeyboardEvent');
+        evt.initKeyboardEvent(type, true, true, window, init.key, 0, "", false, "");
+      }
+
+      // best-effort: try to set keyCode/which (some browsers allow this)
+      try {
+        if (typeof evt.keyCode === 'undefined' || evt.keyCode !== opts.keyCode) {
+          Object.defineProperty(evt, 'keyCode', { value: opts.keyCode, configurable: true });
+        }
+        if (typeof evt.which === 'undefined' || evt.which !== opts.which) {
+          Object.defineProperty(evt, 'which', { value: opts.which, configurable: true });
+        }
+      } catch (e) {
+        // ignore if environment forbids overriding
+      }
+      return evt;
+    }
+
+    /* ---- dispatch to multiple targets to increase chance Ruffle picks it up ---- */
+    function dispatchKey(type, keyCode, keyName, codeName) {
+      const canvas = currentCanvas;
+      const targets = [window, document, player];
+      if (canvas) targets.push(canvas);
+
+      const evt = createKeyboardEvent(type, {
+        key: keyName,
+        code: codeName,
+        keyCode: keyCode,
+        which: keyCode
+      });
+
+      targets.forEach(t => {
+        try {
+          t.dispatchEvent(evt);
+        } catch (e) {}
+      });
+    }
+
+    /* ---- mapping and control handlers ---- */
+    const map = {
+      left: { code: 65, key: 'a', codeName: 'KeyA' },   // A
+      right: { code: 68, key: 'd', codeName: 'KeyD' },  // D
+      up: { code: 87, key: 'w', codeName: 'KeyW' },     // W
+      down: { code: 83, key: 's', codeName: 'KeyS' },   // S
+      space: { code: 32, key: ' ', codeName: 'ShiftLeft' }  // Space
+    };
+
+    let currentCanvas = null;
+
+    waitForCanvas(player).then((canvas) => {
+      console.log('Ruffle canvas found:', canvas);
+      currentCanvas = canvas;
+
+      // ensure canvas or player receives focus; prefer player element
+      player.focus();
+
+      // optional: forward pointer events into canvas so some mouse-driven games work
+      // Note: don't prevent default here unless needed.
+      ['pointerdown','pointerup','pointermove','mousedown','mouseup'].forEach(evtName => {
+        canvas.addEventListener(evtName, (ev) => {
+          // allow normal behavior
+        }, { passive:true });
+      });
+
+    }).catch((err) => {
+      console.warn("Could not find ruffle canvas:", err);
+    });
+
+    /* ---- bind the overlay controls AFTER player appended (no racing) ---- */
+    function bindControlElement(el, mapEntry) {
+      if (!el) return;
+      const press = (ev) => {
+        // prevent default scrolling/gestures on touch
+        if (ev && ev.preventDefault) ev.preventDefault();
+        el.classList.add('pressed');
+        // focus the player so it receives keyboard-like events
+        try { player.focus(); } catch (e) {}
+        dispatchKey('keydown', mapEntry.code, mapEntry.key, mapEntry.codeName);
+      };
+      const release = (ev) => {
+        if (ev && ev.preventDefault) ev.preventDefault();
+        el.classList.remove('pressed');
+        dispatchKey('keyup', mapEntry.code, mapEntry.key, mapEntry.codeName);
+      };
+
+      // Touch events (mobile)
+      el.addEventListener('touchstart', press, { passive: false });
+      el.addEventListener('touchend', release, { passive: false });
+      el.addEventListener('touchcancel', release, { passive: false });
+
+      // Pointer events (covers many mobile/desktop cases)
+      el.addEventListener('pointerdown', press, { passive: false });
+      el.addEventListener('pointerup', release, { passive: false });
+
+      // For mouse fallback:
+      el.addEventListener('mousedown', press);
+      el.addEventListener('mouseup', release);
+
+      // Prevent the element from getting focused (we want player to keep focus)
+      el.addEventListener('focus', (e) => { try { player.focus(); } catch(e){} });
+    }
+
+    // map DOM controls to actions
+    bindControlElement(document.getElementById('left_mobile_btn'), map.left);
+    bindControlElement(document.getElementById('right_mobile_btn'), map.right);
+    bindControlElement(document.getElementById('up_mobile_btn'), map.up);
+    bindControlElement(document.getElementById('down_mobile_btn'), map.down);
+    bindControlElement(document.getElementById('space_mobile_btn'), map.space);
+
+    /* ---- keyboard fallback so physical keyboards still work ---- */
+    document.addEventListener('keydown', (e) => {
+      // optional: mirror state if your code relies on flags
+    }, false);
+
+    /* ---- Helpful debug helper exposed to console ---- */
+    window._ruffle_debug = {
+      player: player,
+      getCanvas: () => currentCanvas,
+      sendKey: (type, code) => {
+        for (const k in map) {
+          if (map[k].code === code) {
+            dispatchKey(type, map[k].code, map[k].key, map[k].codeName);
+            return;
+          }
+        }
+        console.warn("Unknown code:", code);
+      }
+    };
+
+  })();
+  </script>
 </body>
 </html>
