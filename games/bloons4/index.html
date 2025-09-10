@@ -61,6 +61,10 @@
 }
 
 /* Bottom-left WASD cluster */
+#down_mobile_btn {
+    bottom: 12px;
+    left: 76px;
+}
 #left_mobile_btn {
     bottom: 76px;
     left: 12px;
@@ -68,6 +72,10 @@
 #right_mobile_btn {
     bottom: 76px;
     left: 140px;
+}
+#up_mobile_btn {
+    bottom: 140px;
+    left: 76px;
 }
 
 /* Bottom-right Space bar */
@@ -91,9 +99,7 @@
 
   <div id="ruffle">
     <!-- ruffle player will be appended here -->
-    <div id="left_mobile_btn" class="mobile-btn">←</div>
-    <div id="right_mobile_btn" class="mobile-btn">→</div>
-    <div id="space_mobile_btn" class="mobile-btn">Jump</div>
+
   </div>
 
   <!-- Ruffle from CDN -->
@@ -101,7 +107,7 @@
 
   <script>
   (function () {
-    const SWF_URL = 'run.swf'; // change as needed
+    const SWF_URL = 'bloons4.swf'; // change as needed
     const WIDTH = 735, HEIGHT = 735;
 
     /* ---- utility: create player and append ---- */
@@ -212,11 +218,11 @@
 
     /* ---- mapping and control handlers ---- */
     const map = {
-      left:  { code: 37, key: 'ArrowLeft',  codeName: 'ArrowLeft' },   // Left Arrow
-      right: { code: 39, key: 'ArrowRight', codeName: 'ArrowRight' },  // Right Arrow
-      up:    { code: 87, key: 'w',          codeName: 'KeyW' },        // W
-      down:  { code: 83, key: 's',          codeName: 'KeyS' },        // S
-      space: { code: 32, key: ' ', codeName: 'ShiftLeft' }   // Left Shift
+      left: { code: 65, key: 'a', codeName: 'KeyA' },   // A
+      right: { code: 68, key: 'd', codeName: 'KeyD' },  // D
+      up: { code: 87, key: 'w', codeName: 'KeyW' },     // W
+      down: { code: 83, key: 's', codeName: 'KeyS' },   // S
+      space: { code: 16, key: 'Shift', codeName: 'ShiftLeft' }  // Space
     };
 
     let currentCanvas = null;
