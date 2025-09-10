@@ -3029,6 +3029,10 @@ console.log("loaded");
             var saveUpdateFlag = Module._savUpdateChangeFlag()
             if ((saveUpdateFlag == 0) && (prevSaveFlag == 1)) {
                 var size = Module._savGetSize()
+                if (romSize === 67108864) {
+                    size = 8192  
+                }
+                console.log(size)
                 if ((size > 0) && (isSaveSupported)) {
                     var ptr = Module._savGetPointer(0)
                     var tmpSaveBuf = new Uint8Array(size)

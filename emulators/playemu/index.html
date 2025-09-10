@@ -1,0 +1,186 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8"/>
+        <link rel="icon" href="./favicon.ico"/>
+        <meta name="viewport" content="width=device-width,initial-scale=1"/>
+        <meta name="theme-color" content="#000000"/>
+        <meta name="description" content="A PlayStation2 emulator for web browsers"/>
+        <link rel="apple-touch-icon" href="./logo192.png"/>
+        <link rel="manifest" href="./manifest.json"/>
+        <title>Play!.js</title>
+        
+        
+        <link href="./static/css/main.5a525eca.css" rel="stylesheet">
+    </head>
+    <body>
+        <button onclick="uiMenuBack()" class="top-right">Menu</button>
+        <script>
+            function uiMenuBack() {
+                const menu = document.getElementById("menu");
+                const but2 = document.getElementsByClassName("top-right");
+                if (menu.style.display === "none") {
+                menu.style.display = "block";
+                } else {
+                menu.style.display = "none";
+                }
+            }
+        </script>
+        <div id="menu" hidden>
+            <button onclick="uiMenuBack()">❮ Menu</button>
+            <hr>
+            <p></p>
+                <p></p>
+                <p></p>
+                <div>
+                    <a href="https://purei.org" target="blank">Official Website</a>
+                </div>
+                <div>
+                    <a href="https://github.com/jpd002/Play-" target="blank">Source Code</a>
+                </div>
+                <div>
+                    <a href="https://github.com/jpd002/Play-Compatibility/issues" target="blank">Compatibility List</a>
+                </div>
+                <p></p>
+                <p></p>
+                <p></p>
+                <p></p>
+                <h3>Controls</h3>
+
+                <div class="controls-column">
+                    <table>
+                        <tr>
+                            <th>PS2 Controller</th>
+                            <th>Keyboard</th>
+                        </tr>
+                        <tr>
+                            <td>D. Pad</td>
+                            <td>Arrow Keys</td>
+                        </tr>
+                        <tr>
+                            <td>Left Analog Stick</td>
+                            <td>F, H, T, G</td>
+                        </tr>
+                        <tr>
+                            <td>Right Analog Stick</td>
+                            <td>J, L, I, K</td>
+                        </tr>
+                        <tr>
+                            <td>Square</td>
+                            <td>A</td>
+                        </tr>
+                        <tr>
+                            <td>Cross</td>
+                            <td>Z</td>
+                        </tr>
+                        <tr>
+                            <td>Triangle</td>
+                            <td>S</td>
+                        </tr>
+                        <tr>
+                            <td>Circle</td>
+                            <td>X</td>
+                        </tr>
+                    </table>
+                </div>
+                <p></p>
+                <p></p>
+
+                <div class="controls-column">
+                    <table>
+                        <tr>
+                            <th>PS2 Controller</th>
+                            <th>Keyboard</th>
+                        </tr>
+                        <tr>
+                            <td>Start</td>
+                            <td>Return</td>
+                        </tr>
+                        <tr>
+                            <td>Select</td>
+                            <td>Backspace</td>
+                        </tr>
+                        <tr>
+                            <td>L1</td>
+                            <td>1</td>
+                        </tr>
+                        <tr>
+                            <td>L2</td>
+                            <td>2</td>
+                        </tr>
+                        <tr>
+                            <td>L3</td>
+                            <td>3</td>
+                        </tr>
+                        <tr>
+                            <td>R1</td>
+                            <td>8</td>
+                        </tr>
+                        <tr>
+                            <td>R2</td>
+                            <td>9</td>
+                        </tr>
+                        <tr>
+                            <td>R3</td>
+                            <td>0</td>
+                        </tr>
+                    </table>
+                </div>
+                <p></p>
+                <p></p>
+                <p></p>
+                <button onclick="saveGame()">Save Game</button>
+                <button onclick="loadGame()">Load Game</button>
+        </div>
+
+
+
+
+        <div class="global-row">
+            <div class="global-column">
+                <div>
+                    <canvas id="outputCanvas" width="640" height="480" tabindex="-10">
+                </div>
+                <div id="root"></div>
+            </div>
+            
+        
+               
+                    
+                    
+                </div>
+                <p></p>
+
+                <script>
+
+                    const canvas = document.getElementById('outputCanvas');
+
+                    function keepFocus() {
+                    if (document.activeElement !== canvas) {
+                        canvas.focus();
+                    }
+                    }
+
+                    // Initial focus on load
+                    window.addEventListener('load', () => {
+                    canvas.focus();
+                    });
+
+                    // Re-focus when it loses focus
+                    canvas.addEventListener('blur', () => {
+                    setTimeout(keepFocus, 0);
+                    });
+
+                    // Optional: re-focus on any click inside the window
+                    window.addEventListener('click', () => {
+                    canvas.focus();
+                    });
+                </script>
+
+
+            <script src="./static/js/main.6982ff19.js"></script>
+
+            </div>
+        </div>
+    </body>
+</html>

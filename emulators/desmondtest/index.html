@@ -203,6 +203,7 @@
             <option value="0">NormalIpad</option> 
             <option value="1">FlippedIpad</option>
             <option value="2">Test</option>
+            <option value="3">Computer</option>
         </select><br>
         <label for="cfg-lang">Firmware Language</label>
         <select id="cfg-lang">
@@ -367,7 +368,21 @@ function showModal() {
     }, 1000);
   }
     
+  // Listen for keydown event
+  document.addEventListener("keydown", function (event) {
+    if (event.key.toLowerCase() === "h") {
+      const box = document.getElementById("vk-layer");
+      if (box.style.display === "none") {
+        box.style.display = "block";
+      } else {
+        box.style.display = "none";
+      }
+    }
+  });
+
+
 </script>
+
 
 
 <desmond-player id="desplayer" style="position: absolute;left: 26%;top: 30%;border-color: black;transform: scale(2);"></desmond-player>
@@ -381,5 +396,9 @@ function showModal() {
       t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
       y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
   })(window, document, "clarity", "script", "q7xzcdite5");
-</script>
+
+  
+  </script>
+  
+
 </body>    

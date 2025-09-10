@@ -1,230 +1,301 @@
 <!DOCTYPE HTML>
 <html>
 <head>
-    <meta charset='utf8'>
-    <link rel="stylesheet" href="../../styles.css">
-    <link rel="stylesheet" href="../../mobile.css">
-    <script src="../../settings.js"></script>
-    <style>
-        body {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh; /* Full viewport height */
-            margin: 0; /* Remove default margin */
-            flex-direction: column; /* Stack the game and buttons vertically */
-            position: relative;
-        }
+  <meta charset="utf-8">
+  <title>Ruffle mobile controls (improved)</title>
+  <style>
+    html,body { height:100%; margin:0; }
+    body {
+      display:flex;
+      justify-content:center;
+      align-items:center;
+      height:100vh;
+      margin:0;
+      flex-direction:column;
+      position:relative;
+      background: #111;
+    }
 
-        #ruffle {
-            position: relative;
-            width: 750px; /* Set width */
-            height: 750px; /* Set height */
-        }
+    #ruffle {
+      position: relative;
+      width: 735px;
+      height: 735px;
+      max-width: 95vw;
+      max-height: 95vw;
+      background: #000;
+      overflow:visible;
+    }
 
-        /* Buttons are positioned within the SWF container */
-        .mobile-btn {
-            position: absolute;
-            padding: 10px 20px;
-            margin: 5px;
-            font-size: 16px;
-            background-color: rgba(0, 0, 0, 0.5);
-            color: white;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-            z-index: 10;
-        }
+    .mobile-btn {
+    position: absolute;
+    width: 64px;
+    height: 64px;
+    line-height: 64px;
+    text-align: center;
+    font-size: 28px;
+    background-color: rgba(0, 0, 0, 0.6);
+    color: white;
+    border-radius: 12px;
+    user-select: none;
+    z-index: 10;
+}
 
-        .mobile-btn:active {
-            background-color: #45a049;
-        }
+.mobile-btn:active {
+    background-color: rgba(0, 0, 0, 0.8);
+}
 
-        /* Positioning buttons inside the SWF area */
-        #up_mobile_btn {
-            top: 10px;
-            left: 50%;
-            transform: translateX(-50%);
-        }
+/* Bottom-left WASD cluster */
+#down_mobile_btn {
+    bottom: 12px;
+    left: 76px;
+}
+#left_mobile_btn {
+    bottom: 76px;
+    left: 12px;
+}
+#right_mobile_btn {
+    bottom: 76px;
+    left: 140px;
+}
+#up_mobile_btn {
+    bottom: 140px;
+    left: 76px;
+}
 
-        #down_mobile_btn {
-            bottom: 10px;
-            left: 50%;
-            transform: translateX(-50%);
-        }
+/* Bottom-right Space bar */
+#space_mobile_btn {
+    bottom: 20px;
+    right: 20px;
+    width: 120px;
+    height: 64px;
+    line-height: 64px;
+    font-size: 24px;
+}
 
-        #left_mobile_btn {
-            bottom: 10px;
-            left: 20px;
-        }
-
-        #right_mobile_btn {
-            bottom: 10px;
-            right: 20px;
-        }
-
-        #space_mobile_btn {
-            bottom: 10px;
-            left: 50%;
-            transform: translateX(-50%);
-        }
-
-    </style>
+    /* small screens adjustments */
+    @media (max-width:480px) {
+      .mobile-btn { font-size:14px; padding:8px 12px; border-radius:6px; }
+      #ruffle { width: 92vw; height: 92vw; }
+    }
+  </style>
 </head>
-
 <body>
-    <div id="ruffle">
-        <!-- SWF content will be injected here by Ruffle -->
-        <button id="up_mobile_btn" class="mobile-btn">↑</button>
-        <button id="down_mobile_btn" class="mobile-btn">↓</button>
-        <button id="left_mobile_btn" class="mobile-btn">←</button>
-        <button id="right_mobile_btn" class="mobile-btn">→</button>
-        <button id="space_mobile_btn" class="mobile-btn">Space</button>
-    </div>
 
-    <script src="https://unpkg.com/@ruffle-rs/ruffle"></script>
-    <script>
-        var controls = {
-            left: false,
-            right: false,
-            space: false,
-            mobile_enabled: true,
-            mobile_allowed: true,
-            
-            init: function() {
-                function use_mobile_buttons() {
-                    if (deployment.is_chrome_ext == false) {
-                        return true;
-                    }
-                    if (controls.mobile_allowed == false) {
-                        return true;
-                    }
-                    if (controls.mobile_enabled == false) {
-                        return true;
-                    }
-                    return true;
-                }
+  <div id="ruffle">
+    <!-- ruffle player will be appended here -->
+    <div id="up_mobile_btn" class="mobile-btn">↑</div>
+    <div id="down_mobile_btn" class="mobile-btn">↓</div>
+    <div id="left_mobile_btn" class="mobile-btn">←</div>
+    <div id="right_mobile_btn" class="mobile-btn">→</div>
+    <div id="space_mobile_btn" class="mobile-btn">Space</div>
+  </div>
 
-                this.bind_keys();
-                if (use_mobile_buttons()) {
-                    this.bind_buttons();
-                    $(".mobile_btn").hide();
-                } else {
-                    $(".mobile_btn").remove();
-                }
-            },
+  <!-- Ruffle from CDN -->
+  <script src="https://unpkg.com/@ruffle-rs/ruffle"></script>
 
-            count_key_presses: function() {
-                if (alive) {
-                    stats.key_time += 1;
-                    if (stats.key_time > 16) {
-                        
-                    }
-                }
-            },
+  <script>
+  (function () {
+    const SWF_URL = 'stick.swf'; // change as needed
+    const WIDTH = 735, HEIGHT = 735;
 
-            simulateKeyPress: function(keyCode, isKeyDown) {
-                const eventType = isKeyDown ? "keydown" : "keyup";
-                const code = keyCode === 65 ? "KeyA" : keyCode === 68 ? "KeyD" : keyCode === 87 ? "KeyW" : keyCode === 83 ? "KeyS" : "Space";
-                const event = new KeyboardEvent(eventType, { 
-                    keyCode: keyCode, 
-                    code: code, 
-                    which: keyCode, 
-                    bubbles: true 
-                });
-                document.dispatchEvent(event);  // Dispatch event on document instead of window
-            },
+    /* ---- utility: create player and append ---- */
+    const ruffle = window.RufflePlayer ? window.RufflePlayer.newest() : null;
+    if (!ruffle) {
+      console.error("Ruffle library not found.");
+      return;
+    }
 
-            bind_buttons: function() {
-                const leftButton = document.getElementById("left_mobile_btn");
-                const rightButton = document.getElementById("right_mobile_btn");
-                const spaceButton = document.getElementById("space_mobile_btn");
-                const upButton = document.getElementById("up_mobile_btn");
-                const downButton = document.getElementById("down_mobile_btn");
+    const container = document.getElementById('ruffle');
+    const player = ruffle.createPlayer();
+    player.style.width = WIDTH + 'px';
+    player.style.height = HEIGHT + 'px';
+    player.style.outline = 'none';
+    // make player focusable
+    player.setAttribute('tabindex', '0');
 
-                function handleButtonPress(button, keyCode) {
-                    button.addEventListener("touchstart", (event) => {
-                        event.preventDefault();
-                        event.stopPropagation();  // Prevent any interference
-                        controls.simulateKeyPress(keyCode, true);
-                    });
-                    
-                    button.addEventListener("touchend", (event) => {
-                        event.stopPropagation();  // Prevent any interference
-                        controls.simulateKeyPress(keyCode, false);
-                    });
-                }
+    container.appendChild(player);
 
-                // Setup button listeners for left (A key), right (D key), spacebar (space key), up (W key), down (S key)
-                handleButtonPress(leftButton, 65);    // A key
-                handleButtonPress(rightButton, 68);   // D key
-                handleButtonPress(spaceButton, 32);   // Space key
-                handleButtonPress(upButton, 87);      // W key
-                handleButtonPress(downButton, 83);    // S key
-            },
+    // load swf
+    player.load({ url: SWF_URL });
 
-            bind_keys: function() {
-                document.onkeydown = function(e) {
-                    if ((e.keyCode == 37) || (e.keyCode == 65)) {  // Left arrow or A
-                        if (popup.in_game) {
-                            controls.left = true; controls.right = false;
-                            controls.count_key_presses();
-                        } else if ((transitioning == false) && (e.keyCode == 37)) {
-                            popup.cup_num -= 1;
-                            popup.display_cup();
-                        }
-                    }
-                    if ((e.keyCode == 39) || (e.keyCode == 68)) {  // Right arrow or D
-                        if (popup.in_game) {
-                            controls.right = true; controls.left = false;
-                            controls.count_key_presses();
-                        } else if ((transitioning == false) && (e.keyCode == 39)) {
-                            popup.cup_num += 1;
-                            popup.display_cup();
-                        }
-                    }
-                    if ((e.keyCode == 32) || (e.keyCode == 38) || (e.keyCode == 87)) {  // Space, Up arrow, or W
-                        controls.space = true;
-                        if ((!alive) && (!transitioning) && (popup.in_game)) {
-                            $("#restart").click();
-                        }
-                    }
-                    if (e.keyCode == 82) {  // R key
-                        if ((alive) && (!transitioning) && (popup.in_game)) {
-                            change_state.die();
-                            screen.set_dialog("Self Destructed", "#e04c4f");
-                        }
-                    }
-                };
-                document.onkeyup = function(e) {
-                    if ((e.keyCode == 37) || (e.keyCode == 65)) {  // Left arrow or A
-                        controls.left = false;
-                    }
-                    if ((e.keyCode == 39) || (e.keyCode == 68)) {  // Right arrow or D
-                        controls.right = false;
-                    }
-                    if ((e.keyCode == 32) || (e.keyCode == 38) || (e.keyCode == 87)) {  // Space, Up arrow, or W
-                        controls.space = false;
-                    }
-                };
+    /* ---- wait for internal canvas to appear (shadow DOM) ---- */
+    function waitForCanvas(playerEl, timeout = 5000) {
+      return new Promise((resolve, reject) => {
+        // already available?
+        try {
+          const sr = playerEl.shadowRoot;
+          if (sr) {
+            const c = sr.querySelector('canvas');
+            if (c) return resolve(c);
+          }
+        } catch (e) {}
+
+        const mo = new MutationObserver(() => {
+          try {
+            const sr = playerEl.shadowRoot;
+            if (sr) {
+              const c = sr.querySelector('canvas');
+              if (c) {
+                mo.disconnect();
+                return resolve(c);
+              }
             }
-        };
+          } catch (e) {}
+        });
 
-        var swfobject = {};
+        mo.observe(playerEl, { childList: true, subtree: true });
 
-        swfobject.embedSWF = function(url, cont, width, height){
-            var ruffle = window.RufflePlayer.newest(),
-                player = Object.assign(document.getElementById(cont).appendChild(ruffle.createPlayer()), {
-                    width: width,
-                    height: height,
-                    style: 'width: ' + width + 'px; height: ' + height + 'px',
-                });
+        // safety timeout
+        setTimeout(() => {
+          mo.disconnect();
+          reject(new Error("Timed out waiting for Ruffle canvas"));
+        }, timeout);
+      });
+    }
 
-            player.load({ url: url });
+    /* ---- create keyboard event with keyCode/which override attempt ---- */
+    function createKeyboardEvent(type, opts) {
+      const init = Object.assign({
+        key: opts.key || '',
+        code: opts.code || '',
+        bubbles: true,
+        cancelable: true,
+      }, opts);
+
+      let evt;
+      try {
+        evt = new KeyboardEvent(type, init);
+      } catch (e) {
+        evt = document.createEvent('KeyboardEvent');
+        evt.initKeyboardEvent(type, true, true, window, init.key, 0, "", false, "");
+      }
+
+      // best-effort: try to set keyCode/which (some browsers allow this)
+      try {
+        if (typeof evt.keyCode === 'undefined' || evt.keyCode !== opts.keyCode) {
+          Object.defineProperty(evt, 'keyCode', { value: opts.keyCode, configurable: true });
         }
-        swfobject.embedSWF('stick.swf', 'ruffle', 735, 735);
+        if (typeof evt.which === 'undefined' || evt.which !== opts.which) {
+          Object.defineProperty(evt, 'which', { value: opts.which, configurable: true });
+        }
+      } catch (e) {
+        // ignore if environment forbids overriding
+      }
+      return evt;
+    }
 
-        controls.init();
-    </script>
+    /* ---- dispatch to multiple targets to increase chance Ruffle picks it up ---- */
+    function dispatchKey(type, keyCode, keyName, codeName) {
+      const canvas = currentCanvas;
+      const targets = [window, document, player];
+      if (canvas) targets.push(canvas);
+
+      const evt = createKeyboardEvent(type, {
+        key: keyName,
+        code: codeName,
+        keyCode: keyCode,
+        which: keyCode
+      });
+
+      targets.forEach(t => {
+        try {
+          t.dispatchEvent(evt);
+        } catch (e) {}
+      });
+    }
+
+    /* ---- mapping and control handlers ---- */
+    const map = {
+      left: { code: 65, key: 'a', codeName: 'KeyA' },   // A
+      right: { code: 68, key: 'd', codeName: 'KeyD' },  // D
+      up: { code: 87, key: 'w', codeName: 'KeyW' },     // W
+      down: { code: 83, key: 's', codeName: 'KeyS' },   // S
+      space: { code: 32, key: ' ', codeName: 'Space' }  // Space
+    };
+
+    let currentCanvas = null;
+
+    waitForCanvas(player).then((canvas) => {
+      console.log('Ruffle canvas found:', canvas);
+      currentCanvas = canvas;
+
+      // ensure canvas or player receives focus; prefer player element
+      player.focus();
+
+      // optional: forward pointer events into canvas so some mouse-driven games work
+      // Note: don't prevent default here unless needed.
+      ['pointerdown','pointerup','pointermove','mousedown','mouseup'].forEach(evtName => {
+        canvas.addEventListener(evtName, (ev) => {
+          // allow normal behavior
+        }, { passive:true });
+      });
+
+    }).catch((err) => {
+      console.warn("Could not find ruffle canvas:", err);
+    });
+
+    /* ---- bind the overlay controls AFTER player appended (no racing) ---- */
+    function bindControlElement(el, mapEntry) {
+      if (!el) return;
+      const press = (ev) => {
+        // prevent default scrolling/gestures on touch
+        if (ev && ev.preventDefault) ev.preventDefault();
+        el.classList.add('pressed');
+        // focus the player so it receives keyboard-like events
+        try { player.focus(); } catch (e) {}
+        dispatchKey('keydown', mapEntry.code, mapEntry.key, mapEntry.codeName);
+      };
+      const release = (ev) => {
+        if (ev && ev.preventDefault) ev.preventDefault();
+        el.classList.remove('pressed');
+        dispatchKey('keyup', mapEntry.code, mapEntry.key, mapEntry.codeName);
+      };
+
+      // Touch events (mobile)
+      el.addEventListener('touchstart', press, { passive: false });
+      el.addEventListener('touchend', release, { passive: false });
+      el.addEventListener('touchcancel', release, { passive: false });
+
+      // Pointer events (covers many mobile/desktop cases)
+      el.addEventListener('pointerdown', press, { passive: false });
+      el.addEventListener('pointerup', release, { passive: false });
+
+      // For mouse fallback:
+      el.addEventListener('mousedown', press);
+      el.addEventListener('mouseup', release);
+
+      // Prevent the element from getting focused (we want player to keep focus)
+      el.addEventListener('focus', (e) => { try { player.focus(); } catch(e){} });
+    }
+
+    // map DOM controls to actions
+    bindControlElement(document.getElementById('left_mobile_btn'), map.left);
+    bindControlElement(document.getElementById('right_mobile_btn'), map.right);
+    bindControlElement(document.getElementById('up_mobile_btn'), map.up);
+    bindControlElement(document.getElementById('down_mobile_btn'), map.down);
+    bindControlElement(document.getElementById('space_mobile_btn'), map.space);
+
+    /* ---- keyboard fallback so physical keyboards still work ---- */
+    document.addEventListener('keydown', (e) => {
+      // optional: mirror state if your code relies on flags
+    }, false);
+
+    /* ---- Helpful debug helper exposed to console ---- */
+    window._ruffle_debug = {
+      player: player,
+      getCanvas: () => currentCanvas,
+      sendKey: (type, code) => {
+        for (const k in map) {
+          if (map[k].code === code) {
+            dispatchKey(type, map[k].code, map[k].key, map[k].codeName);
+            return;
+          }
+        }
+        console.warn("Unknown code:", code);
+      }
+    };
+
+  })();
+  </script>
 </body>
 </html>
