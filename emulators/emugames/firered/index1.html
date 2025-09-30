@@ -201,7 +201,7 @@
             Loading, please wait...
         </div>
         <div id="select-rom"class="container" hidden>
-            <button id="btn-play" class="button1">Play Pokémon Emerald</button>
+            <button id="btn-play" class="button1">Play Pokémon Fire Red</button>
             <button onclick="$id('romFile').click()" id="btn-choose" class="button1">Upload .GBA File</button>
         </div>
         <div id="ios-hint" hidden>
@@ -252,7 +252,7 @@
 
         async function loadRomFromUrl() {
             try {
-                const proxyUrl = "https://corsproxy.io/?https://archive.org/download/pokemon_emerald-version-u/Pokemon%20-%20Emerald%20Version%20%28U%29.gba";
+                const proxyUrl = "https://corsproxy.io/?https://archive.org/download/pokemon-fire-red-version_202308/PokemonFireRedVersion.gba";
                 const response = await fetch(proxyUrl);
                 const arrayBuffer = await response.arrayBuffer();
                 

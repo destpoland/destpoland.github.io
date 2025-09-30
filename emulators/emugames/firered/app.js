@@ -92,7 +92,7 @@ var lowLatencyMode = false
 
 var lastCheckedSaveState = 0
 
-var gameID = "Emerald"
+var gameID = "FireRed"
 var romFileName
 
 var turboMode = false
@@ -294,7 +294,7 @@ function loadRomArrayBuffer(arrayBuffer) {
     isRunning = false
     console.log(arrayBuffer)
     var u8 = new Uint8Array(arrayBuffer)
-    gameID = "Emerald"
+    gameID = "FireRed"
     if (u8[0xB2] != 0x96) {
         alert('Not a valid GBA ROM!')
         return
