@@ -239,19 +239,39 @@
     <script src="app.js"></script>
     <script src="build/44gba.js"></script>
     <script>
+        // Make the load function global so buttons can access it
         window.loadRomFromUrl = async function(url) {
+          try {
             const response = await fetch(url || '/.netlify/functions/proxy-rom');
             const arrayBuffer = await response.arrayBuffer();
-        
+      
             if (!window.emulator) {
-                console.error("Emulator not ready yet");
-                return;
+              console.error("Emulator not ready yet");
+              return;
             }
-        
+      
             emulator.loadRom(arrayBuffer);
             emulator.start();
+          } catch (e) {
+            console.error("Failed to load ROM:", e);
+          }
         };
-        </script>
+      
+        // Poll until the emulator object exists, then auto-load the ROM
+        function waitForEmulatorReady(callback) {
+          const interval = setInterval(() => {
+            if (window.emulator) {
+              clearInterval(interval);
+              callback();
+            }
+          }, 100); // check every 100ms
+        }
+      
+        // Auto-load when emulator is ready
+        waitForEmulatorReady(() => {
+          window.loadRomFromUrl('/.netlify/functions/proxy-rom');
+        });
+      </script>
 
 </body>
 <script type="text/javascript">
