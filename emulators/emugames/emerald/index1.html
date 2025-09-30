@@ -200,7 +200,7 @@
         <div id="select-rom"class="container" hidden>
             <input type="file" id="romFile" onchange="onFileSelected()" hidden /></p>
             <button 
-                onclick="loadRomFromUrl('https://archive.org/download/pokemon_emerald-version-u/Pokemon%20-%20Emerald%20Version%20%28U%29.gba')" 
+                onclick="loadRomFromUrl('/.netlify/functions/proxy-rom')" 
                 id="btn-choose" 
                 class="button1">
                 Play Pokémon Emerald
@@ -239,20 +239,18 @@
     <script src="app.js"></script>
     <script src="build/44gba.js"></script>
     <script>
-        async function loadRomFromUrl(url) {
-          try {
-            const response = await fetch(url);
+        window.loadRomFromUrl = async function(url) {
+            const response = await fetch(url || '/.netlify/functions/proxy-rom');
             const arrayBuffer = await response.arrayBuffer();
         
-            // Replace this with however your emulator loads a ROM
-            // For example:
+            if (!window.emulator) {
+                console.error("Emulator not ready yet");
+                return;
+            }
+        
             emulator.loadRom(arrayBuffer);
             emulator.start();
-          } catch (e) {
-            console.error("Failed to load ROM:", e);
-            alert("Could not load the ROM.");
-          }
-        }
+        };
         </script>
 
 </body>

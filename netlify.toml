@@ -1,0 +1,9 @@
+[build]
+  publish = "."  # if your index.html is in the root
+  functions = "netlify/functions"
+
+# Optional: set headers or redirects if needed
+# [[redirects]]
+#   from = "/*"
+#   to = "/index.html"
+#   status = 200
