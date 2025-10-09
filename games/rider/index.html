@@ -2,6 +2,11 @@
 <html lang="en-us">
 
 <head>
+  <script>
+    
+
+    
+  </script>
   <meta charset="UTF-8">
   <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -42,21 +47,21 @@
     // banner/ribbon for a few seconds, or a permanent error message on top 
     // of the canvas if type=='error'.
     function unityShowBanner(msg, type) {
-      // function updateBannerVisibility() {
-      //   warningBanner.style.display = warningBanner.children.length ? 'block' : 'none';
-      // }
-      // var div = document.createElement('div');
-      // div.innerHTML = msg;
-      // warningBanner.appendChild(div);
-      // if (type == 'error') div.style = 'background: red; padding: 10px;';
-      // else {
-      //   if (type == 'warning') div.style = 'background: yellow; padding: 10px;';
-      //   setTimeout(function() {
-      //     warningBanner.removeChild(div);
-      //     updateBannerVisibility();
-      //   }, 5000);
-      // }
-      // updateBannerVisibility();
+      function updateBannerVisibility() {
+        warningBanner.style.display = warningBanner.children.length ? 'block' : 'none';
+       }
+       var div = document.createElement('div');
+       div.innerHTML = msg;
+       warningBanner.appendChild(div);
+       if (type == 'error') div.style = 'background: red; padding: 10px;';
+       else {
+         if (type == 'warning') div.style = 'background: yellow; padding: 10px;';
+         setTimeout(function() {
+           warningBanner.removeChild(div);
+           updateBannerVisibility();
+         }, 5000);
+       }
+       updateBannerVisibility();
     }
 
     var buildUrl = "Build";

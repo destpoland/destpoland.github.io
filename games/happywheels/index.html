@@ -1,0 +1,317 @@
+<!DOCTYPE HTML>
+<html>
+  <div class="animation-area">
+    <ul class="box-area">
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+    </ul>
+</div>
+<link rel="stylesheet" href="../../styles.css">
+<link rel="stylesheet" href="../../mobile.css">
+<script src="../../settings.js"></script>
+
+<head>
+  <meta charset="utf-8">
+  <title>Ruffle mobile controls (improved)</title>
+  <style>
+    html,body { height:100%; margin:0; }
+    body {
+      display:flex;
+      justify-content:center;
+      align-items:center;
+      height:100vh;
+      margin:0;
+      flex-direction:column;
+      position:relative;
+      background: #111;
+    }
+
+    #ruffle {
+      position: relative;
+      width: 735px;
+      height: 735px;
+      max-width: 95vw;
+      max-height: 95vw;
+      background: #000;
+      overflow:visible;
+    }
+
+    .mobile-btn {
+    position: absolute;
+    width: 64px;
+    height: 64px;
+    line-height: 64px;
+    text-align: center;
+    font-size: 28px;
+    background-color: rgba(0, 0, 0, 0.6);
+    color: white;
+    border-radius: 12px;
+    user-select: none;
+    z-index: 10;
+}
+
+.mobile-btn:active {
+    background-color: rgba(0, 0, 0, 0.8);
+}
+
+/* Bottom-left WASD cluster */
+#down_mobile_btn {
+    bottom: 12px;
+    left: 76px;
+}
+#left_mobile_btn {
+    bottom: 76px;
+    left: 12px;
+}
+#right_mobile_btn {
+    bottom: 76px;
+    left: 140px;
+}
+#up_mobile_btn {
+    bottom: 140px;
+    left: 76px;
+}
+
+/* Bottom-right Space bar */
+#space_mobile_btn {
+    bottom: 20px;
+    right: 20px;
+    width: 120px;
+    height: 64px;
+    line-height: 64px;
+    font-size: 24px;
+}
+
+    /* small screens adjustments */
+    @media (max-width:480px) {
+      .mobile-btn { font-size:14px; padding:8px 12px; border-radius:6px; }
+      #ruffle { width: 92vw; height: 92vw; }
+    }
+  </style>
+</head>
+<body>
+
+  <div id="ruffle">
+    <!-- ruffle player will be appended here -->
+    <div id="up_mobile_btn" class="mobile-btn">↑</div>
+    <div id="down_mobile_btn" class="mobile-btn">↓</div>
+    <div id="left_mobile_btn" class="mobile-btn">←</div>
+    <div id="right_mobile_btn" class="mobile-btn">→</div>
+    <div id="space_mobile_btn" class="mobile-btn">Shift</div>
+  </div>
+
+  <!-- Ruffle from CDN -->
+  <script src="https://unpkg.com/@ruffle-rs/ruffle"></script>
+
+  <script>
+  (function () {
+    const SWF_URL = 'happywheels.swf'; // change as needed
+    const WIDTH = 735, HEIGHT = 735;
+
+    /* ---- utility: create player and append ---- */
+    const ruffle = window.RufflePlayer ? window.RufflePlayer.newest() : null;
+    if (!ruffle) {
+      console.error("Ruffle library not found.");
+      return;
+    }
+
+    const container = document.getElementById('ruffle');
+    const player = ruffle.createPlayer();
+    player.style.width = WIDTH + 'px';
+    player.style.height = HEIGHT + 'px';
+    player.style.outline = 'none';
+    // make player focusable
+    player.setAttribute('tabindex', '0');
+
+    container.appendChild(player);
+
+    // load swf
+    player.load({ url: SWF_URL });
+
+    /* ---- wait for internal canvas to appear (shadow DOM) ---- */
+    function waitForCanvas(playerEl, timeout = 5000) {
+      return new Promise((resolve, reject) => {
+        // already available?
+        try {
+          const sr = playerEl.shadowRoot;
+          if (sr) {
+            const c = sr.querySelector('canvas');
+            if (c) return resolve(c);
+          }
+        } catch (e) {}
+
+        const mo = new MutationObserver(() => {
+          try {
+            const sr = playerEl.shadowRoot;
+            if (sr) {
+              const c = sr.querySelector('canvas');
+              if (c) {
+                mo.disconnect();
+                return resolve(c);
+              }
+            }
+          } catch (e) {}
+        });
+
+        mo.observe(playerEl, { childList: true, subtree: true });
+
+        // safety timeout
+        setTimeout(() => {
+          mo.disconnect();
+          reject(new Error("Timed out waiting for Ruffle canvas"));
+        }, timeout);
+      });
+    }
+
+    /* ---- create keyboard event with keyCode/which override attempt ---- */
+    function createKeyboardEvent(type, opts) {
+      const init = Object.assign({
+        key: opts.key || '',
+        code: opts.code || '',
+        bubbles: true,
+        cancelable: true,
+      }, opts);
+
+      let evt;
+      try {
+        evt = new KeyboardEvent(type, init);
+      } catch (e) {
+        evt = document.createEvent('KeyboardEvent');
+        evt.initKeyboardEvent(type, true, true, window, init.key, 0, "", false, "");
+      }
+
+      // best-effort: try to set keyCode/which (some browsers allow this)
+      try {
+        if (typeof evt.keyCode === 'undefined' || evt.keyCode !== opts.keyCode) {
+          Object.defineProperty(evt, 'keyCode', { value: opts.keyCode, configurable: true });
+        }
+        if (typeof evt.which === 'undefined' || evt.which !== opts.which) {
+          Object.defineProperty(evt, 'which', { value: opts.which, configurable: true });
+        }
+      } catch (e) {
+        // ignore if environment forbids overriding
+      }
+      return evt;
+    }
+
+    /* ---- dispatch to multiple targets to increase chance Ruffle picks it up ---- */
+    function dispatchKey(type, keyCode, keyName, codeName) {
+      const canvas = currentCanvas;
+      const targets = [window, document, player];
+      if (canvas) targets.push(canvas);
+
+      const evt = createKeyboardEvent(type, {
+        key: keyName,
+        code: codeName,
+        keyCode: keyCode,
+        which: keyCode
+      });
+
+      targets.forEach(t => {
+        try {
+          t.dispatchEvent(evt);
+        } catch (e) {}
+      });
+    }
+
+    /* ---- mapping and control handlers ---- */
+    const map = {
+        left:  { code: 37, key: 'ArrowLeft',  codeName: 'ArrowLeft' },  // Left arrow
+        right: { code: 39, key: 'ArrowRight', codeName: 'ArrowRight' }, // Right arrow
+        up:    { code: 38, key: 'ArrowUp',    codeName: 'ArrowUp' },    // Up arrow
+        down:  { code: 40, key: 'ArrowDown',  codeName: 'ArrowDown' },  // Down arrow
+        space: { code: 32, key: ' ',           codeName: 'Space' }      // Spacebar
+      };
+
+    let currentCanvas = null;
+
+    waitForCanvas(player).then((canvas) => {
+      console.log('Ruffle canvas found:', canvas);
+      currentCanvas = canvas;
+
+      // ensure canvas or player receives focus; prefer player element
+      player.focus();
+
+      // optional: forward pointer events into canvas so some mouse-driven games work
+      // Note: don't prevent default here unless needed.
+      ['pointerdown','pointerup','pointermove','mousedown','mouseup'].forEach(evtName => {
+        canvas.addEventListener(evtName, (ev) => {
+          // allow normal behavior
+        }, { passive:true });
+      });
+
+    }).catch((err) => {
+      console.warn("Could not find ruffle canvas:", err);
+    });
+
+    /* ---- bind the overlay controls AFTER player appended (no racing) ---- */
+    function bindControlElement(el, mapEntry) {
+      if (!el) return;
+      const press = (ev) => {
+        // prevent default scrolling/gestures on touch
+        if (ev && ev.preventDefault) ev.preventDefault();
+        el.classList.add('pressed');
+        // focus the player so it receives keyboard-like events
+        try { player.focus(); } catch (e) {}
+        dispatchKey('keydown', mapEntry.code, mapEntry.key, mapEntry.codeName);
+      };
+      const release = (ev) => {
+        if (ev && ev.preventDefault) ev.preventDefault();
+        el.classList.remove('pressed');
+        dispatchKey('keyup', mapEntry.code, mapEntry.key, mapEntry.codeName);
+      };
+
+      // Touch events (mobile)
+      el.addEventListener('touchstart', press, { passive: false });
+      el.addEventListener('touchend', release, { passive: false });
+      el.addEventListener('touchcancel', release, { passive: false });
+
+      // Pointer events (covers many mobile/desktop cases)
+      el.addEventListener('pointerdown', press, { passive: false });
+      el.addEventListener('pointerup', release, { passive: false });
+
+      // For mouse fallback:
+      el.addEventListener('mousedown', press);
+      el.addEventListener('mouseup', release);
+
+      // Prevent the element from getting focused (we want player to keep focus)
+      el.addEventListener('focus', (e) => { try { player.focus(); } catch(e){} });
+    }
+
+    // map DOM controls to actions
+    bindControlElement(document.getElementById('left_mobile_btn'), map.left);
+    bindControlElement(document.getElementById('right_mobile_btn'), map.right);
+    bindControlElement(document.getElementById('up_mobile_btn'), map.up);
+    bindControlElement(document.getElementById('down_mobile_btn'), map.down);
+    bindControlElement(document.getElementById('space_mobile_btn'), map.space);
+
+    /* ---- keyboard fallback so physical keyboards still work ---- */
+    document.addEventListener('keydown', (e) => {
+      // optional: mirror state if your code relies on flags
+    }, false);
+
+    /* ---- Helpful debug helper exposed to console ---- */
+    window._ruffle_debug = {
+      player: player,
+      getCanvas: () => currentCanvas,
+      sendKey: (type, code) => {
+        for (const k in map) {
+          if (map[k].code === code) {
+            dispatchKey(type, map[k].code, map[k].key, map[k].codeName);
+            return;
+          }
+        }
+        console.warn("Unknown code:", code);
+      }
+    };
+
+  })();
+  </script>
+</body>
+</html>
