@@ -361,8 +361,20 @@ window.addEventListener('load', () => {
   }
   
   // Example: call it immediately with your CORS URL
-  const corsUrl = 'https://corsproxy.io/?';
-  loadRomFromUrl(corsUrl);
+  window.onload = function() {
+    const corsUrl = 'https://corsproxy.io/?';
+
+    // Prompt user for .nds file URL
+    const romUrl = prompt("Enter the URL of the .nds ROM file:");
+
+    // Check that the user entered something and it ends with .nds
+    if (romUrl && romUrl.trim().toLowerCase().endsWith('.nds')) {
+      // Combine with CORS proxy and load
+      loadRomFromUrl(corsUrl + romUrl.trim());
+    } else if (romUrl) {
+      alert("Please provide a valid .nds file URL!");
+    }
+  };
   
   // Original onchange function
   document.querySelector("input").onchange = function() {
