@@ -3060,7 +3060,7 @@ console.log("loaded");
                 // a homebrew!
                 gameID = file.name
             }
-            console.log('gameID', gameID)
+            console.log('gameID', file.name)
             romSize = file.size
             var romBufPtr = Module._prepareRomBuffer(romSize)
             console.log(romSize, romBufPtr)

@@ -360,19 +360,6 @@ window.addEventListener('load', () => {
     }
   }
   
-  // Example: call it immediately with your CORS URL
-    const corsUrl = 'https://corsproxy.io/?';
-
-    // Prompt user for .nds file URL
-    const romUrl = prompt("Enter the URL of the .nds ROM file:");
-
-    // Check that the user entered something and it ends with .nds
-    if (romUrl && romUrl.trim().toLowerCase().endsWith('.nds')) {
-      // Combine with CORS proxy and load
-      loadRomFromUrl(corsUrl + romUrl.trim());
-    } else if (romUrl) {
-      alert("Please provide a valid .nds file URL!");
-    }
   
   
   // Original onchange function
@@ -425,6 +412,46 @@ function showModal() {
 </script>
 
 
+<!-- ======================= CLEAN LAUNCHER SCREEN (FIXED SCROLL) ======================= -->
+<div id="launcher-screen" style="
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  background: #006666;
+  color: white;
+  font-family: Arial, sans-serif;
+  z-index: 999999;
+  overflow-y: auto;
+  overflow-x: hidden; /* ✅ prevent side scroll */
+  box-sizing: border-box;
+  padding: 20px;
+">
+  <div style="display: flex; align-items: center; gap: 10px; flex-wrap: wrap;">
+    <button id="add-rom-btn" style="
+      padding: 6px 14px;
+      border: none;
+      background: #ffffff;
+      color: teal;
+      font-weight: bold;
+      border-radius: 4px;
+      cursor: pointer;
+    ">＋ Add ROM Link</button>
+    <span style="font-size: 16px; opacity: 0.9;">(NDS Emulator) Select or add a ROM below:                     (Since this is loading from URL loading times might be longer)</span>
+  </div>
+
+  <div id="rom-list" style="
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-top: 20px;
+    max-width: 100%;
+    box-sizing: border-box;
+  ">
+    <!-- ROM cards appear here -->
+  </div>
+</div>
+
+
 
 <desmond-player id="desplayer" style="position: absolute;left: 26%;top: 30%;border-color: black;transform: scale(2);"></desmond-player>
 
@@ -440,6 +467,161 @@ function showModal() {
 
   
   </script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js"></script>
+
+<script>
+  const corsUrl = 'https://corsproxy.io/?';
+  const STORAGE_KEY = 'savedRomLinksV2';
   
+  function getSavedRoms() {
+    return JSON.parse(localStorage.getItem(STORAGE_KEY) || '[]');
+  }
+  
+  function saveRoms(roms) {
+    localStorage.setItem(STORAGE_KEY, JSON.stringify(roms));
+  }
+  
+  function renderRomList() {
+    const romListDiv = document.getElementById('rom-list');
+    const roms = getSavedRoms();
+    romListDiv.innerHTML = '';
+  
+    if (roms.length === 0) {
+      romListDiv.innerHTML = `<p style="opacity:0.6;">No saved ROMs yet. Add one with the + button above.</p>`;
+      return;
+    }
+  
+    roms.forEach((rom, index) => {
+  const card = document.createElement('div');
+  card.style = `
+    background: rgba(255,255,255,0.15);
+    padding: 20px;                 /* bigger padding */
+    border-radius: 10px;           /* more rounded */
+    width: 220px;                  /* bigger card width */
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    cursor: pointer;
+    transition: background 0.2s, transform 0.2s;
+    font-size: 18px;               /* bigger font for ROM name */
+  `;
+  card.onmouseenter = () => card.style.background = 'rgba(255,255,255,0.3)';
+  card.onmouseleave = () => card.style.background = 'rgba(255,255,255,0.15)';
+  card.onmouseenter = () => card.style.transform = 'scale(1.05)'; // subtle hover zoom
+  card.onmouseleave = () => card.style.transform = 'scale(1)';
+
+  const nameSpan = document.createElement('span');
+  nameSpan.textContent = rom.name;
+  nameSpan.style = `
+    margin-bottom: 12px;           /* more space below name */
+    text-align: center;
+    word-wrap: break-word;
+    font-weight: bold;
+  `;
+
+  const btnRow = document.createElement('div');
+  btnRow.style = "display:flex;justify-content:center;gap:12px;"; // more space between buttons
+
+  const playBtn = document.createElement('button');
+  playBtn.textContent = "▶ Play";
+  playBtn.style = `
+    border:none;
+    background:#00ffaa;
+    color:black;
+    padding:8px 16px;
+    border-radius:5px;
+    font-size:16px;
+    cursor:pointer;
+  `;
+  playBtn.onclick = (e) => {
+    e.stopPropagation();
+    startEmulator(rom.url);
+  };
+
+  const delBtn = document.createElement('button');
+  delBtn.textContent = "✖";
+  delBtn.style = `
+    border:none;
+    background:#ff4444;
+    color:white;
+    padding:8px 16px;
+    border-radius:5px;
+    font-size:16px;
+    cursor:pointer;
+  `;
+  delBtn.onclick = (e) => {
+    e.stopPropagation();
+    if (confirm(`Are you sure you want to delete "${rom.name}"?`)) {
+      const newRoms = roms.filter((_, i) => i !== index);
+      saveRoms(newRoms);
+      renderRomList();
+    }
+  };
+
+  btnRow.appendChild(playBtn);
+  btnRow.appendChild(delBtn);
+
+  card.appendChild(nameSpan);
+  card.appendChild(btnRow);
+  romListDiv.appendChild(card);
+});
+  }
+  
+  document.getElementById('add-rom-btn').onclick = async () => {
+  const newUrl = prompt('Enter the URL of the ROM file (.nds):');
+  if (!newUrl || (!newUrl.toLowerCase().endsWith('.nds') && !newUrl.toLowerCase().endsWith('.zip'))) {
+    alert('Invalid link — must end with .nds');
+    return;
+  }
+
+  const newName = prompt('Enter a name for this ROM (e.g., Pokémon Platinum):') || 'Unnamed ROM';
+  
+  let finalUrl = newUrl;
+
+  // If it's a zip file, we need to fetch it, unzip, and get the .nds inside
+  if (newUrl.toLowerCase().endsWith('.zip')) {
+    try {
+      const response = await fetch(newUrl);
+      const arrayBuffer = await response.arrayBuffer();
+      const zip = await JSZip.loadAsync(arrayBuffer);
+      
+      // Find the first .nds file in the zip
+      const ndsFileName = Object.keys(zip.files).find(f => f.toLowerCase().endsWith('.nds'));
+      if (!ndsFileName) {
+        alert("No .nds file found inside the zip!");
+        return;
+      }
+
+      // Create a blob URL for the emulator
+      const ndsBlob = await zip.files[ndsFileName].async("blob");
+      finalUrl = URL.createObjectURL(ndsBlob);
+    } catch (err) {
+      console.error(err);
+      alert("Failed to load .zip file!");
+      return;
+    }
+  }
+
+  const roms = getSavedRoms();
+  roms.push({ name: newName, url: finalUrl });
+  saveRoms(roms);
+  renderRomList();
+};
+  
+  async function startEmulator(url) {
+    document.getElementById('launcher-screen').style.display = 'none';
+    uiSwitchTo('player')
+    await loadRomFromUrl(corsUrl + url);
+  }
+  
+  // Prevent auto-loading, wait for user to pick
+  window.onload = function() {
+    renderRomList();
+    document.getElementById('resetButton').style.display = 'none';
+  };
+  </script>
+  
+    
 
 </body>    
