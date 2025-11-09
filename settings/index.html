@@ -14,7 +14,29 @@
 		</ul>
 	</div>
 <link href="../index.css" rel="stylesheet">
-
+<!-- Display user ID in bottom-right -->
+<div id="userIdDisplay" style="
+    position: fixed;
+    bottom: 10px;
+    right: 10px;
+    background: rgba(0,0,0,0.6);
+    color: white;
+    padding: 4px 8px;
+    border-radius: 4px;
+    font-size: 0.9rem;
+    z-index: 9999;
+">
+  ID: <span id="uidSpan"></span>
+</div>
+<script>
+  const uidSpan = document.getElementById('uidSpan');
+  let userId = localStorage.getItem('userId');
+  if (!userId) {
+    userId = Math.floor(1000000 + Math.random() * 9000000).toString();
+    localStorage.setItem('userId', userId);
+  }
+  uidSpan.textContent = userId;
+</script>
 <script src="../settings.js"></script>
 <link rel="manifest" href="../manifest.json">
 

@@ -1,57 +1,142 @@
 <!DOCTYPE html>
 <html>
-  <script src="https://cdn.socket.io/4.5.0/socket.io.min.js"></script>
+<head>
+  <meta charset="UTF-8">
+  <title>Screen Share</title>
+  <script src="https://www.gstatic.com/firebasejs/9.22.1/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.22.1/firebase-database-compat.js"></script>
+  <style>
+    video { width: 100%; max-height: 400px; margin-bottom: 10px; }
+    select, button { padding: 10px 15px; margin: 5px 0; border-radius: 6px; border: none; cursor: pointer; }
+    button { background: #2b6ef6; color: #fff; }
+  </style>
+</head>
+<body>
 
-<video id="userScreen" autoplay></video>
+<h2>Screen Sharing</h2>
+
+<select id="friendSelect">
+  <option value="">Select a friend</option>
+</select>
+
+<video id="userScreen" autoplay muted playsinline></video>
+<br>
 <button id="startScreen">Start Sharing</button>
+<button id="stopScreen" hidden>Stop Sharing</button>
 
 <script>
-  const startScreenButton = document.getElementById("startScreen");
+  // --------------------------
+  // Generate or get user ID
+  // --------------------------
+  function generateUserId() {
+    return Math.floor(1000000 + Math.random() * 9000000).toString();
+  }
+  let userId = localStorage.getItem('userId');
+  if (!userId) {
+    userId = generateUserId();
+    localStorage.setItem('userId', userId);
+  }
+
+  // --------------------------
+  // Firebase setup
+  // --------------------------
+  const firebaseConfig = {
+    apiKey: "AIzaSyCnXJ7ViYIjukZjCQc2ZVM6TWRVik3YFsw",
+    authDomain: "destpl-13f92.firebaseapp.com",
+    databaseURL: "https://destpl-13f92-default-rtdb.firebaseio.com/",
+    projectId: "destpl-13f92",
+    appId: "1:550261346575:web:51a155990b214563f92e7a"
+  };
+  firebase.initializeApp(firebaseConfig);
+  const db = firebase.database();
+
+  // --------------------------
+  // User presence
+  // --------------------------
+  const userRef = db.ref('users/' + userId);
+  userRef.set({ online: true, lastSeen: Date.now() });
+  userRef.onDisconnect().remove(); // remove when disconnected
+  setInterval(() => userRef.update({ lastSeen: Date.now() }), 30000);
+
+  // --------------------------
+  // Online friends dropdown
+  // --------------------------
+  const friendSelect = document.getElementById('friendSelect');
+
+  function renderFriends(users) {
+    friendSelect.innerHTML = `<option value="">Select a friend</option>`;
+    for (const id in users) {
+      if (id !== userId && users[id].online) {
+        friendSelect.innerHTML += `<option value="${id}">${id}</option>`;
+      }
+    }
+  }
+
+  db.ref('users/').on('value', snapshot => {
+    const users = snapshot.val() || {};
+    renderFriends(users);
+  });
+
+  // --------------------------
+  // Screen sharing
+  // --------------------------
+  const startBtn = document.getElementById("startScreen");
+  const stopBtn = document.getElementById("stopScreen");
   const userScreen = document.getElementById("userScreen");
 
-  startScreenButton.addEventListener("click", () => {
-    // Ask for screen sharing permission
-    navigator.mediaDevices.getDisplayMedia({ video: true })
-      .then((stream) => {
-        userScreen.srcObject = stream; // Show user's screen in video element
+  let pc;
+  let localStream;
+  let targetId;
 
-        // Send the stream to the server
-        sendScreenToServer(stream);
-      })
-      .catch((err) => {
-        console.error("Error: " + err);
-      });
-  });
+  startBtn.onclick = async () => {
+    targetId = friendSelect.value;
+    if (!targetId) return alert("Select a friend to share with!");
 
-  function sendScreenToServer(stream) {
-    // Convert the stream to a base64-encoded image (or you can send as stream)
-    // For simplicity, let's use `canvas` to capture images
+    try {
+      localStream = await navigator.mediaDevices.getDisplayMedia({ video: true, audio: false });
+    } catch (e) {
+      alert("Screen share permission denied or not supported.");
+      return;
+    }
 
-    const canvas = document.createElement('canvas');
-    const context = canvas.getContext('2d');
-    const video = document.createElement('video');
-    video.srcObject = stream;
+    userScreen.srcObject = localStream;
+    startBtn.hidden = true;
+    stopBtn.hidden = false;
 
-    // Wait for the video to load, then draw it on the canvas
-    video.onloadeddata = () => {
-      context.drawImage(video, 0, 0, canvas.width, canvas.height);
-      const imageData = canvas.toDataURL('image/png'); // Get base64 image
+    pc = new RTCPeerConnection();
 
-      // Send the image data to the server
-      socket.emit("screen-capture", imageData);
+    const callerCandidatesRef = db.ref(`screenshare/${userId}_to_${targetId}/callerCandidates`);
+    pc.onicecandidate = event => {
+      if (event.candidate) callerCandidatesRef.push(JSON.stringify(event.candidate));
     };
-  }
+
+    localStream.getTracks().forEach(track => pc.addTrack(track, localStream));
+
+    const offer = await pc.createOffer();
+    await pc.setLocalDescription(offer);
+    await db.ref(`screenshare/${userId}_to_${targetId}/offer`).set(JSON.stringify(offer));
+
+    db.ref(`screenshare/${userId}_to_${targetId}/answer`).on('value', async snap => {
+      const val = snap.val();
+      if (val) await pc.setRemoteDescription(JSON.parse(val));
+    });
+
+    db.ref(`screenshare/${userId}_to_${targetId}/calleeCandidates`).on('child_added', snap => {
+      pc.addIceCandidate(JSON.parse(snap.val())).catch(console.error);
+    });
+
+    alert(`Sharing screen to user ID: ${targetId}`);
+  };
+
+  stopBtn.onclick = () => {
+    if (localStream) localStream.getTracks().forEach(t => t.stop());
+    if (pc) pc.close();
+    if (targetId) db.ref(`screenshare/${userId}_to_${targetId}`).remove();
+    startBtn.hidden = false;
+    stopBtn.hidden = true;
+    userScreen.srcObject = null;
+  };
 </script>
 
-
-<img id="userScreenImage" />
-<script>
-  const socket = io("https://destpl.netlify.app/settings/sharedscreen.html"); // Connect to your server
-
-  socket.on("screen-share", (imageData) => {
-    // When a screen capture is received, update the image on the page
-    document.getElementById("userScreenImage").src = imageData;
-  });
-</script>
-
+</body>
 </html>
