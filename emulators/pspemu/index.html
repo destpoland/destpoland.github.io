@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>PSP Emulator</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <style>
+    body, html {
+      height: 100%;
+      margin: 0;
+      overflow: hidden;
+      background: black;
+      color: white;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      font-family: monospace;
+    }
+    #box {
+      height: 20em;
+      width: 30em;
+      max-width: 80%;
+      max-height: 80%;
+      background-color: #333;
+      border: 2px solid #555;
+      border-radius: 0.4em;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      color: #aaa;
+      position: relative;
+      cursor: pointer;
+      transition: border-color 0.2s, color 0.2s;
+    }
+    #box:hover, #box[drag] {
+      border-color: #38f;
+      color: #ddd;
+    }
+    #input {
+      position: absolute;
+      inset: 0;
+      opacity: 0;
+      cursor: pointer;
+    }
+    #display {
+      width: 100%;
+      height: 100%;
+    }
+  </style>
+</head>
+<body>
+  <div id="box">
+    <input type="file" id="input" accept=".iso">
+    Drag or click to load a PSP (.iso) file
+  </div>
+
+  <script>
+    const input = document.getElementById('input');
+    const box = document.getElementById('box');
+
+    input.onchange = () => run(input.files[0]);
+
+    box.ondragover = () => box.setAttribute('drag', true);
+    box.ondragleave = () => box.removeAttribute('drag');
+
+    async function run(file) {
+      if (!file) return;
+      const div = document.createElement("div");
+      const sub = document.createElement("div");
+      const script = document.createElement("script");
+
+      sub.id = "game";
+      div.id = "display";
+      box.remove();
+      div.appendChild(sub);
+      document.body.appendChild(div);
+
+      window.EJS_player = "#game";
+      window.EJS_gameName = file.name;
+      window.EJS_gameUrl = file;
+      window.EJS_core = "psp";
+      window.EJS_pathtodata = "data/";
+      window.EJS_startOnLoaded = true;
+      window.EJS_threads = true;
+      window.EJS_disableDatabases = true;
+
+      script.src = "data/loader.js";
+      document.body.appendChild(script);
+    }
+  </script>
+</body>
+</html>

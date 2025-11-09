@@ -1,3 +1,4 @@
+// vite.config.js
 console.log('vite.config.js loaded');
 
 import { defineConfig } from 'vite';
@@ -6,7 +7,7 @@ export default defineConfig({
   server: {
     headers: {
       'Cross-Origin-Opener-Policy': 'same-origin',
-      'Cross-Origin-Embedder-Policy': 'require-corp'
+      'Cross-Origin-Embedder-Policy': 'credentialless' // <- change here
     }
   }
 });

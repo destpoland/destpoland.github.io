@@ -1,66 +1,113 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="manifest" href="../manifest.json" />
+  <title>destpl</title>
 
+  <link rel="stylesheet" href="styles.css" />
+  <link rel="stylesheet" href="mobile.css" />
 
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<link rel="manifest" href="../manifest.json">
-<div class="animation-area">
-	<ul class="box-area">
-		<li></li>
-		<li></li>
-		<li></li>
-		<li></li>
-		<li></li>
-		<li></li>
-		<li></li>
-		<li></li>
-	</ul>
-</div>
+  <!-- Firebase SDKs -->
+  <script src="https://www.gstatic.com/firebasejs/9.22.1/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.22.1/firebase-database-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.22.1/firebase-auth-compat.js"></script>
 
-
-<link rel="stylesheet" href="styles.css">
-<link rel="stylesheet" href="mobile.css">
-<script src="settings.js"></script>
+  <style>
+    /* Announcement overlay styles */
+    #announcementOverlay {
+      position: fixed; inset: 0; display: none;
+      align-items: center; justify-content: center;
+      background: rgba(0,0,0,0.75);
+      color: white; z-index: 99999;
+      padding: 20px; box-sizing: border-box;
+    }
+    #announcementOverlay.show { display:flex; }
+    #announcementBox {
+      max-width: 900px; width: 90%;
+      background: rgba(0,0,0,0.6); padding: 24px;
+      border-radius: 8px; text-align: center;
+      box-shadow: 0 6px 30px rgba(0,0,0,0.6);
+    }
+    #announcementBox h2 { margin: 0 0 8px 0; font-size: 1.6rem; }
+    #announcementBox p { margin: 0 0 12px 0; white-space: pre-wrap; }
+    #announcementBox button { padding: 6px 12px; border-radius: 6px; border:none; cursor:pointer; background:#2b6ef6; color:#fff; }
+  </style>
+</head>
 <body>
-
-
-<div class="banner-text">
-  <div class="bar">
-      <img alt="Home" onclick="location.href='../'" src="./homeimgs/favicon.png"  class="logo" draggable="false">=
-	  <img alt="SRC" class="chatlogo" onclick="location.href='./settings/'" src="./homeimgs/settings.png"  draggable="false">
-	  <h1>destpl</h1>	
-	  <p>stuff</p>
+  <div class="animation-area">
+    <ul class="box-area">
+      <li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li>
+    </ul>
   </div>
-	<div class="container">
-      
-	<img alt="" class="game" onclick="location.href='./games/'" src="./homeimgs/folder.png"  draggable="false">
 
-	<img alt="" class="game" onclick="location.href='./emulators/'" src="./homeimgs/emulator.png"  draggable="false">
+  <script src="settings.js"></script>
 
-	<img alt="" class="game" onclick="location.href='./chat/'" src="./homeimgs/chat.png"  draggable="false">
+  <div class="banner-text">
+    <div class="bar">
+      <img alt="Home" onclick="location.href='../'" src="./homeimgs/favicon.png" class="logo" draggable="false">
+      <img alt="SRC" class="chatlogo" onclick="location.href='./settings/'" src="./homeimgs/settings.png" draggable="false">
+      <h1>destpl</h1>
+      <p>stuff</p>
+    </div>
 
-	<img alt="SRC" class="game" onclick="location.href='./src/'" src="./homeimgs/3kh0.png"  draggable="false">
-	
-	<img alt="Updates" class="game" onclick="location.href='./patch/'" src="./homeimgs/patch.png"  draggable="false">
-
-
-
-	
-
-	
+    <div class="container">
+      <img alt="" class="game" onclick="location.href='./games/'" src="./homeimgs/folder.png" draggable="false">
+      <img alt="" class="game" onclick="location.href='./emulators/'" src="./homeimgs/emulator.png" draggable="false">
+      <img alt="" class="game" onclick="location.href='./chat/'" src="./homeimgs/chat.png" draggable="false">
+      <img alt="SRC" class="game" onclick="location.href='./src/'" src="./homeimgs/3kh0.png" draggable="false">
+      <img alt="Updates" class="game" onclick="location.href='./patch/'" src="./homeimgs/patch.png" draggable="false">
+    </div>
   </div>
-</div>
-<script type="text/javascript">
-    (function(c,l,a,r,i,t,y){
-        c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
-        t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
-        y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
-    })(window, document, "clarity", "script", "q7xzcdite5");
-</script>
+
+  <!-- Announcement overlay -->
+  <div id="announcementOverlay">
+    <div id="announcementBox">
+      <h2 id="annTitle">Announcement</h2>
+      <p id="annMessage">...</p>
+      <button id="closeOverlay">Close</button>
+    </div>
+  </div>
+
+  <script>
+    // --------------------------
+    // Firebase initialization
+    // --------------------------
+    const firebaseConfig = {
+      apiKey: "YOUR_API_KEY",
+      authDomain: "YOUR_PROJECT.firebaseapp.com",
+      databaseURL: "https://YOUR_PROJECT.firebaseio.com",
+      projectId: "YOUR_PROJECT_ID",
+      appId: "YOUR_APP_ID"
+    };
+    firebase.initializeApp(firebaseConfig);
+    const db = firebase.database();
+
+    // --------------------------
+    // Announcement overlay logic - always on
+    // --------------------------
+    const overlay = document.getElementById('announcementOverlay');
+    const titleEl = document.getElementById('annTitle');
+    const msgEl = document.getElementById('annMessage');
+
+    document.getElementById('closeOverlay').addEventListener('click', () => {
+      overlay.classList.remove('show');
+    });
+
+    const currentRef = db.ref('announcements/current');
+    currentRef.on('value', snapshot => {
+      const data = snapshot.val();
+      if (!data) return;
+
+      titleEl.textContent = data.title || 'Announcement';
+      msgEl.textContent = data.message || '';
+      overlay.classList.add('show');
+
+      if (data.durationSeconds && Number.isFinite(data.durationSeconds)) {
+        setTimeout(() => overlay.classList.remove('show'), data.durationSeconds * 1000);
+      }
+    });
+  </script>
 </body>
-
-
-
 </html>
-
-

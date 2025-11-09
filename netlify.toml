@@ -1,9 +1,18 @@
 [build]
-  publish = "."  # if your index.html is in the root
+  publish = "."  # your index.html is in the root
   functions = "netlify/functions"
 
-# Optional: set headers or redirects if needed
-# [[redirects]]
-#   from = "/*"
-#   to = "/index.html"
-#   status = 200
+# -------------------------
+# Headers to prevent COEP / CORP warnings
+# -------------------------
+[[headers]]
+  for = "/*"
+  [headers.values]
+    Cross-Origin-Embedder-Policy = "credentialless"
+    Cross-Origin-Resource-Policy = "cross-origin"
+
+# Optional: SPA redirect for single-page apps
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200
