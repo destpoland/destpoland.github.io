@@ -40,19 +40,19 @@
   // Firebase setup
   // --------------------------
   const firebaseConfig = {
-    apiKey: "YOUR_API_KEY",
-    authDomain: "YOUR_PROJECT.firebaseapp.com",
-    databaseURL: "https://YOUR_PROJECT.firebaseio.com",
-    projectId: "YOUR_PROJECT_ID",
-    appId: "YOUR_APP_ID"
-  };
+	apiKey: "AIzaSyCnXJ7ViYIjukZjCQc2ZVM6TWRVik3YFsw",
+	authDomain: "destpl-13f92.firebaseapp.com",
+	databaseURL: "https://destpl-13f92-default-rtdb.firebaseio.com/", // <-- your DB URL
+	projectId: "destpl-13f92",
+	appId: "1:550261346575:web:51a155990b214563f92e7a"
+	};
   firebase.initializeApp(firebaseConfig);
   const db = firebase.database();
 
   // --------------------------
   // Simple admin login (client-side only, replace with proper auth for production)
   // --------------------------
-  const ADMIN_PASSWORD = "123"; // change to your password
+  const ADMIN_PASSWORD = "carter&rover"; // change to your password
   const loginForm = document.getElementById('loginForm');
   const loginBtn = document.getElementById('loginBtn');
   const adminUI = document.getElementById('adminUI');
