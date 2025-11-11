@@ -1,11 +1,12 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <link rel="manifest" href="../manifest.json" />
   <title>destpl</title>
-
+  
   <link rel="stylesheet" href="styles.css" />
   <link rel="stylesheet" href="mobile.css" />
 
@@ -13,26 +14,6 @@
   <script src="https://www.gstatic.com/firebasejs/9.22.1/firebase-database-compat.js"></script>
   <script src="https://www.gstatic.com/firebasejs/9.22.1/firebase-auth-compat.js"></script>
 
-  <style>
-    /* Announcement overlay styles */
-    #announcementOverlay {
-      position: fixed; inset: 0; display: none;
-      align-items: center; justify-content: center;
-      background: rgba(0,0,0,0.75);
-      color: white; z-index: 99999;
-      padding: 20px; box-sizing: border-box;
-    }
-    #announcementOverlay.show { display:flex; }
-    #announcementBox {
-      max-width: 900px; width: 90%;
-      background: rgba(0,0,0,0.6); padding: 24px;
-      border-radius: 8px; text-align: center;
-      box-shadow: 0 6px 30px rgba(0,0,0,0.6);
-    }
-    #announcementBox h2 { margin: 0 0 8px 0; font-size: 1.6rem; }
-    #announcementBox p { margin: 0 0 12px 0; white-space: pre-wrap; }
-    #announcementBox button { padding: 6px 12px; border-radius: 6px; border:none; cursor:pointer; background:#2b6ef6; color:#fff; }
-  </style>
 </head>
 <body>
   <div class="animation-area">
@@ -60,14 +41,11 @@
     </div>
   </div>
 
-  <!-- Announcement overlay -->
-  <div id="announcementOverlay">
-    <div id="announcementBox">
-      <h2 id="annTitle">Announcement</h2>
-      <p id="annMessage">...</p>
-      <button id="closeOverlay">Close</button>
-    </div>
-  </div>
-  <script src="./base.js"></script>
+  <script>
+    if ('serviceWorker' in navigator) {
+  navigator.serviceWorker.register('/sw.js', { scope: '/' })
+    .then(reg => console.log('SW registered with scope:', reg.scope));
+}
+  </script>
 </body>
 </html>

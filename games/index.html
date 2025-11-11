@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <link rel="manifest" href="../manifest.json">
+<script src="../autobase.js"></script>
 <html>
     <div class="animation-area">
         <ul class="box-area">
@@ -313,12 +314,15 @@
     </div>
 
 </div>
-  
-  
-  
-
+<!-- Announcement overlay -->
+<div id="announcementOverlay">
+    <div id="announcementBox">
+      <h2 id="annTitle">Announcement</h2>
+      <p id="annMessage">...</p>
+      <button id="closeOverlay">Close</button>
+    </div>
+  </div>
 </body>
-
 <script type="text/javascript">
     (function(c,l,a,r,i,t,y){
         c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
@@ -326,7 +330,6 @@
         y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
     })(window, document, "clarity", "script", "q7xzcdite5");
 </script>
-
 <script> 
     function retrobowl() {
         var SHeight = window.screen.availHeight
@@ -340,11 +343,6 @@
         document.querySelector("#srcHid").style.height = (SHeight - 110) + "px";
         document.querySelector("#srcHid").src = "https://www.plinko.kayooliveira.com/"
     }
-
-
-
-
-
 </script>
 
 </html>
