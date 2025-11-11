@@ -31,10 +31,10 @@
 </div>
 <script>
   const uidSpan = document.getElementById('uidSpan');
-  let userId = localStorage.getItem('userId');
-  if (!userId) {
-    userId = Math.floor(1000000 + Math.random() * 9000000).toString();
-    localStorage.setItem('userId', userId);
+  let userI = localStorage.getItem('userId');
+  if (!userI) {
+    userI = Math.floor(1000000 + Math.random() * 9000000).toString();
+    localStorage.setItem('userId', userI);
   }
   uidSpan.textContent = userId;
 </script>
