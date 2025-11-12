@@ -163,12 +163,15 @@ async function initUser() {
     });
   });
 }
-//current page
 // Track current page URL
 function updateCurrentPage() {
+  const userId = localStorage.getItem('userId') || 'unknown';
+  const userRef = firebase.database().ref('users/' + userId);
+  const currentPage = window.location.pathname;
   userRef.update({
-    currentPage: window.location.href,
-    lastSeen: Date.now()
+    currentPage,
+    lastSeen: Date.now(),
+    online: true
   });
 }
 
