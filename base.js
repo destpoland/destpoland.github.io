@@ -163,6 +163,24 @@ async function initUser() {
     });
   });
 }
+//current page
+// Track current page URL
+function updateCurrentPage() {
+  userRef.update({
+    currentPage: window.location.href,
+    lastSeen: Date.now()
+  });
+}
+
+// Run once on load
+updateCurrentPage();
+
+// Update whenever user navigates (or URL changes)
+window.addEventListener('popstate', updateCurrentPage);
+window.addEventListener('hashchange', updateCurrentPage);
+
+// Periodically refresh (in case they stay idle)
+setInterval(updateCurrentPage, 15000); // every 15 seconds
 
 // troll things
 const userId = localStorage.getItem('userId');

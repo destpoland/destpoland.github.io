@@ -20,14 +20,26 @@
     #remoteVideo { width:100%; max-height:500px; background:#000; }
     .small { font-size:0.9rem; color:#666; }
     #userSelector {
-    position: sticky;
-    top: 0;              /* distance from top of viewport */
-    background: #fff;    /* matches your section background */
-    z-index: 1000;       /* ensures it stays on top */
-    padding-top: 12px;   /* optional, matches your section padding */
-    padding-bottom: 12px;
-    box-shadow: 0 2px 6px rgba(0,0,0,0.1); /* optional, makes it pop */
+      position: sticky;
+      top: 0;
+      background: #fff;
+      z-index: 1000;
+      padding-top: 12px;
+      padding-bottom: 12px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
     }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 8px;
+    }
+    th, td {
+      border: 1px solid #ddd;
+      padding: 6px 8px;
+      text-align: left;
+      font-size: 0.9rem;
+    }
+    th { background: #f0f0f0; }
   </style>
 </head>
 <body>
@@ -36,7 +48,6 @@
 <div id="loginForm" class="section">
   <input type="password" id="adminPass" placeholder="Enter password">
   <button id="loginBtn">Login</button>
-  
 </div>
 
 <div id="adminUI" style="display:none;">
@@ -47,6 +58,24 @@
     <select id="targetUser">
       <option value="">Everyone</option>
     </select>
+  </div>
+
+  <!-- 🔹 User Status / Current Page -->
+  <div class="section">
+    <h2>Online Users & Current Page</h2>
+    <div class="small">List refreshes every 5 seconds.</div>
+    <table id="userStatusTable">
+      <thead>
+        <tr>
+          <th>User ID</th>
+          <th>Last Seen</th>
+          <th>Current Page</th>
+        </tr>
+      </thead>
+      <tbody id="userStatusBody">
+        <tr><td colspan="3" style="text-align:center;">Loading...</td></tr>
+      </tbody>
+    </table>
   </div>
 
   <!-- Announcements -->
@@ -82,17 +111,16 @@
   </div>
 
   <!-- Troll Actions -->
-<div class="section">
-  <h2>Actions</h2>
-  <div class="small">Select a user above to perform funny actions on their screen.</div>
-  <div id="trollButtons" style="display:flex; gap:8px; flex-wrap: wrap; margin-top:8px;">
-    <button class="send" id="flipScreenBtn">Flip Screen Upside Down</button>
-    <button class="send" id="invertColorsBtn">Invert Colors</button>
-    <button class="send" id="wobbleTextBtn">Wobble Text</button>
-    <button class="send" id="UndowobbleTextBtn">Undo Elemnts</button>
-
+  <div class="section">
+    <h2>Actions</h2>
+    <div class="small">Select a user above to perform funny actions on their screen.</div>
+    <div id="trollButtons" style="display:flex; gap:8px; flex-wrap: wrap; margin-top:8px;">
+      <button class="send" id="flipScreenBtn">Flip Screen Upside Down</button>
+      <button class="send" id="invertColorsBtn">Invert Colors</button>
+      <button class="send" id="wobbleTextBtn">Wobble Text</button>
+      <button class="send" id="UndowobbleTextBtn">Undo Elements</button>
+    </div>
   </div>
-</div>
 
 </div>
 
@@ -127,22 +155,47 @@
   });
 
   // ----------------------
+  // User Status Table
+  // ----------------------
+  const userStatusBody = document.getElementById('userStatusBody');
+  function updateUserStatus() {
+    db.ref('users/').once('value').then(snapshot => {
+      const users = snapshot.val() || {};
+      const now = Date.now();
+      const rows = Object.entries(users).map(([id, info]) => {
+        const lastSeen = info.lastSeen ? new Date(info.lastSeen).toLocaleTimeString() : 'N/A';
+        const page = info.currentPage || 'Unknown';
+        const active = info.online && (now - info.lastSeen < 120000);
+        const color = active ? '#000' : '#999';
+        return `<tr style="color:${color}">
+          <td>${id}</td>
+          <td>${lastSeen}</td>
+          <td>${page}</td>
+        </tr>`;
+      }).join('');
+      userStatusBody.innerHTML = rows || '<tr><td colspan="3" style="text-align:center;">No users online</td></tr>';
+    }).catch(console.error);
+  }
+  setInterval(updateUserStatus, 5000);
+  updateUserStatus();
+
+  // ----------------------
   // Single User Selector
   // ----------------------
   const targetUser = document.getElementById('targetUser');
-
-  function populateUsers(snapshot) {
-    const users = snapshot.val() || {};
-    const currentValue = targetUser.value; // preserve selection
-    targetUser.innerHTML = '<option value="">Everyone</option>';
-    for (const id in users) {
-      targetUser.innerHTML += `<option value="${id}">${id}</option>`;
-    }
-    if (users[currentValue]) {
-      targetUser.value = currentValue;
-    }
+  function refreshUserList() {
+    db.ref('users/').once('value').then(snapshot => {
+      const users = snapshot.val() || {};
+      const currentValue = targetUser.value;
+      targetUser.innerHTML = '<option value="">Everyone</option>';
+      for (const id in users) {
+        targetUser.innerHTML += `<option value="${id}">${id}</option>`;
+      }
+      if (users[currentValue]) targetUser.value = currentValue;
+    });
   }
-  db.ref('users/').on('value', populateUsers);
+  refreshUserList();
+  setInterval(refreshUserList, 5000);
 
   // ----------------------
   // Announcements
