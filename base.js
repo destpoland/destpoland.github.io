@@ -196,7 +196,7 @@ trollRef.on('child_added', snap => {
   const cmd = snap.val();
   if (!cmd || !cmd.command) return;
 
-  const duration = cmd.durationSeconds || 5000; // default 5 seconds
+  const duration = cmd.durationSeconds || 1000; // default 5 seconds
 
   switch(cmd.command) {
     case 'wobbleText':

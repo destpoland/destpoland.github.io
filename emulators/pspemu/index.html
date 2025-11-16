@@ -16,33 +16,6 @@
       flex-direction: column;
       font-family: monospace;
     }
-    #box {
-      height: 20em;
-      width: 30em;
-      max-width: 80%;
-      max-height: 80%;
-      background-color: #333;
-      border: 2px solid #555;
-      border-radius: 0.4em;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      text-align: center;
-      color: #aaa;
-      position: relative;
-      cursor: pointer;
-      transition: border-color 0.2s, color 0.2s;
-    }
-    #box:hover, #box[drag] {
-      border-color: #38f;
-      color: #ddd;
-    }
-    #input {
-      position: absolute;
-      inset: 0;
-      opacity: 0;
-      cursor: pointer;
-    }
     #display {
       width: 100%;
       height: 100%;
@@ -50,44 +23,52 @@
   </style>
 </head>
 <body>
-  <div id="box">
-    <input type="file" id="input" accept=".iso">
-    Drag or click to load a PSP (.iso) file
-  </div>
 
-  <script>
-    const input = document.getElementById('input');
-    const box = document.getElementById('box');
+<script>
+  // ask immediately for ISO URL
+  async function askForISO() {
+    let url = prompt("Enter direct PSP .iso URL:");
 
-    input.onchange = () => run(input.files[0]);
+    // cancelled or empty
+    if (!url) return askForISO();
 
-    box.ondragover = () => box.setAttribute('drag', true);
-    box.ondragleave = () => box.removeAttribute('drag');
-
-    async function run(file) {
-      if (!file) return;
-      const div = document.createElement("div");
-      const sub = document.createElement("div");
-      const script = document.createElement("script");
-
-      sub.id = "game";
-      div.id = "display";
-      box.remove();
-      div.appendChild(sub);
-      document.body.appendChild(div);
-
-      window.EJS_player = "#game";
-      window.EJS_gameName = file.name;
-      window.EJS_gameUrl = file;
-      window.EJS_core = "psp";
-      window.EJS_pathtodata = "data/";
-      window.EJS_startOnLoaded = true;
-      window.EJS_threads = true;
-      window.EJS_disableDatabases = true;
-
-      script.src = "data/loader.js";
-      document.body.appendChild(script);
+    // basic validation
+    if (!url.toLowerCase().endsWith(".iso")) {
+      alert("URL must end with .iso");
+      return askForISO();
     }
-  </script>
+
+    startEmulator(url);
+  }
+
+  async function startEmulator(url) {
+    // Remove everything in the body and create game display
+    document.body.innerHTML = "";
+    const wrap = document.createElement("div");
+    wrap.id = "display";
+    const game = document.createElement("div");
+    game.id = "game";
+    wrap.appendChild(game);
+    document.body.appendChild(wrap);
+
+    // EmulatorJS config
+    window.EJS_player = "#game";
+    window.EJS_gameName = url.split("/").pop();
+    window.EJS_gameUrl = url;            // <-- URL STRAIGHT INTO THE EMULATOR
+    window.EJS_core = "psp";
+    window.EJS_pathtodata = "data/";
+    window.EJS_startOnLoaded = true;
+    window.EJS_threads = false;
+    window.EJS_disableDatabases = true;
+
+    // Load emulator loader script
+    const script = document.createElement("script");
+    script.src = "data/loader.js";
+    document.body.appendChild(script);
+  }
+
+  askForISO();
+</script>
+
 </body>
 </html>
