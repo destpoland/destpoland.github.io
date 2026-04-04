@@ -1,0 +1,39 @@
+{
+  "title": "Gefälle Plus Spiel online",
+  "tagline": "Spiele Slope Plus ohne Werbung.",
+  "worksOn": "Funktioniert auf Desktop und Mobilgerät.",
+  "supports": "Unterstützt das Speichern deines Fortschritts (z. B. Highscores, keine Replays), benutzerdefinierte Tasten (Links/Rechts/Spiel verstecken) und Pause bei Fokusverlust.",
+  "ctaPlay": "Spielen",
+  "footer": {
+    "findMe": "Finde mich auf GitHub:"
+  },
+  "changelog": "Änderungsprotokoll:",
+  "root": {
+    "settings": {
+      "title": "Einstellungen",
+      "left": "Links:",
+      "right": "Rechts:",
+      "hide": "Spiel ausblenden:",
+      "menuKey": "Einstellungen:",
+      "pause": "Bei Fokusverlust pausieren:",
+      "language": "Sprache:",
+      "export": "Daten exportieren",
+      "import": "Daten importieren",
+      "pressKey": "Taste drücken",
+      "close": "Schließen"
+    },
+    "messages": {
+      "dataImportSuccess": "Daten erfolgreich importiert. Die Seite wird neu geladen.",
+      "dataImportFailed": "Fehler beim Importieren der Daten",
+      "invalidDataFile": "Ungültige Datendatei.",
+      "exportFailed": "Export fehlgeschlagen"
+    },
+    "popup": {
+      "ported": "Slope Plus, portiert von lonfro",
+      "github": "GitHub-Repository",
+      "old": "Altes Slope Mobile",
+      "press": "Drücke",
+      "forOptions": "für Optionen"
+    }
+  }
+}

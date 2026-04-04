@@ -1,0 +1,39 @@
+{
+  "title": "斜坡加强版 在线游戏",
+  "tagline": "畅玩无广告的 Slope Plus。",
+  "worksOn": "同时支持桌面和移动设备。",
+  "supports": "支持保存进度（类似最高分，不含回放）、自定义按键（左/右/隐藏游戏），以及失去焦点时暂停。",
+  "ctaPlay": "开始游戏",
+  "footer": {
+    "findMe": "在 GitHub 找到我："
+  },
+  "changelog": "更新日志：",
+  "root": {
+    "settings": {
+      "title": "设置",
+      "left": "左：",
+      "right": "右：",
+      "hide": "隐藏游戏：",
+      "menuKey": "设置：",
+      "pause": "失焦时暂停：",
+      "language": "语言:",
+      "export": "导出数据",
+      "import": "导入数据",
+      "pressKey": "按下按键",
+      "close": "关闭"
+    },
+    "messages": {
+      "dataImportSuccess": "数据导入成功。页面即将重新加载。",
+      "dataImportFailed": "导入数据失败",
+      "invalidDataFile": "无效的数据文件。",
+      "exportFailed": "导出失败"
+    },
+    "popup": {
+      "ported": "Slope Plus，由 lonfro 移植",
+      "github": "GitHub 仓库",
+      "old": "旧版 Slope Mobile",
+      "press": "按",
+      "forOptions": "打开选项"
+    }
+  }
+}

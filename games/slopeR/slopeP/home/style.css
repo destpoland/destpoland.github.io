@@ -1,0 +1,299 @@
+
+@font-face {
+    font-family: 'Inter 18pt Regular';
+    src: url('Inter18pt-Regular.woff2') format('woff2'),
+        url('Inter18pt-Regular.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+    text-rendering: optimizeLegibility;
+}
+
+@font-face {
+    font-family: 'Inter 18pt Medium';
+    src: url('Inter18pt-Medium.woff2') format('woff2'),
+        url('Inter18pt-Medium.woff') format('woff');
+    font-style: normal;
+    font-display: swap;
+    text-rendering: optimizeLegibility
+}
+
+body, .launchpad, .custom-title {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+html, body {
+    user-select: none;
+    overflow-y: hidden;
+}
+body {
+    padding: 16px;
+    min-height: 100vh;
+    min-height: 100dvh;
+    margin: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    max-height: 100vh;
+    max-height: 100dvh;
+    background: url('wallpaper.png') no-repeat center center fixed;
+    background-size: cover;
+    font-family: 'Inter 18pt Regular', 'Roboto', Helvetica, sans-serif;
+}
+.custom-title {
+    letter-spacing: 0.7px;
+    text-shadow: 0px 0px 2px #31ff319b;
+
+    font-family: 'Inter 18pt Medium', 'Roboto', Helvetica, sans-serif;
+    font-size: 1.75rem;
+    font-weight: 600;
+    margin: 0.5em 0;
+    text-align: center;
+    color:#29bc29
+    
+}
+.launchpad {
+    background: #fffffff3;
+    padding: 22px 30px 15px 30px;
+    border-radius: 25px;
+    box-shadow: 0 4px 24px rgba(255, 255, 255, 0.728);
+    text-align: center;
+    max-width: 350px;
+    width: 100%;
+    transition: transform 0.18s;
+}
+
+
+
+.launchpad h1 {
+    margin-top: 0;
+    font-size: 2rem;
+    color: #222;
+    letter-spacing: 0.5px;
+}
+.launchpad p {
+    color: #2b2b2b;
+    font-size: 1.08rem;
+    margin-top: 0.8em;
+}
+.launch-btn {
+    display: inline-flex;
+    background: #20bd20;
+    color: #fff;
+    font-size: 1.5rem;
+    font-weight: 500;
+    padding: 15px 60px;
+    margin-top:0.3em;
+    border: none;
+    line-height: 1;
+    border-radius: 8px;
+    text-decoration: none;
+    letter-spacing: 1.5px;
+    gap: 0.5em;
+    box-shadow: 0 0px 5px rgba(25, 156, 27, 0.728);
+    transition: background 0.18s, box-shadow 0.18s, transform 0.18s;
+    cursor: pointer;
+}
+.launch-btn:hover, .launch-btn:focus {
+    background: #1aa91a;
+    color:white;
+    transform: scale(1.1);
+    box-shadow: 0 4px 16px rgba(0,0,0,0.13);
+}
+
+.launch-btn:active {
+    background: #1aa91a;
+    color:white;
+    transform: scale(1.05);
+}
+
+
+/* Add to your style.css */
+.launch-btn.transitioning {
+  background: #000 !important;
+  color: #000 !important;
+  transform: scale(50) !important;
+  transition: 
+    background 0.3s ease,
+    color 0.3s ease,
+    transform 2.5s cubic-bezier(0.25, 0.46, 0.45, 0.94) !important;
+  z-index: 9999;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform-origin: center center;
+}
+
+.launch-btn.transitioning .play-icon,
+.launch-btn.transitioning .play-text {
+  opacity: 0;
+  transition: opacity 0.2s ease;
+}
+
+
+.launch-btn .play-icon {
+    height: 1em;
+    width: auto;
+    vertical-align: middle;
+    margin: 0;
+    display: block;
+}
+
+.play-text {
+    flex: 1 1 auto;
+    text-align: center;
+}
+.launch-btn .ghost-icon {
+    opacity: 0;
+    pointer-events: none;
+}
+.footer-contact {
+    margin-top: 15px;
+    font-size: 0.93rem;
+    color: #888;
+    letter-spacing: 0.7px;
+}
+.footer-contact-inner {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+}
+.footer-contact-inner img {
+    width: 16px;
+    height: 16px;
+    display: inline-block;
+}
+.footer-contact a {
+    color: #20bd20;
+    
+}
+
+.footer-contact a:hover {
+    color: #127a12;
+}
+
+/* (lang switcher removed; links remain in footer) */
+
+.changelog-line {
+    display: flex;
+    margin-top: 5px;
+    align-items: center;
+    justify-content: center;
+}
+.changelog-text {
+    font-size: 0.85rem;
+    color: #888;
+    letter-spacing: 0.7px;
+    margin-right: 10px;
+}
+
+.changelog-btn {
+    display: inline-flex;
+    background: #fff;
+    border-color: #888;
+    border-width: 1px;
+    border-style: solid;
+    
+
+    color: #888;
+    font-size: 0.65rem;
+    font-weight: 500;
+    padding: 5px 5px;
+    margin-top:0.3em;
+    line-height: 1;
+    border-radius: 8px;
+    text-decoration: none;
+    gap: 0.5em;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.07);
+    transition: background 0.18s, box-shadow 0.18s, transform 0.18s;
+    cursor: pointer;
+}
+
+.changelog-btn:hover, .changelog-btn:focus {
+    background: #c8c8c8;
+    color:white;
+    transform: scale(1.07);
+    box-shadow: 0 4px 16px rgba(0,0,0,0.13);
+}
+.changelog-btn .arrow-icon {
+    height: 1em;
+    width: auto;
+    vertical-align: middle;
+    margin: 0;
+    display: block;
+}
+
+.changelog {
+    max-height: 0;
+    opacity: 0;
+    padding: 0;
+    margin-top: 0;
+    border-radius: 0;
+    box-shadow: none;
+    width: 100%;
+    font-size: 0;
+    line-height: 0;
+    color: transparent;
+    transition:
+        max-height 0.35s cubic-bezier(.4,0,.2,1),
+        opacity 0.25s,
+        padding 0.25s,
+        margin-top 0.25s,
+        font-size 0.25s,
+        line-height 0.25s,
+        color 0.25s,
+        background 0.25s,
+        border-radius 0.25s,
+        box-shadow 0.25s;
+    overflow-y: hidden !important;
+}
+
+.changelog.expanded {
+    max-height: calc(8em) !important;
+    opacity: 1;
+    background: #ffffff50;
+    padding: 8px 8px;
+    border-radius: 10px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.07);
+    margin-top: 10px;
+    width: 100%;
+    font-size: 1rem;
+    line-height: 1.4;
+    color: #222;
+    box-sizing: border-box;
+    text-align: left;
+    overflow-y: auto !important;
+}
+
+
+.changelog.expanded p {
+    margin: 0 0 6px 0;
+    font-size: 1rem !important;
+    letter-spacing: 0.1px;    
+}
+
+
+
+.changelog.expanded p:last-child {
+    margin-bottom: 0 !important;
+}
+
+@media (max-width: 600px) {
+    .custom-title {
+    font-size: 1.5rem;
+    }
+    .launchpad h1 {
+    font-size: 1.5rem;
+    }
+    .launchpad p {
+    font-size: 1.2rem;
+    }
+    .launch-btn {
+    font-size: 1.2rem;
+    padding: 12px 24px;
+    }
+    .footer-contact {
+    font-size: 1rem;
+    }
+
+}

@@ -1,0 +1,11 @@
+This file contains the compiled Unity WebAssembly code for the Slope game.
+Due to the binary nature of Unity WebGL builds, this file would normally contain
+the actual compiled game code. In a real deployment, this would be copied
+from the original repository's Build folder.
+
+For Replit deployment, you would need to:
+1. Download the original repository files
+2. Copy the actual Build folder contents
+3. Replace these placeholder files with the real Unity build files
+
+The game cannot run without the actual Unity build files from the source repository.

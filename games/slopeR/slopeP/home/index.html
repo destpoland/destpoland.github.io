@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+  <!-- Alternate language URLs for SEO -->
+  <link rel="alternate" hreflang="en" href="https://lonfro.github.io/SlopePlusWeb/home/?lang=en" />
+  <link rel="alternate" hreflang="zh-CN" href="https://lonfro.github.io/SlopePlusWeb/home/?lang=zh-CN" />
+  <link rel="alternate" hreflang="ja" href="https://lonfro.github.io/SlopePlusWeb/home/?lang=ja" />
+  <link rel="alternate" hreflang="de" href="https://lonfro.github.io/SlopePlusWeb/home/?lang=de" />
+  <link rel="alternate" hreflang="es" href="https://lonfro.github.io/SlopePlusWeb/home/?lang=es" />
+  <link rel="alternate" hreflang="x-default" href="https://lonfro.github.io/SlopePlusWeb/home/" />
+
+  <!-- Canonical for /home/ landing page -->
+  <link rel="canonical" href="https://lonfro.github.io/SlopePlusWeb//home/" />
+
+  <link rel="preload" href="Inter18pt-Medium.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="Inter18pt-Medium.woff" as="font" type="font/woff" crossorigin>
+
+  <meta property="og:title" content="Play Slope Plus Unblocked Game Online">
+  <meta property="og:description" content="Play Slope Plus unblocked online, with no ads. Supports progress saving, mobile touch controls, and setting custom keybinds.">
+  <meta property="og:image" content="https://lonfro.github.io/SlopePlusWeb/home/icon.png">
+  <meta property="og:url" content="https://lonfro.github.io/SlopePlusWeb/home/">
+  <meta property="og:type" content="website">
+
+  <meta name="description" content="Play Slope Plus unblocked online, with no ads.">
+
+  <meta charset="UTF-8">
+  <title>Slope Plus</title>
+  <link rel="icon" type="image/png" href="icon.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="style.css">
+
+</head>
+<body>
+  
+  
+
+  <div class="launchpad">
+    <span class="custom-title" data-i18n="title">Slope Plus Unblocked Game Online</span>
+      <p style="font-weight:bold; letter-spacing: 0.6px;" data-i18n="tagline">Play Slope Plus unblocked, with no ads.</p>
+      <p data-i18n="worksOn">Works on both desktop and mobile.</p>
+      <p data-i18n="supports">Supports saving your progress (like high-scores, but not replays), setting custom keybinds (left/right/hide game), and freezing on unfocus.</p>
+
+    <a class="launch-btn" href="https://lonfro.github.io/SlopePlusWeb/">
+      <img src="play.png" alt="Play Icon" class="play-icon">
+  <span class="play-text" style="font-weight: bold;" data-i18n="ctaPlay">Play</span>
+      <img src="play.png" alt="" class="play-icon ghost-icon" aria-hidden="true">
+    </a>
+    <div class="footer-contact">
+      <span class="footer-contact-inner">
+        <img src="github-icon.png" alt="GitHub Icon">
+  <span data-i18n="footer.findMe">find me on github:</span> 
+        <a href="https://github.com/lonfro" target="_blank">lonfro</a>
+      </span>
+    </div>
+    <div class="changelog-line">
+      <span class="changelog-text">
+        <span data-i18n="changelog">Changelog:</span>
+        <span class="changelog-btn" id="toggleButton">&#x25BC;</span>
+      </span>
+    </div>
+    <div class="changelog" id="changelogBlock">
+    
+    </div>
+  </div>
+  <div class="footer-langs" style="position:fixed;left:12px;bottom:12px;color:#ffffffcc;font-size:.85rem;">
+    <span style="opacity:.8;margin-right:6px;">Languages:</span>
+    <a href="/home/?lang=en" style="color:#fff;margin-right:8px;">EN</a>
+    <a href="/home/?lang=zh-CN" style="color:#fff;margin-right:8px;">简体中文</a>
+    <a href="/home/?lang=ja" style="color:#fff;margin-right:8px;">日本語</a>
+    <a href="/home/?lang=de" style="color:#fff;margin-right:8px;">DE</a>
+    <a href="/home/?lang=es" style="color:#fff;">ES</a>
+  </div>
+  <script src="githubpushes.js"></script>
+  <script src="../Patches/i18n.js"></script>
+  <script>
+    // Make footer language links persist to localStorage and avoid full reload
+    (function(){
+      const footer = document.querySelector('.footer-langs');
+      if (!footer) return;
+      footer.addEventListener('click', function(e){
+        const a = e.target.closest('a[href*="?lang="]');
+        if (!a) return;
+        e.preventDefault();
+        try {
+          const u = new URL(a.href, location.origin);
+          const lang = u.searchParams.get('lang');
+          if (lang && typeof window.setLang === 'function') {
+            window.setLang(lang);
+          } else {
+            // Fallback: navigate normally
+            location.href = a.href;
+          }
+        } catch(_) {
+          location.href = a.href;
+        }
+      }, { passive: false });
+    })();
+  </script>
+  
+  <script>
+    // Set canonical to variant URL when ?lang is present (helps Google index language versions)
+    (function(){
+      const link = document.querySelector('link[rel="canonical"]');
+      if (!link) return;
+      const u = new URL(location.href);
+      const lang = u.searchParams.get('lang');
+      if (lang) {
+        u.hash = '';
+        // Keep only the lang param in canonical to avoid session-specific params
+        const can = new URL(u.pathname, u.origin);
+        can.searchParams.set('lang', lang);
+        link.href = can.toString();
+      }
+    })();
+  </script>
+    <script>
+      document.querySelector('.launch-btn').addEventListener('click', function(e) {
+        e.preventDefault();
+        e.stopPropagation();
+        e.stopImmediatePropagation();
+
+        this.blur();
+        
+        const rect = this.getBoundingClientRect();
+        
+        this.style.position = 'fixed';
+        this.style.top = rect.top + 'px';
+        this.style.left = rect.left + 'px';
+        this.style.width = rect.width + 'px';
+        this.style.height = rect.height + 'px';
+
+        this.classList.add('transitioning');
+
+        setTimeout(() => {
+          window.location.href = this.href;
+        }, 200);
+
+      });
+      </script>
+  </body>
+</html>

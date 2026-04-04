@@ -1,0 +1,39 @@
+{
+  "title": "坂プラス オンラインゲーム",
+  "tagline": "広告なしで Slope Plus をプレイ。",
+  "worksOn": "デスクトップとモバイルの両方に対応。",
+  "supports": "進行状況の保存（ハイスコアなど、リプレイは除く）、カスタムキー（左/右/非表示）、フォーカス外で一時停止に対応。",
+  "ctaPlay": "プレイ",
+  "footer": {
+    "findMe": "GitHub で見つける："
+  },
+  "changelog": "変更履歴：",
+  "root": {
+    "settings": {
+      "title": "設定",
+      "left": "左：",
+      "right": "右：",
+      "hide": "ゲームを非表示：",
+      "menuKey": "設定：",
+      "pause": "フォーカス外で一時停止：",
+      "language": "言語:",
+      "export": "データをエクスポート",
+      "import": "データをインポート",
+      "pressKey": "キーを押す",
+      "close": "閉じる"
+    },
+    "messages": {
+      "dataImportSuccess": "データのインポートが完了しました。ページが再読み込みされます。",
+      "dataImportFailed": "データのインポートに失敗しました",
+      "invalidDataFile": "無効なデータファイルです。",
+      "exportFailed": "エクスポートに失敗しました"
+    },
+    "popup": {
+      "ported": "Slope Plus、lonfro による移植",
+      "github": "GitHub リポジトリ",
+      "old": "旧 Slope Mobile",
+      "press": "押す",
+      "forOptions": "でオプション"
+    }
+  }
+}

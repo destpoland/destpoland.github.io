@@ -1,0 +1,39 @@
+{
+  "title": "Pendiente Más Juego en línea",
+  "tagline": "Juega Slope Plus sin anuncios.",
+  "worksOn": "Funciona en escritorio y móvil.",
+  "supports": "Permite guardar tu progreso (como récords, no repeticiones), configurar teclas personalizadas (izquierda/derecha/ocultar juego) y pausar al perder el foco.",
+  "ctaPlay": "Jugar",
+  "footer": {
+    "findMe": "búscame en GitHub:"
+  },
+  "changelog": "Registro de cambios:",
+  "root": {
+    "settings": {
+      "title": "Configuración",
+      "left": "Izquierda:",
+      "right": "Derecha:",
+      "hide": "Ocultar juego:",
+      "menuKey": "Configuración:",
+      "pause": "Pausar al perder el foco:",
+      "language": "Idioma:",
+      "export": "Exportar datos",
+      "import": "Importar datos",
+      "pressKey": "Presiona tecla",
+      "close": "Cerrar"
+    },
+    "messages": {
+      "dataImportSuccess": "Datos importados con éxito. La página se recargará ahora.",
+      "dataImportFailed": "Error al importar datos",
+      "invalidDataFile": "Archivo de datos inválido.",
+      "exportFailed": "Error en la exportación"
+    },
+    "popup": {
+      "ported": "Slope Plus, portado por lonfro",
+      "github": "Repositorio de GitHub",
+      "old": "Slope Mobile antiguo",
+      "press": "Presiona",
+      "forOptions": "para opciones"
+    }
+  }
+}
